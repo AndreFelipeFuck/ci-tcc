@@ -1,0 +1,291 @@
+body{
+	
+}
+
+.imglogo{
+	width: 80px;
+	height: 80px;
+}
+
+.espaco{
+	height: 10%;
+}
+
+.espaco2{
+	height: 2%;
+}
+
+.espaco3{
+	width: 2%;
+	height: 70%;
+}
+
+.navbar{
+	border-radius: 2px;
+	margin-right: 10%;
+	margin-left: 10%;
+	margin-top: 2%;
+}
+
+.registro{
+	margin-left: 2%;
+}
+
+.regis{
+	margin-right: 5px;
+
+}
+
+.navbar-brand{
+	border-radius: 2px;
+	padding-right: 1%;
+	padding-left: 1%; 
+}
+
+#botaoLogin{
+	width: 50%;
+	
+}
+
+.curriculo{
+	width: 60%;
+	height: 10%;
+}
+
+.carousel{
+	margin-right: 15%;
+	margin-left: 15%;
+}
+
+.w-100{;
+	height: 70%!important;
+
+}
+
+.conteiner2{
+	background-color: #f8f9fa;
+	border-radius: 2px;
+	margin-right: 10%;
+	margin-left: 10%;
+	width: 80%;
+	height: 70%;
+	padding: 2%;
+}
+
+.vidCont{
+	height: 40%;
+	border-radius: 3px;
+	background-color: #E8F7F8;
+}
+
+.vidCont img{
+	display: inline;
+	float: left;
+	margin: 1%;
+	height: 85%;
+	width: 25%;
+	border-radius: 5px;
+
+}
+
+.vidCont div{
+	display: inline;
+	float: left;
+	width: 60%;
+	height: 30%;
+	margin: 1%;
+}
+
+.conteinerCad{
+	background-color: #f8f9fa;
+	border-radius: 2px;
+	margin: 0 auto;
+	position: relative;
+	width: 50%;
+	height: 110%;
+	
+}
+
+.conteiner4{
+	background-color: #f8f9fa;
+	border-radius: 2px;
+	margin: 0 auto;
+	position: relative;
+	width: 75%;
+	height: 75%;
+	padding: 2%;
+}
+
+.conteinerOpi{
+	margin: 0 auto;
+	position: relative;
+	width: 75%;
+	height: 75%;
+	padding: 4%;
+}
+
+.divOpi{
+	background-color: #f8f9fa;
+	border-radius: 15px;
+	margin: 0 auto;
+	position: relative;
+	width: 50%;
+	height: 100%;
+	padding: 3%;
+	text-align: center;
+}
+
+#botao{
+	border-radius: 25px;
+	width: 85%;
+	height: 15%;
+	font-size: 23px;
+}
+
+.conteinerCadProf{
+	background-color: #f8f9fa;
+	border-radius: 2px;
+	margin: 0 auto;
+	position: relative;
+	width: 50%;
+	height: 120%;
+	
+}
+
+.conteinerLogin{
+	background-color: #f8f9fa;
+	border-radius: 2px;
+	margin: 0 auto;
+	position: relative;
+	width: 30%;
+	height: 60%;
+}
+
+.conteinerConf{
+	background-color: #f8f9fa;
+	border-radius: 2px;
+	margin: 0 auto;
+	position: relative;
+	width: 60%;
+	height: 25%;
+	text-align: center;
+	padding-top: 2%;
+}
+
+.conteiner-footer{
+	width: 90%;
+	height: 100%;
+	position: relative;
+	margin: 0 auto;
+	padding: 1%;
+}
+
+.footInf{
+	display: inline;
+	float: left;
+	padding: 10px;
+	border-radius: 3px;
+	background-color: #C7E6E5;
+	width: 12%;
+	height: 100%;
+	margin-left: 2%; 
+}
+
+.formulario{
+	padding-left: 5%;
+	padding-top: 3%;
+}
+
+.formulario2{
+	padding-left: 10%;
+	padding-right: 10%;
+}
+
+.form2-div{
+	padding-top: 2%;
+	margin: auto;
+	text-align: center;
+}
+
+.form-curso{
+	display: inline;
+	position: relative;
+	padding-right: 2%;
+
+}
+
+.form-ano{
+	display: inline;
+	position: relative;
+	padding-right: 2%;
+}
+
+.form-info{
+	display: inline;
+	position: relative;
+	padding-right: 2%;
+	padding-top: 1%;
+}
+
+.fotoPerfil {
+	background-color: #BCBBBB;
+	border-radius: 50%;
+	width: 55%;
+	height: 53%;
+	overflow: hidden;
+	position: relative;
+}
+
+.fotoPerfil img{
+	position: absolute;
+  	bottom: 0;
+ 	width: 100%;
+}
+
+.intPerfil{
+	display: inline;
+	height: 100%;
+	width: 45%;
+ 	float: left; 
+ 	margin: 10px;	
+}
+
+.intPerfil2{
+	display: inline;
+	height: 100%;
+	width: 50%;
+ 	float: left; 
+ 	margin: 10px;	
+}
+
+.nomePerfil{
+	padding-top: 1%;
+	padding-left: 2%;
+}
+
+.artPerfil{
+	margin-bottom: 10px;
+	width: 100%;
+	height: 20%;
+	background-color: #BCBBBB;
+}
+
+#exampleFormControlInput1{
+	width: 60%;
+}
+
+#exampleFormControlInput2{
+	width: 25%;
+}
+
+
+
+#titulo{
+	font-size:60px;
+}
+
+.rodape{
+	width: 100%;
+	height: 37%;
+	background-color: #09727B;
+}
