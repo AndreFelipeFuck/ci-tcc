@@ -13,11 +13,9 @@ class Home extends CI_Controller
     }
 
     public function login_home(){
-
             $this->load->view('login');
-
     }
-    public function view_aluno(){
+    public function aluno_view(){
         $this->load->view('aluno_view');
     }
 
@@ -29,12 +27,12 @@ class Home extends CI_Controller
         $this->load->view('opiCad');
     }
 
-    public function opiCadAluno(){
-        $this->load->view('cadastroAluno');
+    public function aluno_add(){
+        $this->load->view('aluno_add');
     }
 
-    public function opiCadProfessor(){
-        $this->load->view('cadastroProf');
+    public function professor_add(){
+        $this->load->view('professor_add');
     }
 
 }

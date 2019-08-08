@@ -5,7 +5,7 @@
 ?>
 <div class="espaco2"></div>
 	<section class="conteinerCad">
-		<form class="formulario" method="post" action="<?php echo site_url('alunos/aluno_add')?>">
+		<form class="formulario"  action="<?php echo site_url('alunos/aluno_add')?>" method="post">
 			<h1>Cadastro:</h1>
 			<div class="form-group">
 			    <label for="exampleFormControlInput1">Nome Completo</label>

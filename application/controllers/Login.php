@@ -28,6 +28,7 @@ class Login extends CI_Controller
             if ($query->num_rows() == 1){
                 $aluno = $query->row();
                 $this->session->set_userdata("alunos", $aluno->nomeCompleto);
+                //$codAluno = $this->db->select('codAluno, email, senha')->from('alunos')->where("email = '$email' and senha = '$senha'");
                 redirect( "alunos");
             }else{
                 redirect('home/login_home');

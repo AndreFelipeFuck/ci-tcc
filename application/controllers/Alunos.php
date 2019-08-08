@@ -7,8 +7,8 @@ class Alunos extends CI_Controller
 		parent::__construct();
 		$this->load->helper('url');
         $this->load->library('session');
-
 		$this->load->model('aluno_model');
+
 		    $aluno = $this->session->userdata("alunos");
 		if (empty($aluno)){
 		    redirect("home/login_home");
@@ -22,11 +22,8 @@ class Alunos extends CI_Controller
     {
         $data['alunos'] = $this->aluno_model->get_all_alunos();
         $this->load->view('aluno_view', $data);
-        //////////////////////////////////////////////////
-
     }
 
-	///////////////////////////////////CRUD/////////////////////////////////////////////////////////
 	public function aluno_add()
 	{
 		$data = array(
@@ -41,8 +38,10 @@ class Alunos extends CI_Controller
 		
 		);
 
+		
 		$insert = $this->aluno_model->aluno_add($data);
-		$this->load->view('home');
+		redirect('home/aluno_view');
+		
 	}
 
 	public function ajax_edit($codAluno)
@@ -75,21 +74,7 @@ class Alunos extends CI_Controller
 		echo json_encode(array("status" => TRUE));
 	}
 
-	///////////////////////////////////////LOGIN//////////////////////////////////////////////////
-
-    function aluno_login()
-    {
-        $this->load->library('session');
-        redirect('alunos');
-
-
-    }
-        function logout(){
-            $this->load->library('session');
-            $this->session->sess_destroy();
-            redirect('login');
-        }
-
+	
 
 }
 
