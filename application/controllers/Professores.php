@@ -76,4 +76,11 @@ class Professores extends CI_Controller
         $this->professor_model->delete_by_id($codProfessor);
         echo json_encode(array("status" => TRUE));
     }
+
+        public function professor_perfil(){
+        $codProfessor = $this->input->get('codProfessor');
+        $professor['perfil'] = $this->professor_model->get_by_id($codProfessor);
+        $this->load->view('aluno_perfil', $professor);
+        print_r($professor);
+    }
 }

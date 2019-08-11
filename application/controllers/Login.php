@@ -13,9 +13,11 @@ class Login extends CI_Controller
                 parent::__construct();
                 $this->load->database();
                 $this->load->library('session');
-
+                $this->load->model('aluno_model');
+                 $this->load->model('professor_model');
         }
     public function entrar(){
+       
         $tipo = $this->input->post("tipo");
         $senha = $this->input->post("senha");
         $email = $this->input->post("email");
@@ -28,8 +30,10 @@ class Login extends CI_Controller
             if ($query->num_rows() == 1){
                 $aluno = $query->row();
                 $this->session->set_userdata("alunos", $aluno->nomeCompleto);
-                //$codAluno = $this->db->select('codAluno, email, senha')->from('alunos')->where("email = '$email' and senha = '$senha'");
-                redirect( "alunos");
+                $codAluno = $this->aluno_model->get_by_login($email, $senha);
+                $url = "?codAluno=".$aluno->codAluno;
+               redirect ("alunos/aluno_perfil/$url");
+                
             }else{
                 redirect('home/login_home');
             }
@@ -41,7 +45,9 @@ class Login extends CI_Controller
             if ($query->num_rows() == 1){
                 $professor = $query->row();
                 $this->session->set_userdata("professores", $professor->nomeCompleto);
-                redirect( "professores");
+                $codAluno = $this->aluno_model->get_by_login($email, $senha);
+                $url = "?codProfessor=".$aluno->codProfessor;
+               redirect ("professores/professor_perfil/$url");
             }else{
                 redirect('home/login_home');
             }

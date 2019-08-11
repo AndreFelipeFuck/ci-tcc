@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-    class Aluno_model extends CI_Model{
+    class Artigo_model extends CI_Model{
         var $table = 'alunos';
         public function __construct()
         {
@@ -11,14 +11,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         ///////////////////////////////////////////CRUD////////////////////////////////////////
 
-        public function get_all_alunos()
+        public function get_all_artigos()
         {
             $this->db->from('alunos');
             $query=$this->db->get();
             return $query->result();
         }
 
-        public function get_by_id($codAluno)
+        public function get_by_id($codArtigo)
         {
             $this->db->from($this->table);
             $this->db->where('codAluno',$codAluno);
@@ -26,28 +26,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             return $query->row();
         }
 
-        public function aluno_add($data)
+        public function artigo_add($data)
         {
             $this->db->insert($this->table, $data);
             return $this->db->insert_id();
         }
 
-        public function aluno_update($where, $data)
+        public function artigo_update($where, $data)
         {
             $this->db->update($this->table, $data, $where);
             return $this->db->affected_rows();
         }
 
-        public function delete_by_id($codAluno)
+        public function delete_by_id($codArtigo)
         {
             $this->db->where('codAluno', $codAluno);
             $this->db->delete($this->table);
-        }
-
-        public function get_by_login($email, $senha){
-             $this->db->select('codAluno, email, senha')->from('alunos')->where("email = '$email' and senha = '$senha'");
-             $query = $this->db->get();
-             return $query;
         }
 
 

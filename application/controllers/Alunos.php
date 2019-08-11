@@ -10,9 +10,12 @@ class Alunos extends CI_Controller
 		$this->load->model('aluno_model');
 
 		    $aluno = $this->session->userdata("alunos");
+		//Verificação se está logado    
 		if (empty($aluno)){
 		    redirect("home/login_home");
         }
+
+
 
 
 
@@ -22,6 +25,7 @@ class Alunos extends CI_Controller
     {
         $data['alunos'] = $this->aluno_model->get_all_alunos();
         $this->load->view('aluno_view', $data);
+
     }
 
 	public function aluno_add()
@@ -68,16 +72,32 @@ class Alunos extends CI_Controller
 		echo json_encode(array("status" => TRUE));
 	}
 
-	public function aluno_delete($codAluno)
+	public function aluno_update_perfil()
 	{
-		$this->aluno_model->delete_by_id($codAluno);
+		$data = array(
+			'email' => $this->input->post('email'),
+			'senha' => $this->input->post('senha'),
+		);
+		$this->aluno_model->aluno_update(array('codAluno' => $this->input->post('codAluno')), $data);
+
 		echo json_encode(array("status" => TRUE));
 	}
 
-	
+	public function aluno_delete($codAluno)
+	{
+		$this->aluno_model->delete_by_id($codAluno);
+		echo json_encode(array("status" => TRUE));//Peguntar para o professor
+	}
+
+	public function aluno_perfil(){
+		$codAluno = $this->input->get('codAluno');
+		$aluno['perfil'] = $this->aluno_model->get_by_id($codAluno);
+		$this->load->view('aluno_perfil', $aluno);
+		print_r($aluno);
+	}
+
 
 }
-
 
 
 

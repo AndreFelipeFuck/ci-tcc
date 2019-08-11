@@ -48,4 +48,10 @@ class Professor_model extends CI_Model
         $this->db->where('codProfessor', $codProfessor);
         $this->db->delete($this->table);
     }
+
+    public function get_by_login($email, $senha){
+             $this->db->select('codAluno, email, senha')->from('professoresS')->where("email = '$email' and senha = '$senha'");
+             $query = $this->db->get();
+             return $query;
+        }
 }

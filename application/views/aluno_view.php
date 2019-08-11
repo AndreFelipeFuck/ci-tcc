@@ -18,18 +18,22 @@
 
     <?php foreach($alunos as $aluno){?>
     <tr>
-    <td><?php echo $aluno->nomeCompleto;?></td>
-    <td><?php echo $aluno->email;?></td>
-    <td><?php echo $aluno->curso;?></td>
-    <td><?php echo $aluno->anoLetivo;?></td>
-    <td><?php echo $aluno->dataNasc;?></td>
-    <td>
-    <button class="btn btn-warning" onclick="edit_aluno(<?php echo $aluno->codAluno;?>)"><i class="glyphicon glyphicon-pencil"></i>EDITAR</button>
+        <?php //if($aluno->codAluno == 7){//?>
+            <td><?php echo $aluno->nomeCompleto;?></td>
+            <td><?php echo $aluno->email;?></td>
+            <td><?php echo $aluno->curso;?></td>
+            <td><?php echo $aluno->anoLetivo;?></td>
+            <td><?php echo $aluno->dataNasc;?></td>
+            <td>
+              
+            <button class="btn btn-success" onclick="edit_aluno(<?php echo $aluno->codAluno;?>)"><i class="glyphicon glyphicon-pencil"></i>EDITAR</button>
 
-    <button class="btn btn-danger" onclick="delete_aluno(<?php echo $aluno->codAluno;?>)"><i class="glyphicon glyphicon-remove"></i>EXCLUIR</button>
+            <button class="btn btn-danger" onclick="delete_aluno(<?php echo $aluno->codAluno;?>)"><i class="glyphicon glyphicon-remove"></i>EXCLUIR</button>
 
-    </td>
-    </tr>
+            <a href="<?php echo site_url('alunos/aluno_perfil/')?>?codAluno=<?php echo $aluno->codAluno; // ta meio estranho, tenho que perguntar para o professor?>" class="btn btn-warning">SAIBA MAIS</a>
+            </td>
+            </tr>
+        <?php //    }?>    
     <?php }?>
    
     </table>

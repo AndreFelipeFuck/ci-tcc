@@ -11,7 +11,7 @@
 			</form>
 			<h3>ou</h3>
 			<br>
-			<form method="get" action="<?php echo site_url('home/aluno_add')?>">
+			<form method="get" action="<?php echo site_url('home/professor_add')?>">
 				<button type="submit" class="btn btn-outline-success" id="botao">Professor</button>
 			</form>
 		</div>
