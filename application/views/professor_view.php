@@ -20,9 +20,11 @@
                 <td><?php echo $professor->email;?></td>
                 <td><?php echo $professor->institucao;?></td>
                 <td>
-                    <button class="btn btn-warning" onclick="edit_professor(<?php echo $professor->codProfessor;?>)"><i class="glyphicon glyphicon-pencil"></i>EDITAR</button>
+                    <button class="btn btn-success" onclick="edit_professor(<?php echo $professor->codProfessor;?>)"><i class="glyphicon glyphicon-pencil"></i>EDITAR</button>
 
                     <button class="btn btn-danger" onclick="delete_professor(<?php echo $professor->codProfessor;?>)"><i class="glyphicon glyphicon-remove"></i>EXCLUIR</button>
+
+                    <a href="<?php echo site_url('professores/professor_perfil/')?>?codProfessor=<?php echo $professor->codProfessor; // ta meio estranho, tenho que perguntar para o professor?>" class="btn btn-warning">SAIBA MAIS</a>
 
                 </td>
             </tr>

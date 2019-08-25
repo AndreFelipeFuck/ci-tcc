@@ -9,8 +9,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         }
 
-        ///////////////////////////////////////////CRUD////////////////////////////////////////
-
         public function get_all_alunos()
         {
             $this->db->from('alunos');

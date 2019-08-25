@@ -28,7 +28,7 @@ class Professores extends CI_Controller
         $this->load->view('professor_view', $data);
     }
 
-    ///////////////////////////////////CRUD/////////////////////////////////////////////////////////
+    
     public function professor_add()
     {
         $data = array(
@@ -71,16 +71,29 @@ class Professores extends CI_Controller
         echo json_encode(array("status" => TRUE));
     }
 
+    public function professor_update_perfil()
+    {
+        $data = array(
+            'email' => $this->input->post('email'),
+            'senha' => $this->input->post('senha'),
+        );
+        $this->professor_model->professor_update(array('codProfessor' => $this->input->post('codProfessor')), $data);
+
+        echo json_encode(array("status" => TRUE));
+    }
+
     public function professor_delete($codProfessor)
     {
         $this->professor_model->delete_by_id($codProfessor);
         echo json_encode(array("status" => TRUE));
+        $this->session->set_userdata("professores", "");
     }
 
-        public function professor_perfil(){
+    public function professor_perfil(){
         $codProfessor = $this->input->get('codProfessor');
         $professor['perfil'] = $this->professor_model->get_by_id($codProfessor);
-        $this->load->view('aluno_perfil', $professor);
+        $this->load->view('professor_perfil', $professor);
         print_r($professor);
     }
+
 }

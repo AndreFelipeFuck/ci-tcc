@@ -20,7 +20,8 @@ class Login extends CI_Controller
        
         $tipo = $this->input->post("tipo");
         $senha = $this->input->post("senha");
-        $email = $this->input->post("email");
+        $email = $this->input->post('email');
+
 
         if($tipo == 0){//login aluno
             $this->db->where('email', $email);
@@ -45,14 +46,34 @@ class Login extends CI_Controller
             if ($query->num_rows() == 1){
                 $professor = $query->row();
                 $this->session->set_userdata("professores", $professor->nomeCompleto);
-                $codAluno = $this->aluno_model->get_by_login($email, $senha);
-                $url = "?codProfessor=".$aluno->codProfessor;
+                $codProfessor = $this->professor_model->get_by_login($email, $senha);
+                $url = "?codProfessor=".$professor->codProfessor;
                redirect ("professores/professor_perfil/$url");
             }else{
                 redirect('home/login_home');
             }
         }
 
+    }
+
+    public function entrarAluno(){
+        $senha = $this->input->post("senha");
+        $email = $this->input->post('email');
+
+            $this->db->where('email', $email);
+            $this->db->where('senha', $senha);
+            $query = $this->db->get("alunos");
+
+            if ($query->num_rows() == 1){
+                $aluno = $query->row();
+                $this->session->set_userdata("alunos", $aluno->nomeCompleto);
+                $codAluno = $this->aluno_model->get_by_login($email, $senha);
+                $url = "?codAluno=".$aluno->codAluno;
+               redirect ("alunos/aluno_perfil/$url");
+                
+            }else{
+                redirect('home/login_home');
+            }
     }
 
     public function sair (){

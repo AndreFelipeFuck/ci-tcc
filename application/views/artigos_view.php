@@ -1,27 +1,37 @@
-<?php  include "cabeca.php";?>
-<div class="espaco2"></div>
+<?php include 'cabeca.php';?>
+<div class="container">
+    <br><br><br/><br/>
+    <table id="" class="table table-striped table-bordered" >
 
+    <thead>
+    <tr>
 
-	<section class="conteiner4" >
-			<section class="intPerfil">
-				<div class="fotoPerfil"><img src="img\user.png"></div>
-				<div class="nomePerfil"><h2><?php echo $perfil->nomeCompleto;?></h2></div>
-			</section>
-			<section class="intPerfil2">
-				<article class="artPerfil"><h2><?php echo $perfil->dataNasc;?></article>
-				<article class="artPerfil"><h2><?php echo $perfil->institucao;?></article>
-				<article class="artPerfil"><h2><?php echo $perfil->miniCurriculo;?></article>
-				<article class="artPerfil"><h2><?php echo $perfil->email;?><h2></article>
+    <th>TÍTULO</th>
+    <th>AÇÃO</th>
+    </tr>
+    </thead>
+    <tbody>
 
-				<button class="btn btn-success" onclick="edit_professor(<?php echo $perfil->codProfessor;?>)"><i class="glyphicon glyphicon-pencil"></i>EDITAR</button>
+    <?php foreach($artigos as $artigo){?>
+    <tr>
+        <?php //if($artigo->codArtigo == 7){//?>
+            <td><?php echo $artigo->titulo;?></td>
+            <td>
+              
+            <button class="btn btn-success" onclick="edit_artigo(<?php echo $artigo->codArtigo;?>)"><i class="glyphicon glyphicon-pencil"></i>EDITAR</button>
 
-            	<button class="btn btn-danger" onclick="delete_professor(<?php echo $perfil->codProfessor;?>)"><i class="glyphicon glyphicon-remove"></i>EXCLUIR</button>
-			</section>
+            <button class="btn btn-danger" onclick="delete_artigo(<?php echo $artigo->codArtigo;?>)"><i class="glyphicon glyphicon-remove"></i>EXCLUIR</button>
 
-
-
-	</section>
-		<script src="<?php echo base_url('assets/jquery/jquery-3.1.0.min.js')?>"></script>
+            <a href="<?php echo site_url('artigos/artigo_perfil/')?>?codArtigo=<?php echo $artigo->codArtigo; // ta meio estranho, tenho que perguntar para o professor?>" class="btn btn-warning">VISUALIZAR</a>
+            </td>
+            </tr>
+        <?php //    }?>    
+    <?php }?>
+   
+    </table>
+</div>
+    
+    <script src="<?php echo base_url('assets/jquery/jquery-3.1.0.min.js')?>"></script>
 
     <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js')?>"></script>
     <script src="<?php echo base_url('assets/datatables/js/jquery.dataTables.min.js')?>"></script>
@@ -29,30 +39,29 @@
 
     <script>
     $(document).ready( function () {
-    $('#codProfess').DataTable();
+    $('#codArtigo').DataTable();
     } );
     var save_method; //for save method string
     var table;
-    function add_professor()
+    function add_artigo()
     {
     save_method = 'add';
     $('#form')[0].reset(); // reset form on modals
     $('#modal_form').modal('show'); // show bootstrap modal
     //$('.modal-title').text('Add Person'); // Set Title to Bootstrap modal title
     }
-
-    function edit_professor(codProfessor)
+    function edit_artigo(codArtigo)
     {
     save_method = 'update';
     $('#form')[0].reset(); // reset form on modals
     //Ajax Load data from ajax
     $.ajax({
-    url : "<?php echo site_url('professores/ajax_edit')?>/" + codProfessor,
+    url : "<?php echo site_url('artigos/ajax_edit')?>/" + codArtigo,
     type: "GET",
     dataType: "JSON",
     success: function(data)
     {
-    $('[name="codProfessor"]').val(data.codProfessor);
+    $('[name="codArtigo"]').val(data.codArtigo);
     $('[name="nomeCompleto"]').val(data.nomeCompleto);
     $('[name="email"]').val(data.email);
     $('[name="senha"]').val(data.senha);
@@ -60,7 +69,7 @@
 
     $('#modal_form').modal('show'); // show bootstrap modal when complete
     loaded
-    $('.modal-title').text('Edit Professor'); // Set title to Bootstrap modal
+    $('.modal-title').text('Edit artigo'); // Set title to Bootstrap modal
     title
     },
     error: function (jqXHR, textStatus, errorThrown)
@@ -74,9 +83,9 @@
     var url;
     if(save_method == 'add')
     {
-    url = "<?php echo site_url('professores/professor_add')?>";
+    url = "<?php echo site_url('artigos/artigo_add')?>";
     }else{
-    url = "<?php echo site_url('professores/professor_update_perfil')?>";
+    url = "<?php echo site_url('artigos/artigo_update')?>";
     }
     // ajax adding data to database
     $.ajax({
@@ -96,15 +105,13 @@
     }
     });
     }
-
-
-    function delete_professor(codProfessor)
+    function delete_artigo(codArtigo)
     {
-    if(confirm('Voce quer deletar o aluno?'))
+    if(confirm('Voce quer deletar o artigo?'))
     {
     // ajax delete data from database
     $.ajax({
-    url : "<?php echo site_url('professores/professor_delete')?>/" + codProfessor,
+    url : "<?php echo site_url('artigos/artigo_delete')?>/" + codArtigo,
     type: "POST",
     dataType: "JSON",
     success: function(data)
@@ -119,19 +126,17 @@
     }
     }
     </script>
-
-    
 <div class="modal fade" id="modal_form" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title">Professor Form</h3>
+                <h3 class="modal-title">Artigo Form</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-
                         label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body form">
                 <form action="#" id="form" class="form-horizontal">
-                    <input type="hidden" value="" name="codProfessor"/>
+                    <input type="hidden" value="" name="codArtigo"/>
                     <div class="form-body">
                         <div class="form-group">
                             <label class="control-label col-md-3">Nome</label>
@@ -146,7 +151,7 @@
                             <label class="control-label col-md-3">email</label>
                             <div class="col-md-9">
 
-                                <input name="email" placeholder="Seu email" class="form-
+                                <input name="email" placeholder="Book_title" class="form-
     control" type="text">
 
                             </div>
@@ -155,7 +160,7 @@
                             <label class="control-label col-md-3">senha</label>
                             <div class="col-md-9">
 
-                                <input name="senha" placeholder="Sua senha" class="form-control" type="password">
+                                <input name="senha" placeholder="Book Author" class="form-control" type="password">
                             </div>
                         </div>
 
@@ -175,7 +180,3 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <!-- End Bootstrap modal -->
-
-   
-
-<?php  include "rodape.php";

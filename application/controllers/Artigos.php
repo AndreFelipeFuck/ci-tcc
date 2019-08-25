@@ -11,8 +11,8 @@ class Artigos extends CI_Controller
 
 	public function index()
     {
-        $data['artigos'] = $this->artigo_model->get_all_artigos();
-        $this->load->view('', $data);
+        $data['artigos'] = $this->artigos_model->get_all_artigos();
+        $this->load->view('artigos_view', $data);
     }
 
 	public function artigo_add()
@@ -37,15 +37,8 @@ class Artigos extends CI_Controller
 	public function artigo_update()
 	{
 		$data = array(
-
-			'nomeCompleto' => $this->input->post('nomeCompleto'),
-			'dataNasc' => $this->input->post('dataNasc'),
-			'imgAluno' => $this->input->post('imgAluno'),
-			'anoLetivo' => $this->input->post('anoLetivo'),
-			'curso' => $this->input->post('curso'),
-			'email' => $this->input->post('email'),
-			'senha' => $this->input->post('senha'),
-			
+		'titulo' => $this->input->post('titulo'),
+		'corpo' => $this->input->post('corpo')			
 		);
 		$this->artigo_model->artigo_update(array('codArtigo' => $this->input->post('codArtigo')), $data);
 
