@@ -40,6 +40,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $this->db->where('codArtigo', $codArtigo);
             $this->db->delete($this->table);
         }
+
+        public function get_by_login($titulo, $corpo){
+         $this->db->select('codArtigo, titulo, corpo')->from('artigos')->where("titulo = '$titulo' and corpo = '$corpo'");
+         $query = $this->db->get();
+         return $query;
+     }
+
     }
 
 

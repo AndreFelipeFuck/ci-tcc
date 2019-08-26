@@ -9,15 +9,15 @@
 			<h1>Cadastro:</h1>
 			<div class="form-group">
 			    <label for="exampleFormControlInput1">Nome Completo</label>
-			    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ex: Josef Oliveira">
+			    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ex: Josef Oliveira" name="nomeCompleto">
 			 </div>
 			  <div class="form-group">
 			    <label for="exampleFormControlInput1">E-mail</label>
-			    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="exemplo@gmail.com">
+			    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="exemplo@gmail.com" name="email">
 			 </div>
 			 <div class="form-group">
 			    <label for="exampleFormControlInput1">Senha</label>
-			    <input type="password" class="form-control" id="exampleFormControlInput1">
+			    <input type="password" class="form-control" id="exampleFormControlInput1" name="senha">
 			    <small id="senhaHelp" class="form-text text-muted">A senha deve ter no minimo 8 caracteres</small>
 			 </div>
 			 <div class="form-group">
@@ -26,27 +26,27 @@
 			 </div>
 			 <div class="form-group">
 			    <label for="exampleFormControlInput1">Data</label>
-			    <input type="date" class="form-control" id="exampleFormControlInput2">
+			    <input type="date" class="form-control" id="exampleFormControlInput2" name="dataNasc">
 			 </div>
 			 <span>Docente da área:</span>
 				 <br>
 				 <div class="form-info">
-				 	<input type="radio" name="area">
+				 	<input type="radio" name="area" value="Ensino Medio">
 				 	<label>Ensino Medio</label>
 				 </div>
 				 <div class="form-info">
-				 	<input type="radio" name="area">
+				 	<input type="radio" name="area" value="Ensino Técnico">
 				 	<label>Ensino Técnico</label>
 				 </div>
 				 <div class="form-info">
-				 	<input type="radio" name="area">
+				 	<input type="radio" name="area" value="Ensino Superior">
 				 	<label>Ensino Superior</label>
 				 </div>
 			<div class="espaco2"></div>
 			<span>Mini Curriculo:</span>
 			<br>
 			<div>
-			<textarea class="curriculo" placeholder="Conte-nos mais sobre sua formação..."></textarea>
+			<textarea class="curriculo" placeholder="Conte-nos mais sobre sua formação..." name="miniCurriculo"></textarea>
 			</div>
 			<div class="espaco2"></div>
 			<div>

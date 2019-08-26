@@ -11,6 +11,11 @@ class Artigos extends CI_Controller
 
 	public function index()
     {
+    	$professor = $this->session->userdata("professores");
+        if (empty($professor)) {
+            redirect("home/login_home");
+        }
+
         $data['artigos'] = $this->artigos_model->get_all_artigos();
         $this->load->view('artigos_view', $data);
     }
@@ -19,12 +24,27 @@ class Artigos extends CI_Controller
 	{
 		$data = array(
 		'titulo' => $this->input->post('titulo'),
-		'corpo' => $this->input->post('corpo')
+		'corpo' => $this->input->post('corpo'),
+		'imgArtigo' => $this->input->post('imgArtigo')
 		);
 
 		
-		$insert = $this->artigo_model->artigo_add($data);
-		redirect('home/artigo_view');
+		$insert = $this->artigos_model->artigo_add($data);
+		//redirect('home/artigo_view');
+		$this->db->where('titulo', $data['titulo']);
+           $this->db->where('corpo', $data['corpo']);
+            $query = $this->db->get('artigos');
+
+            if ($query->num_rows() == 1){
+                $artigo = $query->row();
+                $this->session->set_userdata("artigos", $artigo->titulo);
+                $codArtigo = $this->artigos_model->get_by_login($titulo, $corpo);
+                $url = "?codArtigo=".$artigo->codArtigo;
+               redirect ("artigos/artigo_page/$url");
+                
+            }else{
+                redirect('home/login_home');
+            }
 		
 	}
 
@@ -51,6 +71,12 @@ class Artigos extends CI_Controller
 		echo json_encode(array("status" => TRUE));
 	}
 
+	public function artigo_page(){
+        $codArtigo = $this->input->get('codArtigo');
+        $artigo['perfil'] = $this->artigos_model->get_by_id($codArtigo);
+        $this->load->view('artigo_page', $artigo);
+        print_r($artigo);
+    }
 	
 
 }

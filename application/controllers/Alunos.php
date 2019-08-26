@@ -8,29 +8,29 @@ class Alunos extends CI_Controller
 		$this->load->helper('url');
         $this->load->library('session');
 		$this->load->model('aluno_model');
-
-		 $aluno = $this->session->userdata("alunos");
 		//Verificação se está logado 
 		//Afeta na função aluno_add   
-		if (empty($aluno)){
+		 /*$aluno = $this->session->userdata("alunos");
+		if(empty($aluno)){
 		    redirect("home/login_home");
-        }
+        }*/
 		
 	}
 
 	public function index()
     {
-    	
-
+     	$aluno = $this->session->userdata("alunos");
+		if(empty($aluno)){
+		    redirect("home/login_home");
+        }
+        //Teste
         $data['alunos'] = $this->aluno_model->get_all_alunos();
         $this->load->view('aluno_view', $data);
-
     }
 
 	public function aluno_add()
 	{
 		$data = array(
-
 		'nomeCompleto' => $this->input->post('nomeCompleto'),
 		'dataNasc' => $this->input->post('dataNasc'),
 		'imgAluno' => $this->input->post('imgAluno'),
@@ -38,13 +38,23 @@ class Alunos extends CI_Controller
 		'curso' => $this->input->post('curso'),
 		'email' => $this->input->post('email'),
 		'senha' => $this->input->post('senha'),
-		
 		);
-
-		
 		$insert = $this->aluno_model->aluno_add($data);
-		redirect('login/entrarAluno');
-		
+		  //$this->load->view('aluno_view', $data);
+		  $this->db->where('email', $data['email']);
+           $this->db->where('senha', $data['senha']);
+            $query = $this->db->get('alunos');
+
+            if ($query->num_rows() == 1){
+                $aluno = $query->row();
+                $this->session->set_userdata("alunos", $aluno->nomeCompleto);
+                $codAluno = $this->aluno_model->get_by_login($email, $senha);
+                $url = "?codAluno=".$aluno->codAluno;
+               redirect ("alunos/aluno_perfil/$url");
+                
+            }else{
+                redirect('home/login_home');
+            }
 	}
 
 	public function ajax_edit($codAluno)

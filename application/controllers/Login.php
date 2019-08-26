@@ -57,12 +57,12 @@ class Login extends CI_Controller
     }
 
     public function entrarAluno(){
-        $senha = $this->input->post("senha");
+        $senha = $this->input->post('senha');
         $email = $this->input->post('email');
 
             $this->db->where('email', $email);
             $this->db->where('senha', $senha);
-            $query = $this->db->get("alunos");
+            $query = $this->db->get('alunos');
 
             if ($query->num_rows() == 1){
                 $aluno = $query->row();
@@ -77,7 +77,7 @@ class Login extends CI_Controller
     }
 
     public function sair (){
-        $this->session->set_userdata("alunos", "");
+        $this->session->unset_userdata('alunos');
         redirect("home/login_home");
     }
 

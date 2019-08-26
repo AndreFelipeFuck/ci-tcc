@@ -24,7 +24,7 @@
 
                     <button class="btn btn-danger" onclick="delete_professor(<?php echo $professor->codProfessor;?>)"><i class="glyphicon glyphicon-remove"></i>EXCLUIR</button>
 
-                    <a href="<?php echo site_url('professores/professor_perfil/')?>?codProfessor=<?php echo $professor->codProfessor; // ta meio estranho, tenho que perguntar para o professor?>" class="btn btn-warning">SAIBA MAIS</a>
+                    <a href="<?php echo site_url('professores/professor_perfil/')?>?codProfessor=<?php echo $professor->codProfessor;?>" class="btn btn-warning">SAIBA MAIS</a>
 
                 </td>
             </tr>

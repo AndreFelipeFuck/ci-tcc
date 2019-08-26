@@ -53,8 +53,8 @@ body{
 }
 
 .carousel{
-	margin-right: 15%;
-	margin-left: 15%;
+	margin-right: 10%;
+	margin-left: 10%;
 }
 
 .w-100{;
@@ -106,6 +106,206 @@ body{
 	
 }
 
+.conteinerMtr{
+	background-color: #f8f9fa;
+	border-radius: 2px;
+	margin: 0 auto;
+	position: relative;
+	padding: 2%;
+	width: 80%;
+	height: 120%;
+}
+
+.contMtr{
+	margin: 0 auto;
+	position: relative;
+}
+
+.contMtr button{
+	width: 15%;
+	height: 24%;
+	padding: 1%;
+	margin: 0.5%;
+}
+
+.contMtr img{
+	width: 85%;
+	height: 70%;
+	margin: 0 auto;
+	position: relative;
+}
+
+#btn-ex{
+	background-color: transparent;
+    background-image: none;
+	border-color:  #8f3d8f;
+	color: #8f3d8f;
+}
+
+#btn-ex:hover {
+	color: #fff;
+    background-color: #8f3d8f;
+    border-color: #8f3d8f;
+}
+
+#btn-ex2{
+	background-color: transparent;
+    background-image: none;
+	border-color:  #dc3545;
+	color: #dc3545;
+}
+
+#btn-ex2:hover {
+	color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+#btn-ex3{
+	background-color: transparent;
+    background-image: none;
+	border-color:  #fd7e14;
+	color: #fd7e14;
+}
+
+#btn-ex3:hover {
+	color: #fff;
+    background-color: #fd7e14;
+    border-color: #fd7e14;
+}
+
+#btn-ex4{
+	background-color: transparent;
+    background-image: none;
+	border-color:  #5d3011;
+	color: #5d3011;
+}
+
+#btn-ex4:hover {
+	color: #fff;
+    background-color: #5d3011;
+    border-color: #5d3011;
+}
+
+#btn-ex5{
+	background-color: transparent;
+    background-image: none;
+	border-color:  #ffc84d;
+	color: #ffc84d;
+}
+
+#btn-ex5:hover {
+	color: #fff;
+    background-color: #ffc84d;
+    border-color: #ffc84d;
+}
+
+#btn-ex6{
+	background-color: transparent;
+    background-image: none;
+	border-color:  #173f5f;
+	color: #173f5f;
+}
+
+#btn-ex6:hover {
+	color: #fff;
+    background-color: #173f5f;
+    border-color: #173f5f;
+}
+
+#btn-ex7{
+	background-color: transparent;
+    background-image: none;
+	border-color:  #007bff;
+	color: #007bff;
+}
+
+#btn-ex7:hover {
+	color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+#btn-ex8{
+	background-color: transparent;
+    background-image: none;
+	border-color:  #ffc107;
+	color: #ffc107;
+}
+
+#btn-ex8:hover {
+	color: #fff;
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+#btn-ex9{
+	background-color: transparent;
+    background-image: none;
+	border-color: #e83e8c;
+	color: #e83e8c;
+}
+
+#btn-ex9:hover {
+	color: #fff;
+    background-color: #e83e8c;
+    border-color: #e83e8c;
+}
+
+#btn-ex10{
+	background-color: transparent;
+    background-image: none;
+	border-color:  #763c7d;
+	color: #763c7d;
+}
+
+#btn-ex10:hover {
+	color: #fff;
+    background-color: #763c7d;
+    border-color: #763c7d;
+}
+
+#btn-ex11{
+	background-color: transparent;
+    background-image: none;
+	border-color:  #49b108;
+	color: #49b108;
+}
+
+#btn-ex11:hover {
+	color: #fff;
+    background-color: #49b108;
+    border-color: #49b108;
+}
+
+#btn-ex12{
+	background-color: transparent;
+    background-image: none;
+	border-color:  #425f8c;
+	color: #425f8c;
+}
+
+#btn-ex12:hover {
+	color: #fff;
+    background-color: #425f8c;
+    border-color: #425f8c;
+}
+
+#btn-ex13{
+	background-color: transparent;
+    background-image: none;
+	border-color: #a25ec5;
+	color: #a25ec5;
+}
+
+#btn-ex13:hover {
+	color: #fff;
+    background-color: #a25ec5;
+    border-color: #a25ec5;
+}
+
+
+
 .conteiner4{
 	background-color: #f8f9fa;
 	border-radius: 2px;
@@ -142,6 +342,22 @@ body{
 	font-size: 23px;
 }
 
+textarea {
+	width: 60%;
+	height: 40%;
+    padding: 10px;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+    max-height: 40%;
+}
+
+#texto label {
+    display: block;
+    margin-bottom: 10px;
+}
+
 .conteinerCadProf{
 	background-color: #f8f9fa;
 	border-radius: 2px;
@@ -150,6 +366,61 @@ body{
 	width: 50%;
 	height: 120%;
 	
+}
+
+.conteinerCadArt{
+	background-color: #f8f9fa;
+	margin: 0 auto;
+	position: relative;
+	padding: 2%;
+	width: 80%;
+	border-radius: 2px;
+}
+
+.conteinerTelaArt{
+	background-color: #f8f9fa;
+	margin: 0 auto;
+	position: relative;
+	padding: 2%;
+	width: 80%;
+	border-radius: 2px;
+}
+
+.conteinerTelaArt img{
+	width: 100%;
+	height: 75%;
+}
+
+.conteinerTelaArt figure{
+	margin: 1%;
+	margin-bottom: 2%;
+}	
+
+.conteinerTelaArt article{
+	background-color: white;
+	border-radius: 2px;
+	text-align: justify;
+	font-size: 17px;
+	padding: 1%;
+}
+
+.nomeAutor{
+	padding: 1%;
+}
+
+.publicacao{
+	padding-left: 1%;
+	font-size: 15px;
+	color: #4f555a;
+}
+
+.nomeMateria{
+	padding: 1%;
+}	
+
+#nomeMateria{
+	font-size: 15px;
+}
 }
 
 .conteinerLogin{
@@ -278,10 +549,32 @@ body{
 	width: 25%;
 }
 
-
+.tituloArt{
+	padding: 1%;
+	margin-bottom: 2%;
+}
 
 #titulo{
 	font-size:60px;
+}
+
+#Escl-Mat{
+	width: 11%;
+	background-color: #28a745;
+	color: #fff;
+}
+
+#Escl-Mat option{
+	color: #343a40;
+	background-color: white;
+}
+
+#Escl-Mat:hover{
+	width: 11%;
+	background-color: transparent;
+    background-image: none;
+	border-color: #28a745;
+	color: #28a745;
 }
 
 .rodape{

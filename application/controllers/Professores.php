@@ -16,14 +16,19 @@ class Professores extends CI_Controller
         $this->load->library('session');
         $this->load->model('professor_model');
 
+        /*$professor = $this->session->userdata("professores");
+        if (empty($professor)) {
+            redirect("home/login_home");
+        }*/
+
+    }
+    public function index()
+    {
         $professor = $this->session->userdata("professores");
         if (empty($professor)) {
             redirect("home/login_home");
         }
 
-    }
-    public function index()
-    {
         $data['professores'] = $this->professor_model->get_all_professor();
         $this->load->view('professor_view', $data);
     }
@@ -44,7 +49,21 @@ class Professores extends CI_Controller
         );
 
         $insert = $this->professor_model->professor_add($data);
-        $this->load->view('home');
+        //$this->load->view('professor_view', $data);
+        $this->db->where('email', $data['email']);
+           $this->db->where('senha', $data['senha']);
+            $query = $this->db->get('professores');
+
+            if ($query->num_rows() == 1){
+                $professor = $query->row();
+                $this->session->set_userdata("professores", $professor->nomeCompleto);
+                $codProfessor = $this->professor_model->get_by_login($email, $senha);
+                $url = "?codProfessor=".$professor->codProfessor;
+               redirect ("professores/professor_perfil/$url");
+                
+            }else{
+                redirect('home/login_home');
+            }
     }
 
     public function ajax_edit($codProfessor)

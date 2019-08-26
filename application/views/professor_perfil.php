@@ -16,6 +16,8 @@
 				<button class="btn btn-success" onclick="edit_professor(<?php echo $perfil->codProfessor;?>)"><i class="glyphicon glyphicon-pencil"></i>EDITAR</button>
 
             	<button class="btn btn-danger" onclick="delete_professor(<?php echo $perfil->codProfessor;?>)"><i class="glyphicon glyphicon-remove"></i>EXCLUIR</button>
+
+                <a href="<?php echo site_url('home/artigo_add')?>" class="btn btn-warning">NOVO ARTIGO</a>
 			</section>
 
 

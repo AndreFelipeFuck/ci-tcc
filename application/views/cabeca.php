@@ -30,10 +30,10 @@
 		      <li class="nav-item">
 		        <a class="nav-link" href="<?php echo site_url('')?>">Home<span class="sr-only">(current)</span></a>
 		      </li>
-                <!--
+               
 		      <li class="nav-item">
-		        <a class="nav-link" href="#">Materias</a>
-		      </li>
+		        <a class="nav-link" href="<?php echo site_url('home/disciplina_view')?>">Disciplinas</a>
+		      <!--</li>
 		       <li class="nav-item">
 		        <a class="nav-link" href="#">Videos</a>
 		      </li>-->
