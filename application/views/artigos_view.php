@@ -14,18 +14,17 @@
 
     <?php foreach($artigos as $artigo){?>
     <tr>
-        <?php //if($artigo->codArtigo == 7){//?>
             <td><?php echo $artigo->titulo;?></td>
             <td>
               
-            <button class="btn btn-success" onclick="edit_artigo(<?php echo $artigo->codArtigo;?>)"><i class="glyphicon glyphicon-pencil"></i>EDITAR</button>
+            <!-- <button class="btn btn-success" onclick="edit_artigo(<?php echo $artigo->codArtigo;?>)"><i class="glyphicon glyphicon-pencil"></i>EDITAR</button> -->
+            <a href="<?php echo site_url('artigos/artigo_editar/')?>?codArtigo=<?php echo $artigo->codArtigo;?>" class="btn btn-success">EDITAR</a>
 
             <button class="btn btn-danger" onclick="delete_artigo(<?php echo $artigo->codArtigo;?>)"><i class="glyphicon glyphicon-remove"></i>EXCLUIR</button>
 
-            <a href="<?php echo site_url('artigos/artigo_perfil/')?>?codArtigo=<?php echo $artigo->codArtigo; // ta meio estranho, tenho que perguntar para o professor?>" class="btn btn-warning">VISUALIZAR</a>
+            <a href="<?php echo site_url('artigos/artigo_page/')?>?codArtigo=<?php echo $artigo->codArtigo;?>" class="btn btn-warning">VISUALIZAR</a>
             </td>
-            </tr>
-        <?php //    }?>    
+            </tr>   
     <?php }?>
    
     </table>
@@ -126,57 +125,3 @@
     }
     }
     </script>
-<div class="modal fade" id="modal_form" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Artigo Form</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-
-                        label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
-            <div class="modal-body form">
-                <form action="#" id="form" class="form-horizontal">
-                    <input type="hidden" value="" name="codArtigo"/>
-                    <div class="form-body">
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Nome</label>
-                            <div class="col-md-9">
-
-                                <input name="nomeCompleto" placeholder="Book ISBN" class="form-
-    control" type="text">
-
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">email</label>
-                            <div class="col-md-9">
-
-                                <input name="email" placeholder="Book_title" class="form-
-    control" type="text">
-
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">senha</label>
-                            <div class="col-md-9">
-
-                                <input name="senha" placeholder="Book Author" class="form-control" type="password">
-                            </div>
-                        </div>
-
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-
-                <button type="button" id="btnSave" onclick="save()" class="btn btn-
-                        primary">Save</button>
-
-                <button type="button" class="btn btn-danger" data-
-                        dismiss="modal">Cancel</button>
-
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<!-- End Bootstrap modal -->

@@ -50,7 +50,7 @@ class Artigos extends CI_Controller
 
 	public function ajax_edit($codArtigo)
 	{
-		$data = $this->artigo_model->get_by_id($codArtigo);
+		$data = $this->artigos_model->get_by_id($codArtigo);
 		echo json_encode($data);
 	}
 
@@ -60,14 +60,14 @@ class Artigos extends CI_Controller
 		'titulo' => $this->input->post('titulo'),
 		'corpo' => $this->input->post('corpo')			
 		);
-		$this->artigo_model->artigo_update(array('codArtigo' => $this->input->post('codArtigo')), $data);
+		$this->artigos_model->artigo_update(array('codArtigo' => $this->input->post('codArtigo')), $data);
 
 		echo json_encode(array("status" => TRUE));
 	}
 
 	public function artigo_delete($codArtigo)
 	{
-		$this->artigo_model->delete_by_id($codArtigo);
+		$this->artigos_model->delete_by_id($codArtigo);
 		echo json_encode(array("status" => TRUE));
 	}
 
@@ -75,6 +75,13 @@ class Artigos extends CI_Controller
         $codArtigo = $this->input->get('codArtigo');
         $artigo['perfil'] = $this->artigos_model->get_by_id($codArtigo);
         $this->load->view('artigo_page', $artigo);
+        print_r($artigo);
+    }
+
+    public function artigo_editar(){
+        $codArtigo = $this->input->get('codArtigo');
+        $artigo['perfil'] = $this->artigos_model->get_by_id($codArtigo);
+        $this->load->view('artigo_editar', $artigo);
         print_r($artigo);
     }
 	
