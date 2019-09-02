@@ -6,7 +6,7 @@
 <div class="espaco2"></div>
 	<section class="conteinerCad">
 		<h5 class="text-danger"><?php  echo  validation_errors();  ?><h5>
-		<form class="formulario"  action="<?php echo site_url('alunos/aluno_add')?>" method="post">
+		<form class="formulario"  action="<?php echo site_url('alunos/aluno_add')?>" method="post" enctype = "multipart/form-data">
 			<h1>Cadastro:</h1>
 			<div class="form-group">
 			    <label for="exampleFormControlInput1">Nome Completo</label>
@@ -63,6 +63,11 @@
 				 	<input type="radio" name="anoLetivo" value="Superior">
 				 	<label>Superior</label>
 				 </div>
+			<div class="espaco2"></div>
+			<div class="form-group">
+			    <label for="exampleFormControlInput1">Envie uma imagem de voce</label>
+			    <input type="file" class="form-control-file" id="exampleFormControlInput1" name="imgAluno">
+			 </div>
 			<div class="espaco2"></div>
 			<div>
 				<label><input type="checkbox" name="termos"> Concordo com os <a href="">Termos de Uso</a> do site.</label>

@@ -20,8 +20,8 @@ class Alunos extends CI_Controller
         $data['alunos'] = $this->aluno_model->get_all_alunos();
         $this->load->view('aluno_view', $data);
     }
-	public function aluno_add()
-	{
+
+	public function aluno_add(){
 		//VALIDAR FORMULARIO
 		$this->load->library('form_validation');
 
@@ -36,34 +36,58 @@ class Alunos extends CI_Controller
 
 	    } else {
 	           echo "Formulário enviado com sucesso.";
-	           //ENVIAR PARA O BANCO
-	           	$data = array(
-					'nomeCompleto' => $this->input->post('nomeCompleto'),
-					'dataNasc' => $this->input->post('dataNasc'),
-					'imgAluno' => $this->input->post('imgAluno'),
-					'anoLetivo' => $this->input->post('anoLetivo'),
-					'curso' => $this->input->post('curso'),
-					'email' => $this->input->post('email'),
-					'senha' => md5($this->input->post('senha')),
-				);
-				$insert = $this->aluno_model->aluno_add($data);
+	           //ENVIANDO IMAGEM PRO BANCO
+	           $imgAluno = $_FILES['imgAluno'];
+	           $config = array(
+	           	'upload_path' => './upload/',
+	           	'allowed_types' => 'jpg',//Arrumar essa parte
+	           	'file_name' => md5(time()),
+	           	'max_size' => '500'
+	           );
 
-				//ENVIAR PARA A PAGINA PERFIL
-		  	$this->db->where('email', $data['email']);
-           	$this->db->where('senha', $data['senha']);
-            $query = $this->db->get('alunos');
+	           /*
+	           CONFIGURAÇÔES PARA UPLOAD DE IMAGEM
+	           max_width:
+	           max_height:
+	           */
 
-            if ($query->num_rows() == 1){
-                $aluno = $query->row();
-                $this->session->set_userdata("alunos", $aluno->nomeCompleto);
-                $codAluno = $this->aluno_model->get_by_login($email, $senha);
-                $url = "?codAluno=".$aluno->codAluno;
-               redirect ("alunos/aluno_perfil/$url");
-            }
+	           $this->load->library('upload');
+	           $this->upload->initialize($config);
+
+	           if ($this->upload->do_upload('imgAluno')){
+        			echo 'Arquivo salvo com sucesso.';
+
+	        		//ENVIAR PARA O BANCO
+		           	$data = array(
+						'nomeCompleto' => $this->input->post('nomeCompleto'),
+						'dataNasc' => $this->input->post('dataNasc'),
+						'imgAluno' => $config['file_name'].".jpg",
+						'anoLetivo' => $this->input->post('anoLetivo'),
+						'curso' => $this->input->post('curso'),
+						'email' => $this->input->post('email'),
+						'senha' => md5($this->input->post('senha')),
+					);
+					$insert = $this->aluno_model->aluno_add($data);
+
+					//ENVIAR PARA A PAGINA PERFIL
+					  	$this->db->where('email', $data['email']);
+			           	$this->db->where('senha', $data['senha']);
+			            $query = $this->db->get('alunos');
+
+			            if ($query->num_rows() == 1){
+			                $aluno = $query->row();
+			                $this->session->set_userdata("alunos", $aluno->nomeCompleto);
+			                $codAluno = $this->aluno_model->get_by_login($email, $senha);
+			                $url = "?codAluno=".$aluno->codAluno;
+			               redirect ("alunos/aluno_perfil/$url");
+			            }
+
+    			}else{
+         			echo $this->upload->display_errors();
+         		}
 	    }
 	     
-            
-	}
+    }
 
 	public function ajax_edit($codAluno)
 	{
