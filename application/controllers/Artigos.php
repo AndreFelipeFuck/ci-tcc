@@ -7,17 +7,35 @@ class Artigos extends CI_Controller
 		parent::__construct();
 		$this->load->helper('url');
         $this->load->model('artigos_model');
+        $this->load->library('pagination');
 	}
 
 	public function index()
     {
-    	$professor = $this->session->userdata("professores");
-        if (empty($professor)) {
-            redirect("home/login_home");
-        }
+    	// $professor = $this->session->userdata("professores");
+    	// $aluno = $this->session->userdata("alunos");
+     //    if (empty($professor) and empty($aluno)) {
+     //        redirect("home/login_home");
+     //    }
 
-        $data['artigos'] = $this->artigos_model->get_all_artigos();
-        $this->load->view('artigos_view', $data);
+        
+    }
+
+    public function artigos_listar(){
+    	$config['base_url'] = base_url('artigos/artigos_listar');
+    	$config['total_rows'] = $this->artigos_model->get_count();
+		$config ["per_page"] = 2;
+        $config ["uri_segment"] = 1;
+		
+		 $this->pagination->initialize($config);
+
+        $page = ($this->uri->segment(1))? $this->uri->segment(1):0;
+
+        $data["links"] = $this->pagination->create_links();
+
+        $data['artigos'] = $this->artigos_model->get_all_artigos($config["per_page"], $page);
+
+        $this-> load->view('artigos_view', $data);
     }
 
 	public function artigo_add()

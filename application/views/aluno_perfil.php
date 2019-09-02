@@ -4,7 +4,7 @@
 
 	<section class="conteiner4" >
 			<section class="intPerfil">
-				<div class="fotoPerfil"><img src="img\user.png"></div>
+				<div class="fotoPerfil"><img src="assets/bootstrap/img/user.png"></div>
 				<div class="nomePerfil"><h2><?php echo $perfil->nomeCompleto;?></h2></div>
 			</section>
 			<section class="intPerfil2">
@@ -55,7 +55,10 @@
     $('[name="codAluno"]').val(data.codAluno);
     $('[name="nomeCompleto"]').val(data.nomeCompleto);
     $('[name="email"]').val(data.email);
-    $('[name="senha"]').val(data.senha);
+    $('[name="dataNasc"]').val(data.dataNasc);
+    $('[name="anoLetivo"]').val(data.anoLetivo);
+    $('[name="curso"]').val(data.curso);
+
 
 
     $('#modal_form').modal('show'); // show bootstrap modal when complete
@@ -109,7 +112,7 @@
     dataType: "JSON",
     success: function(data)
     {
-    location.reload();
+     window.location.href = "<?php echo site_url('home')?>"
     },
     error: function (jqXHR, textStatus, errorThrown)
     {
@@ -134,31 +137,35 @@
                     <input type="hidden" value="" name="codAluno"/>
                     <div class="form-body">
                         <div class="form-group">
-                            <label class="control-label col-md-3">Nome</label>
+                            <label class="control-label col-md-3">Nome Completo</label>
                             <div class="col-md-9">
-
-                                <input name="nomeCompleto" placeholder="Book ISBN" class="form-
-    control" type="text">
-
+                                <input name="nomeCompleto" class="form-control" type="text">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3">email</label>
+                            <label class="control-label col-md-3">E-mail</label>
                             <div class="col-md-9">
-
-                                <input name="email" placeholder="Seu email" class="form-
-    control" type="text">
-
+                                <input name="email" placeholder="Seu email" class="form-control" type="text">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3">senha</label>
+                            <label class="control-label col-md-3">Nova senha</label>
                             <div class="col-md-9">
-
-                                <input name="senha" placeholder="Sua senha" class="form-control" type="password">
+                                <input name="novaSenha" placeholder="Sua senha" class="form-control" type="password">
                             </div>
                         </div>
-
+                         <div class="form-group">
+                            <label class="control-label col-md-3">Confirmar nova senha</label>
+                            <div class="col-md-9">
+                                <input name="novaSenhaconf" placeholder="Sua senha" class="form-control" type="password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Data</label>
+                            <div class="col-md-9">
+                                <input type="date" class="form-control" id="exampleFormControlInput2" name="dataNasc">
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>

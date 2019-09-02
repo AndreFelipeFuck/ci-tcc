@@ -19,7 +19,7 @@ class Login extends CI_Controller
     public function entrar(){
        
         $tipo = $this->input->post("tipo");
-        $senha = $this->input->post("senha");
+        $senha = md5($this->input->post("senha"));
         $email = $this->input->post('email');
 
 
@@ -30,7 +30,7 @@ class Login extends CI_Controller
 
             if ($query->num_rows() == 1){
                 $aluno = $query->row();
-                $this->session->set_userdata("alunos", $aluno->nomeCompleto);
+                $this->session->set_userdata("alunos", $aluno->nomeCompleto );
                 $codAluno = $this->aluno_model->get_by_login($email, $senha);
                 $url = "?codAluno=".$aluno->codAluno;
                redirect ("alunos/aluno_perfil/$url");
@@ -56,33 +56,24 @@ class Login extends CI_Controller
 
     }
 
-    public function entrarAluno(){
-        $senha = $this->input->post('senha');
-        $email = $this->input->post('email');
-
-            $this->db->where('email', $email);
-            $this->db->where('senha', $senha);
-            $query = $this->db->get('alunos');
-
-            if ($query->num_rows() == 1){
-                $aluno = $query->row();
-                $this->session->set_userdata("alunos", $aluno->nomeCompleto);
-                $codAluno = $this->aluno_model->get_by_login($email, $senha);
-                $url = "?codAluno=".$aluno->codAluno;
-               redirect ("alunos/aluno_perfil/$url");
-                
-            }else{
-                redirect('home/login_home');
-            }
+    public function perfilAluno(){
+        $aluno_id = $this->session->set_userdata("alunos");
+        print_r($aluno_id);
+        // $url = "?codAluno=".$aluno_id;
+        // redirect ("alunos/aluno_perfil/$url");
     }
 
+    public function perfilProfessor(){
+
+    }
+    
     public function sair (){
-        $this->session->unset_userdata('alunos');
-        redirect("home/login_home");
+        $this->session->unset_userdata('alunos', '');
+        redirect("welcome");
     }
 
     public function sairProf (){
-        $this->session->set_userdata("professores", "");
-        redirect("home/login_home");
+        $this->session->unset_userdata('professores', '');
+        redirect("welcome");
     }
 }

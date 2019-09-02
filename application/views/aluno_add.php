@@ -5,6 +5,7 @@
 ?>
 <div class="espaco2"></div>
 	<section class="conteinerCad">
+		<h5 class="text-danger"><?php  echo  validation_errors();  ?><h5>
 		<form class="formulario"  action="<?php echo site_url('alunos/aluno_add')?>" method="post">
 			<h1>Cadastro:</h1>
 			<div class="form-group">
@@ -22,7 +23,7 @@
 			 </div>
 			 <div class="form-group">
 			    <label for="exampleFormControlInput1">Comfirmar Senha</label>
-			    <input type="password" class="form-control" id="exampleFormControlInput1">
+			    <input type="password" class="form-control" id="exampleFormControlInput1" name="senhaconf">
 			 </div>
 			 <div class="form-group">
 			    <label for="exampleFormControlInput1">Data</label>

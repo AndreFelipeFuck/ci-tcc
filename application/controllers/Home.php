@@ -8,6 +8,10 @@
 
 class Home extends CI_Controller
 {
+    public function index(){
+        redirect("welcome");
+    }
+    
     public function add(){
         $this->load->view('aluno_add');
     }

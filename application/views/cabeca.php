@@ -38,17 +38,10 @@
 		        <a class="nav-link" href="#">Videos</a>
 		      </li>-->
 		       <li class="nav-item">
-		        <a class="nav-link" href="<?php echo site_url('artigos') ?>">Artigos</a>
+		        <a class="nav-link" href="<?php echo site_url('artigos/artigos_listar') ?>">Artigos</a>
 		      </li>
-		       <li class="nav-item">
-		        <a class="nav-link" href="<?php echo site_url('professores') ?>">Professores</a>
-		      </li>
-		       <!--<li class="nav-item">
+		     <li class="nav-item">
 		        <a class="nav-link" href="#">Sobre</a>
-		      </li>
-		      -->
-		      	<li class="nav-item">
-		      	<a class="nav-link" href="<?php echo site_url('alunos') ?>">Alunos</a>
 		      </li>
 		    </ul>
 		    <form class="form-inline my-2 my-lg-0">
@@ -56,16 +49,17 @@
 		      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
 		    </form>
 		    <form class="form-inline my-2 my-lg-0 registro">
-		    	<a class="regis" href="<?php echo site_url('home/opiCad')?>">Cadastre-se</a>
-                <?php if($this->session->userdata('professores')):?>
-
-                    <a href="<?php echo site_url('login/sairProf')?>"><button class="btn btn-outline-success my-2 my-sm-0">Sair</button></a>
+                <?php 
+                if($this->session->userdata('professores')):?>
+                	<a class="regis" href="<?php echo site_url('login/perfilProfessor')?>">Perfil</a>
+                    <a href="<?php echo site_url('login/sairProf')?>" class="btn btn-outline-success my-2 my-sm-0">Sair</a>
 
                 <?php elseif ($this->session->userdata('alunos')):?>
-
-                    <a href="<?php echo site_url('login/sair')?>"><button class="btn btn-outline-success my-2 my-sm-0">Sair</button></a>
+                	<a class="regis" href="<?php echo site_url('login/perfilProfessor')?>">Perfil</a>
+                    <a href="<?php echo site_url('login/sair')?>" class="btn btn-outline-success my-2 my-sm-0">Sair</a>
 
                 <?php else :?>
+                	<a class="regis" href="<?php echo site_url('home/opiCad')?>">Cadastre-se</a>
                     <a href="<?php echo site_url('home/login_home')?>" class="btn btn-outline-success my-2 my-sm-0"> Entrar</a>
                 <?php endif;?>
 		    </form>
