@@ -46,33 +46,54 @@ class Professores extends CI_Controller
         
         if ($this->form_validation->run() == FALSE) {
           $erros = array('mensagens' => validation_errors());
-           $this->load->view('aluno_add', $erros);
+           $this->load->view('professor_add', $erros);
 
         } else {
-            $data = array(
+              echo "Formulário enviado com sucesso.";
+               //ENVIANDO IMAGEM PRO BANCO
+               $imgProfessor = $_FILES['imgProfessor'];
+               $config = array(
+                'upload_path' => './upload/',
+                'allowed_types' => 'jpg',//Arrumar essa parte
+                'file_name' => md5(time()),
+                'max_size' => '500'
+               );
+               /*
+               CONFIGURAÇÔES PARA UPLOAD DE IMAGEM
+               max_width:
+               max_height:
+               */
 
-                'nomeCompleto' => $this->input->post('nomeCompleto'),
-                'dataNasc' => $this->input->post('dataNasc'),
-                'imgProfessor' => $this->input->post('imgProfessor'),
-                'miniCurriculo' => $this->input->post('miniCurriculo'),
-                'institucao' => $this->input->post('institucao'),
-                'email' => $this->input->post('email'),
-                'senha' => md5($this->input->post('senha')),
+                $this->load->library('upload');
+               $this->upload->initialize($config);
 
-            );
+               if ($this->upload->do_upload('imgProfessor')){
+                    echo 'Arquivo salvo com sucesso.';
+                    $data = array(
+                        'nomeCompleto' => $this->input->post('nomeCompleto'),
+                        'dataNasc' => $this->input->post('dataNasc'),
+                        'imgProfessor' => $config['file_name'].".jpg",
+                        'miniCurriculo' => $this->input->post('miniCurriculo'),
+                        'institucao' => $this->input->post('institucao'),
+                        'email' => $this->input->post('email'),
+                        'senha' => md5($this->input->post('senha')),
 
-            $insert = $this->professor_model->professor_add($data);
-            $this->db->where('email', $data['email']);
-               $this->db->where('senha', $data['senha']);
-                $query = $this->db->get('professores');
+                    );
 
-                if ($query->num_rows() == 1){
-                    $professor = $query->row();
-                    $this->session->set_userdata("professores", $professor->nomeCompleto);
-                    $codProfessor = $this->professor_model->get_by_login($email, $senha);
-                    $url = "?codProfessor=".$professor->codProfessor;
-                   redirect ("professores/professor_perfil/$url");
-                    
+                    $insert = $this->professor_model->professor_add($data);
+                    $this->db->where('email', $data['email']);
+                       $this->db->where('senha', $data['senha']);
+                        $query = $this->db->get('professores');
+
+                        if ($query->num_rows() == 1){
+                            $professor = $query->row();
+                            $this->session->set_userdata("professores", $professor->nomeCompleto);
+                            $codProfessor = $this->professor_model->get_by_login($email, $senha);
+                            $url = "?codProfessor=".$professor->codProfessor;
+                           redirect ("professores/professor_perfil/$url");
+                        }    
+                }else{
+                    echo $this->upload->display_errors();
                 }
         }
     }
@@ -116,7 +137,7 @@ class Professores extends CI_Controller
     {
         $this->professor_model->delete_by_id($codProfessor);
         echo json_encode(array("status" => TRUE));
-        $this->session->set_userdata('alunos');
+        $this->session->set_userdata('professores');
     }
 
     public function professor_perfil(){
