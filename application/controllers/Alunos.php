@@ -39,7 +39,7 @@ class Alunos extends CI_Controller
 	           //ENVIANDO IMAGEM PRO BANCO
 	           $imgAluno = $_FILES['imgAluno'];
 	           $config = array(
-	           	'upload_path' => './upload/',
+	           	'upload_path' => './upload/alunos',
 	           	'allowed_types' => 'jpg',//Arrumar essa parte
 	           	'file_name' => md5(time()),
 	           	'max_size' => '500'
@@ -95,40 +95,71 @@ class Alunos extends CI_Controller
 		echo json_encode($data);
 	}
 
-	public function aluno_update()
-	{
-		$data = array(
-
-			'nomeCompleto' => $this->input->post('nomeCompleto'),
-			'dataNasc' => $this->input->post('dataNasc'),
-			'imgAluno' => $this->input->post('imgAluno'),
-			'anoLetivo' => $this->input->post('anoLetivo'),
-			'curso' => $this->input->post('curso'),
-			'email' => $this->input->post('email'),
-			'senha' => md5($this->input->post('senha'))
-			
-		);
-		$this->aluno_model->aluno_update(array('codAluno' => $this->input->post('codAluno')), $data);
-
-		echo json_encode(array("status" => TRUE));
-	}
-
 	public function aluno_update_perfil()
 	{
-		$data = array(
+		$vereficaSenha = $this ->input->post('senha');
+		if ($vereficaSenha == null) {
+			$this->load->library('form_validation');
 
-				'nomeCompleto' => $this->input->post('nomeCompleto'),
-				'dataNasc' => $this->input->post('dataNasc'),
-				'imgAluno' => $this->input->post('imgAluno'),
-				'anoLetivo' => $this->input->post('anoLetivo'),
-				'curso' => $this->input->post('curso'),
-				'email' => $this->input->post('email'),
-				'senha' => md5($this->input->post('senha'))
-				
-			);
-			$this->aluno_model->aluno_update(array('codAluno' => $this->input->post('codAluno')), $data);
+			$this->form_validation->set_rules('nomeCompleto', 'Nome Completo', 'required|min_length[3]|max_length[20]', array('required' => 'O campo Nome Completo é obrigatorio.'));
+    		$this->form_validation->set_rules('email', 'E-mail', 'required|valid_email', array('required' => 'O campo E-mail é obrigatorio.'));
 
-			echo json_encode(array("status" => TRUE));
+    		if ($this->form_validation->run() == FALSE) {
+         		 $erros = array('mensagens' => validation_errors());
+          		$this->load->view('aluno_editar', $erros);
+          	}else{
+				$data = array(
+					'nomeCompleto' => $this->input->post('nomeCompleto'),
+					'dataNasc' => $this->input->post('dataNasc'),
+					'anoLetivo' => $this->input->post('anoLetivo'),
+					'curso' => $this->input->post('curso'),
+					'email' => $this->input->post('email'),
+				);
+				$this->aluno_model->aluno_update(array('codAluno' => $this->input->post('codAluno')), $data);
+
+				echo json_encode(array("status" => TRUE));
+
+				//ENVIAR PARA A PAGINA PERFIL
+					$this->db->where('email', $data['email']);
+			        $this->db->where('senha', $data['senha']);
+			        $query = $this->db->get('alunos');
+			        $url = "?codAluno=".$this->input->post('codAluno');
+			        redirect ("alunos/aluno_perfil/$url");
+			}
+
+		}elseif ($vereficaSenha != null) {
+			$this->load->library('form_validation');
+
+			$this->form_validation->set_rules('nomeCompleto', 'Nome Completo', 'required|min_length[3]|max_length[20]', array('required' => 'O campo Nome Completo é obrigatorio.'));
+    		$this->form_validation->set_rules('email', 'E-mail', 'required|valid_email', array('required' => 'O campo E-mail é obrigatorio.'));
+    		$this->form_validation->set_rules('senha', 'Senha', 'required|min_length[8]', array('required' => 'Você deve preencher a %s.'));
+     		$this->form_validation->set_rules('senhaconf', 'Confirmar Senha', 'required|matches[senha]', array('required' => 'O campo Confirmar senha é obrigatorio'));
+
+    		if ($this->form_validation->run() == FALSE) {
+         		 $erros = array('mensagens' => validation_errors());
+          		$this->load->view('aluno_editar', $erros);
+          	}else{
+				$data = array(
+					'nomeCompleto' => $this->input->post('nomeCompleto'),
+					'dataNasc' => $this->input->post('dataNasc'),
+					'senha' => $this->input->post('senha'),
+					'anoLetivo' => $this->input->post('anoLetivo'),
+					'curso' => $this->input->post('curso'),
+					'email' => $this->input->post('email'),
+				);
+				$this->aluno_model->aluno_update(array('codAluno' => $this->input->post('codAluno')), $data);
+
+				echo json_encode(array("status" => TRUE));
+
+				//ENVIAR PARA A PAGINA PERFIL
+					$this->db->where('email', $data['email']);
+			        $this->db->where('senha', $data['senha']);
+			        $query = $this->db->get('alunos');
+			        $url = "?codAluno=".$this->input->post('codAluno');
+			        redirect ("alunos/aluno_perfil/$url");
+			}
+		}
+		
 	}
 
 	public function aluno_delete($codAluno)
@@ -142,7 +173,14 @@ class Alunos extends CI_Controller
 		$codAluno = $this->input->get('codAluno');
 		$aluno['perfil'] = $this->aluno_model->get_by_id($codAluno);
 		$this->load->view('aluno_perfil', $aluno);
-		print_r($aluno);
+		//print_r($aluno);
+	}
+
+	public function aluno_editar(){
+		$codAluno = $this->input->get('codAluno');
+        $aluno['perfil'] = $this->aluno_model->get_by_id($codAluno);
+        $this->load->view('aluno_editar', $aluno);
+        //print_r($artigo);
 	}
 
 

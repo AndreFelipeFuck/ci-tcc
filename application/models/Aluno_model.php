@@ -35,7 +35,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $this->db->update($this->table, $data, $where);
             return $this->db->affected_rows();
         }
-
+        
         public function delete_by_id($codAluno)
         {
             $this->db->where('codAluno', $codAluno);
