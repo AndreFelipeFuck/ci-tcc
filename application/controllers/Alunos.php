@@ -22,6 +22,8 @@ class Alunos extends CI_Controller
     }
 
 	public function aluno_add(){
+		 $imgAluno = $_FILES['imgAluno'];
+
 		//VALIDAR FORMULARIO
 		$this->load->library('form_validation');
 
@@ -34,10 +36,36 @@ class Alunos extends CI_Controller
           $erros = array('mensagens' => validation_errors());
            $this->load->view('aluno_add', $erros);
 
-	    } else {
-	           echo "Formulário enviado com sucesso.";
+	    }else{
+	    	//SE O ALUNO NÂO QUISER ENVIAR UMA FOTO DE PERFIL
+          	if($imgAluno['name'] == null) {
+          		//ENVIAR PARA O BANCO
+		           	$data = array(
+						'nomeCompleto' => $this->input->post('nomeCompleto'),
+						'dataNasc' => $this->input->post('dataNasc'),
+						'anoLetivo' => $this->input->post('anoLetivo'),
+						'curso' => $this->input->post('curso'),
+						'email' => $this->input->post('email'),
+						'senha' => md5($this->input->post('senha')),
+					);
+					$insert = $this->aluno_model->aluno_add($data);
+
+					//ENVIAR PARA A PAGINA PERFIL
+					  	$this->db->where('email', $data['email']);
+			           	$this->db->where('senha', $data['senha']);
+			            $query = $this->db->get('alunos');
+
+			            if ($query->num_rows() == 1){
+			                $aluno = $query->row();
+			                $this->session->set_userdata("alunos", $aluno->nomeCompleto);
+			                $codAluno = $this->aluno_model->get_by_login($email, $senha);
+			                $url = "?codAluno=".$aluno->codAluno;
+			               redirect ("alunos/aluno_perfil/$url");
+			            }
+			//SE O ALUNO QUISER ENVIAR UMA FOTO DE PERFIL
+          	}elseif(!empty($imgAluno['name'])){
+          		 echo "Formulário enviado com sucesso.";
 	           //ENVIANDO IMAGEM PRO BANCO
-	           $imgAluno = $_FILES['imgAluno'];
 	           $config = array(
 	           	'upload_path' => './upload/alunos',
 	           	'allowed_types' => 'jpg',//Arrumar essa parte
@@ -85,6 +113,8 @@ class Alunos extends CI_Controller
     			}else{
          			echo $this->upload->display_errors();
          		}
+          	}
+	          
 	    }
 	     
     }
@@ -100,7 +130,7 @@ class Alunos extends CI_Controller
 		$imgAluno = $_FILES['imgAluno'];
 		$vereficaSenha = $this ->input->post('senha');
 
-		//SE O ALUNO TROCAR A SENHA
+		//SE O ALUNO NÂO TROCAR A SENHA
 		if ($vereficaSenha == null) {
 			$this->load->library('form_validation');
 
@@ -180,7 +210,6 @@ class Alunos extends CI_Controller
 					'anoLetivo' => $this->input->post('anoLetivo'),
 					'curso' => $this->input->post('curso'),
 					'email' => $this->input->post('email'),
-					'senha' => md5($this->input->post('senha')),
 					);
 					$this->aluno_model->aluno_update(array('codAluno' => $this->input->post('codAluno')), $data);
 
@@ -208,7 +237,6 @@ class Alunos extends CI_Controller
 							'imgAluno' => $config['file_name'].".jpg",
 							'curso' => $this->input->post('curso'),
 							'email' => $this->input->post('email'),
-							'senha' => md5($this->input->post('senha')),
 						);
 						$this->aluno_model->aluno_update(array('codAluno' => $this->input->post('codAluno')), $data);
 
