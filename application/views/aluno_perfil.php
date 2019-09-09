@@ -4,7 +4,14 @@
 
 	<section class="conteiner4" >
 			<section class="intPerfil">
-				<div class="fotoPerfil"><img src="assets/bootstrap/img/user.png"></div>
+                <?php
+                    if ($perfil->imgAluno == null) {
+                       ?><div class="fotoPerfil"><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>"></div><?php
+                    }else{
+                        ?><div class="fotoPerfil"><img src="<?php echo base_url("upload/alunos/$perfil->imgAluno")?>"></div><?php
+                    }
+                ?>
+				
 				<div class="nomePerfil"><h2><?php echo $perfil->nomeCompleto;?></h2></div>
 			</section>
 			<section class="intPerfil2">
@@ -13,9 +20,11 @@
 				<article class="artPerfil"><h2><?php echo $perfil->curso;?></article>
 				<article class="artPerfil"><h2><?php echo $perfil->email;?><h2></article>
 
-				<button class="btn btn-success" onclick="edit_aluno(<?php echo $perfil->codAluno;?>)"><i class="glyphicon glyphicon-pencil"></i>EDITAR</button>
+				<a href="<?php echo site_url('alunos/aluno_editar/')?>?codAluno=<?php echo $perfil->codAluno;?>" class="btn btn-success">EDITAR PERFIL</a>
 
             	<button class="btn btn-danger" onclick="delete_aluno(<?php echo $perfil->codAluno;?>)"><i class="glyphicon glyphicon-remove"></i>EXCLUIR</button>
+
+                <button class="btn btn-danger" onclick="delete_foto(<?php echo $perfil->codAluno;?>)"><i class="glyphicon glyphicon-pencil"></i>EXCLUIR FOTO</button>
 			</section>
 
 
@@ -58,6 +67,7 @@
     $('[name="dataNasc"]').val(data.dataNasc);
     $('[name="anoLetivo"]').val(data.anoLetivo);
     $('[name="curso"]').val(data.curso);
+    $('[name="imgAluno"]').val(data.imgAluno);
 
 
 
@@ -72,6 +82,8 @@
     }
     });
     }
+
+
     function save()
     {
     var url;
@@ -128,14 +140,25 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title">Aluno Form</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-
-                        label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title">Editar perfil</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body form">
-                <form action="#" id="form" class="form-horizontal">
+                <form action="#" id="form" class="form-horizontal" enctype = "multipart/form-data">
                     <input type="hidden" value="" name="codAluno"/>
                     <div class="form-body">
+                        <div class="form-group">
+                            <section class="intPerfil">
+                                <?php
+                                    if ($perfil->imgAluno == null) {
+                                         ?><div class=""><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>"></div><?php
+                                     }else{
+                                         ?><div class=""><img src="<?php echo base_url("upload/alunos/$perfil->imgAluno")?>"></div><?php
+                                    }
+                                ?>
+                            </section>
+                        </div>
+
                         <div class="form-group">
                             <label class="control-label col-md-3">Nome Completo</label>
                             <div class="col-md-9">
@@ -148,6 +171,7 @@
                                 <input name="email" placeholder="Seu email" class="form-control" type="text">
                             </div>
                         </div>
+                        <!--
                         <div class="form-group">
                             <label class="control-label col-md-3">Nova senha</label>
                             <div class="col-md-9">
@@ -160,6 +184,7 @@
                                 <input name="novaSenhaconf" placeholder="Sua senha" class="form-control" type="password">
                             </div>
                         </div>
+                    -->
                         <div class="form-group">
                             <label class="control-label col-md-3">Data</label>
                             <div class="col-md-9">

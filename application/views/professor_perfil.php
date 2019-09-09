@@ -4,7 +4,13 @@
 
 	<section class="conteiner4" >
 			<section class="intPerfil">
-				<div class="fotoPerfil"><img src="img\user.png"></div>
+				<?php
+                    if ($perfil->imgProfessor == null) {
+                       ?><div class="fotoPerfil"><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>"></div><?php
+                    }else{
+                        ?><div class="fotoPerfil"><img src="<?php echo base_url("upload/professores/$perfil->imgProfessor")?>"></div><?php
+                    }
+                ?>
 				<div class="nomePerfil"><h2><?php echo $perfil->nomeCompleto;?></h2></div>
 			</section>
 			<section class="intPerfil2">
@@ -13,7 +19,7 @@
 				<article class="artPerfil"><h2><?php echo $perfil->miniCurriculo;?></article>
 				<article class="artPerfil"><h2><?php echo $perfil->email;?><h2></article>
 
-				<button class="btn btn-success" onclick="edit_professor(<?php echo $perfil->codProfessor;?>)"><i class="glyphicon glyphicon-pencil"></i>EDITAR</button>
+				<a href="<?php echo site_url('professores/professor_editar/')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn btn-success">EDITAR PERFIL</a>
 
             	<button class="btn btn-danger" onclick="delete_professor(<?php echo $perfil->codProfessor;?>)"><i class="glyphicon glyphicon-remove"></i>EXCLUIR</button>
 
