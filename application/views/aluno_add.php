@@ -5,7 +5,7 @@
 ?>
 <div class="espaco2"></div>
 	<section class="conteinerCad">
-		<h5 class="text-danger"><?php  echo  validation_errors();  ?><h5>
+		<h5 class="text-danger"><?php  echo  validation_errors(); ?><h5>
 		<form class="formulario"  action="<?php echo site_url('alunos/aluno_add')?>" method="post" enctype = "multipart/form-data">
 			<h1>Cadastro:</h1>
 			<div class="form-group">
@@ -78,9 +78,5 @@
 		</form>
 
 	</section>
-
-<?php  
-	
-	include "rodape.php";
-
-?>
+<div class="espaco2"></div><br>
+<?php  include "rodape.php";?>
