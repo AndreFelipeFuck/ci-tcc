@@ -5,7 +5,8 @@
 ?>
 <div class="espaco2"></div>
 	<section class="conteinerCadProf">
-		<form class="formulario" method="post" action="<?php echo site_url('professores/professor_add')?>">
+		<h5 class="text-danger"><?php  echo  validation_errors();  ?><h5>
+		<form class="formulario" method="post" action="<?php echo site_url('professores/professor_add')?>" enctype = "multipart/form-data">
 			<h1>Cadastro:</h1>
 			<div class="form-group">
 			    <label for="exampleFormControlInput1">Nome Completo</label>
@@ -22,7 +23,7 @@
 			 </div>
 			 <div class="form-group">
 			    <label for="exampleFormControlInput1">Comfirmar Senha</label>
-			    <input type="password" class="form-control" id="exampleFormControlInput1">
+			    <input type="password" class="form-control" id="exampleFormControlInput1" name="senhaconf">
 			 </div>
 			 <div class="form-group">
 			    <label for="exampleFormControlInput1">Data</label>
@@ -48,6 +49,11 @@
 			<div>
 			<textarea class="curriculo" placeholder="Conte-nos mais sobre sua formação..." name="miniCurriculo"></textarea>
 			</div>
+			<div class="espaco2"></div>
+			<div class="form-group">
+			    <label for="exampleFormControlInput1">Envie uma imagem de voce</label>
+			    <input type="file" class="form-control-file" id="exampleFormControlInput1" name="imgProfessor">
+			 </div>
 			<div class="espaco2"></div>
 			<div>
 				<label><input type="checkbox" name="termos"> Concordo com os <a href="">Termos de Uso</a> do site.</label>

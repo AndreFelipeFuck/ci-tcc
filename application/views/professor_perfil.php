@@ -4,7 +4,13 @@
 
 	<section class="conteiner4" >
 			<section class="intPerfil">
-				<div class="fotoPerfil"><img src="img\user.png"></div>
+				<?php
+                    if ($perfil->imgProfessor == null) {
+                       ?><div class="fotoPerfil"><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>"></div><?php
+                    }else{
+                        ?><div class="fotoPerfil"><img src="<?php echo base_url("upload/$perfil->imgProfessor")?>"></div><?php
+                    }
+                ?>
 				<div class="nomePerfil"><h2><?php echo $perfil->nomeCompleto;?></h2></div>
 			</section>
 			<section class="intPerfil2">
