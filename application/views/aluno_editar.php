@@ -16,6 +16,7 @@
                     ?><div class="fotoPerfil"><img src="<?php echo base_url("upload/alunos/$perfil->imgAluno")?>"></div><?php
                  }
             ?>
+            <br><br><br><br><br>
 			<div class="form-group">
 			    <label for="exampleFormControlInput1">Alterar imagem:</label>
 			    <input type="file" class="form-control-file" id="exampleFormControlInput1" name="imgAluno" value="">

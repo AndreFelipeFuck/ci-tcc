@@ -306,13 +306,14 @@ body{
 
 
 
-.conteiner4{
-	background-color: #f8f9fa;
+.conteinerPerfil{
+	background-color: white;
 	border-radius: 2px;
-	margin: 0 auto;
+	margin-left: 10%;
+	margin-right: 10%;
 	position: relative;
-	width: 75%;
-	height: 75%;
+	display: inline-block;
+	width: 80%;
 	padding: 2%;
 }
 
@@ -534,46 +535,67 @@ textarea {
 }
 
 .fotoPerfil {
-	background-color: #BCBBBB;
+	max-width: 20%;
+	max-height: 30%;
 	border-radius: 50%;
-	width: 55%;
-	height: 53%;
 	overflow: hidden;
 	position: relative;
+	float: left;
 }
 
 .fotoPerfil img{
-	position: absolute;
-  	bottom: 0;
+	background-color: #BCBBBB;
  	width: 100%;
 }
 
-.intPerfil{
+.infoPerfil{
+	width: 78%;
+	float: left;
+	margin-left: 2%;
+	margin-top: 2%;
+}
+
+
+#nomePerfil{
+	background-color: #17a2b8;	
+}
+
+#nomeFont{
+	padding: 1%;
+	font-size: 40px;
+	color: white;
+}
+
+#infoAlign{
+	text-align: left;
+}
+
+#infoAlign h6{
 	display: inline;
-	height: 100%;
-	width: 45%;
- 	float: left; 
- 	margin: 10px;	
+	padding-left: 0.2%; 
 }
 
-.intPerfil2{
-	display: inline;
-	height: 100%;
-	width: 50%;
- 	float: left; 
- 	margin: 10px;	
+.contPerfil{
+	padding: 1%;
+	border-radius: 3%;
+	align-items: center;
+	text-align: center;
+	display: inline-block;
+	width: 15%;
+	margin-right: 1%;
+	margin-left: 1%;
+	margin-bottom: 2%;
 }
 
-.nomePerfil{
-	padding-top: 1%;
-	padding-left: 2%;
+.contPerfil:hover{
+	background-color: #17a2b8;
+	color: white;
+	box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 25px 0 rgba(0, 0, 0, 0.19)
 }
 
-.artPerfil{
-	margin-bottom: 10px;
+.contPerfil img{
 	width: 100%;
 	height: 20%;
-	background-color: #BCBBBB;
 }
 
 #exampleFormControlInput1{

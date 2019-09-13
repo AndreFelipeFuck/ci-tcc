@@ -1,37 +1,76 @@
 <?php  include "cabeca.php";?>
 <div class="espaco2"></div>
-
-
-	<section class="conteiner4" >
-			<section class="intPerfil">
-                <?php
+    <div class="conteinerPerfil" id="sombra">
+            <section class="fotoPerfil">
+                <div class="view overlay">
+                    <?php
                     if ($perfil->imgAluno == null) {
-                       ?><div class="fotoPerfil"><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>"></div><?php
+                       ?><figure class="img-rounded img-responsive"><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>" class="img-fluid" alt="smaple image"></figure><?php
                     }else{
-                        ?><div class="fotoPerfil"><img src="<?php echo base_url("upload/alunos/$perfil->imgAluno")?>"></div><?php
+                        ?><figure class="img-rounded img-responsive"><img src="<?php echo base_url("upload/alunos/$perfil->imgAluno")?>" class="img-fluid" alt="smaple image"></figure><?php
                     }
                 ?>
-				
-				<div class="nomePerfil"><h2><?php echo $perfil->nomeCompleto;?></h2></div>
-			</section>
-			<section class="intPerfil2">
-				<article class="artPerfil"><h2><?php echo $perfil->dataNasc;?></article>
-				<article class="artPerfil"><h2><?php echo $perfil->anoLetivo;?></article>
-				<article class="artPerfil"><h2><?php echo $perfil->curso;?></article>
-				<article class="artPerfil"><h2><?php echo $perfil->email;?><h2></article>
+                    <div class="mask flex-center rgba-black-strong">
+                        <p class="white-text"><!--Editar foto--></p>
+                    </div>
+                </div>
+            </section>
+            <section class="InfoPerfil">
+                <div id="nomePerfil">
+                    <h2 id="nomeFont"><?php echo $perfil->nomeCompleto;?></h2>
+                </div>
+                <div id="infoAlign">
+                    <label>Email:</label>
+                    <h6><?php echo $perfil->email;?></h6>
+                </div>
+                <div id="infoAlign">
+                    <label>Data de Nascimento:</label>
+                    <h6><?php echo $perfil->dataNasc;?></h6>
+                </div>
+                <div id="infoAlign">
+                    <label>Curso:</label>
+                    <h6><?php echo $perfil->curso;?></h6>
+                </div>
+                <div id="infoAlign">
+                    <label>Ano Letivo:</label>
+                    <h6><?php echo $perfil->anoLetivo;?></h6>
+                </div>
+                <div id="infoAlign">
+                    <h4><span class="badge badge-secondary" style="background-color:#17a2b8;">Aluno</span></h4>
+                    <a href="<?php echo site_url('alunos/aluno_editar/')?>?codAluno=<?php echo $perfil->codAluno;?>" class="btn btn-success">Editar Perfil</a>
+                    <button class="btn btn-danger" onclick="delete_aluno(<?php echo $perfil->codAluno;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir</button>
 
-				<a href="<?php echo site_url('alunos/aluno_editar/')?>?codAluno=<?php echo $perfil->codAluno;?>" class="btn btn-success">EDITAR PERFIL</a>
-
-            	<button class="btn btn-danger" onclick="delete_aluno(<?php echo $perfil->codAluno;?>)"><i class="glyphicon glyphicon-remove"></i>EXCLUIR</button>
-
-                <button class="btn btn-danger" onclick="delete_foto(<?php echo $perfil->codAluno;?>)"><i class="glyphicon glyphicon-pencil"></i>EXCLUIR FOTO</button>
-			</section>
-
-
-
+                </div>
+            </section>
+        <div style="width: 90%; border-bottom: solid 2px #17a2b8; display: inline-block; margin-left: 5%; margin-right: 5%; margin-top: 2%; opacity: 0.3;"></div>
+            <section>
+                <div><h2 style="width: 35%; font-size: 35px; border-bottom: solid 2px #17a2b8; margin-top: 2%; margin-bottom: 2%; padding-bottom: 1%;">Postagens:</h2></div>
+            </section>
+            <section style="padding: 1%;">
+                <div class="contPerfil">
+                <figure><img src="img\artigo.png"></figure>
+                <h5>Artigo nome</h5>
+                </div>
+                <div class="contPerfil">
+                <figure><img src="img\artigo.png"></figure>
+                <h5>Artigo nome</h5>
+                </div>
+                <div class="contPerfil">
+                <figure><img src="img\artigo.png"></figure>
+                <h5>Artigo nome</h5>
+                </div>
+                <div class="contPerfil">
+                <figure><img src="img\artigo.png"></figure>
+                <h5>Artigo nome</h5>
+                </div>
+                <div class="contPerfil">
+                <figure><img src="img\artigo.png"></figure>
+                <h5>Artigo nome</h5>
+                </div>
+            </section>
+    </div>
 	</section>
-		<script src="<?php echo base_url('assets/jquery/jquery-3.1.0.min.js')?>"></script>
-
+	<script src="<?php echo base_url('assets/jquery/jquery-3.1.0.min.js')?>"></script>
     <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js')?>"></script>
     <script src="<?php echo base_url('assets/datatables/js/jquery.dataTables.min.js')?>"></script>
     <script src="<?php echo base_url('assets/datatables/js/dataTables.bootstrap.js')?>"></script>
@@ -134,80 +173,5 @@
     }
     }
     </script>
-
-    
-<div class="modal fade" id="modal_form" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Editar perfil</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
-            <div class="modal-body form">
-                <form action="#" id="form" class="form-horizontal" enctype = "multipart/form-data">
-                    <input type="hidden" value="" name="codAluno"/>
-                    <div class="form-body">
-                        <div class="form-group">
-                            <section class="intPerfil">
-                                <?php
-                                    if ($perfil->imgAluno == null) {
-                                         ?><div class=""><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>"></div><?php
-                                     }else{
-                                         ?><div class=""><img src="<?php echo base_url("upload/alunos/$perfil->imgAluno")?>"></div><?php
-                                    }
-                                ?>
-                            </section>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Nome Completo</label>
-                            <div class="col-md-9">
-                                <input name="nomeCompleto" class="form-control" type="text">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">E-mail</label>
-                            <div class="col-md-9">
-                                <input name="email" placeholder="Seu email" class="form-control" type="text">
-                            </div>
-                        </div>
-                        <!--
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Nova senha</label>
-                            <div class="col-md-9">
-                                <input name="novaSenha" placeholder="Sua senha" class="form-control" type="password">
-                            </div>
-                        </div>
-                         <div class="form-group">
-                            <label class="control-label col-md-3">Confirmar nova senha</label>
-                            <div class="col-md-9">
-                                <input name="novaSenhaconf" placeholder="Sua senha" class="form-control" type="password">
-                            </div>
-                        </div>
-                    -->
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Data</label>
-                            <div class="col-md-9">
-                                <input type="date" class="form-control" id="exampleFormControlInput2" name="dataNasc">
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-
-                <button type="button" id="btnSave" onclick="save()" class="btn btn-
-                        primary">Save</button>
-
-                <button type="button" class="btn btn-danger" data-
-                        dismiss="modal">Cancel</button>
-
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<!-- End Bootstrap modal -->
-
-   
 
 <?php  include "rodape.php";

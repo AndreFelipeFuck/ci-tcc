@@ -2,7 +2,85 @@
 <div class="espaco2"></div>
 
 
-	<section class="conteiner4" >
+<div class="espaco2"></div>
+<br>
+    <div class="conteinerPerfil" id="sombra">
+            <section class="fotoPerfil">
+                <div class="view overlay">
+                <?php
+                    if ($perfil->imgProfessor == null) {
+                       ?><figure class="img-rounded img-responsive"><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>" class="img-fluid" alt="smaple image"></figure><?php
+                    }else{
+                        ?><figure class="img-rounded img-responsive"><img src="<?php echo base_url("upload/alunos/$perfil->imgProfessor")?>" class="img-fluid" alt="smaple image"></figure><?php
+                    }
+                ?>
+                    <div class="mask flex-center rgba-black-strong">
+                        <p class="white-text"><!--Editar Foto--></p>
+                    </div>
+                </div>
+            </section>
+            <section class="InfoPerfil">
+                <div id="nomePerfil">
+                    <h2 id="nomeFont"><?php echo $perfil->nomeCompleto;?></h2>
+                </div>
+                <div id="infoAlign">
+                    <label>Email:</label>
+                    <h6>exemplo@gmail.com</h6>
+                </div>
+                <div id="infoAlign">
+                    <label>Data de Nascimento:</label>
+                    <h6><?php echo $perfil->dataNasc;?></h6>
+                </div>
+                <div id="infoAlign">
+                    <label>Institucao:</label>
+                    <h6><?php echo $perfil->institucao;?></h6>
+                </div>
+                <div id="infoAlign">
+                    <label>Mini curriculo:</label>
+                    <h6><?php echo $perfil->miniCurriculo;?></h6>
+                </div>
+                <div id="infoAlign">
+                    <h4><span class="badge badge-secondary" style="background-color:#17a2b8;">Professor</span></h4>
+                </div>
+
+                <a href="<?php echo site_url('professores/professor_editar/')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn btn-success">Editar perfil</a>
+
+                <button class="btn btn-danger" onclick="delete_professor(<?php echo $perfil->codProfessor;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir</button>
+
+                <a href="<?php echo site_url('home/artigo_add')?>" class="btn btn-warning">Novo artigo</a>
+
+            </section>
+        <div style="width: 90%; border-bottom: solid 2px #17a2b8; display: inline-block; margin-left: 5%; margin-right: 5%; margin-top: 2%; opacity: 0.3;"></div>
+            <section>
+                <div><h2 style="width: 35%; font-size: 35px; border-bottom: solid 2px #17a2b8; margin-top: 2%; margin-bottom: 2%; padding-bottom: 1%;">Postagens:</h2></div>
+            </section>
+            <section style="padding: 1%;">
+                <div class="contPerfil">
+                <figure><img src="img\artigo.png"></figure>
+                <h5>Artigo nome</h5>
+                </div>
+                <div class="contPerfil">
+                <figure><img src="img\artigo.png"></figure>
+                <h5>Artigo nome</h5>
+                </div>
+                <div class="contPerfil">
+                <figure><img src="img\artigo.png"></figure>
+                <h5>Artigo nome</h5>
+                </div>
+                <div class="contPerfil">
+                <figure><img src="img\artigo.png"></figure>
+                <h5>Artigo nome</h5>
+                </div>
+                <div class="contPerfil">
+                <figure><img src="img\artigo.png"></figure>
+                <h5>Artigo nome</h5>
+                </div>
+            </section>
+    </div>
+
+
+
+	<!--<section class="conteiner4" >
 			<section class="intPerfil">
 				<?php
                     if ($perfil->imgProfessor == null) {
@@ -24,7 +102,7 @@
             	<button class="btn btn-danger" onclick="delete_professor(<?php echo $perfil->codProfessor;?>)"><i class="glyphicon glyphicon-remove"></i>EXCLUIR</button>
 
                 <a href="<?php echo site_url('home/artigo_add')?>" class="btn btn-warning">NOVO ARTIGO</a>
-			</section>
+			</section>-->
 
 
 
