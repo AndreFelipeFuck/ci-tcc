@@ -3,12 +3,13 @@
 ?>
 <div class="espaco2"></div>
 	<div class="conteinerCadArt">
-		<form  action="<?php echo site_url('artigos/artigos_update')?>" method="post">
+		<form  action="<?php echo site_url('artigos/artigo_update')?>" method="post" enctype = "multipart/form-data">
+			<input type="hidden" value="<?= $perfil->codArtigo?>" name="codArtigo"/>
 			<h1>Cadastro de Artigo:</h1>
 			<br>
 			<div class="form-group">
 			    <label for="exampleFormControlInput1">Titulo do Artigo</label>
-			    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="<?php echo $perfil->titulo;?>" name="titulo" required>
+			    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="<?php echo $perfil->titulo;?>" name="titulo" value ="<?= $perfil->titulo?>" required>
 			 </div>
 			  <div class="form-group" id="texto">
 			    <label for="exampleFormControlInput1">Texto do Artigo:</label>

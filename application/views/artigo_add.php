@@ -3,7 +3,8 @@
 ?>
 <div class="espaco2"></div>
 	<div class="conteinerCadArt">
-		<form  action="<?php echo site_url('artigos/artigo_add')?>" method="post">
+		<form  action="<?php echo site_url('artigos/artigo_add')?>" method="post" enctype = "multipart/form-data">
+			<input type="hidden" value="<?= $perfil->codProfessor?>" name="professores_codProfessor"/>
 			<h1>Cadastro de Artigo:</h1>
 			<br>
 			<div class="form-group">
@@ -17,7 +18,7 @@
 			 <div>
 			 	<div class="form-group">
 			    <label for="exampleFormControlFile1">Escolha uma imagem:</label>
-			    <input type="file" name="imgArtigo" class="form-control-file" id="exampleFormControlFile1">
+			    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="imgArtigo">
 			  </div>
 			 </div>
 			 <div class="form-group">

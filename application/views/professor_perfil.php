@@ -11,7 +11,7 @@
                     if ($perfil->imgProfessor == null) {
                        ?><figure class="img-rounded img-responsive"><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>" class="img-fluid" alt="smaple image"></figure><?php
                     }else{
-                        ?><figure class="img-rounded img-responsive"><img src="<?php echo base_url("upload/alunos/$perfil->imgProfessor")?>" class="img-fluid" alt="smaple image"></figure><?php
+                        ?><figure class="img-rounded img-responsive"><img src="<?php echo base_url("upload/professores/$perfil->imgProfessor")?>" class="img-fluid" alt="smaple image"></figure><?php
                     }
                 ?>
                     <div class="mask flex-center rgba-black-strong">
@@ -25,7 +25,7 @@
                 </div>
                 <div id="infoAlign">
                     <label>Email:</label>
-                    <h6>exemplo@gmail.com</h6>
+                    <h6><?php echo $perfil->email;?></h6>
                 </div>
                 <div id="infoAlign">
                     <label>Data de Nascimento:</label>
@@ -47,64 +47,25 @@
 
                 <button class="btn btn-danger" onclick="delete_professor(<?php echo $perfil->codProfessor;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir</button>
 
-                <a href="<?php echo site_url('home/artigo_add')?>" class="btn btn-warning">Novo artigo</a>
+                <a href="<?php echo site_url('professores/artigos_add')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn btn-warning">Novo artigo</a>
+
+                <a href="<?php echo site_url('professores/artigos_view')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn btn-warning">Visualizar Artigos</a>
 
             </section>
         <div style="width: 90%; border-bottom: solid 2px #17a2b8; display: inline-block; margin-left: 5%; margin-right: 5%; margin-top: 2%; opacity: 0.3;"></div>
-            <section>
+            <!--<section>
                 <div><h2 style="width: 35%; font-size: 35px; border-bottom: solid 2px #17a2b8; margin-top: 2%; margin-bottom: 2%; padding-bottom: 1%;">Postagens:</h2></div>
             </section>
             <section style="padding: 1%;">
-                <div class="contPerfil">
-                <figure><img src="img\artigo.png"></figure>
-                <h5>Artigo nome</h5>
-                </div>
-                <div class="contPerfil">
-                <figure><img src="img\artigo.png"></figure>
-                <h5>Artigo nome</h5>
-                </div>
-                <div class="contPerfil">
-                <figure><img src="img\artigo.png"></figure>
-                <h5>Artigo nome</h5>
-                </div>
-                <div class="contPerfil">
-                <figure><img src="img\artigo.png"></figure>
-                <h5>Artigo nome</h5>
-                </div>
-                <div class="contPerfil">
-                <figure><img src="img\artigo.png"></figure>
-                <h5>Artigo nome</h5>
-                </div>
-            </section>
+                <?php //foreach($artigos as $artigo){?>
+                    <div class="contPerfil">
+                    <figure><img src="<?php echo base_url("upload/artigos/$perfil->imgArtigo")?>"></figure>
+                    <h5><?php echo $perfil->titulo;?></h5>
+                    <a href="<?php echo site_url('artigos/artigo_page')?>?codArtigo=<?php echo $perfil->codArtigo;?>" class="btn btn-warning">Visualisar artigo</a>
+                    </div>
+                <?php //}?>
+            </section>-->
     </div>
-
-
-
-	<!--<section class="conteiner4" >
-			<section class="intPerfil">
-				<?php
-                    if ($perfil->imgProfessor == null) {
-                       ?><div class="fotoPerfil"><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>"></div><?php
-                    }else{
-                        ?><div class="fotoPerfil"><img src="<?php echo base_url("upload/professores/$perfil->imgProfessor")?>"></div><?php
-                    }
-                ?>
-				<div class="nomePerfil"><h2><?php echo $perfil->nomeCompleto;?></h2></div>
-			</section>
-			<section class="intPerfil2">
-				<article class="artPerfil"><h2><?php echo $perfil->dataNasc;?></article>
-				<article class="artPerfil"><h2><?php echo $perfil->institucao;?></article>
-				<article class="artPerfil"><h2><?php echo $perfil->miniCurriculo;?></article>
-				<article class="artPerfil"><h2><?php echo $perfil->email;?><h2></article>
-
-				<a href="<?php echo site_url('professores/professor_editar/')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn btn-success">EDITAR PERFIL</a>
-
-            	<button class="btn btn-danger" onclick="delete_professor(<?php echo $perfil->codProfessor;?>)"><i class="glyphicon glyphicon-remove"></i>EXCLUIR</button>
-
-                <a href="<?php echo site_url('home/artigo_add')?>" class="btn btn-warning">NOVO ARTIGO</a>
-			</section>-->
-
-
 
 	</section>
 		<script src="<?php echo base_url('assets/jquery/jquery-3.1.0.min.js')?>"></script>
@@ -186,7 +147,7 @@
 
     function delete_professor(codProfessor)
     {
-    if(confirm('Voce quer deletar o aluno?'))
+    if(confirm('Voce quer deletar seu perfil?'))
     {
     // ajax delete data from database
     $.ajax({
@@ -195,7 +156,7 @@
     dataType: "JSON",
     success: function(data)
     {
-    location.reload();
+     window.location.href = "<?php echo site_url('home')?>"
     },
     error: function (jqXHR, textStatus, errorThrown)
     {
