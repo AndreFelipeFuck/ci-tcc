@@ -11,9 +11,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         ///////////////////////////////////////////CRUD////////////////////////////////////////
 
-        public function get_all_artigos($limit, $start){
+        /*public function get_all_artigos($limit, $start){
             $this->db->limit($limit, $start);
             $this->db->from('artigos');
+            $query=$this->db->get();
+            return $query->result();
+        }*/
+        public function get_all_artigos()
+        {
+            $this->db->from($this->table);
             $query=$this->db->get();
             return $query->result();
         }
@@ -23,10 +29,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
 
 
-        public function get_by_id($codArtigo)
+        public function get_by_id_simples($codArtigo)
         {
             $this->db->from($this->table);
             $this->db->where('codArtigo',$codArtigo);
+            $query = $this->db->get();
+            return $query->row();
+        }
+
+        public function get_by_id($codArtigo){
+            $this->db->select('codArtigo, titulo, corpo, imgArtigo , nomeCompleto')->from('artigos ,professores')->where("codArtigo = '$codArtigo' and professores_codProfessor = codProfessor");
             $query = $this->db->get();
             return $query->row();
         }
@@ -54,9 +66,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
      }
 
     }
-
-
-
 
 
 

@@ -57,10 +57,8 @@ class Login extends CI_Controller
     }
 
     public function perfilAluno(){
-        $aluno_id = $this->session->set_userdata("alunos");
-        print_r($aluno_id);
-        // $url = "?codAluno=".$aluno_id;
-        // redirect ("alunos/aluno_perfil/$url");
+        
+        redirect ("alunos/aluno_perfil");
     }
 
     public function perfilProfessor(){

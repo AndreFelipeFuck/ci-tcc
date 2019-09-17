@@ -31,6 +31,13 @@ class Professor_model extends CI_Model
         return $query->row();
     }
 
+    /*public function get_by_id($codProfessor)
+    {
+       $this->db->select('codProfessor, codArtigo ,imgProfessor, nomeCompleto, miniCurriculo, email, institucao, dataNasc, titulo, imgArtigo')->from('artigos ,professores')->where("codProfessor = '$codProfessor' and professores_codProfessor = codProfessor");
+            $query = $this->db->get();
+            return $query->row();
+    }*/
+
     public function professor_add($data)
     {
         $this->db->insert($this->table, $data);

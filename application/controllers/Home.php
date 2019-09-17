@@ -39,10 +39,6 @@ class Home extends CI_Controller
         $this->load->view('professor_add');
     }
 
-    public function artigo_add(){
-        $this->load->view('artigo_add');
-    }
-
     public function artigo_page(){
         $this->load->view('artigo_page');
     }
