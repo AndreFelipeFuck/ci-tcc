@@ -16,7 +16,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $this->db->from('artigos');
             $query=$this->db->get();
             return $query->result();
-        }*/
+        }
+        public function get_by_id_aluno($codArtigo){
+            $this->db->select('codArtigo, titulo, corpo, imgArtigo , nomeCompleto')->from('artigos ,professores, alunos')->where("codArtigo = '$codArtigo' and alunos_codAluno = codAluno");
+            $query = $this->db->get();
+            return $query->row();
+        }
+
+        */
         public function get_all_artigos()
         {
             $this->db->from($this->table);
@@ -38,10 +45,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
 
         public function get_by_id($codArtigo){
-            $this->db->select('codArtigo, titulo, corpo, imgArtigo , nomeCompleto')->from('artigos ,professores')->where("codArtigo = '$codArtigo' and professores_codProfessor = codProfessor");
+            
+            $this->db->select('codArtigo, titulo, corpo, imgArtigo ,nomeProfessor')->from('artigos ,professores')->where("codArtigo = '$codArtigo' and professores_codProfessor = codProfessor");
             $query = $this->db->get();
             return $query->row();
         }
+
+        public function get_by_id_aluno($codArtigo){
+            
+            $this->db->select('codArtigo, titulo, corpo, imgArtigo ,nomeAluno')->from('artigos ,alunos')->where("codArtigo = '$codArtigo' and alunos_codAluno = codAluno");
+            $query = $this->db->get();
+            return $query->row();
+        }
+
+        public function analise($codArtigo){
+            $this->db->select('alunos_codAluno')->from($this->table)->where("codArtigo = '$codArtigo'");
+            $query = $this->db->get();
+            return $query->row();
+        }
+
+    
 
         public function artigo_add($data)
         {

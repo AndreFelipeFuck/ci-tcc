@@ -17,7 +17,7 @@
             </section>
             <section class="InfoPerfil">
                 <div id="nomePerfil">
-                    <h2 id="nomeFont"><?php echo $perfil->nomeCompleto;?></h2>
+                    <h2 id="nomeFont"><?php echo $perfil->nomeAluno;?></h2>
                 </div>
                 <div id="infoAlign">
                     <label>Email:</label>
@@ -40,13 +40,16 @@
                     <a href="<?php echo site_url('alunos/aluno_editar/')?>?codAluno=<?php echo $perfil->codAluno;?>" class="btn btn-success">Editar Perfil</a>
                     <button class="btn btn-danger" onclick="delete_aluno(<?php echo $perfil->codAluno;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir</button>
 
+                    <a href="<?php echo site_url('alunos/artigos_add')?>?codAluno=<?php echo $perfil->codAluno;?>" class="btn btn-warning">Novo artigo</a>
+                    <a href="<?php echo site_url('alunos/artigos_view')?>?codAluno=<?php echo $perfil->codAluno;?>" class="btn btn-warning">Visualizar Artigos</a>
+
                 </div>
             </section>
         <div style="width: 90%; border-bottom: solid 2px #17a2b8; display: inline-block; margin-left: 5%; margin-right: 5%; margin-top: 2%; opacity: 0.3;"></div>
-            <section>
+             <!--<section>
                 <div><h2 style="width: 35%; font-size: 35px; border-bottom: solid 2px #17a2b8; margin-top: 2%; margin-bottom: 2%; padding-bottom: 1%;">Postagens:</h2></div>
             </section>
-            <section style="padding: 1%;">
+           <section style="padding: 1%;">
                 <div class="contPerfil">
                 <figure><img src="img\artigo.png"></figure>
                 <h5>Artigo nome</h5>
@@ -67,7 +70,7 @@
                 <figure><img src="img\artigo.png"></figure>
                 <h5>Artigo nome</h5>
                 </div>
-            </section>
+            </section>-->
     </div>
 	</section>
 	<script src="<?php echo base_url('assets/jquery/jquery-3.1.0.min.js')?>"></script>
@@ -101,7 +104,7 @@
     success: function(data)
     {
     $('[name="codAluno"]').val(data.codAluno);
-    $('[name="nomeCompleto"]').val(data.nomeCompleto);
+    $('[name="nomeAluno"]').val(data.nomeAluno);
     $('[name="email"]').val(data.email);
     $('[name="dataNasc"]').val(data.dataNasc);
     $('[name="anoLetivo"]').val(data.anoLetivo);

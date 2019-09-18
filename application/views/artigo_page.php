@@ -29,7 +29,7 @@
 		</div>
 		<div class="espaco2"></div>
 		<div class="nomeAutor">
-			<label>Por<h4 id="nomeAutor"><?php echo $perfil->nomeCompleto;?></h4></label>
+			<label>Pelo Profesor<h4 id="nomeAutor"><?php echo $perfil->nomeProfessor;?></h4></label>
 		</div>
 		<div class="nomeMateria">
 			<label>Disciplinas: </label>

@@ -48,14 +48,23 @@ class Artigos extends CI_Controller
 		$imgArtigo = $_FILES['imgArtigo'];
 		if($imgArtigo['name'] == null){
 
-			$data = array(
-				'titulo' => $this->input->post('titulo'),
-				'corpo' => $this->input->post('corpo'),
-				'professores_codProfessor' => $this->input->post('professores_codProfessor')
-			);
+			if($this->input->post('alunos_codAluno') == 0){
+					$data = array(
+						'titulo' => $this->input->post('titulo'),
+						'corpo' => $this->input->post('corpo'),
+						'professores_codProfessor' => $this->input->post('professores_codProfessor')
+				)	;
 
+			}if ($this->input->post('professores_codProfessor') == 0) {
+				$data = array(
+						'titulo' => $this->input->post('titulo'),
+						'corpo' => $this->input->post('corpo'),
+						'alunos_codAluno' => $this->input->post('alunos_codAluno')
+				)	;
+			}
+		
 			$insert = $this->artigos_model->artigo_add($data);
-			//redirect('home/artigo_view');
+			
 				$this->db->where('titulo', $data['titulo']);
 	           $this->db->where('corpo', $data['corpo']);
 	            $query = $this->db->get('artigos');
@@ -90,6 +99,7 @@ class Artigos extends CI_Controller
 						'corpo' => $this->input->post('corpo'),
 						'imgArtigo' => $this->input->post('imgArtigo'),
 						'professores_codProfessor' => $this->input->post('professores_codProfessor'),
+						'alunos_codAluno' => $this->input->post('alunos_codAluno'),
 						'imgArtigo' => $config['file_name'].".jpg"
 					);
 					$insert = $this->artigos_model->artigo_add($data);
@@ -172,15 +182,35 @@ class Artigos extends CI_Controller
 
     public function artigo_page(){
         $codArtigo = $this->input->get('codArtigo');
-        $artigo['perfil'] = $this->artigos_model->get_by_id($codArtigo);
-        $this->load->view('artigo_page', $artigo);
+        $analise = $this->artigos_model->analise($codArtigo);
+        if ($analise->alunos_codAluno == 0) {
+        	//PROFESSOR
+        	$artigo['perfil'] = $this->artigos_model->get_by_id($codArtigo);
+        	$this->load->view('artigo_page', $artigo);
+        }if($analise->alunos_codAluno > 0){
+        	//ALUNO
+        	$artigo['perfil'] = $this->artigos_model->get_by_id_aluno($codArtigo);
+        	$this->load->view('artigo_page', $artigo);
+        }
+        
+      
+       
+        /*$artigo['perfil'] = $this->artigos_model->get_by_id($codArtigo);
+        $this->load->view('artigo_page', $artigo);	*/
     }
 
     public function artigo_editar(){
         $codArtigo = $this->input->get('codArtigo');
-        $artigo['perfil'] = $this->artigos_model->get_by_id($codArtigo);
-        $this->load->view('artigo_editar', $artigo);
-        //print_r($artigo);
+        $analise = $this->artigos_model->analise($codArtigo);
+        if ($analise->alunos_codAluno == 0) {
+        	//PROFESSOR
+        	$artigo['perfil'] = $this->artigos_model->get_by_id($codArtigo);
+        	$this->load->view('artigo_editar', $artigo);
+        }if($analise->alunos_codAluno > 0){
+        	//ALUNO
+        	$artigo['perfil'] = $this->artigos_model->get_by_id_aluno($codArtigo);
+        	$this->load->view('artigo_editar', $artigo);
+        }
     }
 	
 

@@ -7,11 +7,11 @@
          
     <section class="conteiner0">
         <h1>Artigos</h1>
-        <a href="<?php echo site_url('professores/artigos_add')?>?codProfessor=<?php echo $_GET['codProfessor']?>" class="btn btn-warning">Novo artigo</a>
+        <a href="<?php echo site_url('alunos/artigos_add')?>?codAluno=<?php echo $_GET['codAluno']?>" class="btn btn-warning">Novo artigo</a>
         <br>
                 <?php foreach($artigos as $artigo){?>
                     <div class="card mb-3">
-                    <?php if($artigo->professores_codProfessor == $_GET['codProfessor']):?>
+                    <?php if($artigo->alunos_codAluno == $_GET['codAluno']):?>
                             <?php
                                     if($artigo->imgArtigo == null){?>
                                         <img src="<?php echo base_url('assets/bootstrap/img/eng.png')?>" class="card-img-top" alt="..."><?php
@@ -65,7 +65,7 @@
     dataType: "JSON",
     success: function(data)
     {
-     window.location.href = "<?php echo site_url('professores/artigos_view/')?>?codProfessor=<?php echo $_GET['codProfessor'];?>"
+     window.location.href = "<?php echo site_url('alunos/artigos_view/')?>?codAluno=<?php echo $_GET['codAluno'];?>"
     },
     error: function (jqXHR, textStatus, errorThrown)
     {

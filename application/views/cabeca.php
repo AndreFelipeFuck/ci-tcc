@@ -51,11 +51,11 @@
 		    <form class="form-inline my-2 my-lg-0 registro">
                 <?php 
                 if($this->session->userdata('professores')):?>
-                	<a class="regis" href="<?php echo site_url('professores/professor_perfil')?>">Perfil</a>
+                	<a class="regis" href="<?php echo site_url('professores/professor_perfil')?>?codProfessor=<?php echo $_SESSION['professores']; ?>">Perfil</a>
                     <a href="<?php echo site_url('login/sairProf')?>" class="btn btn-outline-success my-2 my-sm-0">Sair</a>
 
                 <?php elseif ($this->session->userdata('alunos')):?>
-                	<a class="regis" href="<?php echo site_url('alunos/aluno_perfil')?>?codAluno=<?php ?>">Perfil</a>
+                	<a class="regis" href="<?php echo site_url('alunos/aluno_perfil')?>?codAluno=<?php echo $_SESSION['alunos'] ?>">Perfil</a>
                     <a href="<?php echo site_url('login/sair')?>" class="btn btn-outline-success my-2 my-sm-0">Sair</a>
 
                 <?php else :?>

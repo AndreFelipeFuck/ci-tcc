@@ -4,8 +4,8 @@
 <div class="espaco2"></div>
 	<div class="conteinerCadArt">
 		<form  action="<?php echo site_url('artigos/artigo_add')?>" method="post" enctype = "multipart/form-data">
-			<input type="hidden" value="<?= $perfil->codProfessor?>" name="professores_codProfessor"/>
-				<input type="hidden" value="0" name="alunos_codAluno"/>
+			<input type="hidden" value="<?= $perfil->codAluno?>" name="alunos_codAluno"/>
+			<input type="hidden" value="null" name="professores_codProfessor"/>
 			<h1>Cadastro de Artigo:</h1>
 			<br>
 			<div class="form-group">

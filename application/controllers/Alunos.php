@@ -8,6 +8,7 @@ class Alunos extends CI_Controller
 		$this->load->helper('url');
         $this->load->library('session');
 		$this->load->model('aluno_model');
+		$this->load->model('artigos_model');
 	}
 
 	public function index()
@@ -27,7 +28,7 @@ class Alunos extends CI_Controller
 		//VALIDAR FORMULARIO
 		$this->load->library('form_validation');
 
-    	$this->form_validation->set_rules('nomeCompleto', 'Nome Completo', 'required|min_length[3]|max_length[20]', array('required' => 'O campo Nome Completo é obrigatorio.'));
+    	$this->form_validation->set_rules('nomeAluno', 'Nome Completo', 'required|min_length[3]|max_length[20]', array('required' => 'O campo Nome Completo é obrigatorio.'));
     	$this->form_validation->set_rules('email', 'E-mail', 'required|valid_email', array('required' => 'O campo E-mail é obrigatorio.'));
      	$this->form_validation->set_rules('senha', 'Senha', 'required|min_length[8]', array('required' => 'Você deve preencher a %s.'));
      	$this->form_validation->set_rules('senhaconf', 'Confirmar Senha', 'required|matches[senha]', array('required' => 'O campo Confirmar senha é obrigatorio'));
@@ -41,7 +42,7 @@ class Alunos extends CI_Controller
           	if($imgAluno['name'] == null) {
           		//ENVIAR PARA O BANCO
 		           	$data = array(
-						'nomeCompleto' => $this->input->post('nomeCompleto'),
+						'nomeAluno' => $this->input->post('nomeAluno'),
 						'dataNasc' => $this->input->post('dataNasc'),
 						'anoLetivo' => $this->input->post('anoLetivo'),
 						'curso' => $this->input->post('curso'),
@@ -57,7 +58,7 @@ class Alunos extends CI_Controller
 
 			            if ($query->num_rows() == 1){
 			                $aluno = $query->row();
-			                $this->session->set_userdata("alunos", $aluno->nomeCompleto);
+			                $this->session->set_userdata("alunos", $aluno->nomeAluno);
 			                $codAluno = $this->aluno_model->get_by_login($email, $senha);
 			                $url = "?codAluno=".$aluno->codAluno;
 			               redirect ("alunos/aluno_perfil/$url");
@@ -87,7 +88,7 @@ class Alunos extends CI_Controller
 
 	        		//ENVIAR PARA O BANCO
 		           	$data = array(
-						'nomeCompleto' => $this->input->post('nomeCompleto'),
+						'nomeAluno' => $this->input->post('nomeAluno'),
 						'dataNasc' => $this->input->post('dataNasc'),
 						'imgAluno' => $config['file_name'].".jpg",
 						'anoLetivo' => $this->input->post('anoLetivo'),
@@ -104,7 +105,7 @@ class Alunos extends CI_Controller
 
 			            if ($query->num_rows() == 1){
 			                $aluno = $query->row();
-			                $this->session->set_userdata("alunos", $aluno->nomeCompleto);
+			                $this->session->set_userdata("alunos", $aluno->nomeAluno);
 			                $codAluno = $this->aluno_model->get_by_login($email, $senha);
 			                $url = "?codAluno=".$aluno->codAluno;
 			               redirect ("alunos/aluno_perfil/$url");
@@ -134,7 +135,7 @@ class Alunos extends CI_Controller
 		if ($vereficaSenha == null) {
 			$this->load->library('form_validation');
 
-			$this->form_validation->set_rules('nomeCompleto', 'Nome Completo', 'required|min_length[3]|max_length[20]', array('required' => 'O campo Nome Completo é obrigatorio.'));
+			$this->form_validation->set_rules('nomeAluno', 'Nome Completo', 'required|min_length[3]|max_length[20]', array('required' => 'O campo Nome Completo é obrigatorio.'));
     		$this->form_validation->set_rules('email', 'E-mail', 'required|valid_email', array('required' => 'O campo E-mail é obrigatorio.'));
 
     		if ($this->form_validation->run() == FALSE) {
@@ -144,7 +145,7 @@ class Alunos extends CI_Controller
           		//SE O ALUNO NÂO QUISER TROCAR DE FOTO DE PERFIL
           		if($imgAluno['name'] == null) {
           			$data = array(
-					'nomeCompleto' => $this->input->post('nomeCompleto'),
+					'nomeAluno' => $this->input->post('nomeAluno'),
 					'dataNasc' => $this->input->post('dataNasc'),
 					'anoLetivo' => $this->input->post('anoLetivo'),
 					'curso' => $this->input->post('curso'),
@@ -171,7 +172,7 @@ class Alunos extends CI_Controller
 	           		if ($this->upload->do_upload('imgAluno')){
         				echo 'Arquivo salvo com sucesso.';
         				$data = array(
-							'nomeCompleto' => $this->input->post('nomeCompleto'),
+							'nomeAluno' => $this->input->post('nomeAluno'),
 							'dataNasc' => $this->input->post('dataNasc'),
 							'anoLetivo' => $this->input->post('anoLetivo'),
 							'imgAluno' => $config['file_name'].".jpg",
@@ -194,7 +195,7 @@ class Alunos extends CI_Controller
 		}elseif ($vereficaSenha != null){
 			$this->load->library('form_validation');
 
-			$this->form_validation->set_rules('nomeCompleto', 'Nome Completo', 'required|min_length[3]|max_length[20]', array('required' => 'O campo Nome Completo é obrigatorio.'));
+			$this->form_validation->set_rules('nomeAluno', 'Nome Completo', 'required|min_length[3]|max_length[20]', array('required' => 'O campo Nome Completo é obrigatorio.'));
     		$this->form_validation->set_rules('email', 'E-mail', 'required|valid_email', array('required' => 'O campo E-mail é obrigatorio.'));
     		$this->form_validation->set_rules('senha', 'Senha', 'required|min_length[8]', array('required' => 'Você deve preencher a %s.'));
      		$this->form_validation->set_rules('senhaconf', 'Confirmar Senha', 'required|matches[senha]', array('required' => 'O campo Confirmar senha é obrigatorio'));
@@ -205,7 +206,7 @@ class Alunos extends CI_Controller
           	}else{
 				if($imgAluno['name'] == null) {
           			$data = array(
-					'nomeCompleto' => $this->input->post('nomeCompleto'),
+					'nomeAluno' => $this->input->post('nomeAluno'),
 					'dataNasc' => $this->input->post('dataNasc'),
 					'anoLetivo' => $this->input->post('anoLetivo'),
 					'curso' => $this->input->post('curso'),
@@ -231,7 +232,7 @@ class Alunos extends CI_Controller
 	           		if ($this->upload->do_upload('imgAluno')){
         				echo 'Arquivo salvo com sucesso.';
         				$data = array(
-							'nomeCompleto' => $this->input->post('nomeCompleto'),
+							'nomeAluno' => $this->input->post('nomeAluno'),
 							'dataNasc' => $this->input->post('dataNasc'),
 							'anoLetivo' => $this->input->post('anoLetivo'),
 							'imgAluno' => $config['file_name'].".jpg",
@@ -271,6 +272,19 @@ class Alunos extends CI_Controller
         $aluno['perfil'] = $this->aluno_model->get_by_id($codAluno);
         $this->load->view('aluno_editar', $aluno);
 	}
+
+	 public function artigos_add(){
+         $codAluno = $this->input->get('codAluno');
+        $aluno['perfil'] = $this->aluno_model->get_by_id($codAluno);
+        $this->load->view('artigo_add_aluno', $aluno);
+    }
+
+    public function artigos_view(){
+        $codAluno = $this->input->get('codAluno');
+        $aluno['artigos'] = $this->aluno_model->get_by_id($codAluno);
+        $aluno['artigos'] = $this->artigos_model->get_all_artigos();
+        $this->load->view('artigos_view_aluno', $aluno);
+    }
 
 
 }

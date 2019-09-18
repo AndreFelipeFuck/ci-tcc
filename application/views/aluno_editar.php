@@ -24,7 +24,7 @@
 			 <div class="espaco2"></div>
 			<div class="form-group">
 			    <label for="exampleFormControlInput1">Nome Completo</label>
-			    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ex: Josef Oliveira" name="nomeCompleto" value="<?= $perfil->nomeCompleto?>">
+			    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ex: Josef Oliveira" name="nomeAluno" value="<?= $perfil->nomeAluno?>">
 			 </div>
 			  <div class="form-group">
 			    <label for="exampleFormControlInput1">E-mail</label>
