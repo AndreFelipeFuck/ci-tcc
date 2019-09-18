@@ -185,10 +185,12 @@ class Artigos extends CI_Controller
         $analise = $this->artigos_model->analise($codArtigo);
         if ($analise->alunos_codAluno == 0) {
         	//PROFESSOR
+        	//echo "professor";
         	$artigo['perfil'] = $this->artigos_model->get_by_id($codArtigo);
         	$this->load->view('artigo_page', $artigo);
         }if($analise->alunos_codAluno > 0){
         	//ALUNO
+        	//echo "ALUNO";
         	$artigo['perfil'] = $this->artigos_model->get_by_id_aluno($codArtigo);
         	$this->load->view('artigo_page', $artigo);
         }

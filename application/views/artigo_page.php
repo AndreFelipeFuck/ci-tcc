@@ -29,7 +29,11 @@
 		</div>
 		<div class="espaco2"></div>
 		<div class="nomeAutor">
-			<label>Pelo Profesor<h4 id="nomeAutor"><?php echo $perfil->nomeProfessor;?></h4></label>
+			<?php if(isset($perfil->nomeProfessor)){?>
+				<label>Postado pelo professor:<h4 id="nomeAutor"><?php echo $perfil->nomeProfessor;?></h4></label>
+			<?php }if(isset($perfil->nomeAluno)){?>
+				<label>Postado pelo aluno:<h4 id="nomeAutor"><?php echo $perfil->nomeAluno;?></h4></label>
+			<?php } ?>
 		</div>
 		<div class="nomeMateria">
 			<label>Disciplinas: </label>
