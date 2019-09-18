@@ -96,25 +96,7 @@
 		</article>
 	</section>
 	<div class="espaco2"></div>
-	<section class="conteiner2">
-		<h2>Artigos:</h2>
-		<br>
-		<article class="vidCont">
-			<img src="<?php echo base_url('assets/bootstrap/img/eng.png')?>">
-			<div>
-				<h3>Titulo do artigo</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-			</div>
-		</article>
-		<br>
-		<article class="vidCont">
-			<img src="<?php echo base_url('assets/bootstrap/img/bac.png')?>">
-			<div>
-				<h3>Titulo do artigo</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-			</div>
-		</article>
-	</section>
+	
 
 <?php 
 	include "rodape.php";

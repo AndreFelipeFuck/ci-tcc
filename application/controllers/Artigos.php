@@ -46,20 +46,23 @@ class Artigos extends CI_Controller
 
 	public function artigo_add(){
 		$imgArtigo = $_FILES['imgArtigo'];
+		//Definindo a data do artigo
 		if($imgArtigo['name'] == null){
 
 			if($this->input->post('alunos_codAluno') == 0){
 					$data = array(
 						'titulo' => $this->input->post('titulo'),
 						'corpo' => $this->input->post('corpo'),
-						'professores_codProfessor' => $this->input->post('professores_codProfessor')
+						'professores_codProfessor' => $this->input->post('professores_codProfessor'),
+						'dataArtigo' => date("Y-m-d")
 				)	;
 
 			}if ($this->input->post('professores_codProfessor') == 0) {
 				$data = array(
 						'titulo' => $this->input->post('titulo'),
 						'corpo' => $this->input->post('corpo'),
-						'alunos_codAluno' => $this->input->post('alunos_codAluno')
+						'alunos_codAluno' => $this->input->post('alunos_codAluno'),
+						'dataArtigo' => date("Y-m-d")
 				)	;
 			}
 		
@@ -94,14 +97,25 @@ class Artigos extends CI_Controller
         			echo 'Arquivo salvo com sucesso.';
 
 	        		//ENVIAR PARA O BANCO
-		           	$data = array(
-						'titulo' => $this->input->post('titulo'),
-						'corpo' => $this->input->post('corpo'),
-						'imgArtigo' => $this->input->post('imgArtigo'),
-						'professores_codProfessor' => $this->input->post('professores_codProfessor'),
-						'alunos_codAluno' => $this->input->post('alunos_codAluno'),
-						'imgArtigo' => $config['file_name'].".jpg"
-					);
+	        		if($this->input->post('alunos_codAluno') == 0){
+			           	$data = array(
+							'titulo' => $this->input->post('titulo'),
+							'corpo' => $this->input->post('corpo'),
+							'imgArtigo' => $this->input->post('imgArtigo'),
+							'professores_codProfessor' => $this->input->post('professores_codProfessor'),
+							'imgArtigo' => $config['file_name'].".jpg",
+							'dataArtigo' => date("Y-m-d")
+						);
+					}if ($this->input->post('professores_codProfessor') == 0) {
+						 	$data = array(
+							'titulo' => $this->input->post('titulo'),
+							'corpo' => $this->input->post('corpo'),
+							'imgArtigo' => $this->input->post('imgArtigo'),
+							'alunos_codAluno' => $this->input->post('alunos_codAluno'),
+							'imgArtigo' => $config['file_name'].".jpg",
+							'dataArtigo' => date("Y-m-d")
+						);
+					}
 					$insert = $this->artigos_model->artigo_add($data);
 
 					//ENVIAR PARA A PAGINA PERFIL
