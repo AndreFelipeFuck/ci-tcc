@@ -3,3 +3,8 @@ SELECT titulo, corpo, imgArtigo, nomeCompleto from artigos, professores where pr
 SELECT titulo, corpo, imgArtigo, nomeCompleto, nomeDisciplina from artigos, professores, disciplinas, artigos_has_disciplinas where professores_codProfessor = codProfessor and artigos_codArtigo = codArtigo and codDisciplina = disciplinas_codDisciplina and codArtigo = 21;
 =======================================
 SELECT imgProfessor, nomeCompleto, miniCurriculo, email, institucao, dataNasc, titulo, imgArtigo FROM professores, artigos WHERE codProfessor = 49 and codProfessor = professores_codProfessor;
+=======================================
+SELECT codArtigo, titulo, corpo, imgArtigo, nomeProfessor from artigos, professores where professores_codProfessor = codProfessor ORDER BY dataArtigo DESC LIMIT 5
+=======================================
+SELECT COUNT(codArtigo) from professores, artigos where professores_codProfessor = codProfessor and codProfessor = 49
+=======================================

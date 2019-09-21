@@ -23,6 +23,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             return $query->row();
         }
 
+        public function get_by_id_simples($codArtigo)
+        {
+            $this->db->from($this->table);
+            $this->db->where('codArtigo',$codArtigo);
+            $query = $this->db->get();
+            return $query->row();
+        }
+
         */
         public function get_all_artigos()
         {
@@ -31,17 +39,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             return $query->result();
         }
 
+        public function get_artigos_by_data(){
+            $this->db->select('codArtigo, titulo, corpo, imgArtigo, nomeProfessor')-> from('artigos, professores, alunos')-> where ('professores_codProfessor = codProfessor')->order_by ('dataArtigo DESC')->limit(5);
+            $query=$this->db->get();
+            return $query->result();
+        }
+
         public function get_count() {
             return $this->db->count_all($this->table);
         }
 
-
-        public function get_by_id_simples($codArtigo)
-        {
-            $this->db->from($this->table);
-            $this->db->where('codArtigo',$codArtigo);
-            $query = $this->db->get();
-            return $query->row();
+        public function get_count_professor($codProfessor){
+              $this->db->select('COUNT(codArtigo) as resultado')->from('professores, artigos')->where("professores_codProfessor = codProfessor and codProfessor = '$codProfessor'");
+                $query=$this->db->get();
+                return $query->result();
         }
 
         public function get_by_id($codArtigo){
@@ -66,10 +77,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     
 
-        public function artigo_add($data)
-        {
+        public function artigo_add($data){
             $this->db->insert($this->table, $data);
             return $this->db->insert_id();
+        }
+
+        public function artigo_add_disciplinas($data){
+            $this->db->insert("artigos_has_disciplinas", $data);
         }
 
         public function artigo_update($where, $data){
@@ -83,10 +97,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
 
         public function get_by_login($titulo, $corpo){
-         $this->db->select('codArtigo, titulo, corpo')->from('artigos')->where("titulo = '$titulo' and corpo = '$corpo'");
-         $query = $this->db->get();
-         return $query;
-     }
+            $this->db->select('codArtigo, titulo, corpo')->from('artigos')->where("titulo = '$titulo' and corpo = '$corpo'");
+            $query = $this->db->get();
+             return $query;
+        }
 
     }
 

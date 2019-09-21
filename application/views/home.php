@@ -77,26 +77,27 @@
 	</section>
 	<div class="espaco2"></div>
 	<section class="conteiner2">
-		<h1>Aulas:</h1>
+		<h1>Artigos</h1>
 		<br>
-		<article class="vidCont">
-			<img src="<?php echo base_url('assets/bootstrap/img/crisp.jpg')?>">
-			<div>
-				<h3>Titulo do video</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-			</div>
-		</article>
+		<?php foreach($artigos as $artigo){?>
+			<article class="vidCont">
+				<?php
+                    if($artigo->imgArtigo == null){?>
+						<img src="<?php echo base_url('assets/bootstrap/img/crisp.jpg')?>">
+				<?php
+                    }else{?>
+                    	<img src="<?php echo base_url("upload/artigos/$artigo->imgArtigo")?>">
+              <?php }?>
+				<div>
+					<h3><?php echo $artigo->titulo?></h3>
+					<p><?php echo $artigo->corpo?></p>
+					   <a href="<?php echo site_url('artigos/artigo_page/')?>?codArtigo=<?php echo $artigo->codArtigo;?>" class="btn btn-primary">Visulizar</a>
+				</div>
+			</article>
 		<br>
-		<article class="vidCont">
-			<img src="<?php echo base_url('assets/bootstrap/img/bh.jpg')?>">
-			<div>
-				<h3>Titulo do video</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-			</div>
-		</article>
+	<?php }?>
 	</section>
 	<div class="espaco2"></div>
 	
 
-<?php 
-	include "rodape.php";
+<?php //include "rodape.php"; ?>

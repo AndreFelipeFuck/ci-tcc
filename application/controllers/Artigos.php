@@ -35,7 +35,13 @@ class Artigos extends CI_Controller
 
         //$data['artigos'] = $this->artigos_model->get_all_artigos($config["per_page"], $page);
         $data['artigos'] = $this->artigos_model->get_all_artigos();
+        $data['contar'] = $this->artigos_model->get_count();
 
+        $this-> load->view('artigos_view', $data);
+    }
+
+    public function artigos_listar_by_data(){
+    	$data['artigos'] = $this->artigos_model->get_artigos_by_data();
         $this-> load->view('artigos_view', $data);
     }
 
@@ -46,7 +52,6 @@ class Artigos extends CI_Controller
 
 	public function artigo_add(){
 		$imgArtigo = $_FILES['imgArtigo'];
-		//Definindo a data do artigo
 		if($imgArtigo['name'] == null){
 
 			if($this->input->post('alunos_codAluno') == 0){
@@ -54,31 +59,30 @@ class Artigos extends CI_Controller
 						'titulo' => $this->input->post('titulo'),
 						'corpo' => $this->input->post('corpo'),
 						'professores_codProfessor' => $this->input->post('professores_codProfessor'),
+						'disciplina_codDisiciplina' => $this->input->post('disciplina_codDisiciplina'),
 						'dataArtigo' => date("Y-m-d")
-				)	;
+				);
 
 			}if ($this->input->post('professores_codProfessor') == 0) {
 				$data = array(
 						'titulo' => $this->input->post('titulo'),
 						'corpo' => $this->input->post('corpo'),
 						'alunos_codAluno' => $this->input->post('alunos_codAluno'),
+						'disciplina_codDisiciplina' => $this->input->post('disciplina_codDisiciplina'),
 						'dataArtigo' => date("Y-m-d")
 				)	;
 			}
-		
-			$insert = $this->artigos_model->artigo_add($data);
-			
-				$this->db->where('titulo', $data['titulo']);
-	           $this->db->where('corpo', $data['corpo']);
-	            $query = $this->db->get('artigos');
+				$insert = $this->artigos_model->artigo_add($data);
 
+				$titulo = $this->db->where('titulo', $data['titulo']);
+	           	$corpo = $this->db->where('corpo', $data['corpo']);
+	            $query = $this->db->get('artigos');
+				$codArtigo = $this->artigos_model->get_by_login($titulo, $corpo);
+			    //Defenindo a disciplina do artigo	
 	            if ($query->num_rows() == 1){
 	                $artigo = $query->row();
-	                $this->session->set_userdata("artigos", $artigo->titulo);
-	                $codArtigo = $this->artigos_model->get_by_login($titulo, $corpo);
 	                $url = "?codArtigo=".$artigo->codArtigo;
 	               redirect ("artigos/artigo_page/$url");
-	                
 	            }
 
 		}elseif(!empty($imgArtigo['name'])){
@@ -103,6 +107,7 @@ class Artigos extends CI_Controller
 							'corpo' => $this->input->post('corpo'),
 							'imgArtigo' => $this->input->post('imgArtigo'),
 							'professores_codProfessor' => $this->input->post('professores_codProfessor'),
+							'disciplina_codDisiciplina' => $this->input->post('disciplina_codDisiciplina'),
 							'imgArtigo' => $config['file_name'].".jpg",
 							'dataArtigo' => date("Y-m-d")
 						);
@@ -112,6 +117,7 @@ class Artigos extends CI_Controller
 							'corpo' => $this->input->post('corpo'),
 							'imgArtigo' => $this->input->post('imgArtigo'),
 							'alunos_codAluno' => $this->input->post('alunos_codAluno'),
+							'disciplina_codDisiciplina' => $this->input->post('disciplina_codDisiciplina'),
 							'imgArtigo' => $config['file_name'].".jpg",
 							'dataArtigo' => date("Y-m-d")
 						);
@@ -125,9 +131,9 @@ class Artigos extends CI_Controller
 
 	            	if ($query->num_rows() == 1){
 	               		 $artigo = $query->row();
-	               		 $this->session->set_userdata("artigos", $artigo->titulo);
 	               		 $codArtigo = $this->artigos_model->get_by_login($titulo, $corpo);
 	                	$url = "?codArtigo=".$artigo->codArtigo;
+	                	//Defenindo a disciplina do artigo
 	               		redirect ("artigos/artigo_page/$url");
 	                
 	            	}
@@ -136,6 +142,7 @@ class Artigos extends CI_Controller
          			echo $this->upload->display_errors();
          		}
 		}	
+
 	}
 
 	public function ajax_edit($codArtigo)

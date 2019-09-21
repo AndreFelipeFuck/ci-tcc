@@ -278,9 +278,10 @@ class Professores extends CI_Controller
     }
 
     public function artigos_view(){
-         $codProfessor = $this->input->get('codProfessor');
+        $codProfessor = $this->input->get('codProfessor');
         $professor['artigos'] = $this->professor_model->get_by_id($codProfessor);
-         $professor['artigos'] = $this->artigos_model->get_all_artigos();
+        $professor['artigos'] = $this->artigos_model->get_all_artigos();
+        $professor['contar'] = $this->artigos_model->get_count_professor($codProfessor);
         $this->load->view('artigos_view_professor', $professor);
     }
 

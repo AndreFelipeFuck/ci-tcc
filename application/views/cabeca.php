@@ -32,7 +32,7 @@
 		      </li>
                
 		      <li class="nav-item">
-		        <a class="nav-link" href="<?php echo site_url('home/disciplina_view')?>">Disciplinas</a>
+		        <a class="nav-link" href="<?php echo site_url('disciplinas')?>">Disciplinas</a>
 		      <!--</li>
 		       <li class="nav-item">
 		        <a class="nav-link" href="#">Videos</a>

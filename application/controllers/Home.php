@@ -8,8 +8,20 @@
 
 class Home extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->helper('url');
+        $this->load->library('session');
+        $this->load->model('artigos_model');
+    }
+
     public function index(){
-        redirect("welcome");
+        $data = array(
+            'artigos' => null
+        );
+        $data['artigos'] = $this->artigos_model->get_artigos_by_data();
+        $this->load->view('home', $data);
     }
     
     public function add(){

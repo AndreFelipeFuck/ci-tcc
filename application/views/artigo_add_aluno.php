@@ -24,21 +24,21 @@
 			 </div>
 			 <div class="form-group">
 			 	<label for="Escl-Mat">Matérias:</label>
-			  	<select class="form-control" id="Escl-Mat" required>
-			  		<option value="nenhuma">Nenhuma</option>
-			    	<option value="biologia">Biologia</option>
-			 		<option value="fisica">Física</option>
-			 		<option value="filosofia">Filosofia</option>
-			 		<option value="geografia">Geografia</option>
-			 		<option value="historia">História</option>
-			 		<option value="ingles">Inglês</option>
-			 		<option value="matematica">Matemática</option>
-			 		<option value="portugues">Português</option>
-			 		<option value="quimica">Química</option>
-			 		<option value="sociologia">Sociologia</option>
-			 		<option value="agroTec">Agropecuária</option>
-			 		<option value="infoTec">Informatica</option>
-			 		<option value="quimiTec">Química(Tec)</option>
+			  	<select class="form-control" id="Escl-Mat" required name="disciplina_codDisiciplina">
+			  		<option value="0">Nenhuma</option>
+			    	<option value="2">Biologia</option>
+			 		<option value="3">Física</option>
+			 		<option value="4">Filosofia</option>
+			 		<option value="5">Geografia</option>
+			 		<option value="6">História</option>
+			 		<option value="7">Inglês</option>
+			 		<option value="8">Matemática</option>
+			 		<option value="9">Português</option>
+			 		<option value="10">Química</option>
+			 		<option value="11">Sociologia</option>
+			 		<option value="12">Agropecuária</option>
+			 		<option value="13">Informatica</option>
+			 		<option value="14">Química(Tec)</option>
 			  	</select>
 			</div>
 			<div class="form-group">

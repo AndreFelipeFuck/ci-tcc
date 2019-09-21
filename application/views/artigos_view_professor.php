@@ -7,6 +7,7 @@
          
     <section class="conteiner0">
         <h1>Artigos</h1>
+         <!--<h3>No momento a <?php echo $contar->resultado?> artigos</h3>-->
         <a href="<?php echo site_url('professores/artigos_add')?>?codProfessor=<?php echo $_GET['codProfessor']?>" class="btn btn-warning">Novo artigo</a>
         <br>
                 <?php foreach($artigos as $artigo){?>

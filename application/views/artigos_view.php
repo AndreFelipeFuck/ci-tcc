@@ -8,26 +8,25 @@
     <section class="conteiner0">
         <h1>Artigos</h1>
         <br>
-    <?php foreach($artigos as $artigo){?>
-        <div class="card mb-3">
-            <?php
+        <h3>No momento a <?php echo $contar?> artigos</h3>
+        <br>
+        <?php foreach($artigos as $artigo){?>
+            <article class="vidCont">
+                <?php
                     if($artigo->imgArtigo == null){?>
-                        <img src="<?php echo base_url('assets/bootstrap/img/eng.png')?>" class="card-img-top" alt="..."><?php
-                    }else{
-                        ?><img src="<?php echo base_url("upload/artigos/$artigo->imgArtigo")?>" class="card-img-top" alt="...">
-            <?php }?>
-
-            <div class="card-body">
-                <h4 class="card-title"><?php echo $artigo->titulo;?></h4>
-                <p class="card-text"><?php echo $artigo->corpo;?></p>
-                <a href="<?php echo site_url('artigos/artigo_page/')?>?codArtigo=<?php echo $artigo->codArtigo;?>" class="btn btn-primary">Visulizar</a>
-              </div>
-            </div>
-             
-          
-        </div>
+                        <img src="<?php echo base_url('assets/bootstrap/img/crisp.jpg')?>">
+                <?php
+                    }else{?>
+                        <img src="<?php echo base_url("upload/artigos/$artigo->imgArtigo")?>">
+              <?php }?>
+                <div>
+                    <h3><?php echo $artigo->titulo?></h3>
+                    <p><?php echo $artigo->corpo?></p>
+                    <a href="<?php echo site_url('artigos/artigo_page/')?>?codArtigo=<?php echo $artigo->codArtigo;?>" class="btn btn-primary">Visulizar</a>
+                </div>
+            </article>
+        <br>
     <?php }?>
-    <p> <?php  ?> </p>
    </section>
     
 </div>
