@@ -36,7 +36,7 @@
 			<?php } ?>
 		</div>
 		<div class="nomeMateria">
-			<label>Disciplinas: </label>
+			<label>Disciplinas: <?php echo $perfil->nomeDisciplina?> </label>
 			<h4 id="nomeMateria">Exemplo Disciplina</h4>
 		</div>       
 	</div>

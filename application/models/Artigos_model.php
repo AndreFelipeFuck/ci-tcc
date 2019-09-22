@@ -57,14 +57,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         public function get_by_id($codArtigo){
             
-            $this->db->select('codArtigo, titulo, corpo, imgArtigo ,nomeProfessor')->from('artigos ,professores')->where("codArtigo = '$codArtigo' and professores_codProfessor = codProfessor");
+            $this->db->select('codArtigo, titulo, corpo, imgArtigo ,nomeProfessor, nomeDisciplina')->from('artigos ,professores, disciplinas')->where("codArtigo = '$codArtigo' and professores_codProfessor = codProfessor and disciplina_codDisciplina = codDisciplina");
             $query = $this->db->get();
             return $query->row();
         }
 
         public function get_by_id_aluno($codArtigo){
             
-            $this->db->select('codArtigo, titulo, corpo, imgArtigo ,nomeAluno')->from('artigos ,alunos')->where("codArtigo = '$codArtigo' and alunos_codAluno = codAluno");
+            $this->db->select('codArtigo, titulo, corpo, imgArtigo ,nomeAluno, nomeDisciplina')->from('artigos ,alunos, disciplinas')->where("codArtigo = '$codArtigo' and alunos_codAluno = codAluno and disciplina_codDisciplina = codDisciplina");
             $query = $this->db->get();
             return $query->row();
         }
@@ -93,6 +93,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         public function delete_by_id($codArtigo){
             $this->db->where('codArtigo', $codArtigo);
+            $this->db->delete($this->table);
+        }
+
+        public function delete_all_aluno($alunos_codAluno){
+            $this->db->where('alunos_codAluno', $alunos_codAluno);
+            $this->db->delete($this->table);
+        }
+
+        public function delete_all_professor($professores_codProfessor){
+            $this->db->where('professores_codProfessor', $professores_codProfessor);
             $this->db->delete($this->table);
         }
 

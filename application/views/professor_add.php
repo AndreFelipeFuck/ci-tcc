@@ -26,18 +26,24 @@
 			 </div>
 			 <span>Docente da área:</span>
 				 <br>
-				 <div class="form-info">
-				 	<input type="radio" name="area" value="Ensino Medio">
-				 	<label>Ensino Medio</label>
-				 </div>
-				 <div class="form-info">
-				 	<input type="radio" name="area" value="Ensino Técnico">
-				 	<label>Ensino Técnico</label>
-				 </div>
-				 <div class="form-info">
-				 	<input type="radio" name="area" value="Ensino Superior">
-				 	<label>Ensino Superior</label>
-				 </div>
+					<label for="Escl-Mat">Matérias:</label>
+				  	 	<select class="form-control" id="Escl-Mat" name="disciplina_codDisiciplina" required>
+				  		<option value="15" name="disciplina_codDisiciplina">Nenhuma</option>
+				    	<option value="1" name="disciplina_codDisiciplina">Biologia</option>
+				 		<option value="2" name="disciplina_codDisiciplina">Física</option>
+				 		<option value="3" name="disciplina_codDisiciplina">Química</option>
+				 		<option value="4" name="disciplina_codDisiciplina">Geografia</option>
+				 		<option value="5" name="disciplina_codDisiciplina">História</option>
+				 		<option value="6" name="disciplina_codDisiciplina">Pr.Textual</option>
+				 		<option value="7" name="disciplina_codDisiciplina">Matemática</option>
+				 		<option value="8" name="disciplina_codDisiciplina">Inglês</option>
+				 		<option value="9" name="disciplina_codDisiciplina">Espanhol</option>
+				 		<option value="10" name="disciplina_codDisiciplina">Filosofia</option>
+				 		<option value="11" name="disciplina_codDisiciplina">Sociologia</option>
+				 		<option value="12" name="disciplina_codDisiciplina">Agropecuária</option>
+				 		<option value="13" name="disciplina_codDisiciplina">Informatica</option>
+				 		<option value="14" name="disciplina_codDisiciplina">Química(tec)</option>
+			  		</select>
 			<div class="espaco2"></div>
 			<span>Mini Curriculo:</span>
 			<br>

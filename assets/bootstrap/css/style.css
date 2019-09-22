@@ -21,7 +21,8 @@ body{
 }
 
 .navbar{
-	border-radius: 2px;
+	background-color: #fff;
+	border-radius: 3px;
 	margin-right: 10%;
 	margin-left: 10%;
 	margin-top: 2%;
@@ -33,7 +34,11 @@ body{
 
 .regis{
 	margin-right: 5px;
+	color: #6c757d;
+}
 
+#regis a:hover{
+	color: gray;
 }
 
 .navbar-brand{
@@ -62,20 +67,23 @@ body{
 
 }
 
+.conteiner1{
+	background-color: #fff;
+}
+
 .conteiner2{
-	background-color: #f8f9fa;
-	border-radius: 2px;
+	background-color: #fff;
+	border-radius: 3px;
 	margin-right: 10%;
 	margin-left: 10%;
 	width: 80%;
-	height: 70%;
 	padding: 2%;
 }
 
 .vidCont{
-	height: 40%;
+	height: 25%;
 	border-radius: 3px;
-	background-color: #E8F7F8;
+	background-color: #E8F7F8; 
 }
 
 .vidCont img{
@@ -102,13 +110,12 @@ body{
 	margin: 0 auto;
 	position: relative;
 	width: 50%;
-	height: 110%;
 	
 }
 
 .conteinerMtr{
-	background-color: #f8f9fa;
-	border-radius: 2px;
+	background-color: #fff;
+	border-radius: 3px;
 	margin: 0 auto;
 	position: relative;
 	padding: 2%;
@@ -134,12 +141,37 @@ body{
 	margin: 0 auto;
 	position: relative;
 }
+#btn-ex01{
+	background-color: transparent;
+    background-image: none;
+	border-color:  #838383;
+	color: #838383;
+}
+
+#btn-ex01:hover {
+	color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+#btn-ex0{
+	background-color: transparent;
+    background-image: none;
+	border-color:  #838383;
+	color: #838383;
+}
+
+#btn-ex0:hover {
+	color: #fff;
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
 
 #btn-ex{
 	background-color: transparent;
     background-image: none;
-	border-color:  #8f3d8f;
-	color: #8f3d8f;
+	border-color:  #838383;
+	color: #838383;
 }
 
 #btn-ex:hover {
@@ -151,8 +183,8 @@ body{
 #btn-ex2{
 	background-color: transparent;
     background-image: none;
-	border-color:  #dc3545;
-	color: #dc3545;
+	border-color:  #838383;
+	color: #838383;
 }
 
 #btn-ex2:hover {
@@ -164,8 +196,8 @@ body{
 #btn-ex3{
 	background-color: transparent;
     background-image: none;
-	border-color:  #fd7e14;
-	color: #fd7e14;
+	border-color:  #838383;
+	color: #838383;
 }
 
 #btn-ex3:hover {
@@ -177,8 +209,8 @@ body{
 #btn-ex4{
 	background-color: transparent;
     background-image: none;
-	border-color:  #5d3011;
-	color: #5d3011;
+	border-color:  #838383;
+	color: #838383;
 }
 
 #btn-ex4:hover {
@@ -190,8 +222,8 @@ body{
 #btn-ex5{
 	background-color: transparent;
     background-image: none;
-	border-color:  #ffc84d;
-	color: #ffc84d;
+	border-color:  #838383;
+	color: #838383;
 }
 
 #btn-ex5:hover {
@@ -203,8 +235,8 @@ body{
 #btn-ex6{
 	background-color: transparent;
     background-image: none;
-	border-color:  #173f5f;
-	color: #173f5f;
+	border-color:  #838383;
+	color: #838383;
 }
 
 #btn-ex6:hover {
@@ -216,8 +248,8 @@ body{
 #btn-ex7{
 	background-color: transparent;
     background-image: none;
-	border-color:  #007bff;
-	color: #007bff;
+	border-color:  #838383;
+	color: #838383;
 }
 
 #btn-ex7:hover {
@@ -229,8 +261,8 @@ body{
 #btn-ex8{
 	background-color: transparent;
     background-image: none;
-	border-color:  #ffc107;
-	color: #ffc107;
+	border-color:  #838383;
+	color: #838383;
 }
 
 #btn-ex8:hover {
@@ -242,8 +274,8 @@ body{
 #btn-ex9{
 	background-color: transparent;
     background-image: none;
-	border-color: #e83e8c;
-	color: #e83e8c;
+	border-color:  #838383;
+	color: #838383;
 }
 
 #btn-ex9:hover {
@@ -255,8 +287,8 @@ body{
 #btn-ex10{
 	background-color: transparent;
     background-image: none;
-	border-color:  #763c7d;
-	color: #763c7d;
+	border-color:  #838383;
+	color: #838383;;
 }
 
 #btn-ex10:hover {
@@ -268,8 +300,8 @@ body{
 #btn-ex11{
 	background-color: transparent;
     background-image: none;
-	border-color:  #49b108;
-	color: #49b108;
+	border-color:  #838383;
+	color: #838383;
 }
 
 #btn-ex11:hover {
@@ -281,8 +313,8 @@ body{
 #btn-ex12{
 	background-color: transparent;
     background-image: none;
-	border-color:  #425f8c;
-	color: #425f8c;
+	border-color:  #838383;
+	color: #838383;
 }
 
 #btn-ex12:hover {
@@ -294,8 +326,8 @@ body{
 #btn-ex13{
 	background-color: transparent;
     background-image: none;
-	border-color: #a25ec5;
-	color: #a25ec5;
+	border-color:  #838383;
+	color: #838383;
 }
 
 #btn-ex13:hover {
@@ -321,12 +353,12 @@ body{
 	margin: 0 auto;
 	position: relative;
 	width: 75%;
-	height: 75%;
+	height: 70%;
 	padding: 4%;
 }
 
 .divOpi{
-	background-color: #f8f9fa;
+	background-color: #fff;
 	border-radius: 15px;
 	margin: 0 auto;
 	position: relative;
@@ -423,6 +455,67 @@ textarea {
 	font-size: 15px;
 }
 
+.conteinerArtView{
+	width: 80%;
+	padding: 2%;
+	background-color: #fff;
+	margin: 0 auto;
+	position: relative;
+	border-radius: 3px;
+}
+
+#cartao{
+	width: 30%;
+	height: 40%;
+}
+
+//
+
+.container-viewArt{
+	background-color: #fff;
+	margin: 0 auto;
+	position: relative;
+	padding: 2%;
+	width: 80%;
+	border-radius: 2px;
+}
+
+#botao-NA{
+	background-color: #17a2b8;
+    background-image: none;
+	color: #fff;
+}
+
+.ArtPost{
+	display: inline-block;
+	width: 100%;
+	height: 25%;
+	background-color: #fff;
+	border-style: solid 1px #17a2b8;
+	border-radius: 5px;
+}
+
+.ArtPost img{
+	float: left;
+	width: 30%;
+	height: 100%;
+	margin-bottom: 2%;
+	padding: 0.5%;
+}
+
+#infoCard{
+	display: inline-block;
+	width: 45%;
+ 	
+}
+
+#infoOpi{
+	margin: 1%;
+	display: inline-block;
+	width: 15%;
+}
+
+//
 
 .conteinerLogin{
 	display: inline-block;
@@ -479,25 +572,6 @@ textarea {
 	padding-top: 2%;
 }
 
-.conteiner-footer{
-	width: 90%;
-	height: 100%;
-	position: relative;
-	margin: 0 auto;
-	padding: 1%;
-}
-
-.footInf{
-	display: inline;
-	float: left;
-	padding: 10px;
-	border-radius: 3px;
-	background-color: #C7E6E5;
-	width: 12%;
-	height: 100%;
-	margin-left: 2%; 
-}
-
 .formulario{
 	padding-left: 5%;
 	padding-top: 3%;
@@ -546,6 +620,7 @@ textarea {
 .fotoPerfil img{
 	background-color: #BCBBBB;
  	width: 100%;
+ 	max-height: 30%;
 }
 
 .infoPerfil{
@@ -638,8 +713,57 @@ textarea {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 25px 0 rgba(0, 0, 0, 0.19);
 }
 
+#sombra2{
+	box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 25px 0 rgba(0, 0, 0, 0.19);
+}
+
+.conteiner-footer{
+	width: 90%;
+	position: relative;
+	margin: 0 auto;
+	padding: 1%; 
+}
+
+.footInf{
+	width: 12%;
+	padding: 1%;
+	border-radius: 3px;
+	margin-left: 1%;
+}
+
+#footInf{
+	display: inline-block;
+}
+
+.botao-rep{
+	display: inline-block;
+	margin-right: 1%;
+	float: right;
+}
+
+#report{
+	color: #fff;
+    background-color: #066690;
+    border-color: #fff;
+}
+
+#report:hover{
+	background-color: #fff;
+    background-image: none;
+	border-color: #066690;
+	color: #066690;
+}
+
+#licenca{
+	margin: 0 auto;
+	text-align: center;
+	border-top: solid 1px #fff;
+	padding-top: 0.3%;
+	width: 100%;
+	color: #fff;
+}
+
 .rodape{
 	width: 100%;
-	height: 37%;
-	background-color: #09727B;
+	background-color: #17a2b8;
 }

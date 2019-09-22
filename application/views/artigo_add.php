@@ -1,6 +1,7 @@
 <?php 
 	include "cabeca.php";
 ?>
+<script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js"></script>
 <div class="espaco2"></div>
 	<div class="conteinerCadArt">
 		<form  action="<?php echo site_url('artigos/artigo_add')?>" method="post" enctype = "multipart/form-data">
@@ -24,21 +25,22 @@
 			 </div>
 			 <div class="form-group">
 			 	<label for="Escl-Mat">Matérias:</label>
-			  	<select class="form-control" id="Escl-Mat" required>
-			  		<option value="0" name="disciplina_codDisiciplina">Nenhuma</option>
-			    	<option value="2" name="disciplina_codDisiciplina">Biologia</option>
-			 		<option value="3" name="disciplina_codDisiciplina">Física</option>
-			 		<option value="4" name="disciplina_codDisiciplina">Filosofia</option>
-			 		<option value="5" name="disciplina_codDisiciplina">Geografia</option>
-			 		<option value="6" name="disciplina_codDisiciplina">História</option>
-			 		<option value="7" name="disciplina_codDisiciplina">Inglês</option>
-			 		<option value="8" name="disciplina_codDisiciplina">Matemática</option>
-			 		<option value="9" name="disciplina_codDisiciplina">Português</option>
-			 		<option value="10" name="disciplina_codDisiciplina">Química</option>
+			  	<select class="form-control" id="Escl-Mat" name="disciplina_codDisiciplina" required>
+			  		<option value="15" name="disciplina_codDisiciplina">Nenhuma</option>
+			    	<option value="1" name="disciplina_codDisiciplina">Biologia</option>
+			 		<option value="2" name="disciplina_codDisiciplina">Física</option>
+			 		<option value="3" name="disciplina_codDisiciplina">Química</option>
+			 		<option value="4" name="disciplina_codDisiciplina">Geografia</option>
+			 		<option value="5" name="disciplina_codDisiciplina">História</option>
+			 		<option value="6" name="disciplina_codDisiciplina">Pr.Textual</option>
+			 		<option value="7" name="disciplina_codDisiciplina">Matemática</option>
+			 		<option value="8" name="disciplina_codDisiciplina">Inglês</option>
+			 		<option value="9" name="disciplina_codDisiciplina">Espanhol</option>
+			 		<option value="10" name="disciplina_codDisiciplina">Filosofia</option>
 			 		<option value="11" name="disciplina_codDisiciplina">Sociologia</option>
 			 		<option value="12" name="disciplina_codDisiciplina">Agropecuária</option>
 			 		<option value="13" name="disciplina_codDisiciplina">Informatica</option>
-			 		<option value="14" name="disciplina_codDisiciplina">Química(Tec)</option>
+			 		<option value="14" name="disciplina_codDisiciplina">Química(tec)</option>
 			  	</select>
 			</div>
 			<div class="form-group">

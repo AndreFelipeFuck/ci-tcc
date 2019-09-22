@@ -1,5 +1,5 @@
 <?php  include "cabeca.php";
-print_r($_SESSION);
+//print_r($_SESSION);
 ?>
 <div class="espaco2"></div>
     <div class="conteinerPerfil" id="sombra">

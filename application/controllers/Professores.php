@@ -59,7 +59,7 @@ class Professores extends CI_Controller
                         'nomeProfessor' => $this->input->post('nomeProfessor'),
                         'dataNasc' => $this->input->post('dataNasc'),
                         'miniCurriculo' => $this->input->post('miniCurriculo'),
-                        'institucao' => $this->input->post('institucao'),
+                        //'institucao' => $this->input->post('institucao'),
                         'email' => $this->input->post('email'),
                         'senha' => md5($this->input->post('senha')),
                     );
@@ -96,7 +96,7 @@ class Professores extends CI_Controller
                         'dataNasc' => $this->input->post('dataNasc'),
                         'imgProfessor' => $config['file_name'].".jpg",
                         'miniCurriculo' => $this->input->post('miniCurriculo'),
-                        'institucao' => $this->input->post('institucao'),
+                        //'institucao' => $this->input->post('institucao'),
                         'email' => $this->input->post('email'),
                         'senha' => md5($this->input->post('senha')),
                     );
@@ -253,6 +253,7 @@ class Professores extends CI_Controller
 
     public function professor_delete($codProfessor)
     {
+        $this->artigos_model->delete_all_professor($codProfessor);
         $this->professor_model->delete_by_id($codProfessor);
         echo json_encode(array("status" => TRUE));
         $this->session->set_userdata('professores');

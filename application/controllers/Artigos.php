@@ -37,7 +37,7 @@ class Artigos extends CI_Controller
         $data['artigos'] = $this->artigos_model->get_all_artigos();
         $data['contar'] = $this->artigos_model->get_count();
 
-        $this-> load->view('artigos_view', $data);
+        $this->load->view('artigos_view', $data);
     }
 
     public function artigos_listar_by_data(){
@@ -59,7 +59,7 @@ class Artigos extends CI_Controller
 						'titulo' => $this->input->post('titulo'),
 						'corpo' => $this->input->post('corpo'),
 						'professores_codProfessor' => $this->input->post('professores_codProfessor'),
-						'disciplina_codDisiciplina' => $this->input->post('disciplina_codDisiciplina'),
+						'disciplina_codDisciplina' => $this->input->post('disciplina_codDisiciplina'),
 						'dataArtigo' => date("Y-m-d")
 				);
 
@@ -68,7 +68,7 @@ class Artigos extends CI_Controller
 						'titulo' => $this->input->post('titulo'),
 						'corpo' => $this->input->post('corpo'),
 						'alunos_codAluno' => $this->input->post('alunos_codAluno'),
-						'disciplina_codDisiciplina' => $this->input->post('disciplina_codDisiciplina'),
+						'disciplina_codDisciplina' => $this->input->post('disciplina_codDisiciplina'),
 						'dataArtigo' => date("Y-m-d")
 				)	;
 			}
@@ -107,7 +107,7 @@ class Artigos extends CI_Controller
 							'corpo' => $this->input->post('corpo'),
 							'imgArtigo' => $this->input->post('imgArtigo'),
 							'professores_codProfessor' => $this->input->post('professores_codProfessor'),
-							'disciplina_codDisiciplina' => $this->input->post('disciplina_codDisiciplina'),
+							'disciplina_codDisciplina' => $this->input->post('disciplina_codDisiciplina'),
 							'imgArtigo' => $config['file_name'].".jpg",
 							'dataArtigo' => date("Y-m-d")
 						);
@@ -117,7 +117,7 @@ class Artigos extends CI_Controller
 							'corpo' => $this->input->post('corpo'),
 							'imgArtigo' => $this->input->post('imgArtigo'),
 							'alunos_codAluno' => $this->input->post('alunos_codAluno'),
-							'disciplina_codDisiciplina' => $this->input->post('disciplina_codDisiciplina'),
+							'disciplina_codDisciplina' => $this->input->post('disciplina_codDisiciplina'),
 							'imgArtigo' => $config['file_name'].".jpg",
 							'dataArtigo' => date("Y-m-d")
 						);

@@ -58,7 +58,7 @@ class Alunos extends CI_Controller
 
 			            if ($query->num_rows() == 1){
 			                $aluno = $query->row();
-			                $this->session->set_userdata("alunos", $aluno->nomeAluno);
+			                $this->session->set_userdata("alunos", $aluno->codAluno);
 			                $codAluno = $this->aluno_model->get_by_login($email, $senha);
 			                $url = "?codAluno=".$aluno->codAluno;
 			               redirect ("alunos/aluno_perfil/$url");
@@ -105,7 +105,7 @@ class Alunos extends CI_Controller
 
 			            if ($query->num_rows() == 1){
 			                $aluno = $query->row();
-			                $this->session->set_userdata("alunos", $aluno->nomeAluno);
+			                $this->session->set_userdata("alunos", $aluno->codAluno);
 			                $codAluno = $this->aluno_model->get_by_login($email, $senha);
 			                $url = "?codAluno=".$aluno->codAluno;
 			               redirect ("alunos/aluno_perfil/$url");
@@ -255,6 +255,7 @@ class Alunos extends CI_Controller
 	}
 
 	public function aluno_delete($codAluno){
+		$this->artigos_model->delete_all_aluno($codAluno);
 		$this->aluno_model->delete_by_id($codAluno);
 		echo json_encode(array("status" => TRUE));
 		$this->session->set_userdata('alunos');
