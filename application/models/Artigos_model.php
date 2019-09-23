@@ -16,18 +16,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $this->db->from('artigos');
             $query=$this->db->get();
             return $query->result();
-        }*/
-        public function get_all_artigos()
-        {
-            $this->db->from($this->table);
-            $query=$this->db->get();
-            return $query->result();
         }
-
-        public function get_count() {
-            return $this->db->count_all($this->table);
+        public function get_by_id_aluno($codArtigo){
+            $this->db->select('codArtigo, titulo, corpo, imgArtigo , nomeCompleto')->from('artigos ,professores, alunos')->where("codArtigo = '$codArtigo' and alunos_codAluno = codAluno");
+            $query = $this->db->get();
+            return $query->row();
         }
-
 
         public function get_by_id_simples($codArtigo)
         {
@@ -37,16 +31,59 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             return $query->row();
         }
 
+        */
+        public function get_all_artigos()
+        {
+            $this->db->from($this->table);
+            $query=$this->db->get();
+            return $query->result();
+        }
+
+        public function get_artigos_by_data(){
+            $this->db->select('codArtigo, titulo, corpo, imgArtigo, nomeProfessor')-> from('artigos, professores, alunos')-> where ('professores_codProfessor = codProfessor')->order_by ('dataArtigo DESC')->limit(5);
+            $query=$this->db->get();
+            return $query->result();
+        }
+
+        public function get_count() {
+            return $this->db->count_all($this->table);
+        }
+
+        public function get_count_professor($codProfessor){
+              $this->db->select('COUNT(codArtigo) as resultado')->from('professores, artigos')->where("professores_codProfessor = codProfessor and codProfessor = '$codProfessor'");
+                $query=$this->db->get();
+                return $query->result();
+        }
+
         public function get_by_id($codArtigo){
-            $this->db->select('codArtigo, titulo, corpo, imgArtigo , nomeCompleto')->from('artigos ,professores')->where("codArtigo = '$codArtigo' and professores_codProfessor = codProfessor");
+            
+            $this->db->select('codArtigo, titulo, corpo, imgArtigo ,nomeProfessor, nomeDisciplina')->from('artigos ,professores, disciplinas')->where("codArtigo = '$codArtigo' and professores_codProfessor = codProfessor and disciplina_codDisciplina = codDisciplina");
             $query = $this->db->get();
             return $query->row();
         }
 
-        public function artigo_add($data)
-        {
+        public function get_by_id_aluno($codArtigo){
+            
+            $this->db->select('codArtigo, titulo, corpo, imgArtigo ,nomeAluno, nomeDisciplina')->from('artigos ,alunos, disciplinas')->where("codArtigo = '$codArtigo' and alunos_codAluno = codAluno and disciplina_codDisciplina = codDisciplina");
+            $query = $this->db->get();
+            return $query->row();
+        }
+
+        public function analise($codArtigo){
+            $this->db->select('alunos_codAluno')->from($this->table)->where("codArtigo = '$codArtigo'");
+            $query = $this->db->get();
+            return $query->row();
+        }
+
+    
+
+        public function artigo_add($data){
             $this->db->insert($this->table, $data);
             return $this->db->insert_id();
+        }
+
+        public function artigo_add_disciplinas($data){
+            $this->db->insert("artigos_has_disciplinas", $data);
         }
 
         public function artigo_update($where, $data){
@@ -59,11 +96,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $this->db->delete($this->table);
         }
 
+        public function delete_all_aluno($alunos_codAluno){
+            $this->db->where('alunos_codAluno', $alunos_codAluno);
+            $this->db->delete($this->table);
+        }
+
+        public function delete_all_professor($professores_codProfessor){
+            $this->db->where('professores_codProfessor', $professores_codProfessor);
+            $this->db->delete($this->table);
+        }
+
         public function get_by_login($titulo, $corpo){
-         $this->db->select('codArtigo, titulo, corpo')->from('artigos')->where("titulo = '$titulo' and corpo = '$corpo'");
-         $query = $this->db->get();
-         return $query;
-     }
+            $this->db->select('codArtigo, titulo, corpo')->from('artigos')->where("titulo = '$titulo' and corpo = '$corpo'");
+            $query = $this->db->get();
+             return $query;
+        }
 
     }
 

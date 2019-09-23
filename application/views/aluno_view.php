@@ -19,7 +19,7 @@
     <?php foreach($alunos as $aluno){?>
     <tr>
         <?php //if($aluno->codAluno == 7){//?>
-            <td><?php echo $aluno->nomeCompleto;?></td>
+            <td><?php echo $aluno->nomeAluno;?></td>
             <td><?php echo $aluno->email;?></td>
             <td><?php echo $aluno->curso;?></td>
             <td><?php echo $aluno->anoLetivo;?></td>
@@ -70,7 +70,7 @@
     success: function(data)
     {
     $('[name="codAluno"]').val(data.codAluno);
-    $('[name="nomeCompleto"]').val(data.nomeCompleto);
+    $('[name="nomeAluno"]').val(data.nomeAluno);
     $('[name="email"]').val(data.email);
     $('[name="senha"]').val(data.senha);
 
@@ -150,7 +150,7 @@
                             <label class="control-label col-md-3">Nome</label>
                             <div class="col-md-9">
 
-                                <input name="nomeCompleto" placeholder="Book ISBN" class="form-
+                                <input name="nomeAluno" placeholder="Book ISBN" class="form-
     control" type="text">
 
                             </div>

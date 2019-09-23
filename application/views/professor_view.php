@@ -16,7 +16,7 @@
 
         <?php foreach($professores as $professor){?>
             <tr>
-                <td><?php echo $professor->nomeCompleto;?></td>
+                <td><?php echo $professor->nomeProfessor;?></td>
                 <td><?php echo $professor->email;?></td>
                 <td><?php echo $professor->institucao;?></td>
                 <td>
@@ -64,7 +64,7 @@
             success: function(data)
             {
                 $('[name="codProfessor"]').val(data.codProfessor);
-                $('[name="nomeCompleto"]').val(data.nomeCompleto);
+                $('[name="nomeProfessor"]').val(data.nomeProfessor);
                 $('[name="email"]').val(data.email);
                 $('[name="senha"]').val(data.senha);
 
@@ -144,7 +144,7 @@
                             <label class="control-label col-md-3">Nome</label>
                             <div class="col-md-9">
 
-                                <input name="nomeCompleto" placeholder="Book ISBN" class="form-
+                                <input name="nomeProfessor" placeholder="Book ISBN" class="form-
     control" type="text">
 
                             </div>

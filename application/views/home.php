@@ -33,43 +33,43 @@
 	<section class="conteiner1">
 
 		<nav class="navbar navbar-light bg-light">
-		  <a class="navbar-brand" href="#" align="middle">
+		  <a class="navbar-brand" href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=1" align="middle">
 		    <img src="<?php echo base_url('assets//bootstrap/img/bio.png')?>" width="30" height="30" class="d-inline-block align-top" alt="">
 		    <h6>Biologia</h6>
 		  </a>
-		  <a class="navbar-brand" href="#" align="middle">
+		  <a class="navbar-brand" href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=2" align="middle">
 		    <img src="<?php echo base_url('assets/bootstrap/img/fisica.png')?>" width="30" height="30" class="d-inline-block align-top" alt="">
 		    <h6>Física</h6>
 		  </a>
-		  <a class="navbar-brand" href="#" align="middle">
+		  <a class="navbar-brand" href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=10" align="middle">
 		    <img src="<?php echo base_url('assets/bootstrap/img/filo.png')?>" width="30" height="30" class="d-inline-block align-top" alt="">
 		    <h6>Filosofia</h6>
 		  </a>
-		  <a class="navbar-brand" href="#" align="middle">
+		  <a class="navbar-brand" href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=4" align="middle">
 		    <img src="<?php echo base_url('assets/bootstrap/img/geo.png')?>" width="30" height="30" class="d-inline-block align-top" alt="">
 		    <h6>Geografia</h6>
 		  </a>
-		  <a class="navbar-brand" href="#" align="middle">
+		  <a class="navbar-brand" href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=5" align="middle">
 		    <img src="<?php echo base_url('assets/bootstrap/img/historia.png')?>" width="30" height="30" class="d-inline-block align-top" alt="">
 		    <h6>História</h6>
 		  </a>
-		  <a class="navbar-brand" href="#" align="middle">
+		  <a class="navbar-brand" href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=8" align="middle">
 		    <img src="<?php echo base_url('assets/bootstrap/img/ing.png')?>" width="30" height="30" class="d-inline-block align-top" alt="">
 		    <h6>Inglês</h6>
 		  </a>
-		  <a class="navbar-brand" href="#" align="middle">
+		  <a class="navbar-brand" href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=7" align="middle">
 		    <img src="<?php echo base_url('assets/bootstrap/img/mat.png')?>" width="30" height="30" class="d-inline-block align-top" alt="">
 		    <h6>Matemática</h6>
 		  </a>
-		  <a class="navbar-brand" href="#" align="middle">
+		  <a class="navbar-brand" href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=15" align="middle">
 		    <img src="<?php echo base_url('assets/bootstrap/img/port.png')?>" width="30" height="30" class="d-inline-block align-top" alt="">
 		    <h6>Potuguês</h6>
 		  </a>
-		  <a class="navbar-brand" href="#" align="middle">
+		  <a class="navbar-brand" href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=3" align="middle">
 		    <img src="<?php echo base_url('assets/bootstrap/img/quimi.png')?>" width="30" height="30" class="d-inline-block align-top" alt="">
 		    <h6>Química</h6>
 		  </a>
-		   <a class="navbar-brand" href="#" align="middle">
+		   <a class="navbar-brand" href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=11" align="middle">
 		    <img src="<?php echo base_url('assets/bootstrap/img/soci.png')?>" width="30" height="30" class="d-inline-block align-top" alt="">
 		    <h6>Sociologia</h6>
 		  </a>
@@ -77,44 +77,27 @@
 	</section>
 	<div class="espaco2"></div>
 	<section class="conteiner2">
-		<h1>Aulas:</h1>
+		<h1>Artigos</h1>
 		<br>
-		<article class="vidCont">
-			<img src="<?php echo base_url('assets/bootstrap/img/crisp.jpg')?>">
-			<div>
-				<h3>Titulo do video</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-			</div>
-		</article>
+		<?php foreach($artigos as $artigo){?>
+			<article class="vidCont">
+				<?php
+                    if($artigo->imgArtigo == null){?>
+						<img src="<?php echo base_url('assets/bootstrap/img/crisp.jpg')?>">
+				<?php
+                    }else{?>
+                    	<img src="<?php echo base_url("upload/artigos/$artigo->imgArtigo")?>">
+              <?php }?>
+				<div>
+					<h3><?php echo $artigo->titulo?></h3>
+					<p><?php echo $artigo->corpo?></p>
+					   <a href="<?php echo site_url('artigos/artigo_page/')?>?codArtigo=<?php echo $artigo->codArtigo;?>" class="btn btn-primary">Visulizar</a>
+				</div>
+			</article>
 		<br>
-		<article class="vidCont">
-			<img src="<?php echo base_url('assets/bootstrap/img/bh.jpg')?>">
-			<div>
-				<h3>Titulo do video</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-			</div>
-		</article>
+	<?php }?>
 	</section>
 	<div class="espaco2"></div>
-	<section class="conteiner2">
-		<h2>Artigos:</h2>
-		<br>
-		<article class="vidCont">
-			<img src="<?php echo base_url('assets/bootstrap/img/eng.png')?>">
-			<div>
-				<h3>Titulo do artigo</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-			</div>
-		</article>
-		<br>
-		<article class="vidCont">
-			<img src="<?php echo base_url('assets/bootstrap/img/bac.png')?>">
-			<div>
-				<h3>Titulo do artigo</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-			</div>
-		</article>
-	</section>
+	
 
-<?php 
-	include "rodape.php";
+<?php include "rodape.php"; ?>

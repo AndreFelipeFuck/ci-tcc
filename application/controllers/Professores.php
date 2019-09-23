@@ -42,7 +42,7 @@ class Professores extends CI_Controller
         //VALIDAR FORMULARIO
         $this->load->library('form_validation');
 
-        $this->form_validation->set_rules('nomeCompleto', 'Nome Completo', 'required|min_length[3]|max_length[20]', array('required' => 'O campo Nome Completo é obrigatorio.'));
+        $this->form_validation->set_rules('nomeProfessor', 'Nome Completo', 'required|min_length[3]|max_length[20]', array('required' => 'O campo Nome Completo é obrigatorio.'));
         $this->form_validation->set_rules('email', 'E-mail', 'required|valid_email', array('required' => 'O campo E-mail é obrigatorio.'));
         $this->form_validation->set_rules('senha', 'Senha', 'required|min_length[8]', array('required' => 'Você deve preencher a %s.'));
         $this->form_validation->set_rules('senhaconf', 'Confirmar Senha', 'required|matches[senha]', array('required' => 'O campo Confirmar senha é obrigatorio'));
@@ -56,10 +56,10 @@ class Professores extends CI_Controller
             if($imgProfessor['name'] == null) {
                 //ENVIAR PARA O BANCO
                     $data = array(
-                        'nomeCompleto' => $this->input->post('nomeCompleto'),
+                        'nomeProfessor' => $this->input->post('nomeProfessor'),
                         'dataNasc' => $this->input->post('dataNasc'),
                         'miniCurriculo' => $this->input->post('miniCurriculo'),
-                        'institucao' => $this->input->post('institucao'),
+                        //'institucao' => $this->input->post('institucao'),
                         'email' => $this->input->post('email'),
                         'senha' => md5($this->input->post('senha')),
                     );
@@ -70,7 +70,7 @@ class Professores extends CI_Controller
 
                     if ($query->num_rows() == 1){
                         $professor = $query->row();
-                        $this->session->set_userdata("professores", $professor->nomeCompleto);
+                        $this->session->set_userdata("professores", $professor->nomeProfessor);
                         $codProfessor = $this->professor_model->get_by_login($email, $senha);
                         $url = "?codProfessor=".$professor->codProfessor;
                        redirect ("professores/professor_perfil/$url");
@@ -92,11 +92,11 @@ class Professores extends CI_Controller
                if ($this->upload->do_upload('imgProfessor')){
                     echo 'Arquivo salvo com sucesso.';
                     $data = array(
-                        'nomeCompleto' => $this->input->post('nomeCompleto'),
+                        'nomeProfessor' => $this->input->post('nomeProfessor'),
                         'dataNasc' => $this->input->post('dataNasc'),
                         'imgProfessor' => $config['file_name'].".jpg",
                         'miniCurriculo' => $this->input->post('miniCurriculo'),
-                        'institucao' => $this->input->post('institucao'),
+                        //'institucao' => $this->input->post('institucao'),
                         'email' => $this->input->post('email'),
                         'senha' => md5($this->input->post('senha')),
                     );
@@ -108,7 +108,7 @@ class Professores extends CI_Controller
 
                     if ($query->num_rows() == 1){
                         $professor = $query->row();
-                        $this->session->set_userdata("professores", $professor->nomeCompleto);
+                        $this->session->set_userdata("professores", $professor->nomeProfessor);
                         $codProfessor = $this->professor_model->get_by_login($email, $senha);
                         $url = "?codProfessor=".$professor->codProfessor;
                        redirect ("professores/professor_perfil/$url");
@@ -134,7 +134,7 @@ class Professores extends CI_Controller
         if($vereficaSenha == null) {
             $this->load->library('form_validation');
 
-            $this->form_validation->set_rules('nomeCompleto', 'Nome Completo', 'required|min_length[3]|max_length[20]', array('required' => 'O campo Nome Completo é obrigatorio.'));
+            $this->form_validation->set_rules('nomeProfessor', 'Nome Completo', 'required|min_length[3]|max_length[20]', array('required' => 'O campo Nome Completo é obrigatorio.'));
             $this->form_validation->set_rules('email', 'E-mail', 'required|valid_email', array('required' => 'O campo E-mail é obrigatorio.'));
 
             if ($this->form_validation->run() == FALSE) {
@@ -144,7 +144,7 @@ class Professores extends CI_Controller
                 //SE O PROFESSOR NÂO QUISER TROCAR DE FOTO DE PERFIL
                 if($imgProfessor['name'] == null) {
                     $data = array(
-                       'nomeCompleto' => $this->input->post('nomeCompleto'),
+                       'nomeProfessor' => $this->input->post('nomeProfessor'),
                         'dataNasc' => $this->input->post('dataNasc'),
                         'miniCurriculo' => $this->input->post('miniCurriculo'),
                         'institucao' => $this->input->post('institucao'),
@@ -170,7 +170,7 @@ class Professores extends CI_Controller
                     if ($this->upload->do_upload('imgProfessor')){
                         echo 'Arquivo salvo com sucesso.';
                         $data = array(
-                            'nomeCompleto' => $this->input->post('nomeCompleto'),
+                            'nomeProfessor' => $this->input->post('nomeProfessor'),
                             'dataNasc' => $this->input->post('dataNasc'),
                             'imgProfessor' => $config['file_name'].".jpg",
                             'miniCurriculo' => $this->input->post('miniCurriculo'),
@@ -192,7 +192,7 @@ class Professores extends CI_Controller
         }elseif($vereficaSenha != null){
                 $this->load->library('form_validation');
 
-                $this->form_validation->set_rules('nomeCompleto', 'Nome Completo', 'required|min_length[3]|max_length[20]', array('required' => 'O campo Nome Completo é obrigatorio.'));
+                $this->form_validation->set_rules('nomeProfessor', 'Nome Completo', 'required|min_length[3]|max_length[20]', array('required' => 'O campo Nome Completo é obrigatorio.'));
                 $this->form_validation->set_rules('email', 'E-mail', 'required|valid_email', array('required' => 'O campo E-mail é obrigatorio.'));
                 $this->form_validation->set_rules('senha', 'Senha', 'required|min_length[8]', array('required' => 'Você deve preencher a %s.'));
                 $this->form_validation->set_rules('senhaconf', 'Confirmar Senha', 'required|matches[senha]', array('required' => 'O campo Confirmar senha é obrigatorio'));
@@ -203,7 +203,7 @@ class Professores extends CI_Controller
                 }else{
                     if($imgProfessor['name'] == null) {
                         $data = array(
-                            'nomeCompleto' => $this->input->post('nomeCompleto'),
+                            'nomeProfessor' => $this->input->post('nomeProfessor'),
                             'dataNasc' => $this->input->post('dataNasc'),
                             'miniCurriculo' => $this->input->post('miniCurriculo'),
                             'institucao' => $this->input->post('institucao'),
@@ -230,7 +230,7 @@ class Professores extends CI_Controller
                         if ($this->upload->do_upload('imgProfessor')){
                             echo 'Arquivo salvo com sucesso.';
                             $data = array(
-                                'nomeCompleto' => $this->input->post('nomeCompleto'),
+                                'nomeProfessor' => $this->input->post('nomeProfessor'),
                                 'dataNasc' => $this->input->post('dataNasc'),
                                 'anoLetivo' => $this->input->post('anoLetivo'),
                                 'imgProfessor' => $config['file_name'].".jpg",
@@ -253,6 +253,7 @@ class Professores extends CI_Controller
 
     public function professor_delete($codProfessor)
     {
+        $this->artigos_model->delete_all_professor($codProfessor);
         $this->professor_model->delete_by_id($codProfessor);
         echo json_encode(array("status" => TRUE));
         $this->session->set_userdata('professores');
@@ -262,7 +263,7 @@ class Professores extends CI_Controller
         $codProfessor = $this->input->get('codProfessor');
         $professor['perfil'] = $this->professor_model->get_by_id($codProfessor);
         $this->load->view('professor_perfil', $professor);
-        print_r($professor);
+        //print_r($professor);
     }
 
     public function professor_editar(){
@@ -278,11 +279,10 @@ class Professores extends CI_Controller
     }
 
     public function artigos_view(){
-         $codProfessor = $this->input->get('codProfessor');
+        $codProfessor = $this->input->get('codProfessor');
         $professor['artigos'] = $this->professor_model->get_by_id($codProfessor);
-        //
-         $professor['artigos'] = $this->artigos_model->get_all_artigos();
-        //
+        $professor['artigos'] = $this->artigos_model->get_all_artigos();
+        $professor['contar'] = $this->artigos_model->get_count_professor($codProfessor);
         $this->load->view('artigos_view_professor', $professor);
     }
 
