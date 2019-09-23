@@ -98,12 +98,7 @@ $db['default'] = array(
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
 	'cache_on' => FALSE,  'username' => 'aluno',
-84
- 
-  'password' => 'aluno',
-85
- 
-  'database' => 'bd_atom',
+   'password' => 'aluno',
 	'cachedir' => '',
 	'char_set' => 'utf8',
 	'dbcollat' => 'utf8_general_ci',
