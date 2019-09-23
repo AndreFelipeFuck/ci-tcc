@@ -4,8 +4,8 @@
 
 ?>
 <div class="espaco2"></div>
-	<section class="conteinerCad">
-		<h5 class="text-danger"><?php  echo  validation_errors();  ?><h5>
+	<div class="conteinerCad">
+		<h5 class="text-danger"><?php  echo  validation_errors();  ?></h5>
 		<form class="formulario"  action="<?php echo site_url('alunos/aluno_update_perfil')?>" method="post" enctype = "multipart/form-data">
 			<input type="hidden" value="<?= $perfil->codAluno?>" name="codAluno"/>
 			<h1>Editar Perfil:</h1>
@@ -155,6 +155,6 @@
 			<button type="reset" class="btn btn-secundary">Cancelar</button>
 		</form>
 
-	</section>
+	</div>
 
-<?php  //include "rodape.php";?>
+<?php  	include "rodape.php";?>
