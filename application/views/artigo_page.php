@@ -3,25 +3,24 @@
 ?>
 
 <div class="espaco2"></div>
-	<div class="conteinerTelaArt">
+	<div class="conteinerTelaArt" id="sombra">
 		<div class="tituloArt">
 			<h1 id="nomeArtigo"><?php echo $perfil->titulo;?></h1>
 		</div>
+		<div class="publicacao">
+			<label>Postado em:</label>
+			<label id="hora"> <?php echo $perfil->dataArtigo?></label>
+		</div>
 	<?php
           if ($perfil->imgArtigo == null){?>
-			<figure>
-				<img src="<?php echo base_url('assets/bootstrap/img/eng.png')?>">
-			</figure><?php
+				<div style="width: 100%; height: 2px; border-top: solid 2px #17a2b8;"></div><?php
 			}else{
                ?>
             <figure>
 				<img src="<?php echo base_url("upload/artigos/$perfil->imgArtigo")?>">
 			</figure>
 	<?php }?>
-		<div class="publicacao">
-			<label>Publicação:</label>
-			<label id="hora">exemplo hora</label>
-		</div>
+		
 		<div>
 			<article class="corpoArt">
 				<?php echo $perfil->corpo;?>

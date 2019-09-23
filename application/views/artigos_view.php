@@ -21,9 +21,8 @@
               <?php }?>
                 <div>
                     <h3><?php echo $artigo->titulo?></h3>
-                    <?php $resumo = explode(".", $artigo->corpo )?>
-                    <?php //echo print_r($resumo);
-                        echo $resumo[2];
+                    <?php //echo $artigo->corpo;
+                        
                     ?>
                     <br><br>
                     <a href="<?php echo site_url('artigos/artigo_page/')?>?codArtigo=<?php echo $artigo->codArtigo;?>" class="btn btn-primary">Ver mais</a>

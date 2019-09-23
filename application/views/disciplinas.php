@@ -2,15 +2,15 @@
 	include "cabeca.php";
 ?>
 <div class="espaco2"></div>
-	<div class="conteinerMtr">
+	<div class="conteinerMtr" id="sombra">
 		<h1>Materias</h1>
 		<br>
 		<h4>Integrado:</h4>
 		<div class="contMtr">
 			
 			<div>
-					<a href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=1"><button class="btn btn-outline-success"><img src="<?php echo base_url('assets/bootstrap/img/bio.png')?>"><br><h4>Biologia</h4></button></a>
-					<a href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=2"><button class="btn btn-outline-info"><img src="<?php echo base_url('assets/bootstrap/img/fisica.png')?>"><br><h4>Física</h4></button></a>
+					<a href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=1"><button class="btn" id="btn-ex01"><img src="<?php echo base_url('assets/bootstrap/img/bio.png')?>"><br><h4>Biologia</h4></button></a>
+					<a href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=2"><button class="btn" id="btn-ex0"><img src="<?php echo base_url('assets/bootstrap/img/fisica.png')?>"><br><h4>Física</h4></button></a>
 					<a href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=3"><button class="btn" id="btn-ex"><img src="<?php echo base_url('assets/bootstrap/img/quimi.png')?>"><br><h4>Química</h4></button></a>
 					<a href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=4"><button class="btn" id="btn-ex2"><img src="<?php echo base_url('assets/bootstrap/img/geo.png')?>"><br><h4>Geografia</h4></button></a>
 					<a href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=5"><button class="btn" id="btn-ex3"><img src="<?php echo base_url('assets/bootstrap/img/historia.png')?>"><br><h4>História</h4></button></a>

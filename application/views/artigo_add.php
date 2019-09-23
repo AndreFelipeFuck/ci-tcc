@@ -45,13 +45,14 @@
 			 <div class="form-group">
 			 	<label for="Escl-Mat">Matérias:</label>
 			  	<select class="form-control" id="Escl-Mat" name="disciplina_codDisiciplina" required>
-			  		<option value="15">Nenhuma</option>
+			  		<option value="16">Nenhuma</option>
 			    	<option value="1">Biologia</option>
 			 		<option value="2">Física</option>
 			 		<option value="3">Química</option>
 			 		<option value="4">Geografia</option>
 			 		<option value="5">História</option>
 			 		<option value="6">Pr.Textual</option>
+			 		<option value="15">Portugues</option>
 			 		<option value="7">Matemática</option>
 			 		<option value="8">Inglês</option>
 			 		<option value="9">Espanhol</option>

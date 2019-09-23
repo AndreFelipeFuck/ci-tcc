@@ -30,9 +30,9 @@
 		<script type="text/javascript" src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js')?>"></script>
 
 
-	<section class="conteiner1">
+	<section class="conteiner1" >
 
-		<nav class="navbar navbar-light bg-light">
+		<nav class="navbar navbar-light bg-light" id="sombra2">
 		  <a class="navbar-brand" href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=1" align="middle">
 		    <img src="<?php echo base_url('assets//bootstrap/img/bio.png')?>" width="30" height="30" class="d-inline-block align-top" alt="">
 		    <h6>Biologia</h6>
@@ -76,25 +76,25 @@
 		</nav>	
 	</section>
 	<div class="espaco2"></div>
-	<section class="conteiner2">
-		<h1>Artigos</h1>
+	<section class="conteiner2" id="sombra">
+		<h2 style="font-size: 35px; border-bottom: solid 2px #17a2b8; margin-bottom: 2%; padding-bottom: 1%;">Artigos:</h2>
 		<br>
-		<?php foreach($artigos as $artigo){?>
-			<article class="vidCont">
-				<?php
+			<?php foreach($artigos as $artigo){?>
+				<article class="vidCont">
+					<?php
                     if($artigo->imgArtigo == null){?>
 						<img src="<?php echo base_url('assets/bootstrap/img/crisp.jpg')?>">
 				<?php
                     }else{?>
                     	<img src="<?php echo base_url("upload/artigos/$artigo->imgArtigo")?>">
               <?php }?>
-				<div>
-					<h3><?php echo $artigo->titulo?></h3>
-					<p><?php echo $artigo->corpo?></p>
-					   <a href="<?php echo site_url('artigos/artigo_page/')?>?codArtigo=<?php echo $artigo->codArtigo;?>" class="btn btn-primary">Visulizar</a>
-				</div>
-			</article>
-		<br>
+
+						<!--<img src="<?php echo base_url('assets/bootstrap/img/eng.png')?>">-->
+						<div>
+							<h3><?php echo $artigo->titulo?></h3>
+							<p><?php echo $artigo->corpo?></p>
+						</div>
+				</article>
 	<?php }?>
 	</section>
 	<div class="espaco2"></div>
