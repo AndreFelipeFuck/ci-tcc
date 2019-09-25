@@ -2,15 +2,14 @@
 	include "cabeca.php";
 ?>
 <div class="espaco2"></div>
-	<div class="conteinerMtr">
-		<h1>Materias</h1>
-		<br>
-		<h4>Integrado:</h4>
+	<div class="conteinerMtr" id="sombra">
+		<h1 style="font-size: 35px; border-bottom: solid 2px #17a2b8; margin-bottom: 2%; padding-bottom: 1%;">Materias</h1>
+		<h4 style="border-bottom: solid 2px #17a2b8; width: 8.5%;">Integrado:</h4>
 		<div class="contMtr">
 			
 			<div>
-					<a href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=1"><button class="btn btn-outline-success"><img src="<?php echo base_url('assets/bootstrap/img/bio.png')?>"><br><h4>Biologia</h4></button></a>
-					<a href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=2"><button class="btn btn-outline-info"><img src="<?php echo base_url('assets/bootstrap/img/fisica.png')?>"><br><h4>Física</h4></button></a>
+					<a href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=1"><button class="btn" id="btn-ex01"><img src="<?php echo base_url('assets/bootstrap/img/bio.png')?>"><br><h4>Biologia</h4></button></a>
+					<a href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=2"><button class="btn" id="btn-ex0"><img src="<?php echo base_url('assets/bootstrap/img/fisica.png')?>"><br><h4>Física</h4></button></a>
 					<a href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=3"><button class="btn" id="btn-ex"><img src="<?php echo base_url('assets/bootstrap/img/quimi.png')?>"><br><h4>Química</h4></button></a>
 					<a href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=4"><button class="btn" id="btn-ex2"><img src="<?php echo base_url('assets/bootstrap/img/geo.png')?>"><br><h4>Geografia</h4></button></a>
 					<a href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=5"><button class="btn" id="btn-ex3"><img src="<?php echo base_url('assets/bootstrap/img/historia.png')?>"><br><h4>História</h4></button></a>
@@ -23,7 +22,7 @@
 					<a href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=11"><button class="btn" id="btn-ex10"><img src="<?php echo base_url('assets/bootstrap/img/soci.png')?>"><br><h4>Sociologia</h4></button></a>
 				<div class="espaco2"></div>
 				<br>
-				<h4>Técnico:</h4>
+				<h4 style=" border-bottom: solid 2px #17a2b8; width: 7.3%;">Técnico:</h4>
 					<a href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=12"><button class="btn" id="btn-ex11"><img src="<?php echo base_url('assets/bootstrap/img/agro.png')?>"><br><h4>Agropecuária</h4></button></a>
 					<a href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=13"><button class="btn" id="btn-ex12"><img src="<?php echo base_url('assets/bootstrap/img/info.png')?>"><br><h4>Informática</h4></button></a>
 					<a href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=14"><button class="btn" id="btn-ex13"><img src="<?php echo base_url('assets/bootstrap/img/qui.png')?>"><br><h4>Química</h4></button></a>

@@ -11,6 +11,7 @@
     <!-- ==============================================================-->
 
     <!--Le JS ==========================================================-->
+      <script type="text/javascript" src="<?php echo base_url('assets/jquery/jquery.js')?>"></script>
     <!-- ==============================================================-->
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,8 +19,8 @@
  
 </head>
 <body>
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		  <a class="navbar-brand" href="#"><img src="<?php echo base_url('assets/bootstrap/img/logo.png')?>" class="imglogo"></a>
+		<nav class="navbar navbar-expand-lg navbar-light" id="sombra2">
+		  <a class="navbar-brand" href="<?php echo site_url('')?>"><img src="<?php echo base_url('assets/bootstrap/img/logo.png')?>" class="imglogo"></a>
 		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
 		  </button>
@@ -43,23 +44,28 @@
 		        <a class="nav-link" href="#">Sobre</a>
 		      </li>
 		    </ul>
-		    <form class="form-inline my-2 my-lg-0">
+		     <form class="form-inline my-2 my-lg-0">
 		      <input class="form-control mr-sm-2" type="search" placeholder="Pequise aqui..." aria-label="Search">
-		      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+		      <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Buscar</button>
 		    </form>
+		    <style type="text/css">
+		    	a:hover{
+		    		color: #343a40;
+		    	}
+		    </style>
 		    <form class="form-inline my-2 my-lg-0 registro">
                 <?php 
                 if($this->session->userdata('professores')):?>
-                	<a class="regis" href="<?php echo site_url('professores/professor_perfil')?>?codProfessor=<?php echo $_SESSION['professores']; ?>">Perfil</a>
-                    <a href="<?php echo site_url('login/sairProf')?>" class="btn btn-outline-success my-2 my-sm-0">Sair</a>
+                	<a class="regis" href="<?php echo site_url('professores/professor_perfil')?>">Perfil</a>
+                    <a href="<?php echo site_url('login/sairProf')?>" class="btn btn-outline-info my-2 my-sm-0">Sair</a>
 
                 <?php elseif ($this->session->userdata('alunos')):?>
-                	<a class="regis" href="<?php echo site_url('alunos/aluno_perfil')?>?codAluno=<?php echo $_SESSION['alunos'] ?>">Perfil</a>
-                    <a href="<?php echo site_url('login/sair')?>" class="btn btn-outline-success my-2 my-sm-0">Sair</a>
+                	<a class="regis" href="<?php echo site_url('alunos/aluno_perfil')?>?codAluno=<?php echo $_SESSION['alunos']?>">Perfil</a>
+                    <a href="<?php echo site_url('login/sair')?>" class="btn btn-outline-info my-2 my-sm-0">Sair</a>
 
                 <?php else :?>
                 	<a class="regis" href="<?php echo site_url('home/opiCad')?>">Cadastre-se</a>
-                    <a href="<?php echo site_url('home/login_home')?>" class="btn btn-outline-success my-2 my-sm-0"> Entrar</a>
+                    <a href="<?php echo site_url('home/login_home')?>" class="btn btn-outline-info my-2 my-sm-0"> Entrar</a>
                 <?php endif;?>
 		    </form>
 		  </div>
