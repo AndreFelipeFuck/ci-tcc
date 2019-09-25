@@ -33,43 +33,43 @@
 	<section class="conteiner1" >
 
 		<nav class="navbar navbar-light" id="sombra2">
-		  <a class="navbar-brand" href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=1" align="middle">
+		  <a class="navbar-brand" href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=1" align="middle" id="navItem">
 		    <img src="<?php echo base_url('assets//bootstrap/img/bio.png')?>" width="30" height="30" class="d-inline-block align-top" alt="">
 		    <h6>Biologia</h6>
 		  </a>
-		  <a class="navbar-brand" href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=2" align="middle">
+		  <a class="navbar-brand" href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=2" align="middle" id="navItem">
 		    <img src="<?php echo base_url('assets/bootstrap/img/fisica.png')?>" width="30" height="30" class="d-inline-block align-top" alt="">
 		    <h6>Física</h6>
 		  </a>
-		  <a class="navbar-brand" href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=10" align="middle">
+		  <a class="navbar-brand" href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=10" align="middle" id="navItem">
 		    <img src="<?php echo base_url('assets/bootstrap/img/filo.png')?>" width="30" height="30" class="d-inline-block align-top" alt="">
 		    <h6>Filosofia</h6>
 		  </a>
-		  <a class="navbar-brand" href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=4" align="middle">
+		  <a class="navbar-brand" href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=4" align="middle" id="navItem">
 		    <img src="<?php echo base_url('assets/bootstrap/img/geo.png')?>" width="30" height="30" class="d-inline-block align-top" alt="">
 		    <h6>Geografia</h6>
 		  </a>
-		  <a class="navbar-brand" href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=5" align="middle">
+		  <a class="navbar-brand" href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=5" align="middle" id="navItem">
 		    <img src="<?php echo base_url('assets/bootstrap/img/historia.png')?>" width="30" height="30" class="d-inline-block align-top" alt="">
 		    <h6>História</h6>
 		  </a>
-		  <a class="navbar-brand" href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=8" align="middle">
+		  <a class="navbar-brand" href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=8" align="middle" id="navItem">
 		    <img src="<?php echo base_url('assets/bootstrap/img/ing.png')?>" width="30" height="30" class="d-inline-block align-top" alt="">
 		    <h6>Inglês</h6>
 		  </a>
-		  <a class="navbar-brand" href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=7" align="middle">
+		  <a class="navbar-brand" href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=7" align="middle" id="navItem">
 		    <img src="<?php echo base_url('assets/bootstrap/img/mat.png')?>" width="30" height="30" class="d-inline-block align-top" alt="">
 		    <h6>Matemática</h6>
 		  </a>
-		  <a class="navbar-brand" href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=15" align="middle">
+		  <a class="navbar-brand" href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=15" align="middle" id="navItem">
 		    <img src="<?php echo base_url('assets/bootstrap/img/port.png')?>" width="30" height="30" class="d-inline-block align-top" alt="">
 		    <h6>Potuguês</h6>
 		  </a>
-		  <a class="navbar-brand" href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=3" align="middle">
+		  <a class="navbar-brand" href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=3" align="middle" id="navItem">
 		    <img src="<?php echo base_url('assets/bootstrap/img/quimi.png')?>" width="30" height="30" class="d-inline-block align-top" alt="">
 		    <h6>Química</h6>
 		  </a>
-		   <a class="navbar-brand" href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=11" align="middle">
+		   <a class="navbar-brand" href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=11" align="middle" id="navItem">
 		    <img src="<?php echo base_url('assets/bootstrap/img/soci.png')?>" width="30" height="30" class="d-inline-block align-top" alt="">
 		    <h6>Sociologia</h6>
 		  </a>

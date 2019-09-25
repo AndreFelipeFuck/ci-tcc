@@ -159,12 +159,13 @@
 	<div class="conteinerZonaAlert" id="sombra2">
 		<h3 style="border-bottom: solid 2px #e44747; margin-bottom: 2%; padding-bottom: 1%;">Zona de Risco!</h3>
 		<div id="contZA-info">
-			<div style="margin-top: 15%; margin-bottom: 20%;">
+			<div>
 				<button class="btn btn-danger" onclick="delete_aluno(<?php echo $perfil->codAluno;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir Perfil</button>
 			</div>
 		</div>
-		<div id="contZA-img">
-			<figure><img src="<?php echo base_url('assets/bootstrap/img/cuidado.png')?>" width="100" height="50"></figure>
+		<div id="contZA-img" align="center">
+			<figure><img src="<?php echo base_url('assets/bootstrap/img/cuidado.png')?>" width="120" height="120"></figure>
+			<p style="color: #878585;">Atenção! Suas alterações aqui são sem volta.</p>
 		</div>
 	</div>
 
