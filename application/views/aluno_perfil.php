@@ -39,15 +39,23 @@
                 </div>
                 <div id="infoAlign">
                     <h4><span class="badge badge-secondary" style="background-color:#17a2b8;">Aluno</span></h4>
-                    <a href="<?php echo site_url('alunos/aluno_editar/')?>?codAluno=<?php echo $perfil->codAluno;?>" class="btn btn-success">Editar Perfil</a>
+                    <?php 
+                    $teste = isset($_SESSION['alunos']);
+                    if($teste == TRUE):?>
+                        <a href="<?php echo site_url('alunos/aluno_editar/')?>?codAluno=<?php echo $perfil->codAluno;?>" class="btn btn-success">Editar Perfil</a>
+                    <?php endif ?>
                     
 
                 </div>
             </section>
         <div style="width: 90%; border-bottom: solid 2px #17a2b8; display: inline-block; margin-left: 5%; margin-right: 5%; margin-top: 2%; opacity: 0.3;"></div><br><br>
                 <div id="infoAlign">
-                    <a href="<?php echo site_url('alunos/artigos_add')?>?codAluno=<?php echo $perfil->codAluno;?>" class="btn btn-warning">Novo artigo</a>
-                    <a href="<?php echo site_url('alunos/artigos_view')?>?codAluno=<?php echo $perfil->codAluno;?>" class="btn btn-warning">Visualizar Artigos</a>
+                       <?php 
+                            $teste = isset($_SESSION['alunos']);
+                            if($teste == TRUE):?>
+                                <a href="<?php echo site_url('alunos/artigos_add')?>?codAluno=<?php echo $perfil->codAluno;?>" class="btn btn-warning">Novo artigo</a>
+                                <a href="<?php echo site_url('alunos/artigos_view')?>?codAluno=<?php echo $perfil->codAluno;?>" class="btn btn-warning">Visualizar Artigos</a>
+                            <?php endif ?>
                 </div>
                 <br><br>
     <?php foreach($artigos as $artigo):?>

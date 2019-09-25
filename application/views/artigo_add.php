@@ -63,10 +63,7 @@
 			 		<option value="14">Química(tec)</option>
 			  	</select>
 			</div>
-			<div class="form-group">
-			 	<label for="Escl-Mat">Coautores:</label>
-			 	<input type="text" class="form-control" id="exampleFormControlInput" placeholder="Outros autores ou contribuidores.."S>
-			</div>
+			
 			<div class="espaco2"></div> <br>
 			<button type="submit" class="btn btn-primary" value="confirmaArt">Confirmar</button>
 			<button type="submit" class="btn btn-secundary" value="cancelarArt">Cancelar</button>
