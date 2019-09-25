@@ -11,6 +11,7 @@
     <!-- ==============================================================-->
 
     <!--Le JS ==========================================================-->
+      <script type="text/javascript" src="<?php echo base_url('assets/jquery/jquery.js')?>"></script>
     <!-- ==============================================================-->
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,7 +20,7 @@
 </head>
 <body>
 		<nav class="navbar navbar-expand-lg navbar-light" id="sombra2">
-		  <a class="navbar-brand" href="#"><img src="<?php echo base_url('assets/bootstrap/img/logo.png')?>" class="imglogo"></a>
+		  <a class="navbar-brand" href="<?php echo site_url('')?>"><img src="<?php echo base_url('assets/bootstrap/img/logo.png')?>" class="imglogo"></a>
 		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
 		  </button>

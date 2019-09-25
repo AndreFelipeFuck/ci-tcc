@@ -67,10 +67,6 @@ body{
 
 }
 
-.conteiner1{
-	background-color: #fff;
-}
-
 .conteiner2{
 	background-color: #fff;
 	border-radius: 3px;
@@ -105,12 +101,35 @@ body{
 }
 
 .conteinerCad{
-	background-color: #f8f9fa;
-	border-radius: 2px;
+	background-color: #fff;
+	border-radius: 3px;
 	margin: 0 auto;
 	position: relative;
+	padding: 2%;
 	width: 50%;
 	
+}
+
+.conteinerZonaAlert{
+	background-color: #fff;
+	border-radius: 3px;
+	border: solid 1px #e44747;
+	color: #e44747;
+	margin: 0 auto;
+	position: relative;
+	padding: 2%;
+	width: 50%;
+	height: 30%;
+}
+
+#contZA-info{
+	width: 25%;
+}
+
+#contZA-img{
+	display: inline-block;
+	width: 45%;
+ 	padding: 2%;
 }
 
 .conteinerMtr{
@@ -406,7 +425,7 @@ textarea {
 	margin: 0 auto;
 	position: relative;
 	padding: 2%;
-	width: 50%;
+	width: 70%;
 	border-radius: 2px;
 }
 
@@ -415,7 +434,7 @@ textarea {
 	margin: 0 auto;
 	position: relative;
 	padding: 2%;
-	width: 50%;
+	width: 70%;
 	border-radius: 2px;
 }
 

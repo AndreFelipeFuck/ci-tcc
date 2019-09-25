@@ -264,8 +264,8 @@ class Alunos extends CI_Controller
 	public function aluno_perfil(){
 		$codAluno = $this->input->get('codAluno');
 		$aluno['perfil'] = $this->aluno_model->get_by_id($codAluno);
+		$aluno['artigos'] = $this->artigos_model->get_all_id_aluno(9);
 		$this->load->view('aluno_perfil', $aluno);
-		//print_r($aluno);
 	}
 
 	public function aluno_editar(){
@@ -282,8 +282,7 @@ class Alunos extends CI_Controller
 
     public function artigos_view(){
         $codAluno = $this->input->get('codAluno');
-        $aluno['artigos'] = $this->aluno_model->get_by_id($codAluno);
-        $aluno['artigos'] = $this->artigos_model->get_all_artigos();
+        $aluno['artigos'] = $this->artigos_model->get_all_id_aluno($codAluno);
         $this->load->view('artigos_view_aluno', $aluno);
     }
 

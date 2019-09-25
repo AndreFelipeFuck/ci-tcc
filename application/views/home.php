@@ -32,7 +32,7 @@
 
 	<section class="conteiner1" >
 
-		<nav class="navbar navbar-light bg-light" id="sombra2">
+		<nav class="navbar navbar-light" id="sombra2">
 		  <a class="navbar-brand" href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=1" align="middle">
 		    <img src="<?php echo base_url('assets//bootstrap/img/bio.png')?>" width="30" height="30" class="d-inline-block align-top" alt="">
 		    <h6>Biologia</h6>

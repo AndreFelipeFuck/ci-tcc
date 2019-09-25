@@ -204,12 +204,12 @@ class Artigos extends CI_Controller
     public function artigo_page(){
         $codArtigo = $this->input->get('codArtigo');
         $analise = $this->artigos_model->analise($codArtigo);
-        if ($analise->alunos_codAluno == 0) {
+        if ($analise->alunos_codAluno == null) {
         	//PROFESSOR
         	//echo "professor";
         	$artigo['perfil'] = $this->artigos_model->get_by_id($codArtigo);
         	$this->load->view('artigo_page', $artigo);
-        }if($analise->alunos_codAluno > 0){
+        }if($analise->alunos_codAluno != null){
         	//ALUNO
         	//echo "ALUNO";
         	$artigo['perfil'] = $this->artigos_model->get_by_id_aluno($codArtigo);
