@@ -262,6 +262,7 @@ class Professores extends CI_Controller
     public function professor_perfil(){
         $codProfessor = $this->input->get('codProfessor');
         $professor['perfil'] = $this->professor_model->get_by_id($codProfessor);
+        $professor['artigos'] = $this->artigos_model->get_all_id_professor($codProfessor);
         $this->load->view('professor_perfil', $professor);
         //print_r($professor);
     }

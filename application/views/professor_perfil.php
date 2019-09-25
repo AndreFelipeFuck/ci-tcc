@@ -1,5 +1,5 @@
 <?php  include "cabeca.php";
-
+//print_r($_SESSION);
 ?>
 <div class="espaco2"></div>
 
@@ -22,7 +22,7 @@
                 </div>
             </section>
             <section class="InfoPerfil">
-                <div id="nomePerfil">
+                <div id="nomePerfilProf">
                     <h2 id="nomeFont"><?php echo $perfil->nomeProfessor;?></h2>
                 </div>
                 <div id="infoAlign">
@@ -33,40 +33,52 @@
                     <label>Data de Nascimento:</label>
                     <h6><?php echo $perfil->dataNasc;?></h6>
                 </div>
+            <!--
                 <div id="infoAlign">
                     <label>Institucao:</label>
                     <h6><?php echo $perfil->institucao;?></h6>
                 </div>
+            -->
                 <div id="infoAlign">
                     <label>Mini curriculo:</label>
                     <h6><?php echo $perfil->miniCurriculo;?></h6>
                 </div>
                 <div id="infoAlign">
-                    <h4><span class="badge badge-secondary" style="background-color:#17a2b8;">Professor</span></h4>
+                    <h4><span class="badge badge-secondary" style="background-color:#28a745;">Professor</span></h4>
                 </div>
 
                 <a href="<?php echo site_url('professores/professor_editar/')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn btn-success">Editar perfil</a>
 
                 <button class="btn btn-danger" onclick="delete_professor(<?php echo $perfil->codProfessor;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir</button>
 
-                <a href="<?php echo site_url('professores/artigos_add')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn btn-warning">Novo artigo</a>
+                <!--<a href="<?php echo site_url('professores/artigos_add')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn btn-warning">Novo artigo</a>
 
-                <a href="<?php echo site_url('professores/artigos_view')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn btn-warning">Visualizar Artigos</a>
+                <a href="<?php echo site_url('professores/artigos_view')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn btn-warning">Visualizar Artigos</a>-->
 
             </section>
         <div style="width: 90%; border-bottom: solid 2px #17a2b8; display: inline-block; margin-left: 5%; margin-right: 5%; margin-top: 2%; opacity: 0.3;"></div>
-            <!--<section>
-                <div><h2 style="width: 35%; font-size: 35px; border-bottom: solid 2px #17a2b8; margin-top: 2%; margin-bottom: 2%; padding-bottom: 1%;">Postagens:</h2></div>
-            </section>
-            <section style="padding: 1%;">
-                <?php //foreach($artigos as $artigo){?>
+            <br><br>
+            <div id="infoAlign">
+                    <a href="<?php echo site_url('professores/artigos_add')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn btn-warning">Novo artigo</a>
+
+                     <a href="<?php echo site_url('professores/artigos_view')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn btn-warning">Visualizar Artigos</a>
+                </div>
+                <br><br>
+    <?php foreach($artigos as $artigo):?>
+             
                     <div class="contPerfil">
-                    <figure><img src="<?php echo base_url("upload/artigos/$perfil->imgArtigo")?>"></figure>
-                    <h5><?php echo $perfil->titulo;?></h5>
-                    <a href="<?php echo site_url('artigos/artigo_page')?>?codArtigo=<?php echo $perfil->codArtigo;?>" class="btn btn-warning">Visualisar artigo</a>
-                    </div>
-                <?php //}?>
-            </section>-->
+            <?php if($artigo->imgArtigo == null){?>
+                        <figure><img src="<?php echo base_url('assets/bootstrap/img/eng.png')?>"></figure><?php
+                }else{
+                        ?><figure><img src="<?php echo base_url("upload/artigos/$artigo->imgArtigo")?>"></figure>
+            <?php }?>
+                        <h5><?php echo $artigo->titulo;?></h5>
+                        <a href="<?php echo site_url('artigos/artigo_page/')?>?codArtigo=<?php echo $artigo->codArtigo;?>" class="btn btn-primary">Visulizar</a>
+                               
+
+                    </div>    
+    <?php endforeach?>
+    </div>
     </div>
 
 	</section>

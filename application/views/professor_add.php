@@ -1,8 +1,8 @@
 <?php  include "cabeca.php"; ?>
 <div class="espaco2"></div>
-	<section class="conteinerCadProf">
-		<form class="formulario" method="post" action="<?php echo site_url('professores/professor_add')?>" enctype = "multipart/form-data">
-			<h1>Cadastro:</h1>
+	<section class="conteinerCadProf" id="sombra">
+		<form style="padding: 1%;" method="post" action="<?php echo site_url('professores/professor_add')?>" enctype = "multipart/form-data">
+			<h1 style="font-size: 35px; border-bottom: solid 2px #28a745; margin-bottom: 2%; padding-bottom: 1%;">Cadastro:</h1>
 			<div class="form-group">
 			    <label for="exampleFormControlInput1">Nome Completo</label>
 			    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ex: Josef Oliveira" name="nomeProfessor">
@@ -26,7 +26,7 @@
 			 </div>
 			 <span>Docente da área:</span>
 				 <br>
-					<label for="Escl-Mat">Matérias:</label>
+				 
 				  	 	<select class="form-control" id="Escl-Mat" name="disciplina_codDisiciplina" required>
 				  		<option value="15" name="disciplina_codDisiciplina">Nenhuma</option>
 				    	<option value="1" name="disciplina_codDisiciplina">Biologia</option>

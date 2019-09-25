@@ -69,8 +69,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             return $query->row();
         }
 
-          public function get_all_id_aluno($codAluno){
+        public function get_all_id_aluno($codAluno){
             $this->db->select('codArtigo, titulo, alunos_codAluno, corpo, imgArtigo, dataArtigo')->from('artigos ,alunos')->where("alunos_codAluno = '$codAluno' and alunos_codAluno = codAluno");
+            $query = $this->db->get();
+            return $query->result();
+        }
+
+        public function get_all_id_professor($codProfessor){
+            $this->db->select('codArtigo, titulo, professores_codProfessor, corpo, imgArtigo, dataArtigo')->from('artigos ,professores')->where("professores_codProfessor = '$codProfessor' and professores_codProfessor = codProfessor");
             $query = $this->db->get();
             return $query->result();
         }

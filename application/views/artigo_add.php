@@ -44,7 +44,7 @@
 			 </div>
 			 <div class="form-group">
 			 	<label for="Escl-Mat">Matérias:</label>
-			  	<select class="form-control" id="Escl-Mat" name="disciplina_codDisiciplina" required>
+			  	<select class="form-control" id="Escl-Mat" name="disciplina_codDisciplinax" required>
 			  		<option value="16">Nenhuma</option>
 			    	<option value="1">Biologia</option>
 			 		<option value="2">Física</option>

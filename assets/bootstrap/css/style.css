@@ -413,11 +413,11 @@ textarea {
 
 .conteinerCadProf{
 	background-color: #fff;
-	border-radius: 2px;
+	border-radius: 3px;
 	margin: 0 auto;
 	position: relative;
+	padding: 2%;
 	width: 50%;
-	height: 120%;
 	
 }
 
@@ -653,6 +653,10 @@ textarea {
 
 #nomePerfil{
 	background-color: #17a2b8;	
+}
+
+#nomePerfilProf{
+	background-color: #28a745;	
 }
 
 #nomeFont{
