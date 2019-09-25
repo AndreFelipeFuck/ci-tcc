@@ -4,11 +4,11 @@
 
 ?>
 <div class="espaco2"></div>
-	<div class="conteinerCad">
+	<div class="conteinerCad" id="sombra">
 		<h5 class="text-danger"><?php  echo  validation_errors();  ?></h5>
-		<form class="formulario"  action="<?php echo site_url('alunos/aluno_update_perfil')?>" method="post" enctype = "multipart/form-data">
+		<form action="<?php echo site_url('alunos/aluno_update_perfil')?>" method="post" enctype = "multipart/form-data">
 			<input type="hidden" value="<?= $perfil->codAluno?>" name="codAluno"/>
-			<h1>Editar Perfil:</h1>
+			<h1 style="font-size: 35px; border-bottom: solid 2px #17a2b8; margin-bottom: 2%; padding-bottom: 1%;">Editar Perfil:</h1>
 			<?php
                 if ($perfil->imgAluno == null) {
                     ?><div class="fotoPerfil"><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>"></div><?php
@@ -16,7 +16,7 @@
                     ?><div class="fotoPerfil"><img src="<?php echo base_url("upload/alunos/$perfil->imgAluno")?>"></div><?php
                  }
             ?>
-            <br><br><br><br><br>
+            <div style="height: 12%;"></div>
 			<div class="form-group">
 			    <label for="exampleFormControlInput1">Alterar imagem:</label>
 			    <input type="file" class="form-control-file" id="exampleFormControlInput1" name="imgAluno" value="">
@@ -154,7 +154,122 @@
 			<button type="submit" class="btn btn-primary">Confirmar</button>
 			<button type="reset" class="btn btn-secundary">Cancelar</button>
 		</form>
-
+	</div>
+	<div class="espaco2"></div>
+	<div class="conteinerZonaAlert" id="sombra2">
+		<h3 style="border-bottom: solid 2px #e44747; margin-bottom: 2%; padding-bottom: 1%;">Zona de Risco!</h3>
+		<div id="contZA-info">
+			<div style="margin-top: 15%; margin-bottom: 20%;">
+				<button class="btn btn-danger" onclick="delete_aluno(<?php echo $perfil->codAluno;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir Perfil</button>
+			</div>
+		</div>
+		<div id="contZA-img">
+			<figure><img src="<?php echo base_url('assets/bootstrap/img/cuidado.png')?>" width="100" height="50"></figure>
+		</div>
 	</div>
 
+
 <?php  	include "rodape.php";?>
+<script src="<?php echo base_url('assets/jquery/jquery-3.1.0.min.js')?>"></script>
+    <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js')?>"></script>
+    <script src="<?php echo base_url('assets/datatables/js/jquery.dataTables.min.js')?>"></script>
+    <script src="<?php echo base_url('assets/datatables/js/dataTables.bootstrap.js')?>"></script>
+
+    <script>
+    $(document).ready( function () {
+    $('#codAluno').DataTable();
+    } );
+    var save_method; //for save method string
+    var table;
+    function add_aluno()
+    {
+    save_method = 'add';
+    $('#form')[0].reset(); // reset form on modals
+    $('#modal_form').modal('show'); // show bootstrap modal
+    //$('.modal-title').text('Add Person'); // Set Title to Bootstrap modal title
+    }
+
+    function edit_aluno(codAluno)
+    {
+    save_method = 'update';
+    $('#form')[0].reset(); // reset form on modals
+    //Ajax Load data from ajax
+    $.ajax({
+    url : "<?php echo site_url('alunos/ajax_edit')?>/" + codAluno,
+    type: "GET",
+    dataType: "JSON",
+    success: function(data)
+    {
+    $('[name="codAluno"]').val(data.codAluno);
+    $('[name="nomeAluno"]').val(data.nomeAluno);
+    $('[name="email"]').val(data.email);
+    $('[name="dataNasc"]').val(data.dataNasc);
+    $('[name="anoLetivo"]').val(data.anoLetivo);
+    $('[name="curso"]').val(data.curso);
+    $('[name="imgAluno"]').val(data.imgAluno);
+
+
+
+    $('#modal_form').modal('show'); // show bootstrap modal when complete
+    loaded
+    $('.modal-title').text('Edit Aluno'); // Set title to Bootstrap modal
+    title
+    },
+    error: function (jqXHR, textStatus, errorThrown)
+    {
+    alert('Erro no ajax');
+    }
+    });
+    }
+
+
+    function save()
+    {
+    var url;
+    if(save_method == 'add')
+    {
+    url = "<?php echo site_url('alunos/aluno_add')?>";
+    }else{
+    url = "<?php echo site_url('alunos/aluno_update_perfil')?>";
+    }
+    // ajax adding data to database
+    $.ajax({
+    url : url,
+    type: "POST",
+    data: $('#form').serialize(),
+    dataType: "JSON",
+    success: function(data)
+    {
+    //if success close modal and reload ajax table
+    $('#modal_form').modal('hide');
+    location.reload();// for reload a page
+    },
+    error: function (jqXHR, textStatus, errorThrown)
+    {
+    alert('Error adding / update data');
+    }
+    });
+    }
+
+
+    function delete_aluno(codAluno)
+    {
+    if(confirm('Voce quer deletar o aluno?'))
+    {
+    // ajax delete data from database
+    $.ajax({
+    url : "<?php echo site_url('alunos/aluno_delete')?>/" + codAluno,
+    type: "POST",
+    dataType: "JSON",
+    success: function(data)
+    {
+     window.location.href = "<?php echo site_url('home')?>"
+    },
+    error: function (jqXHR, textStatus, errorThrown)
+    {
+    alert('Erro ao deletar');
+    }
+    });
+    }
+    }
+    </script>

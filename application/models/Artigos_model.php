@@ -57,16 +57,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         public function get_by_id($codArtigo){
             
-            $this->db->select('codArtigo, titulo, corpo, imgArtigo ,nomeProfessor, nomeDisciplina')->from('artigos ,professores, disciplinas')->where("codArtigo = '$codArtigo' and professores_codProfessor = codProfessor and disciplina_codDisciplina = codDisciplina");
+            $this->db->select('codArtigo, titulo, corpo, imgArtigo ,nomeProfessor, nomeDisciplina, dataArtigo')->from('artigos ,professores, disciplinas')->where("codArtigo = '$codArtigo' and professores_codProfessor = codProfessor and disciplina_codDisciplina = codDisciplina");
             $query = $this->db->get();
             return $query->row();
         }
 
         public function get_by_id_aluno($codArtigo){
             
-            $this->db->select('codArtigo, titulo, corpo, imgArtigo ,nomeAluno, nomeDisciplina')->from('artigos ,alunos, disciplinas')->where("codArtigo = '$codArtigo' and alunos_codAluno = codAluno and disciplina_codDisciplina = codDisciplina");
+            $this->db->select('codArtigo, titulo, corpo, imgArtigo ,nomeAluno, nomeDisciplina, dataArtigo')->from('artigos ,alunos, disciplinas')->where("codArtigo = '$codArtigo' and alunos_codAluno = codAluno and disciplina_codDisciplina = codDisciplina");
             $query = $this->db->get();
             return $query->row();
+        }
+
+          public function get_all_id_aluno($codAluno){
+            $this->db->select('codArtigo, titulo, alunos_codAluno, corpo, imgArtigo, dataArtigo')->from('artigos ,alunos')->where("alunos_codAluno = '$codAluno' and alunos_codAluno = codAluno");
+            $query = $this->db->get();
+            return $query->result();
         }
 
         public function analise($codArtigo){

@@ -59,7 +59,7 @@ class Artigos extends CI_Controller
 						'titulo' => $this->input->post('titulo'),
 						'corpo' => $this->input->post('corpo'),
 						'professores_codProfessor' => $this->input->post('professores_codProfessor'),
-						'disciplina_codDisciplina' => $this->input->post('disciplina_codDisiciplina'),
+						'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina'),
 						'dataArtigo' => date("Y-m-d")
 				);
 
@@ -68,7 +68,7 @@ class Artigos extends CI_Controller
 						'titulo' => $this->input->post('titulo'),
 						'corpo' => $this->input->post('corpo'),
 						'alunos_codAluno' => $this->input->post('alunos_codAluno'),
-						'disciplina_codDisciplina' => $this->input->post('disciplina_codDisiciplina'),
+						'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina'),
 						'dataArtigo' => date("Y-m-d")
 				)	;
 			}
@@ -107,7 +107,7 @@ class Artigos extends CI_Controller
 							'corpo' => $this->input->post('corpo'),
 							'imgArtigo' => $this->input->post('imgArtigo'),
 							'professores_codProfessor' => $this->input->post('professores_codProfessor'),
-							'disciplina_codDisciplina' => $this->input->post('disciplina_codDisiciplina'),
+							'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina'),
 							'imgArtigo' => $config['file_name'].".jpg",
 							'dataArtigo' => date("Y-m-d")
 						);
@@ -117,7 +117,7 @@ class Artigos extends CI_Controller
 							'corpo' => $this->input->post('corpo'),
 							'imgArtigo' => $this->input->post('imgArtigo'),
 							'alunos_codAluno' => $this->input->post('alunos_codAluno'),
-							'disciplina_codDisciplina' => $this->input->post('disciplina_codDisiciplina'),
+							'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina'),
 							'imgArtigo' => $config['file_name'].".jpg",
 							'dataArtigo' => date("Y-m-d")
 						);
@@ -204,12 +204,12 @@ class Artigos extends CI_Controller
     public function artigo_page(){
         $codArtigo = $this->input->get('codArtigo');
         $analise = $this->artigos_model->analise($codArtigo);
-        if ($analise->alunos_codAluno == 0) {
+        if ($analise->alunos_codAluno == null) {
         	//PROFESSOR
         	//echo "professor";
         	$artigo['perfil'] = $this->artigos_model->get_by_id($codArtigo);
         	$this->load->view('artigo_page', $artigo);
-        }if($analise->alunos_codAluno > 0){
+        }if($analise->alunos_codAluno != null){
         	//ALUNO
         	//echo "ALUNO";
         	$artigo['perfil'] = $this->artigos_model->get_by_id_aluno($codArtigo);

@@ -1,20 +1,38 @@
 <?php 
 	include "cabeca.php";
 ?>
+
+<title>Atom | Cadastro de Artigo</title>
+
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
+
+</head>
 <div class="espaco2"></div>
-	<div class="conteinerCadArt">
+	<div class="conteinerCadArt" id="sombra">
 		<form  action="<?php echo site_url('artigos/artigo_add')?>" method="post" enctype = "multipart/form-data">
 			<input type="hidden" value="<?= $perfil->codAluno?>" name="alunos_codAluno"/>
 			<input type="hidden" value="0" name="professores_codProfessor"/>
-			<h1>Cadastro de Artigo:</h1>
-			<br>
 			<div class="form-group">
-			    <label for="exampleFormControlInput1">Titulo do Artigo</label>
-			    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ex:'Lamarckismo e Darwinismo'" name="titulo" required>
+			   <h1 style="font-size: 35px; border-bottom: solid 2px #17a2b8; margin-bottom: 2%; padding-bottom: 1%;">Cadastro de Artigo:</h1>
+			<div class="form-group">
+			    <label for="exampleFormControlInput">Titulo do Artigo</label>
+			    <input type="text" class="form-control" id="exampleFormControlInput" placeholder="Ex:'Lamarckismo e Darwinismo'" name="titulo" required>
 			 </div>
 			  <div class="form-group" id="texto">
 			    <label for="exampleFormControlInput1">Texto do Artigo:</label>
-			    <textarea name="corpo" required></textarea>
+			    <textarea name="corpo" id="summernote" required></textarea>
+			    <script>
+			      $('#summernote').summernote({
+			        placeholder: 'Digite seu texto aqui..',
+			        tabsize: 2,
+			        height: 100
+			      });
+			    </script>
 			 </div>
 			 <div>
 			 	<div class="form-group">
@@ -24,27 +42,28 @@
 			 </div>
 			 <div class="form-group">
 			 	<label for="Escl-Mat">Matérias:</label>
-			  	 	<select class="form-control" id="Escl-Mat" name="disciplina_codDisiciplina" required>
-			  		<option value="15" name="disciplina_codDisiciplina">Nenhuma</option>
-			    	<option value="1" name="disciplina_codDisiciplina">Biologia</option>
-			 		<option value="2" name="disciplina_codDisiciplina">Física</option>
-			 		<option value="3" name="disciplina_codDisiciplina">Química</option>
-			 		<option value="4" name="disciplina_codDisiciplina">Geografia</option>
-			 		<option value="5" name="disciplina_codDisiciplina">História</option>
-			 		<option value="6" name="disciplina_codDisiciplina">Pr.Textual</option>
-			 		<option value="7" name="disciplina_codDisiciplina">Matemática</option>
-			 		<option value="8" name="disciplina_codDisiciplina">Inglês</option>
-			 		<option value="9" name="disciplina_codDisiciplina">Espanhol</option>
-			 		<option value="10" name="disciplina_codDisiciplina">Filosofia</option>
-			 		<option value="11" name="disciplina_codDisiciplina">Sociologia</option>
-			 		<option value="12" name="disciplina_codDisiciplina">Agropecuária</option>
-			 		<option value="13" name="disciplina_codDisiciplina">Informatica</option>
-			 		<option value="14" name="disciplina_codDisiciplina">Química(tec)</option>
+			   	<select class="form-control" id="Escl-Mat" name="disciplina_codDisciplina" required>
+			  	 	<option value="16">Nenhuma</option>
+			    	<option value="1">Biologia</option>
+			 		<option value="2">Física</option>
+			 		<option value="3">Química</option>
+			 		<option value="4">Geografia</option>
+			 		<option value="5">História</option>
+			 		<option value="6">Pr.Textual</option>
+			 		<option value="15">Portugues</option>
+			 		<option value="7">Matemática</option>
+			 		<option value="8">Inglês</option>
+			 		<option value="9">Espanhol</option>
+			 		<option value="10">Filosofia</option>
+			 		<option value="11">Sociologia</option>
+			 		<option value="12">Agropecuária</option>
+			 		<option value="13">Informatica</option>
+			 		<option value="14">Química(tec)</option>
 			  	</select>
 			</div>
 			<div class="form-group">
 			 	<label for="Escl-Mat">Coautores:</label>
-			 	<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Outros autores ou contribuidores.."S>
+			 	<input type="text" class="form-control" id="exampleFormControlInput" placeholder="Outros autores ou contribuidores.."S>
 			</div>
 			<div class="espaco2"></div> <br>
 			<button type="submit" class="btn btn-primary" value="confirmaArt">Confirmar</button>

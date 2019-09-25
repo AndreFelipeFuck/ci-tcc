@@ -67,10 +67,6 @@ body{
 
 }
 
-.conteiner1{
-	background-color: #fff;
-}
-
 .conteiner2{
 	background-color: #fff;
 	border-radius: 3px;
@@ -105,12 +101,36 @@ body{
 }
 
 .conteinerCad{
-	background-color: #f8f9fa;
-	border-radius: 2px;
+	background-color: #fff;
+	border-radius: 3px;
 	margin: 0 auto;
 	position: relative;
+	padding: 2%;
 	width: 50%;
 	
+}
+
+.conteinerZonaAlert{
+	background-color: #fff;
+	border-radius: 3px;
+	border: solid 1px #e44747;
+	color: #e44747;
+	margin: 0 auto;
+	position: relative;
+	padding: 2%;
+	width: 50%;
+	height: 30%;
+}
+
+#contZA-info{
+	width: 45%;
+	display: inline-block;
+}
+
+#contZA-img{
+	display: inline-block;
+	width: 35%;
+ 	padding: 2%;
 }
 
 .conteinerMtr{
@@ -376,7 +396,7 @@ body{
 }
 
 textarea {
-	width: 60%;
+	width: 100%;
 	height: 40%;
     padding: 10px;
     line-height: 1.5;
@@ -392,7 +412,7 @@ textarea {
 }
 
 .conteinerCadProf{
-	background-color: #f8f9fa;
+	background-color: #fff;
 	border-radius: 2px;
 	margin: 0 auto;
 	position: relative;
@@ -402,20 +422,20 @@ textarea {
 }
 
 .conteinerCadArt{
-	background-color: #f8f9fa;
+	background-color: #fff;
 	margin: 0 auto;
 	position: relative;
 	padding: 2%;
-	width: 80%;
+	width: 70%;
 	border-radius: 2px;
 }
 
 .conteinerTelaArt{
-	background-color: #f8f9fa;
+	background-color: #fff;
 	margin: 0 auto;
 	position: relative;
 	padding: 2%;
-	width: 80%;
+	width: 70%;
 	border-radius: 2px;
 }
 
@@ -691,7 +711,7 @@ textarea {
 }
 
 #Escl-Mat{
-	width: 11%;
+	width: 20%;
 	background-color: #28a745;
 	color: #fff;
 }
@@ -702,7 +722,7 @@ textarea {
 }
 
 #Escl-Mat:hover{
-	width: 11%;
+	width: 20%;
 	background-color: transparent;
     background-image: none;
 	border-color: #28a745;
@@ -761,6 +781,7 @@ textarea {
 	padding-top: 0.3%;
 	width: 100%;
 	color: #fff;
+	text-align: center;
 }
 
 .rodape{

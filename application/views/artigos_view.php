@@ -8,7 +8,7 @@
     <section class="conteiner0">
         <h1>Artigos</h1>
         <br>
-        <h3>No momento a <?php echo $contar?> artigos</h3>
+        <h3>No momento a <?php echo $contar?> artigo(s)</h3>
         <br>
         <?php foreach($artigos as $artigo){?>
             <article class="vidCont">
@@ -21,8 +21,11 @@
               <?php }?>
                 <div>
                     <h3><?php echo $artigo->titulo?></h3>
-                    <p><?php echo $artigo->corpo?></p>
-                    <a href="<?php echo site_url('artigos/artigo_page/')?>?codArtigo=<?php echo $artigo->codArtigo;?>" class="btn btn-primary">Visulizar</a>
+                    <?php //echo $artigo->corpo;
+                        
+                    ?>
+                    <br><br>
+                    <a href="<?php echo site_url('artigos/artigo_page/')?>?codArtigo=<?php echo $artigo->codArtigo;?>" class="btn btn-primary">Ver mais</a>
                 </div>
             </article>
         <br>
