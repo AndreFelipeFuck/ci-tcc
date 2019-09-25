@@ -1,0 +1,790 @@
+body{
+	
+}
+
+.imglogo{
+	width: 80px;
+	height: 80px;
+}
+
+.espaco{
+	height: 10%;
+}
+
+.espaco2{
+	height: 2%;
+}
+
+.espaco3{
+	width: 2%;
+	height: 70%;
+}
+
+.navbar{
+	background-color: #fff;
+	border-radius: 3px;
+	margin-right: 10%;
+	margin-left: 10%;
+	margin-top: 2%;
+}
+
+.registro{
+	margin-left: 2%;
+}
+
+.regis{
+	margin-right: 5px;
+	color: #6c757d;
+}
+
+#regis a:hover{
+	color: gray;
+}
+
+.navbar-brand{
+	border-radius: 2px;
+	padding-right: 1%;
+	padding-left: 1%; 
+}
+
+#botaoLogin{
+	width: 50%;
+	
+}
+
+.curriculo{
+	width: 60%;
+	height: 10%;
+}
+
+.carousel{
+	margin-right: 10%;
+	margin-left: 10%;
+}
+
+.w-100{;
+	height: 70%!important;
+
+}
+
+.conteiner2{
+	background-color: #fff;
+	border-radius: 3px;
+	margin-right: 10%;
+	margin-left: 10%;
+	width: 80%;
+	padding: 2%;
+}
+
+.vidCont{
+	height: 25%;
+	border-radius: 3px;
+	background-color: #E8F7F8; 
+}
+
+.vidCont img{
+	display: inline;
+	float: left;
+	margin: 1%;
+	height: 85%;
+	width: 25%;
+	border-radius: 5px;
+
+}
+
+.vidCont div{
+	display: inline;
+	float: left;
+	width: 60%;
+	height: 30%;
+	margin: 1%;
+}
+
+.conteinerCad{
+	background-color: #fff;
+	border-radius: 3px;
+	margin: 0 auto;
+	position: relative;
+	padding: 2%;
+	width: 50%;
+	
+}
+
+.conteinerZonaAlert{
+	background-color: #fff;
+	border-radius: 3px;
+	border: solid 1px #e44747;
+	color: #e44747;
+	margin: 0 auto;
+	position: relative;
+	padding: 2%;
+	width: 50%;
+	height: 30%;
+}
+
+#contZA-info{
+	width: 45%;
+	display: inline-block;
+}
+
+#contZA-img{
+	display: inline-block;
+	width: 35%;
+ 	padding: 2%;
+}
+
+.conteinerMtr{
+	background-color: #fff;
+	border-radius: 3px;
+	margin: 0 auto;
+	position: relative;
+	padding: 2%;
+	width: 80%;
+	height: 120%;
+}
+
+.contMtr{
+	margin: 0 auto;
+	position: relative;
+}
+
+.contMtr button{
+	width: 15%;
+	height: 24%;
+	padding: 1%;
+	margin: 0.5%;
+}
+
+.contMtr img{
+	width: 85%;
+	height: 70%;
+	margin: 0 auto;
+	position: relative;
+}
+#btn-ex01{
+	background-color: transparent;
+    background-image: none;
+	border-color:  #838383;
+	color: #838383;
+}
+
+#btn-ex01:hover {
+	color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+#btn-ex0{
+	background-color: transparent;
+    background-image: none;
+	border-color:  #838383;
+	color: #838383;
+}
+
+#btn-ex0:hover {
+	color: #fff;
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+
+#btn-ex{
+	background-color: transparent;
+    background-image: none;
+	border-color:  #838383;
+	color: #838383;
+}
+
+#btn-ex:hover {
+	color: #fff;
+    background-color: #8f3d8f;
+    border-color: #8f3d8f;
+}
+
+#btn-ex2{
+	background-color: transparent;
+    background-image: none;
+	border-color:  #838383;
+	color: #838383;
+}
+
+#btn-ex2:hover {
+	color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+#btn-ex3{
+	background-color: transparent;
+    background-image: none;
+	border-color:  #838383;
+	color: #838383;
+}
+
+#btn-ex3:hover {
+	color: #fff;
+    background-color: #fd7e14;
+    border-color: #fd7e14;
+}
+
+#btn-ex4{
+	background-color: transparent;
+    background-image: none;
+	border-color:  #838383;
+	color: #838383;
+}
+
+#btn-ex4:hover {
+	color: #fff;
+    background-color: #5d3011;
+    border-color: #5d3011;
+}
+
+#btn-ex5{
+	background-color: transparent;
+    background-image: none;
+	border-color:  #838383;
+	color: #838383;
+}
+
+#btn-ex5:hover {
+	color: #fff;
+    background-color: #ffc84d;
+    border-color: #ffc84d;
+}
+
+#btn-ex6{
+	background-color: transparent;
+    background-image: none;
+	border-color:  #838383;
+	color: #838383;
+}
+
+#btn-ex6:hover {
+	color: #fff;
+    background-color: #173f5f;
+    border-color: #173f5f;
+}
+
+#btn-ex7{
+	background-color: transparent;
+    background-image: none;
+	border-color:  #838383;
+	color: #838383;
+}
+
+#btn-ex7:hover {
+	color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+#btn-ex8{
+	background-color: transparent;
+    background-image: none;
+	border-color:  #838383;
+	color: #838383;
+}
+
+#btn-ex8:hover {
+	color: #fff;
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+#btn-ex9{
+	background-color: transparent;
+    background-image: none;
+	border-color:  #838383;
+	color: #838383;
+}
+
+#btn-ex9:hover {
+	color: #fff;
+    background-color: #e83e8c;
+    border-color: #e83e8c;
+}
+
+#btn-ex10{
+	background-color: transparent;
+    background-image: none;
+	border-color:  #838383;
+	color: #838383;;
+}
+
+#btn-ex10:hover {
+	color: #fff;
+    background-color: #763c7d;
+    border-color: #763c7d;
+}
+
+#btn-ex11{
+	background-color: transparent;
+    background-image: none;
+	border-color:  #838383;
+	color: #838383;
+}
+
+#btn-ex11:hover {
+	color: #fff;
+    background-color: #49b108;
+    border-color: #49b108;
+}
+
+#btn-ex12{
+	background-color: transparent;
+    background-image: none;
+	border-color:  #838383;
+	color: #838383;
+}
+
+#btn-ex12:hover {
+	color: #fff;
+    background-color: #425f8c;
+    border-color: #425f8c;
+}
+
+#btn-ex13{
+	background-color: transparent;
+    background-image: none;
+	border-color:  #838383;
+	color: #838383;
+}
+
+#btn-ex13:hover {
+	color: #fff;
+    background-color: #a25ec5;
+    border-color: #a25ec5;
+}
+
+
+
+.conteinerPerfil{
+	background-color: white;
+	border-radius: 2px;
+	margin-left: 10%;
+	margin-right: 10%;
+	position: relative;
+	display: inline-block;
+	width: 80%;
+	padding: 2%;
+}
+
+.conteinerOpi{
+	margin: 0 auto;
+	position: relative;
+	width: 75%;
+	height: 70%;
+	padding: 4%;
+}
+
+.divOpi{
+	background-color: #fff;
+	border-radius: 15px;
+	margin: 0 auto;
+	position: relative;
+	width: 50%;
+	height: 100%;
+	padding: 3%;
+	text-align: center;
+}
+
+#botao{
+	border-radius: 25px;
+	width: 85%;
+	height: 15%;
+	font-size: 23px;
+}
+
+textarea {
+	width: 100%;
+	height: 40%;
+    padding: 10px;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+    max-height: 40%;
+}
+
+#texto label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.conteinerCadProf{
+	background-color: #fff;
+	border-radius: 2px;
+	margin: 0 auto;
+	position: relative;
+	width: 50%;
+	height: 120%;
+	
+}
+
+.conteinerCadArt{
+	background-color: #fff;
+	margin: 0 auto;
+	position: relative;
+	padding: 2%;
+	width: 70%;
+	border-radius: 2px;
+}
+
+.conteinerTelaArt{
+	background-color: #fff;
+	margin: 0 auto;
+	position: relative;
+	padding: 2%;
+	width: 70%;
+	border-radius: 2px;
+}
+
+.conteinerTelaArt img{
+	width: 100%;
+	height: 75%;
+}
+
+.conteinerTelaArt figure{
+	margin: 1%;
+	margin-bottom: 2%;
+}	
+
+.conteinerTelaArt article{
+	background-color: white;
+	border-radius: 2px;
+	text-align: justify;
+	font-size: 17px;
+	padding: 1%;
+}
+
+.nomeAutor{
+	padding: 1%;
+}
+
+.publicacao{
+	padding-left: 1%;
+	font-size: 15px;
+	color: #4f555a;
+}
+
+.nomeMateria{
+	padding: 1%;
+}	
+
+#nomeMateria{
+	font-size: 15px;
+}
+
+.conteinerArtView{
+	width: 80%;
+	padding: 2%;
+	background-color: #fff;
+	margin: 0 auto;
+	position: relative;
+	border-radius: 3px;
+}
+
+#cartao{
+	width: 30%;
+	height: 40%;
+}
+
+//
+
+.container-viewArt{
+	background-color: #fff;
+	margin: 0 auto;
+	position: relative;
+	padding: 2%;
+	width: 80%;
+	border-radius: 2px;
+}
+
+#botao-NA{
+	background-color: #17a2b8;
+    background-image: none;
+	color: #fff;
+}
+
+.ArtPost{
+	display: inline-block;
+	width: 100%;
+	height: 25%;
+	background-color: #fff;
+	border-style: solid 1px #17a2b8;
+	border-radius: 5px;
+}
+
+.ArtPost img{
+	float: left;
+	width: 30%;
+	height: 100%;
+	margin-bottom: 2%;
+	padding: 0.5%;
+}
+
+#infoCard{
+	display: inline-block;
+	width: 45%;
+ 	
+}
+
+#infoOpi{
+	margin: 1%;
+	display: inline-block;
+	width: 15%;
+}
+
+//
+
+.conteinerLogin{
+	display: inline-block;
+	width: 90%;
+	margin-left: 5%; 
+	margin-right: 5%;
+}
+
+.logTex{
+	margin: 1%;
+	float: left;
+	width: 50%;
+	height: 51.5%;
+ 	padding-top: 6%;
+ 	padding-left: 4%;
+ 	color: white;
+}
+
+.logTex h1{
+	font-size: 60px;
+ 	text-align: left;
+}
+
+.logCad{
+	margin: 1%;
+	display: inline-block;
+	width: 45%;
+ 	padding: 2%;
+ 	border-radius: 3px;
+ 	background-color: white;
+}
+
+#logInput{
+	width: 55%;
+}
+
+#botaoLogin{
+	width: 40%;
+}
+
+.logFun{
+	width: 100%;
+	background-color: #17a2b8;
+}
+
+.conteinerConf{
+	background-color: #f8f9fa;
+	border-radius: 2px;
+	margin: 0 auto;
+	position: relative;
+	width: 60%;
+	height: 25%;
+	text-align: center;
+	padding-top: 2%;
+}
+
+.formulario{
+	padding-left: 5%;
+	padding-top: 3%;
+}
+
+.formulario2{
+	padding-left: 10%;
+	padding-right: 10%;
+}
+
+.form2-div{
+	padding-top: 2%;
+	margin: auto;
+	text-align: center;
+}
+
+.form-curso{
+	display: inline;
+	position: relative;
+	padding-right: 2%;
+
+}
+
+.form-ano{
+	display: inline;
+	position: relative;
+	padding-right: 2%;
+}
+
+.form-info{
+	display: inline;
+	position: relative;
+	padding-right: 2%;
+	padding-top: 1%;
+}
+
+.fotoPerfil {
+	max-width: 20%;
+	max-height: 30%;
+	border-radius: 50%;
+	overflow: hidden;
+	position: relative;
+	float: left;
+}
+
+.fotoPerfil img{
+	background-color: #BCBBBB;
+ 	width: 100%;
+ 	max-height: 30%;
+}
+
+.infoPerfil{
+	width: 78%;
+	float: left;
+	margin-left: 2%;
+	margin-top: 2%;
+}
+
+
+#nomePerfil{
+	background-color: #17a2b8;	
+}
+
+#nomeFont{
+	padding: 1%;
+	font-size: 40px;
+	color: white;
+}
+
+#infoAlign{
+	text-align: left;
+}
+
+#infoAlign h6{
+	display: inline;
+	padding-left: 0.2%; 
+}
+
+.contPerfil{
+	padding: 1%;
+	border-radius: 3%;
+	align-items: center;
+	text-align: center;
+	display: inline-block;
+	width: 15%;
+	margin-right: 1%;
+	margin-left: 1%;
+	margin-bottom: 2%;
+}
+
+.contPerfil:hover{
+	background-color: #17a2b8;
+	color: white;
+	box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 25px 0 rgba(0, 0, 0, 0.19)
+}
+
+.contPerfil img{
+	width: 100%;
+	height: 20%;
+}
+
+#exampleFormControlInput1{
+	width: 60%;
+}
+
+#exampleFormControlInput2{
+	width: 25%;
+}
+
+.tituloArt{
+	padding: 1%;
+	margin-bottom: 2%;
+}
+
+#titulo{
+	font-size:60px;
+}
+
+#Escl-Mat{
+	width: 20%;
+	background-color: #28a745;
+	color: #fff;
+}
+
+#Escl-Mat option{
+	color: #343a40;
+	background-color: white;
+}
+
+#Escl-Mat:hover{
+	width: 20%;
+	background-color: transparent;
+    background-image: none;
+	border-color: #28a745;
+	color: #28a745;
+}
+
+#sombra{
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 25px 0 rgba(0, 0, 0, 0.19);
+}
+
+#sombra2{
+	box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 25px 0 rgba(0, 0, 0, 0.19);
+}
+
+.conteiner-footer{
+	width: 90%;
+	position: relative;
+	margin: 0 auto;
+	padding: 1%; 
+}
+
+.footInf{
+	width: 12%;
+	padding: 1%;
+	border-radius: 3px;
+	margin-left: 1%;
+}
+
+#footInf{
+	display: inline-block;
+}
+
+.botao-rep{
+	display: inline-block;
+	margin-right: 1%;
+	float: right;
+}
+
+#report{
+	color: #fff;
+    background-color: #066690;
+    border-color: #fff;
+}
+
+#report:hover{
+	background-color: #fff;
+    background-image: none;
+	border-color: #066690;
+	color: #066690;
+}
+
+#licenca{
+	margin: 0 auto;
+	text-align: center;
+	border-top: solid 1px #fff;
+	padding-top: 0.3%;
+	width: 100%;
+	color: #fff;
+	text-align: center;
+}
+
+.rodape{
+	width: 100%;
+	background-color: #17a2b8;
+}
