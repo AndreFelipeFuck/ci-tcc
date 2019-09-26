@@ -29,14 +29,20 @@
 		<div class="espaco2"></div>
 		<div class="nomeAutor">
 			<?php if(isset($perfil->nomeProfessor)){?>
-				<label>Postado pelo professor:<h4 id="nomeAutor"><?php echo $perfil->nomeProfessor;?></h4></label>
+				<label>Postado pelo professor:<h4 id="nomeAutor">
+					<a href="<?php echo site_url('professores/professor_perfil')?>?codProfessor=<?php echo $perfil->professores_codProfessor?>"><?php echo $perfil->nomeProfessor;?></a>
+						
+					</h4></label>
 			<?php }if(isset($perfil->nomeAluno)){?>
-				<label>Postado pelo aluno:<h4 id="nomeAutor"><?php echo $perfil->nomeAluno;?></h4></label>
+				<label>Postado pelo aluno:<h4 id="nomeAutor">
+					<a href="<?php echo site_url('alunos/aluno_perfil')?>?codAluno=<?php echo $perfil->alunos_codAluno?>"><?php echo $perfil->nomeAluno;?></a>
+					
+				</h4></label>
 			<?php } ?>
 		</div>
 		<div class="nomeMateria">
-			<label>Disciplinas: <?php echo $perfil->nomeDisciplina?> </label>
-			<h4 id="nomeMateria">Exemplo Disciplina</h4>
+			<label>Disciplinas: </label>
+			<h4 id="nomeMateria"> <?php echo $perfil->nomeDisciplina?></h4>
 		</div>       
 	</div>
 <?php 

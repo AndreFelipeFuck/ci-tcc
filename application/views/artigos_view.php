@@ -5,7 +5,7 @@
     <table id="" class="table table-striped table-bordered" >
 
          
-    <section class="conteiner0">
+    <section class="conteiner0" >
         <h1>Artigos</h1>
         <br>
         <h3>No momento a <?php echo $contar?> artigo(s)</h3>
