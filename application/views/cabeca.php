@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Atom | Home</title>
+	<title>Atom | Hommmmmme</title>
    
 
     
@@ -15,6 +15,7 @@
     <!-- ==============================================================-->
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="pragma" content="no-cache" />
         <meta charset="utf-8">
  
 </head>
@@ -57,6 +58,7 @@
                 <?php 
                 if($this->session->userdata('professores')):?>
                 	<a class="regis" href="<?php echo site_url('professores/professor_perfil')?>?codProfessor=<?php echo $_SESSION['professores']?>">Perfil</a>
+
                     <a href="<?php echo site_url('login/sairProf')?>" class="btn btn-outline-info my-2 my-sm-0">Sair</a>
 
                 <?php elseif ($this->session->userdata('alunos')):?>

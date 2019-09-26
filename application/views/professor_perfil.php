@@ -1,6 +1,7 @@
 <?php  include "cabeca.php";
 //print_r($_SESSION);
 ?>
+
 <div class="espaco2"></div>
 
 
@@ -22,7 +23,7 @@
                 </div>
             </section>
             <section class="InfoPerfil">
-                <div id="nomePerfilProf">
+                <div id="nomePerfil">
                     <h2 id="nomeFont"><?php echo $perfil->nomeProfessor;?></h2>
                 </div>
                 <div id="infoAlign">
@@ -46,10 +47,13 @@
                 <div id="infoAlign">
                     <h4><span class="badge badge-secondary" style="background-color:#28a745;">Professor</span></h4>
                 </div>
+                  <?php 
+                    $teste = isset($_SESSION['professores']);
+                    if($teste == TRUE):?>
+                        <a href="<?php echo site_url('professores/professor_editar/')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn btn-success">Editar perfil</a>
 
-                <a href="<?php echo site_url('professores/professor_editar/')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn btn-success">Editar perfil</a>
-
-                <button class="btn btn-danger" onclick="delete_professor(<?php echo $perfil->codProfessor;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir</button>
+                        <button class="btn btn-danger" onclick="delete_professor(<?php echo $perfil->codProfessor;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir</button>
+                      <?php endif ?>
 
                 <!--<a href="<?php echo site_url('professores/artigos_add')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn btn-warning">Novo artigo</a>
 
@@ -59,9 +63,13 @@
         <div style="width: 90%; border-bottom: solid 2px #17a2b8; display: inline-block; margin-left: 5%; margin-right: 5%; margin-top: 2%; opacity: 0.3;"></div>
             <br><br>
             <div id="infoAlign">
-                    <a href="<?php echo site_url('professores/artigos_add')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn btn-warning">Novo artigo</a>
+                <?php 
+                            $teste = isset($_SESSION['professores']);
+                            if($teste == TRUE):?>
+                                <a href="<?php echo site_url('professores/artigos_add')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn btn-warning">Novo artigo</a>
 
-                     <a href="<?php echo site_url('professores/artigos_view')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn btn-warning">Visualizar Artigos</a>
+                                 <a href="<?php echo site_url('professores/artigos_view')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn btn-warning">Visualizar Artigos</a>
+                            <?php endif ?>
                 </div>
                 <br><br>
     <?php foreach($artigos as $artigo):?>
