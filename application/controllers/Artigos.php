@@ -164,6 +164,7 @@ class Artigos extends CI_Controller
 			$data = array(
 			'titulo' => $this->input->post('titulo'),
 			'corpo' => $this->input->post('corpo'),
+			'resumo' => $this->input->post('resumo'),
 			'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina'),		
 			);
 			$this->artigos_model->artigo_update(array('codArtigo' => $this->input->post('codArtigo')), $data);
@@ -185,6 +186,7 @@ class Artigos extends CI_Controller
 							'titulo' => $this->input->post('titulo'),
 							'corpo' => $this->input->post('corpo'),
 							'imgArtigo' => $config['file_name'].".jpg",
+							'resumo' => $this->input->post('resumo'),
 							'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina')
 						);
 						$this->artigos_model->artigo_update(array('codArtigo' => $this->input->post('codArtigo')), $data);

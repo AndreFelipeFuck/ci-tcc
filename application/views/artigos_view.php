@@ -19,7 +19,7 @@
               <?php }?>
                 <div>
                     <h3><?php echo $artigo->titulo?></h3>
-                    <p><?php echo $artigo->resumo ?></p>
+                    <p><?php echo $artigo->resumo?></p>
                 <label>Postado pelo aluno:<h4 id="nomeAutor"><a href="<?php echo site_url('alunos/aluno_perfil')?>?codAluno=<?php echo $artigo->alunos_codAluno?>"><?php echo $artigo->nomeAluno;?></a></h4></label>
                 <br>
                     <a href="<?php echo site_url('artigos/artigo_page/')?>?codArtigo=<?php echo $artigo->codArtigo;?>" class="btn btn-primary">Visulizar</a>

@@ -16,7 +16,7 @@ class Professores extends CI_Controller
         $this->load->library('session');
         $this->load->model('professor_model');
          $this->load->model('artigos_model');
-        
+          $this->load->model('professores_has_disciplinas_model');
 
         /*$professor = $this->session->userdata("professores");
         if (empty($professor)) {
@@ -72,9 +72,15 @@ class Professores extends CI_Controller
                         $professor = $query->row();
                         $this->session->set_userdata("professores", $professor->nomeProfessor);
                         $codProfessor = $this->professor_model->get_by_login($email, $senha);
+                        ////
+                        $data_prof_disc = array(
+                            'professores_codProfessor' => $professor->codProfessor,
+                            'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina')
+                        );
+                         $insert = $this->professores_has_disciplinas_model->prof_disc_add($data_prof_disc);
+                         ////
                         $url = "?codProfessor=".$professor->codProfessor;
                        redirect ("professores/professor_perfil/$url");
-                        
                     }
             //SE O PROFESSOR QUISER ENVIAR UMA FOTO DE PERFIL
             }elseif(!empty($imgProfessor['name'])){

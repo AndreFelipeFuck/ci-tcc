@@ -48,5 +48,7 @@ class Disciplina_model extends CI_Model
        $this->db->where('codDisciplina', $codDisciplina);
        $this->db->delete($this->table);
     }
+    
+
 
 }

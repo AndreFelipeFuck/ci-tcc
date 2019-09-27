@@ -38,7 +38,7 @@
 						 </div>
 						  <div class="form-group">
 							 <label for="exampleFormControlInput1">Faça um pequeno resumo do que voce escreveu:</label>
-							  <textarea name="resumo" placeholder="Teoria evolucionista fundamentada nas ideias do naturalista inglês Charles Robert Darwin 1809-1882" required><?php echo $perfil->corpo?></textarea>
+							  <textarea name="resumo" placeholder="Teoria evolucionista fundamentada nas ideias do naturalista inglês Charles Robert Darwin 1809-1882" required><?php echo $perfil->resumo?></textarea>
 					 	</div>
 						 <div>
 						 	<div class="form-group">
@@ -49,22 +49,22 @@
 						 <div class="form-group">
 						 	<label for="Escl-Mat">Matérias:</label>
 						  	   	<select class="form-control" id="Escl-Mat" name="disciplina_codDisciplina" required>
-							  	 	<option value="16">Nenhuma</option>
-							    	<option value="1">Biologia</option>
-							 		<option value="2">Física</option>
+							  	 	<option value="16" <?=($perfil->nomeDisciplina == 'Nenhuma')?'selected':''?>>Nenhuma</option>
+							    	<option value="1" <?=($perfil->nomeDisciplina == 'Biologia')?'selected':''?>>Biologia</option>
+							 		<option value="2" <?=($perfil->nomeDisciplina == 'Física')?'selected':''?>>Física</option>
 							 		<option value="3">Química</option>
-							 		<option value="4">Geografia</option>
-							 		<option value="5">História</option>
-							 		<option value="6">Pr.Textual</option>
-							 		<option value="15">Portugues</option>
-							 		<option value="7">Matemática</option>
-							 		<option value="8">Inglês</option>
-							 		<option value="9">Espanhol</option>
-							 		<option value="10">Filosofia</option>
-							 		<option value="11">Sociologia</option>
-							 		<option value="12">Agropecuária</option>
-							 		<option value="13">Informatica</option>
-							 		<option value="14">Química(tec)</option>
+							 		<option value="4" <?=($perfil->nomeDisciplina == 'Geografia')?'selected':''?>>Geografia</option>
+							 		<option value="5"<?=($perfil->nomeDisciplina == 'História')?'selected':''?>>História</option>
+							 		<option value="6"<?=($perfil->nomeDisciplina == 'Pr.Textual')?'selected':''?>>Pr.Textual</option>
+							 		<option value="15"<?=($perfil->nomeDisciplina == 'Portugues')?'selected':''?>>Portugues</option>
+							 		<option value="7"<?=($perfil->nomeDisciplina == 'Matemática')?'selected':''?>>Matemática</option>
+							 		<option value="8"<?=($perfil->nomeDisciplina == 'Inglês')?'selected':''?>>Inglês</option>
+							 		<option value="9"<?=($perfil->nomeDisciplina == 'Espanhol')?'selected':''?>>Espanhol</option>
+							 		<option value="10" <?=($perfil->nomeDisciplina == 'Filosofia')?'selected':''?>>Filosofia</option>
+							 		<option value="11" <?=($perfil->nomeDisciplina == 'Sociologia')?'selected':''?>>Sociologia</option>
+							 		<option value="12" <?=($perfil->nomeDisciplina == 'Agropecuária')?'selected':''?>>Agropecuária</option>
+							 		<option value="13" <?=($perfil->nomeDisciplina == 'Informatica')?'selected':''?>>Informatica</option>
+							 		<option value="14" <?=($perfil->nomeDisciplina == 'Química')?'selected':''?>>Química(tec)</option>
 					  			</select>
 						</div>
 						<div class="espaco2"></div> <br>
@@ -115,24 +115,24 @@
 							 </div>
 							 <div class="form-group">
 							 	<label for="Escl-Mat">Matérias:</label>
-							     	<select class="form-control" id="Escl-Mat" name="disciplina_codDisciplina" required>
-					  	 				<option value="16">Nenhuma</option>
-					    				<option value="1">Biologia</option>
-					 					<option value="2">Física</option>
-					 					<option value="3">Química</option>
-					 					<option value="4">Geografia</option>
-					 					<option value="5">História</option>
-					 					<option value="6">Pr.Textual</option>
-					 					<option value="15">Portugues</option>
-					 					<option value="7">Matemática</option>
-					 					<option value="8">Inglês</option>
-					 					<option value="9">Espanhol</option>
-								 		<option value="10">Filosofia</option>
-								 		<option value="11">Sociologia</option>
-								 		<option value="12">Agropecuária</option>
-								 		<option value="13">Informatica</option>
-								 		<option value="14">Química(tec)</option>
-								  	</select>
+							     		   	<select class="form-control" id="Escl-Mat" name="disciplina_codDisciplina" required>
+							  	 	<option value="16" <?=($perfil->nomeDisciplina == 'Nenhuma')?'selected':''?>>Nenhuma</option>
+							    	<option value="1" <?=($perfil->nomeDisciplina == 'Biologia')?'selected':''?>>Biologia</option>
+							 		<option value="2" <?=($perfil->nomeDisciplina == 'Física')?'selected':''?>>Física</option>
+							 		<option value="3">Química</option>
+							 		<option value="4" <?=($perfil->nomeDisciplina == 'Geografia')?'selected':''?>>Geografia</option>
+							 		<option value="5"<?=($perfil->nomeDisciplina == 'História')?'selected':''?>>História</option>
+							 		<option value="6"<?=($perfil->nomeDisciplina == 'Pr.Textual')?'selected':''?>>Pr.Textual</option>
+							 		<option value="15"<?=($perfil->nomeDisciplina == 'Portugues')?'selected':''?>>Portugues</option>
+							 		<option value="7"<?=($perfil->nomeDisciplina == 'Matemática')?'selected':''?>>Matemática</option>
+							 		<option value="8"<?=($perfil->nomeDisciplina == 'Inglês')?'selected':''?>>Inglês</option>
+							 		<option value="9"<?=($perfil->nomeDisciplina == 'Espanhol')?'selected':''?>>Espanhol</option>
+							 		<option value="10" <?=($perfil->nomeDisciplina == 'Filosofia')?'selected':''?>>Filosofia</option>
+							 		<option value="11" <?=($perfil->nomeDisciplina == 'Sociologia')?'selected':''?>>Sociologia</option>
+							 		<option value="12" <?=($perfil->nomeDisciplina == 'Agropecuária')?'selected':''?>>Agropecuária</option>
+							 		<option value="13" <?=($perfil->nomeDisciplina == 'Informatica')?'selected':''?>>Informatica</option>
+							 		<option value="14" <?=($perfil->nomeDisciplina == 'Química')?'selected':''?>>Química(tec)</option>
+					  			</select>
 							</div>
 							<div class="espaco2"></div> <br>
 							<button type="submit" class="btn btn-primary" value="confirmaArt">Confirmar</button>
