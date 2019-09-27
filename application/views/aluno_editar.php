@@ -1,173 +1,177 @@
-<?php  
-	
-	include "cabeca.php";
+<?php  include "cabeca.php";?>
+<?php 
+     $teste = isset($_SESSION['alunos']);?>
+<?php if($teste == TRUE){?>
+		<div class="espaco2"></div>
+			<div class="conteinerCad" id="sombra">
+				<h5 class="text-danger"><?php  echo  validation_errors();  ?></h5>
+				<form action="<?php echo site_url('alunos/aluno_update_perfil')?>" method="post" enctype = "multipart/form-data">
+					<input type="hidden" value="<?= $perfil->codAluno?>" name="codAluno"/>
+					<h1 style="font-size: 35px; border-bottom: solid 2px #17a2b8; margin-bottom: 2%; padding-bottom: 1%;">Editar Perfil:</h1>
+					<?php
+		                if ($perfil->imgAluno == null) {
+		                    ?><div class="fotoPerfil"><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>"></div><?php
+		                }else{
+		                    ?><div class="fotoPerfil"><img src="<?php echo base_url("upload/alunos/$perfil->imgAluno")?>"></div><?php
+		                 }
+		            ?>
+		            <div style="height: 12%;"></div>
+					<div class="form-group">
+					    <label for="exampleFormControlInput1">Alterar imagem:</label>
+					    <input type="file" class="form-control-file" id="exampleFormControlInput1" name="imgAluno" value="">
+					 </div>
+					 <div class="espaco2"></div>
+					<div class="form-group">
+					    <label for="exampleFormControlInput1">Nome Completo</label>
+					    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ex: Josef Oliveira" name="nomeAluno" value="<?= $perfil->nomeAluno?>">
+					 </div>
+					  <div class="form-group">
+					    <label for="exampleFormControlInput1">E-mail</label>
+					    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="exemplo@gmail.com" name="email" value="<?= $perfil->email ?>">
+					 </div>
+					 <div class="form-group">
+					    <label for="exampleFormControlInput1">Alterar a senha, caso ache necessário:</label>
+					    <input type="password" class="form-control" id="exampleFormControlInput1" name="senha">
+					    <small id="senhaHelp" class="form-text text-muted">A senha deve ter no minimo 8 caracteres</small>
+					 </div>
+					 <div class="form-group">
+					    <label for="exampleFormControlInput1">Comfirmar senha:</label>
+					    <input type="password" class="form-control" id="exampleFormControlInput1" name="senhaconf">
+					 </div>
+					 <div class="form-group">
+					    <label for="exampleFormControlInput1">Data</label>
+					    <input type="date" class="form-control" id="exampleFormControlInput2" name="dataNasc" value="<?= $perfil->dataNasc ?>">
+					 </div>
+						 <span>Curso</span>
+						 <br>
 
-?>
-<div class="espaco2"></div>
-	<div class="conteinerCad" id="sombra">
-		<h5 class="text-danger"><?php  echo  validation_errors();  ?></h5>
-		<form action="<?php echo site_url('alunos/aluno_update_perfil')?>" method="post" enctype = "multipart/form-data">
-			<input type="hidden" value="<?= $perfil->codAluno?>" name="codAluno"/>
-			<h1 style="font-size: 35px; border-bottom: solid 2px #17a2b8; margin-bottom: 2%; padding-bottom: 1%;">Editar Perfil:</h1>
-			<?php
-                if ($perfil->imgAluno == null) {
-                    ?><div class="fotoPerfil"><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>"></div><?php
-                }else{
-                    ?><div class="fotoPerfil"><img src="<?php echo base_url("upload/alunos/$perfil->imgAluno")?>"></div><?php
-                 }
-            ?>
-            <div style="height: 12%;"></div>
-			<div class="form-group">
-			    <label for="exampleFormControlInput1">Alterar imagem:</label>
-			    <input type="file" class="form-control-file" id="exampleFormControlInput1" name="imgAluno" value="">
-			 </div>
-			 <div class="espaco2"></div>
-			<div class="form-group">
-			    <label for="exampleFormControlInput1">Nome Completo</label>
-			    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ex: Josef Oliveira" name="nomeAluno" value="<?= $perfil->nomeAluno?>">
-			 </div>
-			  <div class="form-group">
-			    <label for="exampleFormControlInput1">E-mail</label>
-			    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="exemplo@gmail.com" name="email" value="<?= $perfil->email ?>">
-			 </div>
-			 <div class="form-group">
-			    <label for="exampleFormControlInput1">Alterar a senha, caso ache necessário:</label>
-			    <input type="password" class="form-control" id="exampleFormControlInput1" name="senha">
-			    <small id="senhaHelp" class="form-text text-muted">A senha deve ter no minimo 8 caracteres</small>
-			 </div>
-			 <div class="form-group">
-			    <label for="exampleFormControlInput1">Comfirmar senha:</label>
-			    <input type="password" class="form-control" id="exampleFormControlInput1" name="senhaconf">
-			 </div>
-			 <div class="form-group">
-			    <label for="exampleFormControlInput1">Data</label>
-			    <input type="date" class="form-control" id="exampleFormControlInput2" name="dataNasc" value="<?= $perfil->dataNasc ?>">
-			 </div>
-				 <span>Curso</span>
-				 <br>
+				<?php if($perfil->curso == "Agropecuária"):?>
+						 <div class="form-curso">
+						 	<input type="radio" name="curso" value="Agropecuária" checked>
+						 	<label>Agropecuária</label>
+						 </div>
+						 <div class="form-curso">
+						 	<input type="radio" name="curso" value="Informática">
+						 	<label>Informática</label>
+						 </div>
+						 <div class="form-curso">
+						 	<input type="radio" name="curso" value="Química">
+						 	<label>Química</label>
+						 </div>
 
-		<?php if($perfil->curso == "Agropecuária"):?>
-				 <div class="form-curso">
-				 	<input type="radio" name="curso" value="Agropecuária" checked>
-				 	<label>Agropecuária</label>
-				 </div>
-				 <div class="form-curso">
-				 	<input type="radio" name="curso" value="Informática">
-				 	<label>Informática</label>
-				 </div>
-				 <div class="form-curso">
-				 	<input type="radio" name="curso" value="Química">
-				 	<label>Química</label>
-				 </div>
-
-		<?php elseif($perfil->curso == "Informática"): ?>
-				<div class="form-curso">
-				 	<input type="radio" name="curso" value="Agropecuária">
-				 	<label>Agropecuária</label>
-				 </div>
-				 <div class="form-curso">
-				 	<input type="radio" name="curso" value="Informática" checked>
-				 	<label>Informática</label>
-				 </div>
-				 <div class="form-curso">
-				 	<input type="radio" name="curso" value="Química">
-				 	<label>Química</label>
-				 </div>
-		<?php elseif($perfil->curso == "Química"): ?>
-			<div class="form-curso">
-				 	<input type="radio" name="curso" value="Agropecuária">
-				 	<label>Agropecuária</label>
-				 </div>
-				 <div class="form-curso">
-				 	<input type="radio" name="curso" value="Informática" >
-				 	<label>Informática</label>
-				 </div>
-				 <div class="form-curso">
-				 	<input type="radio" name="curso" value="Química" checked>
-				 	<label>Química</label>
-				 </div>
-		<?php endif ?>
+				<?php elseif($perfil->curso == "Informática"): ?>
+						<div class="form-curso">
+						 	<input type="radio" name="curso" value="Agropecuária">
+						 	<label>Agropecuária</label>
+						 </div>
+						 <div class="form-curso">
+						 	<input type="radio" name="curso" value="Informática" checked>
+						 	<label>Informática</label>
+						 </div>
+						 <div class="form-curso">
+						 	<input type="radio" name="curso" value="Química">
+						 	<label>Química</label>
+						 </div>
+				<?php elseif($perfil->curso == "Química"): ?>
+					<div class="form-curso">
+						 	<input type="radio" name="curso" value="Agropecuária">
+						 	<label>Agropecuária</label>
+						 </div>
+						 <div class="form-curso">
+						 	<input type="radio" name="curso" value="Informática" >
+						 	<label>Informática</label>
+						 </div>
+						 <div class="form-curso">
+						 	<input type="radio" name="curso" value="Química" checked>
+						 	<label>Química</label>
+						 </div>
+				<?php endif ?>
 
 
-			<div class="espaco2"></div>
-			 <span>Ano Letivo</span>
-				 <br>
-		<?php if($perfil->anoLetivo == "Primeiro"):?>
-				 <div class="form-ano">
-				 	<input type="radio" name="anoLetivo" value="Primeiro" checked>
-				 	<label>Primeiro</label>
-				 </div>
-				 <div class="form-ano">
-				 	<input type="radio" name="anoLetivo" value="Segundo">
-				 	<label>Segundo</label>
-				 </div>
-				 <div class="form-ano">
-				 	<input type="radio" name="anoLetivo" value="Terceiro">
-				 	<label>Terceiro</label>
-				 </div>
-				 <div class="form-ano">
-				 	<input type="radio" name="anoLetivo" value="Superior">
-				 	<label>Superior</label>
-				 </div>
-		<?php elseif($perfil->anoLetivo == "Segundo"): ?>
-			 <div class="form-ano">
-				 	<input type="radio" name="anoLetivo" value="Primeiro">
-				 	<label>Primeiro</label>
-				 </div>
-				 <div class="form-ano">
-				 	<input type="radio" name="anoLetivo" value="Segundo" checked>
-				 	<label>Segundo</label>
-				 </div>
-				 <div class="form-ano">
-				 	<input type="radio" name="anoLetivo" value="Terceiro">
-				 	<label>Terceiro</label>
-				 </div>
-				 <div class="form-ano">
-				 	<input type="radio" name="anoLetivo" value="Superior">
-				 	<label>Superior</label>
-				 </div>
-		<?php elseif($perfil->anoLetivo == "Terceiro"): ?>
-			 <div class="form-ano">
-				 	<input type="radio" name="anoLetivo" value="Primeiro">
-				 	<label>Primeiro</label>
-				 </div>
-				 <div class="form-ano">
-				 	<input type="radio" name="anoLetivo" value="Segundo">
-				 	<label>Segundo</label>
-				 </div>
-				 <div class="form-ano">
-				 	<input type="radio" name="anoLetivo" value="Terceiro" checked>
-				 	<label>Terceiro</label>
-				 </div>
-				 <div class="form-ano">
-				 	<input type="radio" name="anoLetivo" value="Superior">
-				 	<label>Superior</label>
-				 </div>
-		<?php endif ?>
+					<div class="espaco2"></div>
+					 <span>Ano Letivo</span>
+						 <br>
+				<?php if($perfil->anoLetivo == "Primeiro"):?>
+						 <div class="form-ano">
+						 	<input type="radio" name="anoLetivo" value="Primeiro" checked>
+						 	<label>Primeiro</label>
+						 </div>
+						 <div class="form-ano">
+						 	<input type="radio" name="anoLetivo" value="Segundo">
+						 	<label>Segundo</label>
+						 </div>
+						 <div class="form-ano">
+						 	<input type="radio" name="anoLetivo" value="Terceiro">
+						 	<label>Terceiro</label>
+						 </div>
+						 <div class="form-ano">
+						 	<input type="radio" name="anoLetivo" value="Superior">
+						 	<label>Superior</label>
+						 </div>
+				<?php elseif($perfil->anoLetivo == "Segundo"): ?>
+					 <div class="form-ano">
+						 	<input type="radio" name="anoLetivo" value="Primeiro">
+						 	<label>Primeiro</label>
+						 </div>
+						 <div class="form-ano">
+						 	<input type="radio" name="anoLetivo" value="Segundo" checked>
+						 	<label>Segundo</label>
+						 </div>
+						 <div class="form-ano">
+						 	<input type="radio" name="anoLetivo" value="Terceiro">
+						 	<label>Terceiro</label>
+						 </div>
+						 <div class="form-ano">
+						 	<input type="radio" name="anoLetivo" value="Superior">
+						 	<label>Superior</label>
+						 </div>
+				<?php elseif($perfil->anoLetivo == "Terceiro"): ?>
+					 <div class="form-ano">
+						 	<input type="radio" name="anoLetivo" value="Primeiro">
+						 	<label>Primeiro</label>
+						 </div>
+						 <div class="form-ano">
+						 	<input type="radio" name="anoLetivo" value="Segundo">
+						 	<label>Segundo</label>
+						 </div>
+						 <div class="form-ano">
+						 	<input type="radio" name="anoLetivo" value="Terceiro" checked>
+						 	<label>Terceiro</label>
+						 </div>
+						 <div class="form-ano">
+						 	<input type="radio" name="anoLetivo" value="Superior">
+						 	<label>Superior</label>
+						 </div>
+				<?php endif ?>
 
-			
-			<div class="espaco2"></div>
-			<div>
-				<label><input type="checkbox" name="termos"> Concordo com os <a href="">Termos de Uso</a> do site.</label>
+					
+					<div class="espaco2"></div>
+					<div>
+						<label><input type="checkbox" name="termos"> Concordo com os <a href="">Termos de Uso</a> do site.</label>
+					</div>
+					<div class="espaco2"></div><br>
+					<button type="submit" class="btn btn-primary">Confirmar</button>
+					<button type="reset" class="btn btn-secundary">Cancelar</button>
+				</form>
 			</div>
-			<div class="espaco2"></div><br>
-			<button type="submit" class="btn btn-primary">Confirmar</button>
-			<button type="reset" class="btn btn-secundary">Cancelar</button>
-		</form>
-	</div>
-	<div class="espaco2"></div>
-	<div class="conteinerZonaAlert" id="sombra2">
-		<h3 style="border-bottom: solid 2px #e44747; margin-bottom: 2%; padding-bottom: 1%;">Zona de Risco!</h3>
-		<div id="contZA-info">
-			<div>
-				<button class="btn btn-danger" onclick="delete_aluno(<?php echo $perfil->codAluno;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir Perfil</button>
+			<div class="espaco2"></div>
+			<div class="conteinerZonaAlert" id="sombra2">
+				<h3 style="border-bottom: solid 2px #e44747; margin-bottom: 2%; padding-bottom: 1%;">Zona de Risco!</h3>
+				<div id="contZA-info">
+					<div>
+						<button class="btn btn-danger" onclick="delete_aluno(<?php echo $perfil->codAluno;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir Perfil</button>
+					</div>
+				</div>
+				<div id="contZA-img" align="center">
+					<figure><img src="<?php echo base_url('assets/bootstrap/img/cuidado.png')?>" width="120" height="120"></figure>
+					<p style="color: #878585;">Atenção! Suas alterações aqui são sem volta.</p>
+				</div>
 			</div>
-		</div>
-		<div id="contZA-img" align="center">
-			<figure><img src="<?php echo base_url('assets/bootstrap/img/cuidado.png')?>" width="120" height="120"></figure>
-			<p style="color: #878585;">Atenção! Suas alterações aqui são sem volta.</p>
-		</div>
-	</div>
+<?php }else{?>
+
+		<meta http-equiv="refresh" content="0;url=<?php echo site_url('')?>" />
+<?php } ?>
+
 
 
 <?php  	include "rodape.php";?>
