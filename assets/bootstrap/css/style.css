@@ -424,7 +424,7 @@ textarea {
 	margin: 0 auto;
 	position: relative;
 	width: 50%;
-	height: 120%;
+	padding: 2%;
 	
 }
 
@@ -659,7 +659,14 @@ textarea {
 
 
 #nomePerfil{
-	background-color: #17a2b8;	
+	background-color: #17a2b8;
+	border-left: solid 5px #51C0CF;	
+}
+
+
+#nomePerfilProf{
+	background-color: #28a745;
+	border-left: solid 5px #0F6D1B;	
 }
 
 #nomeFont{
