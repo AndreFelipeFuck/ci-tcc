@@ -26,7 +26,6 @@
 			 </div>
 			 <span>Docente da área:</span>
 				 <br>
-				 
 				  	 	<select class="form-control" id="Escl-Mat" name="disciplina_codDisiciplina" required>
 				  		<option value="15" name="disciplina_codDisiciplina">Nenhuma</option>
 				    	<option value="1" name="disciplina_codDisiciplina">Biologia</option>

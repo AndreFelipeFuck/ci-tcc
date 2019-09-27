@@ -42,7 +42,7 @@
                     <?php 
                     $teste = isset($_SESSION['alunos']);
                     if($teste == TRUE):?>
-                        <a href="<?php echo site_url('alunos/aluno_editar/')?>?codAluno=<?php echo $perfil->codAluno;?>" class="btn btn-success">Editar Perfil</a>
+                        <a href="<?php echo site_url('alunos/aluno_editar/')?>?codAluno=<?php echo $perfil->codAluno;?>" class="btn" style="background-color: #17a2b8; border-radius: 48%;"><img src="<?php echo base_url('assets/bootstrap/img/config.png')?>" width="35" height="35"></a>
                     <?php endif ?>
                     
 
@@ -53,8 +53,8 @@
                        <?php 
                             $teste = isset($_SESSION['alunos']);
                             if($teste == TRUE):?>
-                                <a href="<?php echo site_url('alunos/artigos_add')?>?codAluno=<?php echo $perfil->codAluno;?>" class="btn btn-warning">Novo artigo</a>
-                                <a href="<?php echo site_url('alunos/artigos_view')?>?codAluno=<?php echo $perfil->codAluno;?>" class="btn btn-warning">Visualizar Artigos</a>
+                                <a href="<?php echo site_url('alunos/artigos_add')?>?codAluno=<?php echo $perfil->codAluno;?>" class="btn" style="background-color: #17a2b8; color: #fff;">Novo artigo</a>
+                                <a href="<?php echo site_url('alunos/artigos_view')?>?codAluno=<?php echo $perfil->codAluno;?>" class="btn" style="background-color: #17a2b8; color: #fff;">Visualizar Artigos</a>
                             <?php endif ?>
                 </div>
                 <br><br>

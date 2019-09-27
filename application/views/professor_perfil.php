@@ -23,7 +23,7 @@
                 </div>
             </section>
             <section class="InfoPerfil">
-                <div id="nomePerfil">
+                <div id="nomePerfilProf">
                     <h2 id="nomeFont"><?php echo $perfil->nomeProfessor;?></h2>
                 </div>
                 <div id="infoAlign">
@@ -50,25 +50,23 @@
                   <?php 
                     $teste = isset($_SESSION['professores']);
                     if($teste == TRUE):?>
-                        <a href="<?php echo site_url('professores/professor_editar/')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn btn-success">Editar perfil</a>
-
-                        <button class="btn btn-danger" onclick="delete_professor(<?php echo $perfil->codProfessor;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir</button>
-                      <?php endif ?>
+                        <a href="<?php echo site_url('professores/professor_editar/')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn btn-success"><img src="<?php echo base_url('assets/bootstrap/img/config.png')?>"></a>
 
                 <!--<a href="<?php echo site_url('professores/artigos_add')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn btn-warning">Novo artigo</a>
 
                 <a href="<?php echo site_url('professores/artigos_view')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn btn-warning">Visualizar Artigos</a>-->
+            <?php endif ?>
 
             </section>
-        <div style="width: 90%; border-bottom: solid 2px #17a2b8; display: inline-block; margin-left: 5%; margin-right: 5%; margin-top: 2%; opacity: 0.3;"></div>
+        <div style="width: 90%; border-bottom: solid 2px #28a745; display: inline-block; margin-left: 5%; margin-right: 5%; margin-top: 2%; opacity: 0.3;"></div>
             <br><br>
             <div id="infoAlign">
                 <?php 
                             $teste = isset($_SESSION['professores']);
                             if($teste == TRUE):?>
-                                <a href="<?php echo site_url('professores/artigos_add')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn btn-warning">Novo artigo</a>
+                                <a href="<?php echo site_url('professores/artigos_add')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn" style="background-color: #28a745; color: #fff;">Novo artigo</a>
 
-                                 <a href="<?php echo site_url('professores/artigos_view')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn btn-warning">Visualizar Artigos</a>
+                                 <a href="<?php echo site_url('professores/artigos_view')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn" style="background-color: #28a745; color: #fff;">Visualizar Artigos</a>
                             <?php endif ?>
                 </div>
                 <br><br>
@@ -79,7 +77,7 @@
                         <figure><img src="<?php echo base_url('assets/bootstrap/img/eng.png')?>"></figure><?php
                 }else{
                         ?><figure><img src="<?php echo base_url("upload/artigos/$artigo->imgArtigo")?>"></figure>
-            <?php }?>
+        <?php   } ?>
                         <h5><?php echo $artigo->titulo;?></h5>
                         <a href="<?php echo site_url('artigos/artigo_page/')?>?codArtigo=<?php echo $artigo->codArtigo;?>" class="btn btn-primary">Visulizar</a>
                                
@@ -190,60 +188,7 @@
     </script>
 
     
-<div class="modal fade" id="modal_form" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Professor Form</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-
-                        label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
-            <div class="modal-body form">
-                <form action="#" id="form" class="form-horizontal">
-                    <input type="hidden" value="" name="codProfessor"/>
-                    <div class="form-body">
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Nome</label>
-                            <div class="col-md-9">
 
-                                <input name="nomeProfessor" placeholder="Book ISBN" class="form-
-    control" type="text">
-
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">email</label>
-                            <div class="col-md-9">
-
-                                <input name="email" placeholder="Seu email" class="form-
-    control" type="text">
-
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">senha</label>
-                            <div class="col-md-9">
-
-                                <input name="senha" placeholder="Sua senha" class="form-control" type="password">
-                            </div>
-                        </div>
-
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-
-                <button type="button" id="btnSave" onclick="save()" class="btn btn-
-                        primary">Save</button>
-
-                <button type="button" class="btn btn-danger" data-
-                        dismiss="modal">Cancel</button>
-
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<!-- End Bootstrap modal -->
 
    
 

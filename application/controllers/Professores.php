@@ -49,7 +49,7 @@ class Professores extends CI_Controller
         
         if ($this->form_validation->run() == FALSE) {
           $erros = array('mensagens' => validation_errors());
-           $this->load->view('aluno_add', $erros);
+           $this->load->view('professor_add', $erros);
 
         }else{
             //SE O PROFESSOR NÂO QUISER ENVIAR UMA FOTO DE PERFIL
