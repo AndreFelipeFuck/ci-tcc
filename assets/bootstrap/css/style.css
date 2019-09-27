@@ -707,6 +707,32 @@ textarea {
 	height: 20%;
 }
 
+.conteinerDiscPage{
+	width: 80%;
+	border-radius: 3px;
+	margin: 0 auto;
+	padding: 2%;
+}
+
+#logoDisc{
+	border-radius: 50%;
+	width: 11.5%;
+	height: 16%;
+	display:inline-block; 
+	padding: 2%;
+}
+
+#tituloDisc{
+	width: 80%;
+	display: inline-block;
+	padding: 1%;
+	border-radius: 3px;
+}
+
+#logoDisc img{
+	margin: 0 auto;
+}
+
 #exampleFormControlInput1{
 	width: 60%;
 }
