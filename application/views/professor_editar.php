@@ -1,9 +1,9 @@
 <?php  include "cabeca.php"; ?>
 <div class="espaco2"></div>
-	<section class="conteinerCadProf">
-		<form class="formulario" method="post" action="<?php echo site_url('professores/professor_update_perfil')?>" enctype = "multipart/form-data">
+	<section class="conteinerCadProf" id="sombra">
+		<form method="post" action="<?php echo site_url('professores/professor_update_perfil')?>" enctype = "multipart/form-data">
 			<input type="hidden" value="<?= $perfil->codProfessor?>" name="codProfessor"/>
-			<h1>Editar Perfil:</h1>
+			<h1 style="font-size: 35px; border-bottom: solid 2px #28a745; margin-bottom: 2%; padding-bottom: 1%;">Editar Perfil:</h1>
 			<?php
                 if ($perfil->imgProfessor == null) {
                     ?><div class="fotoPerfil"><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>"></div><?php
@@ -11,7 +11,7 @@
                     ?><div class="fotoPerfil"><img src="<?php echo base_url("upload/professores/$perfil->imgProfessor")?>"></div><?php
                  }
             ?>
-            <div class="espaco2"></div>
+            <div style="height: 12%;"></div>
 			<div class="form-group">
 			    <label for="exampleFormControlInput1">Alterar imagem:</label>
 			    <input type="file" class="form-control-file" id="exampleFormControlInput1" name="imgProfessor">
@@ -65,7 +65,23 @@
 			<button type="submit" class="btn btn-primary">Confirmar</button>
 			<button type="submit" class="btn btn-secundary">Cancelar</button>
 		</form>
-		
 	</section>
+	<div class="espaco2"></div>
+	<div class="conteinerZonaAlert" id="sombra2">
+		<h3 style="border-bottom: solid 2px #e44747; margin-bottom: 2%; padding-bottom: 1%;">Zona de Risco!</h3>
+		<div id="contZA-info">
+			<div>
+				<button class="btn btn-danger" onclick="delete_professor(<?php echo $perfil->codProfessor;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir Perfil</button>
+			</div>
+		</div>
+		<div id="contZA-img" align="center">
+			<figure><img src="<?php echo base_url('assets/bootstrap/img/cuidado.png')?>" width="120" height="120"></figure>
+			<p style="color: #878585;">Atenção! Suas alterações aqui são sem volta.</p>
+		</div>
+	</div>
 
-<?php //include "rodape.php"; ?>
+<?php 
+
+	include "rodape.php"; 
+
+?>

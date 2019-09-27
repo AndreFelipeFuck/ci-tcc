@@ -23,7 +23,7 @@
                 </div>
             </section>
             <section class="InfoPerfil">
-                <div id="nomePerfil">
+                <div id="nomePerfilProf">
                     <h2 id="nomeFont"><?php echo $perfil->nomeProfessor;?></h2>
                 </div>
                 <div id="infoAlign">
@@ -50,25 +50,22 @@
                   <?php 
                     $teste = isset($_SESSION['professores']);
                     if($teste == TRUE):?>
-                        <a href="<?php echo site_url('professores/professor_editar/')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn btn-success">Editar perfil</a>
-
-                        <button class="btn btn-danger" onclick="delete_professor(<?php echo $perfil->codProfessor;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir</button>
-                      <?php endif ?>
+                        <a href="<?php echo site_url('professores/professor_editar/')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn btn-success"><img src="<?php echo base_url('assets/bootstrap/img/config.png')?>"></a>
 
                 <!--<a href="<?php echo site_url('professores/artigos_add')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn btn-warning">Novo artigo</a>
 
                 <a href="<?php echo site_url('professores/artigos_view')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn btn-warning">Visualizar Artigos</a>-->
 
             </section>
-        <div style="width: 90%; border-bottom: solid 2px #17a2b8; display: inline-block; margin-left: 5%; margin-right: 5%; margin-top: 2%; opacity: 0.3;"></div>
+        <div style="width: 90%; border-bottom: solid 2px #28a745; display: inline-block; margin-left: 5%; margin-right: 5%; margin-top: 2%; opacity: 0.3;"></div>
             <br><br>
             <div id="infoAlign">
                 <?php 
                             $teste = isset($_SESSION['professores']);
                             if($teste == TRUE):?>
-                                <a href="<?php echo site_url('professores/artigos_add')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn btn-warning">Novo artigo</a>
+                                <a href="<?php echo site_url('professores/artigos_add')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn" style="background-color: #28a745; color: #fff;">Novo artigo</a>
 
-                                 <a href="<?php echo site_url('professores/artigos_view')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn btn-warning">Visualizar Artigos</a>
+                                 <a href="<?php echo site_url('professores/artigos_view')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn" style="background-color: #28a745; color: #fff;">Visualizar Artigos</a>
                             <?php endif ?>
                 </div>
                 <br><br>
