@@ -39,6 +39,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             return $query->result();
         }
 
+        public function listar_artigos(){
+            $this->db->select('codArtigo, resumo, corpo, titulo, imgArtigo, uploadArtigos, alunos_codAluno, nomeAluno')->from('artigos, alunos')->where("alunos_codAluno = codAluno");
+            $query = $this->db->get();
+            return $query->result();
+        }
+
+        public function listar_artigos_professor(){
+          $this->db->select('codArtigo, resumo, corpo, titulo, imgArtigo, uploadArtigos, professores_codProfessor, nomeProfessor')->from('artigos, professores')->where('professores_codProfessor = codProfessor');
+           $query = $this->db->get();
+          return $query->result();
+        }
+
         public function get_artigos_by_data(){
             $this->db->select('codArtigo, titulo, corpo, imgArtigo, nomeProfessor')-> from('artigos, professores, alunos')-> where ('professores_codProfessor = codProfessor')->order_by ('dataArtigo DESC')->limit(5);
             $query=$this->db->get();

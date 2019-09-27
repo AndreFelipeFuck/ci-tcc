@@ -34,7 +34,8 @@ class Artigos extends CI_Controller
         $data["links"] = $this->pagination->create_links();*/
 
         //$data['artigos'] = $this->artigos_model->get_all_artigos($config["per_page"], $page);
-        $data['artigos'] = $this->artigos_model->get_all_artigos();
+     	$data['artigos'] = $this->artigos_model->listar_artigos();
+		$data['artigosProfessor'] = $this->artigos_model->listar_artigos_professor();
         $data['contar'] = $this->artigos_model->get_count();
 
         $this->load->view('artigos_view', $data);
