@@ -60,6 +60,7 @@ class Artigos extends CI_Controller
 						'corpo' => $this->input->post('corpo'),
 						'professores_codProfessor' => $this->input->post('professores_codProfessor'),
 						'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina'),
+						'resumo' => $this->input->post('resumo'),
 						'dataArtigo' => date("Y-m-d")
 				);
 
@@ -69,6 +70,7 @@ class Artigos extends CI_Controller
 						'corpo' => $this->input->post('corpo'),
 						'alunos_codAluno' => $this->input->post('alunos_codAluno'),
 						'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina'),
+						'resumo' => $this->input->post('resumo'),
 						'dataArtigo' => date("Y-m-d")
 				)	;
 			}
@@ -108,6 +110,7 @@ class Artigos extends CI_Controller
 							'imgArtigo' => $this->input->post('imgArtigo'),
 							'professores_codProfessor' => $this->input->post('professores_codProfessor'),
 							'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina'),
+							'resumo' => $this->input->post('resumo'),
 							'imgArtigo' => $config['file_name'].".jpg",
 							'dataArtigo' => date("Y-m-d")
 						);
@@ -118,6 +121,7 @@ class Artigos extends CI_Controller
 							'imgArtigo' => $this->input->post('imgArtigo'),
 							'alunos_codAluno' => $this->input->post('alunos_codAluno'),
 							'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina'),
+							'resumo' => $this->input->post('resumo'),
 							'imgArtigo' => $config['file_name'].".jpg",
 							'dataArtigo' => date("Y-m-d")
 						);
@@ -158,7 +162,8 @@ class Artigos extends CI_Controller
 		if($imgArtigo['name'] == null) {
 			$data = array(
 			'titulo' => $this->input->post('titulo'),
-			'corpo' => $this->input->post('corpo')			
+			'corpo' => $this->input->post('corpo'),
+			'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina'),		
 			);
 			$this->artigos_model->artigo_update(array('codArtigo' => $this->input->post('codArtigo')), $data);
 
@@ -178,7 +183,8 @@ class Artigos extends CI_Controller
                     	$data = array(
 							'titulo' => $this->input->post('titulo'),
 							'corpo' => $this->input->post('corpo'),
-							'imgArtigo' => $config['file_name'].".jpg"	
+							'imgArtigo' => $config['file_name'].".jpg",
+							'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina')
 						);
 						$this->artigos_model->artigo_update(array('codArtigo' => $this->input->post('codArtigo')), $data);
 

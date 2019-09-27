@@ -36,6 +36,10 @@
 						      });
 						    </script>
 						 </div>
+						  <div class="form-group">
+							 <label for="exampleFormControlInput1">Faça um pequeno resumo do que voce escreveu:</label>
+							  <textarea name="resumo" placeholder="Teoria evolucionista fundamentada nas ideias do naturalista inglês Charles Robert Darwin 1809-1882" required><?php echo $perfil->corpo?></textarea>
+					 	</div>
 						 <div>
 						 	<div class="form-group">
 						    <label for="exampleFormControlFile1">Escolha uma imagem:</label>
@@ -44,29 +48,31 @@
 						 </div>
 						 <div class="form-group">
 						 	<label for="Escl-Mat">Matérias:</label>
-						  	<select class="form-control" id="Escl-Mat" required>
-						  		<option value="nenhuma">Nenhuma</option>
-						    	<option value="biologia">Biologia</option>
-						 		<option value="fisica">Física</option>
-						 		<option value="filosofia">Filosofia</option>
-						 		<option value="geografia">Geografia</option>
-						 		<option value="historia">História</option>
-						 		<option value="ingles">Inglês</option>
-						 		<option value="matematica">Matemática</option>
-						 		<option value="portugues">Português</option>
-						 		<option value="quimica">Química</option>
-						 		<option value="sociologia">Sociologia</option>
-						 		<option value="agroTec">Agropecuária</option>
-						 		<option value="infoTec">Informatica</option>
-						 		<option value="quimiTec">Química(Tec)</option>
-						  	</select>
+						  	   	<select class="form-control" id="Escl-Mat" name="disciplina_codDisciplina" required>
+							  	 	<option value="16">Nenhuma</option>
+							    	<option value="1">Biologia</option>
+							 		<option value="2">Física</option>
+							 		<option value="3">Química</option>
+							 		<option value="4">Geografia</option>
+							 		<option value="5">História</option>
+							 		<option value="6">Pr.Textual</option>
+							 		<option value="15">Portugues</option>
+							 		<option value="7">Matemática</option>
+							 		<option value="8">Inglês</option>
+							 		<option value="9">Espanhol</option>
+							 		<option value="10">Filosofia</option>
+							 		<option value="11">Sociologia</option>
+							 		<option value="12">Agropecuária</option>
+							 		<option value="13">Informatica</option>
+							 		<option value="14">Química(tec)</option>
+					  			</select>
 						</div>
 						<div class="espaco2"></div> <br>
 						<button type="submit" class="btn btn-primary" value="confirmaArt">Confirmar</button>
 						<button type="submit" class="btn btn-secundary" value="cancelarArt">Cancelar</button>
 					</form>		
 				</div>
-<?php }if($teste1 == TRUE){?>
+<?php }elseif($teste1 == TRUE){?>
 				<title>Atom |Editar Artigo</title>
 
 				  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
@@ -97,6 +103,10 @@
 							      });
 							    </script>
 							 </div>
+							  <div class="form-group">
+								 <label for="exampleFormControlInput1">Faça um pequeno resumo do que voce escreveu:</label>
+								  <textarea name="resumo" placeholder="Teoria evolucionista fundamentada nas ideias do naturalista inglês Charles Robert Darwin 1809-1882" required><?php echo $perfil->corpo?></textarea>
+					 		</div>
 							 <div>
 							 	<div class="form-group">
 							    <label for="exampleFormControlFile1">Escolha uma imagem:</label>
@@ -105,22 +115,24 @@
 							 </div>
 							 <div class="form-group">
 							 	<label for="Escl-Mat">Matérias:</label>
-							  	<select class="form-control" id="Escl-Mat" required>
-							  		<option value="nenhuma">Nenhuma</option>
-							    	<option value="biologia">Biologia</option>
-							 		<option value="fisica">Física</option>
-							 		<option value="filosofia">Filosofia</option>
-							 		<option value="geografia">Geografia</option>
-							 		<option value="historia">História</option>
-							 		<option value="ingles">Inglês</option>
-							 		<option value="matematica">Matemática</option>
-							 		<option value="portugues">Português</option>
-							 		<option value="quimica">Química</option>
-							 		<option value="sociologia">Sociologia</option>
-							 		<option value="agroTec">Agropecuária</option>
-							 		<option value="infoTec">Informatica</option>
-							 		<option value="quimiTec">Química(Tec)</option>
-							  	</select>
+							     	<select class="form-control" id="Escl-Mat" name="disciplina_codDisciplina" required>
+					  	 				<option value="16">Nenhuma</option>
+					    				<option value="1">Biologia</option>
+					 					<option value="2">Física</option>
+					 					<option value="3">Química</option>
+					 					<option value="4">Geografia</option>
+					 					<option value="5">História</option>
+					 					<option value="6">Pr.Textual</option>
+					 					<option value="15">Portugues</option>
+					 					<option value="7">Matemática</option>
+					 					<option value="8">Inglês</option>
+					 					<option value="9">Espanhol</option>
+								 		<option value="10">Filosofia</option>
+								 		<option value="11">Sociologia</option>
+								 		<option value="12">Agropecuária</option>
+								 		<option value="13">Informatica</option>
+								 		<option value="14">Química(tec)</option>
+								  	</select>
 							</div>
 							<div class="espaco2"></div> <br>
 							<button type="submit" class="btn btn-primary" value="confirmaArt">Confirmar</button>

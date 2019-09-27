@@ -36,6 +36,10 @@
 					      });
 					    </script>
 					 </div>
+					  <div class="form-group">
+					    <label for="exampleFormControlInput1">Faça um pequeno resumo do que voce escreveu:</label>
+					    <textarea name="resumo" placeholder="Teoria evolucionista fundamentada nas ideias do naturalista inglês Charles Robert Darwin 1809-1882" required></textarea>
+					 </div>
 					 <div>
 					 	<div class="form-group">
 					    <label for="exampleFormControlFile1">Escolha uma imagem:</label>

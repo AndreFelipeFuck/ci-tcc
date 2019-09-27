@@ -22,13 +22,13 @@ class Disciplina_model extends CI_Model
     }
 
     public function listar_artigos($codDisciplina){
-      $this->db->select('codArtigo,corpo, titulo, imgArtigo, uploadArtigos, professores_codProfessor, alunos_codAluno, nomeAluno')->from('disciplinas, artigos, alunos')->where("codDisciplina = disciplina_codDisciplina and codDisciplina = '$codDisciplina' and alunos_codAluno = codAluno");
+      $this->db->select('codArtigo, resumo, corpo, titulo, imgArtigo, uploadArtigos, professores_codProfessor, alunos_codAluno, nomeAluno')->from('disciplinas, artigos, alunos')->where("codDisciplina = disciplina_codDisciplina and codDisciplina = '$codDisciplina' and alunos_codAluno = codAluno");
        $query = $this->db->get();
       return $query->result();
     }
 
     public function listar_artigos_professor($codDisciplina){
-      $this->db->select('codArtigo,corpo, titulo, imgArtigo, uploadArtigos, professores_codProfessor, nomeProfessor, nomeProfessor')->from('disciplinas, artigos, professores')->where("codDisciplina = disciplina_codDisciplina and codDisciplina = '$codDisciplina' and professores_codProfessor = codProfessor");
+      $this->db->select('codArtigo, resumo, corpo, titulo, imgArtigo, uploadArtigos, professores_codProfessor, nomeProfessor, nomeProfessor')->from('disciplinas, artigos, professores')->where("codDisciplina = disciplina_codDisciplina and codDisciplina = '$codDisciplina' and professores_codProfessor = codProfessor");
        $query = $this->db->get();
       return $query->result();
     }
