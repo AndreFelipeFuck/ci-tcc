@@ -2,8 +2,7 @@
 include "cabeca.php";
 ?>
 <header>
-    <title>Atom | </title>
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/bootstrap/css/animate.css')?>">
+    <title>Atom | Artigos de <?php echo $disciplinas->nomeDisciplina?></title>
 </header>
 <div class="espaco2"></div>
  <div class="conteinerDiscPage" id="sombra">
@@ -13,7 +12,7 @@ include "cabeca.php";
     <section class="conteiner0">
         <div style="margin-bottom: 1%;">
             <div id="logoDisc" style="background-color:#17a2b8;">
-                <figure><img src="<?php echo base_url('assets/bootstrap/img/$disciplinas->imgDisciplina')?>" width="100" height="100" alt="smaple image" class="animated-rotateIn" style="animation-delay: 3s;"></figure>
+                <figure class="img-rounded img-responsive"><img src="<?php echo base_url('assets//bootstrap/img/bio.png')?>" width="100" height="100" alt="smaple image"></figure>
             </div>
             <div id="tituloDisc" style="background-color:#17a2b8;"><h1 style="color: #fff">Artigos de <?php echo $disciplinas->nomeDisciplina?></h1></div>
         </div>
@@ -28,7 +27,7 @@ include "cabeca.php";
               <?php }?>
                 <div>
                     <h3><?php echo $artigo->titulo?></h3>
-                    <p><?php echo $artigo->resumo?></p>
+                    <p><?php echo $artigo->corpo?></p>
                         <label>Postado pelo aluno:<h4 id="nomeAutor"><?php echo $artigo->nomeAluno;?></h4></label>
                     <a href="<?php echo site_url('artigos/artigo_page/')?>?codArtigo=<?php echo $artigo->codArtigo;?>" class="btn btn-primary">Visulizar</a>
                 </div>
