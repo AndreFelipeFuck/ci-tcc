@@ -42,7 +42,7 @@
 		</div>
 		<div class="nomeMateria">
 			<label>Disciplinas: </label>
-			<h4 id="nomeMateria"><a href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=<?php echo $perfil->codDisciplina?>"><?php echo $perfil->nomeDisciplina?></a></h4>
+			<h4 id="nomeMateria"><a href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=<?php echo $perfil->disciplina_codDisciplina?>"><?php echo $perfil->nomeDisciplina?></a></h4>
 		</div>       
 	</div>
 <?php 
