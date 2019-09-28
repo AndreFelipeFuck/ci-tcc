@@ -32,9 +32,10 @@ class Professores_has_disciplinas_model extends CI_Model
       return $this->db->affected_rows();
     }
 
-    public function delete_by_id($codDisciplina){
-       $this->db->where('codDisciplina', $codDisciplina);
+    public function delete_by_id($codProfessor){
+       $this->db->where('professores_codProfessor', $codProfessor);
        $this->db->delete($this->table);
+       // "DELETE FROM `professores_has_disciplinas` WHERE `professores_has_disciplinas`.`professores_codProfessor` = 15 AND `professores_has_disciplinas`.`disciplina_codDisciplina` = 11"
     }
     
 

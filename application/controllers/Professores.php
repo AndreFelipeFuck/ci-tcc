@@ -116,6 +116,13 @@ class Professores extends CI_Controller
                         $professor = $query->row();
                         $this->session->set_userdata("professores", $professor->nomeProfessor);
                         $codProfessor = $this->professor_model->get_by_login($email, $senha);
+                         ////
+                        $data_prof_disc = array(
+                            'professores_codProfessor' => $professor->codProfessor,
+                            'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina')
+                        );
+                         $insert = $this->professores_has_disciplinas_model->prof_disc_add($data_prof_disc);
+                         ////
                         $url = "?codProfessor=".$professor->codProfessor;
                        redirect ("professores/professor_perfil/$url");
                         
@@ -153,10 +160,17 @@ class Professores extends CI_Controller
                        'nomeProfessor' => $this->input->post('nomeProfessor'),
                         'dataNasc' => $this->input->post('dataNasc'),
                         'miniCurriculo' => $this->input->post('miniCurriculo'),
-                        'institucao' => $this->input->post('institucao'),
+                        //'institucao' => $this->input->post('institucao'),
                         'email' => $this->input->post('email'),
                     );
                     $this->professor_model->professor_update(array('codProfessor' => $this->input->post('codProfessor')), $data);
+                    ////
+                        $data_prof_disc = array(
+                            'professores_codProfessor' => $this->input->post('codProfessor'),
+                            'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina')
+                        );
+                        $this->professores_has_disciplinas_model->prof_disc_update(array('professores_codProfessor' => $this->input->post('codProfessor')), $data_prof_disc);
+                    ////
 
                     echo json_encode(array("status" => TRUE));
                     //ENVIAR PARA A PAGINA PERFIL
@@ -180,10 +194,17 @@ class Professores extends CI_Controller
                             'dataNasc' => $this->input->post('dataNasc'),
                             'imgProfessor' => $config['file_name'].".jpg",
                             'miniCurriculo' => $this->input->post('miniCurriculo'),
-                            'institucao' => $this->input->post('institucao'),
+                            //'institucao' => $this->input->post('institucao'),
                             'email' => $this->input->post('email'),
                         );
                         $this->professor_model->professor_update(array('codProfessor' => $this->input->post('codProfessor')), $data);
+                        ////
+                        $data_prof_disc = array(
+                            'professores_codProfessor' => $this->input->post('codProfessor'),
+                            'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina')
+                        );
+                         $insert = $this->professores_has_disciplinas_model->prof_disc_update($data_prof_disc);
+                         ////
 
                         echo json_encode(array("status" => TRUE));
 
@@ -259,6 +280,7 @@ class Professores extends CI_Controller
 
     public function professor_delete($codProfessor)
     {
+        $this->professores_has_disciplinas_model->delete_by_id($codProfessor);
         $this->artigos_model->delete_all_professor($codProfessor);
         $this->professor_model->delete_by_id($codProfessor);
         echo json_encode(array("status" => TRUE));

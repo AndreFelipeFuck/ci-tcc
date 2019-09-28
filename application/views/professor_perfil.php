@@ -34,6 +34,11 @@
                     <label>Data de Nascimento:</label>
                     <h6><?php echo $perfil->dataNasc;?></h6>
                 </div>
+                <div class="infoAlign">
+                    <label>Disciplina: <h2 id="nomeMateria"><a href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=<?php echo $perfil->codDisciplina?>"><?php echo $perfil->nomeDisciplina?></a></h2> </label>
+                    
+                </div>     
+
             <!--
                 <div id="infoAlign">
                     <label>Institucao:</label>

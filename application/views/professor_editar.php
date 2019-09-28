@@ -41,50 +41,43 @@
 				    <label for="exampleFormControlInput1">Data</label>
 				    <input type="date" class="form-control" id="exampleFormControlInput2" name="dataNasc" value="<?= $perfil->dataNasc?>">
 				 </div>
-				 <span>Docente da área:</span>
-					 <br>
-					 <div class="form-info">
-					 	<input type="radio" name="area" value="Ensino Medio">
-					 	<label>Ensino Medio</label>
-					 </div>
-					 <div class="form-group">
-					    <label for="exampleFormControlInput1">Alterar a senha, caso ache necessário:</label>
-					    <input type="password" class="form-control" id="exampleFormControlInput1" name="senha">
-					    <small id="senhaHelp" class="form-text text-muted">A senha deve ter no minimo 8 caracteres</small>
-					 </div>
-					 <div class="form-group">
-					    <label for="exampleFormControlInput1">Comfirmar Senha</label>
-					    <input type="password" class="form-control" id="exampleFormControlInput1" name="senhaconf">
-					 </div>
-					 <div class="form-group">
-					    <label for="exampleFormControlInput1">Data</label>
-					    <input type="date" class="form-control" id="exampleFormControlInput2" name="dataNasc" value="<?= $perfil->dataNasc?>">
-					 </div>
-					 <span>Docente da área:</span>
-						 <br>
-						 <div class="form-info">
-						 	<input type="radio" name="area" value="Ensino Medio">
-						 	<label>Ensino Medio</label>
-						 </div>
-						 <div class="form-info">
-						 	<input type="radio" name="area" value="Ensino Técnico">
-						 	<label>Ensino Técnico</label>
-						 </div>
-						 <div class="form-info">
-						 	<input type="radio" name="area" value="Ensino Superior">
-						 	<label>Ensino Superior</label>
-						 </div>
-					<div class="espaco2"></div>
-					<span>Mini Curriculo:</span>
-					<br>
-					<div>
-					<textarea class="curriculo" placeholder="Conte-nos mais sobre sua formação..." name="miniCurriculo"><?= $perfil->miniCurriculo?></textarea>
-					</div>
-					<div class="espaco2"></div>
-					<div>
-						<label><input type="checkbox" name="termos"> Concordo com os <a href="">Termos de Uso</a> do site.</label>
-					</div>
-					<div class="espaco2"></div><br>
+				 
+				<div class="form-group">
+					<label for="exampleFormControlInput1">Data</label>
+					<input type="date" class="form-control" id="exampleFormControlInput2" name="dataNasc" value="<?= $perfil->dataNasc?>">
+				</div>
+                <div class="form-group">
+                    <label for="Escl-Mat">Matérias:</label>
+                    <select class="form-control" id="Escl-Mat" name="disciplina_codDisciplina" required>
+                        <option value="16" <?=($perfil->nomeDisciplina == 'Nenhuma')?'selected':''?>>Nenhuma</option>
+                        <option value="1" <?=($perfil->nomeDisciplina == 'Biologia')?'selected':''?>>Biologia</option>
+                        <option value="2" <?=($perfil->nomeDisciplina == 'Física')?'selected':''?>>Física</option>
+                        <option value="3">Química</option>
+                        <option value="4" <?=($perfil->nomeDisciplina == 'Geografia')?'selected':''?>>Geografia</option>
+                        <option value="5"<?=($perfil->nomeDisciplina == 'História')?'selected':''?>>História</option>
+                        <option value="6"<?=($perfil->nomeDisciplina == 'Pr.Textual')?'selected':''?>>Pr.Textual</option>
+                        <option value="15"<?=($perfil->nomeDisciplina == 'Portugues')?'selected':''?>>Portugues</option>
+                        <option value="7"<?=($perfil->nomeDisciplina == 'Matemática')?'selected':''?>>Matemática</option>
+                        <option value="8"<?=($perfil->nomeDisciplina == 'Inglês')?'selected':''?>>Inglês</option>
+                        <option value="9"<?=($perfil->nomeDisciplina == 'Espanhol')?'selected':''?>>Espanhol</option>
+                        <option value="10" <?=($perfil->nomeDisciplina == 'Filosofia')?'selected':''?>>Filosofia</option>
+                        <option value="11" <?=($perfil->nomeDisciplina == 'Sociologia')?'selected':''?>>Sociologia</option>
+                        <option value="12" <?=($perfil->nomeDisciplina == 'Agropecuária')?'selected':''?>>Agropecuária</option>
+                        <option value="13" <?=($perfil->nomeDisciplina == 'Informatica')?'selected':''?>>Informatica</option>
+                        <option value="14" <?=($perfil->nomeDisciplina == 'Química')?'selected':''?>>Química(tec)</option>
+                    </select>
+                </div>
+				<div class="espaco2"></div>
+				<span>Mini Curriculo:</span>
+				<br>
+				<div>
+				<textarea class="curriculo" placeholder="Conte-nos mais sobre sua formação..." name="miniCurriculo"><?= $perfil->miniCurriculo?></textarea>
+				</div>
+				<div class="espaco2"></div>
+				<div>
+					<label><input type="checkbox" name="termos"> Concordo com os <a href="">Termos de Uso</a> do site.</label>
+				</div>
+				    <div class="espaco2"></div><br>
 					<button type="submit" class="btn btn-primary">Confirmar</button>
 					<button type="submit" class="btn btn-secundary">Cancelar</button>
 				</form>

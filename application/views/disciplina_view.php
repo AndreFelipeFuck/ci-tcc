@@ -16,7 +16,7 @@ $tipo = array(
     'Filosofia'=>"background-color:#e83e8c;",
     'Sociologia'=>"background-color:#763c7d;",
     'Agropecuária'=>"background-color:#49b108;",
-    'Informatica'=>"background-color:#425f8c;",
+    'Informática'=>"background-color:#425f8c;",
     'Química(tec)'=>"background-color:#a25ec5;",
 );
 $estilo = 0;
