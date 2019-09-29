@@ -67,11 +67,12 @@ class Alunos extends CI_Controller
           	}elseif(!empty($imgAluno['name'])){
           		 echo "Formulário enviado com sucesso.";
 	           //ENVIANDO IMAGEM PRO BANCO
+          		$ponto = explode(".", $imgAluno['name']);
 	           $config = array(
 	           	'upload_path' => './upload/alunos',
-	           	'allowed_types' => 'jpg',//Arrumar essa parte
+	             'allowed_types' =>  'jpg',//Arrumar essa parte
 	           	'file_name' => md5(time()),
-	           	'max_size' => '500'
+	           	'max_size' => '1024'
 	           );
 
 	           /*
@@ -90,7 +91,7 @@ class Alunos extends CI_Controller
 		           	$data = array(
 						'nomeAluno' => $this->input->post('nomeAluno'),
 						'dataNasc' => $this->input->post('dataNasc'),
-						'imgAluno' => $config['file_name'].".jpg",
+						'imgAluno' => $config['file_name']."."."$ponto[1]",
 						'anoLetivo' => $this->input->post('anoLetivo'),
 						'curso' => $this->input->post('curso'),
 						'email' => $this->input->post('email'),
@@ -161,23 +162,37 @@ class Alunos extends CI_Controller
         		//SE O ALUNO QUISER TROCAR A FOTO DE PERFIL
         		}elseif(!empty($imgAluno['name'])){
         			
-        			$config = array(
-	           		'upload_path' => './upload/alunos',
-	           		'allowed_types' => 'jpg',//Arrumar essa parte
-	           		'file_name' => md5(time()),
-	           		'max_size' => '500'
-	           		);
-	           		$this->load->library('upload');
-	           		$this->upload->initialize($config);
-	           		if ($this->upload->do_upload('imgAluno')){
-        				echo 'Arquivo salvo com sucesso.';
-        				$data = array(
+	        		echo "Formulário enviado com sucesso.";
+		           //ENVIANDO IMAGEM PRO BANCO
+	          		$ponto = explode(".", $imgAluno['name']);
+		           $config = array(
+		           	'upload_path' => './upload/alunos',
+		             'allowed_types' =>  'jpg',//Arrumar essa parte
+		           	'file_name' => md5(time()),
+		           	'max_size' => '1024'
+		           );
+
+		           /*
+		           CONFIGURAÇÔES PARA UPLOAD DE IMAGEM
+		           max_width:
+		           max_height:
+		           */
+
+		           $this->load->library('upload');
+		           $this->upload->initialize($config);
+
+		           if($this->upload->do_upload('imgAluno')){
+	        			echo 'Arquivo salvo com sucesso.';
+
+		        		//ENVIAR PARA O BANCO
+			           	$data = array(
 							'nomeAluno' => $this->input->post('nomeAluno'),
 							'dataNasc' => $this->input->post('dataNasc'),
+							'imgAluno' => $config['file_name']."."."$ponto[1]",
 							'anoLetivo' => $this->input->post('anoLetivo'),
-							'imgAluno' => $config['file_name'].".jpg",
 							'curso' => $this->input->post('curso'),
 							'email' => $this->input->post('email'),
+							'senha' => md5($this->input->post('senha')),
 						);
 						$this->aluno_model->aluno_update(array('codAluno' => $this->input->post('codAluno')), $data);
 
@@ -220,25 +235,39 @@ class Alunos extends CI_Controller
 
         		//SE O ALUNO QUISER TROCAR A FOTO DE PERFIL
         		}elseif(!empty($imgAluno['name'])){
-        			
-        			$config = array(
-	           		'upload_path' => './upload/alunos',
-	           		'allowed_types' => 'jpg',//Arrumar essa parte
-	           		'file_name' => md5(time()),
-	           		'max_size' => '500'
-	           		);
-	           		$this->load->library('upload');
-	           		$this->upload->initialize($config);
-	           		if ($this->upload->do_upload('imgAluno')){
-        				echo 'Arquivo salvo com sucesso.';
-        				$data = array(
+        			 echo "Formulário enviado com sucesso.";
+		           //ENVIANDO IMAGEM PRO BANCO
+	          		$ponto = explode(".", $imgAluno['name']);
+		           $config = array(
+		           	'upload_path' => './upload/alunos',
+		             'allowed_types' =>  'jpg',//Arrumar essa parte
+		           	'file_name' => md5(time()),
+		           	'max_size' => '1024'
+		           );
+
+		           /*
+		           CONFIGURAÇÔES PARA UPLOAD DE IMAGEM
+		           max_width:
+		           max_height:
+		           */
+
+		           $this->load->library('upload');
+		           $this->upload->initialize($config);
+
+		           if ($this->upload->do_upload('imgAluno')){
+	        			echo 'Arquivo salvo com sucesso.';
+
+		        		//ENVIAR PARA O BANCO
+			           	$data = array(
 							'nomeAluno' => $this->input->post('nomeAluno'),
 							'dataNasc' => $this->input->post('dataNasc'),
+							'imgAluno' => $config['file_name']."."."$ponto[1]",
 							'anoLetivo' => $this->input->post('anoLetivo'),
-							'imgAluno' => $config['file_name'].".jpg",
 							'curso' => $this->input->post('curso'),
 							'email' => $this->input->post('email'),
+							'senha' => md5($this->input->post('senha')),
 						);
+						
 						$this->aluno_model->aluno_update(array('codAluno' => $this->input->post('codAluno')), $data);
 
 						echo json_encode(array("status" => TRUE));
@@ -251,6 +280,19 @@ class Alunos extends CI_Controller
         		}
 			}
 		}
+		
+	}
+
+	public function aluno_delete_img($codAluno){
+		$this->db->where('codAluno', $codAluno);
+		$query = $this->db->get('alunos');
+		$file = query->row();
+		$file = $alunos->imgAluno;
+		if (!unlink("upload/alunos/")) { 
+    		echo ("$file"); 
+		}
+		$this->aluno_model->delete_img($codAluno);
+		echo json_encode(array("status" => TRUE));
 		
 	}
 

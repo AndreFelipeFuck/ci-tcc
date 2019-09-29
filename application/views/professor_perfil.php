@@ -33,6 +33,10 @@
                     <label>Data de Nascimento:</label>
                     <h6><?php echo $perfil->dataNasc;?></h6>
                 </div>
+                <div id="infoAlign">
+                    <label>Leciona na disciplina:</label>
+                    <h6><?php echo $perfil->nomeDisciplina;?></h6>
+                </div>
             <!--
                 <div id="infoAlign">
                     <label>Institucao:</label>

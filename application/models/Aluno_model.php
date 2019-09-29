@@ -35,13 +35,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $this->db->update($this->table, $data, $where);
             return $this->db->affected_rows();
         }
-        
         public function delete_by_id($codAluno)
         {
             $this->db->where('codAluno', $codAluno);
             $this->db->delete($this->table);
         }
 
+        public function delete_img($codAluno){
+            $this->db->set('imgAluno', null); 
+            $this->db->where ( 'codAluno', $codAluno); 
+            $this->db->update ($this->table);
+        }
+
+        public function get_img($codAluno){
+            $this->db->select('imgAluno')->from($this->table)->where("codAluno = '$codAluno'");
+            $query = $this->db->get();
+            return $query;
+        }
         public function get_by_login($email, $senha){
              $this->db->select('codAluno, email, senha')->from('alunos')->where("email = '$email' and senha = '$senha'");
              $query = $this->db->get();

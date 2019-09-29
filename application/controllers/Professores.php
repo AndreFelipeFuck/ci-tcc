@@ -203,7 +203,7 @@ class Professores extends CI_Controller
                             'professores_codProfessor' => $this->input->post('codProfessor'),
                             'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina')
                         );
-                         $insert = $this->professores_has_disciplinas_model->prof_disc_update($data_prof_disc);
+                         $this->professores_has_disciplinas_model->prof_disc_update(array('professores_codProfessor' => $this->input->post('codProfessor')), $data_prof_disc);
                          ////
 
                         echo json_encode(array("status" => TRUE));

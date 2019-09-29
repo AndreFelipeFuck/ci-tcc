@@ -161,6 +161,10 @@
 					<div>
 						<button class="btn btn-danger" onclick="delete_aluno(<?php echo $perfil->codAluno;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir Perfil</button>
 					</div>
+					<br>
+					<div>
+						<button class="btn btn-danger" onclick="delete_img(<?php echo $perfil->codAluno;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir Imagem de Perfil</button>
+					</div>
 				</div>
 				<div id="contZA-img" align="center">
 					<figure><img src="<?php echo base_url('assets/bootstrap/img/cuidado.png')?>" width="120" height="120"></figure>
@@ -259,7 +263,7 @@
 
     function delete_aluno(codAluno)
     {
-    if(confirm('Voce quer deletar o aluno?'))
+    if(confirm('Voce quer deletar seu perfil?'))
     {
     // ajax delete data from database
     $.ajax({
@@ -269,6 +273,29 @@
     success: function(data)
     {
      window.location.href = "<?php echo site_url('home')?>"
+    },
+    error: function (jqXHR, textStatus, errorThrown)
+    {
+    alert('Erro ao deletar');
+    }
+    });
+    }
+    }
+
+
+
+    function delete_img(codAluno)
+    {
+    if(confirm('Voce quer deletar a imagem de perfil?'))
+    {
+    // ajax delete data from database
+    $.ajax({
+    url : "<?php echo site_url('alunos/aluno_delete_img')?>/" + codAluno,
+    type: "POST",
+    dataType: "JSON",
+    success: function(data)
+    {
+      location.reload();
     },
     error: function (jqXHR, textStatus, errorThrown)
     {

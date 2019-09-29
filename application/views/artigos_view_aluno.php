@@ -16,9 +16,9 @@
 
                                 <div>
                                     <h3><?php echo $artigo->titulo;?></h3>
-                                    <p><?php echo $artigo->corpo;?></p>
+                                    <p><?php echo $artigo->resumo;?></p>
                                     <br>
-                                    <a href="<?php echo site_url('artigos/artigo_page/')?>?codArtigo=<?php echo $artigo->codArtigo;?>" class="btn btn-primary">Visualizar</a>
+                                    <a href="<?php echo site_url('artigos/artigo_page/')?>?codArtigo=<?php echo $artigo->codArtigo;?>" class="btn" id="visu">Visualizar</a>
                                     <a class="btn btn-success" href="<?php echo site_url('artigos/artigo_editar')?>?codArtigo=<?php echo $artigo->codArtigo;?>">Artigo editar</a>
                                     <button class="btn btn-danger" onclick="delete_artigo(<?php echo $artigo->codArtigo;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir</button>
                      
