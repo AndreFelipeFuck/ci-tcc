@@ -1,4 +1,8 @@
 <?php  include "cabeca.php"; ?>
+<head>
+	<title>Atom | Cadastro de Professor</title>
+</head>
+
 <div class="espaco2"></div>
 	<section class="conteinerCadProf" id="sombra">
 		<form style="padding: 1%;" method="post" action="<?php echo site_url('professores/professor_add')?>" enctype = "multipart/form-data">
@@ -17,11 +21,11 @@
 			    <small id="senhaHelp" class="form-text text-muted">A senha deve ter no minimo 8 caracteres</small>
 			 </div>
 			 <div class="form-group">
-			    <label for="exampleFormControlInput1">Comfirmar Senha</label>
+			    <label for="exampleFormControlInput1">Confirmar Senha</label>
 			    <input type="password" class="form-control" id="exampleFormControlInput1" name="senhaconf">
 			 </div>
 			 <div class="form-group">
-			    <label for="exampleFormControlInput1">Data</label>
+			    <label for="exampleFormControlInput2">Data</label>
 			    <input type="date" class="form-control" id="exampleFormControlInput2" name="dataNasc">
 			 </div>
 			 <span>Docente da área:</span>
@@ -51,7 +55,7 @@
 			</div>
 			<div class="espaco2"></div>
 			<div class="form-group">
-			    <label for="exampleFormControlInput1">Envie uma imagem de voce</label>
+			    <label for="exampleFormControlInput1">Envie uma imagem de perfil:</label>
 			    <input type="file" class="form-control-file" id="exampleFormControlInput1" name="imgProfessor">
 			 </div>
 			<div class="espaco2"></div>

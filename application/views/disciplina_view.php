@@ -16,8 +16,8 @@ $tipo = array(
     'Filosofia'=>"background-color:#e83e8c;",
     'Sociologia'=>"background-color:#763c7d;",
     'Agropecuária'=>"background-color:#49b108;",
-    'Informática'=>"background-color:#425f8c;",
-    'Química(tec)'=>"background-color:#a25ec5;",
+    'Informatica'=>"background-color:#425f8c;",
+    'Química(tec)'=>"background-color:#a25ec5;"
 );
 $estilo = 0;
 
@@ -34,17 +34,17 @@ foreach ($tipo as $key => $value) {
     <title>Atom | Artigos de <?php echo $disciplinas->nomeDisciplina?></title>
 </header>
 <div class="espaco2"></div>
- <div class="conteinerDiscPage" id="sombra">
-    <table id="" class="table table-striped table-bordered" >
-
-         
+ <div class="conteinerDiscPage" id="sombra">   
     <section class="conteiner0">
-        <div style="margin-bottom: 1%;">
-            <div id="logoDisc" style="<? echo $estilo; ?>">
-                <figure class="img-rounded img-responsive"><img src="<?php echo base_url("assets/bootstrap/img/$disciplinas->imgDisciplina")?>" width="100" height="100" alt="smaple image"></figure>
+        <div>
+            <div id="logoDisc" style="<?php echo $estilo; ?>">
+                <figure class="img-rounded img-responsive"><img src="<?php echo base_url("assets/bootstrap/img/$disciplinas->imgDisciplina")?>" width="100" height="100" class="img-fluid" alt="smaple image"></figure>
             </div>
-            <div id="tituloDisc" style="<? echo $estilo; ?>"><h1 style="color: #fff">Artigos de <?php echo $disciplinas->nomeDisciplina?></h1></div>
+            <div id="tituloDisc" style="<?php echo $estilo; ?>"><h1 style="color: #fff">Artigos de <?php echo $disciplinas->nomeDisciplina?></h1>
+            <cite style="color: #fff"></cite>
+            </div>
         </div>
+        <div class="espaco2"></div>
         <?php foreach($artigos as $artigo){?>
             <article class="vidCont">
                 <?php
@@ -57,8 +57,9 @@ foreach ($tipo as $key => $value) {
                 <div>
                     <h3><?php echo $artigo->titulo?></h3>
                     <p><?php echo $artigo->resumo?></p>
-                        <label>Postado pelo aluno:<h4 id="nomeAutor"><a href="<?php echo site_url('alunos/aluno_perfil')?>?codAluno=<?php echo $artigo->alunos_codAluno?>"><?php echo $artigo->nomeAluno;?></a></h4></label>
-                    <a href="<?php echo site_url('artigos/artigo_page/')?>?codArtigo=<?php echo $artigo->codArtigo;?>" class="btn btn-primary">Visulizar</a>
+                        <label>Postado pelo aluno:<h4 id="nomeAutor2"><a href="<?php echo site_url('alunos/aluno_perfil')?>?codAluno=<?php echo $artigo->alunos_codAluno?>" style="color: #17a2b8;"><?php echo $artigo->nomeAluno;?></a></h4></label>
+                        <br>
+                    <a href="<?php echo site_url('artigos/artigo_page/')?>?codArtigo=<?php echo $artigo->codArtigo;?>" class="btn" id="visu">Visualizar</a>
                 </div>
             </article>
         <br>
@@ -75,8 +76,9 @@ foreach ($tipo as $key => $value) {
                 <div>
                     <h3><?php echo $artigo->titulo?></h3>
                     <p><?php echo $artigo->resumo?></p>
-                       <label>Postado pelo professor:<h4 id="nomeAutor"><a href="<?php echo site_url('professores/professor_perfil')?>?codProfessor=<?php echo $artigo->professores_codProfessor?>"><?php echo $artigo->nomeProfessor;?></a></h4></label>
-                    <a href="<?php echo site_url('artigos/artigo_page/')?>?codArtigo=<?php echo $artigo->codArtigo;?>" class="btn btn-primary">Visulizar</a>
+                       <label>Postado pelo professor:<h4 id="nomeAutor2"><a href="<?php echo site_url('professores/professor_perfil')?>?codProfessor=<?php echo $artigo->professores_codProfessor?>" style="color: #28a745;"><?php echo $artigo->nomeProfessor;?></a></h4></label>
+                       <br>
+                    <a href="<?php echo site_url('artigos/artigo_page/')?>?codArtigo=<?php echo $artigo->codArtigo;?>" class="btn" id="visu">Visualizar</a>
                 </div>
             </article>
         <br>
@@ -84,6 +86,5 @@ foreach ($tipo as $key => $value) {
    </section>
     
 </div>
-</table>
 </div>
 <?php include "rodape.php"; ?>

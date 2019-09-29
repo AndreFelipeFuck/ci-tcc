@@ -1,6 +1,9 @@
 <?php  include "cabeca.php";
 //print_r($_SESSION);
 ?>
+<head>
+    <title>Atom | <?php echo $perfil->nomeAluno;?></title>
+</head>
 <div class="espaco2"></div>
     <div class="conteinerPerfil" id="sombra">
             <section class="fotoPerfil">
@@ -42,7 +45,7 @@
                     <?php 
                     $teste = isset($_SESSION['alunos']);
                     if($teste == TRUE):?>
-                        <a href="<?php echo site_url('alunos/aluno_editar/')?>?codAluno=<?php echo $perfil->codAluno;?>" class="btn" style="background-color: #17a2b8; border-radius: 48%;"><img src="<?php echo base_url('assets/bootstrap/img/config.png')?>" width="35" height="35"></a>
+                        <a href="<?php echo site_url('alunos/aluno_editar/')?>?codAluno=<?php echo $perfil->codAluno;?>" class="btn" style=" background-color:#17a2b8; border-radius: 49%; padding:10px;"><img src="<?php echo base_url('assets/bootstrap/img/config.png')?>" width="30" height="30"></a>
                     <?php endif ?>
                     
 
@@ -66,9 +69,10 @@
                 }else{
                         ?><figure><img src="<?php echo base_url("upload/artigos/$artigo->imgArtigo")?>"></figure>
             <?php }?>
-                        <h5><?php echo $artigo->titulo;?></h5>
-                        <a href="<?php echo site_url('artigos/artigo_page/')?>?codArtigo=<?php echo $artigo->codArtigo;?>" class="btn btn-primary">Visulizar</a>
-                               
+                    <div>
+                        <h5 id="textTitulo"><?php echo $artigo->titulo;?></h5>
+                        <a href="<?php echo site_url('artigos/artigo_page/')?>?codArtigo=<?php echo $artigo->codArtigo;?>" class="btn" id="visu">Visualizar</a>
+                    </div>        
 
                     </div>    
         <?php endforeach?>

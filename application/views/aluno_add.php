@@ -26,11 +26,11 @@
 			    <small id="senhaHelp" class="form-text text-muted">A senha deve ter no minimo 8 caracteres</small>
 			 </div>
 			 <div class="form-group">
-			    <label for="exampleFormControlInput1">Comfirmar Senha</label>
+			    <label for="exampleFormControlInput1">Confirmar Senha</label>
 			    <input type="password" class="form-control" id="exampleFormControlInput1" name="senhaconf">
 			 </div>
 			 <div class="form-group">
-			    <label for="exampleFormControlInput1">Data</label>
+			    <label for="exampleFormControlInput2">Data</label>
 			    <input type="date" class="form-control" id="exampleFormControlInput2" name="dataNasc">
 			 </div>
 				 <span>Curso</span>
@@ -69,7 +69,7 @@
 				 </div>
 			<div class="espaco2"></div>
 			<div class="form-group">
-			    <label for="exampleFormControlInput1">Envie uma imagem de perfil</label>
+			    <label for="exampleFormControlInput1">Envie uma imagem de perfil:</label>
 			    <input type="file" class="form-control-file" id="exampleFormControlInput1" name="imgAluno">
 			 </div>
 			<div class="espaco2"></div>

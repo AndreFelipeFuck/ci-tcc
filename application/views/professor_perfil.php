@@ -1,10 +1,9 @@
 <?php  include "cabeca.php";
 //print_r($_SESSION);
 ?>
-
-<div class="espaco2"></div>
-
-
+<head>
+    <title>Atom | <?php echo $perfil->nomeProfessor;?></title>
+</head>
 <div class="espaco2"></div>
 <br>
     <div class="conteinerPerfil" id="sombra">
@@ -34,11 +33,6 @@
                     <label>Data de Nascimento:</label>
                     <h6><?php echo $perfil->dataNasc;?></h6>
                 </div>
-                <div class="infoAlign">
-                    <label>Disciplina: <h2 id="nomeMateria"><a href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=<?php echo $perfil->codDisciplina?>"><?php echo $perfil->nomeDisciplina?></a></h2> </label>
-                    
-                </div>     
-
             <!--
                 <div id="infoAlign">
                     <label>Institucao:</label>
@@ -55,7 +49,7 @@
                   <?php 
                     $teste = isset($_SESSION['professores']);
                     if($teste == TRUE):?>
-                        <a href="<?php echo site_url('professores/professor_editar/')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn" style="background-color:#28a745; border-radius: 48%;" ><img src="<?php echo base_url('assets/bootstrap/img/config.png')?>" width="35" height="35"></a>
+                        <a href="<?php echo site_url('professores/professor_editar/')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn" style="background-color:#28a745; border-radius: 49%; padding:10px;"><img src="<?php echo base_url('assets/bootstrap/img/config.png')?>" width="30" height="30"></a>
 
                 <!--<a href="<?php echo site_url('professores/artigos_add')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn btn-warning">Novo artigo</a>
 
