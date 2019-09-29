@@ -82,16 +82,19 @@ body{
 }
 
 .vidCont{
-	height: 25%;
+	width: 100%;
+	display: inline-block;
 	border-radius: 3px;
+	position: relative;
 	background-color: #E8F7F8; 
+	border: solid 1px rgba(68, 120, 132, .1);
+	margin-bottom: 1%;
 }
 
 .vidCont img{
 	display: inline;
 	float: left;
 	margin: 1%;
-	height: 85%;
 	width: 25%;
 	border-radius: 5px;
 
@@ -100,8 +103,6 @@ body{
 .vidCont div{
 	display: inline;
 	float: left;
-	width: 60%;
-	height: 30%;
 	margin: 1%;
 }
 
@@ -420,7 +421,7 @@ textarea {
 
 .conteinerCadProf{
 	background-color: #fff;
-	border-radius: 2px;
+	border-radius: 3px;
 	margin: 0 auto;
 	position: relative;
 	width: 50%;
@@ -468,6 +469,11 @@ textarea {
 	padding: 1%;
 }
 
+#nomeAutor2{
+	padding: 1%;
+	font-size: 20px;
+}
+
 .publicacao{
 	padding-left: 1%;
 	font-size: 15px;
@@ -491,58 +497,27 @@ textarea {
 	border-radius: 3px;
 }
 
-#cartao{
-	width: 30%;
-	height: 40%;
-}
-
-//
-
-.container-viewArt{
-	background-color: #fff;
-	margin: 0 auto;
-	position: relative;
-	padding: 2%;
-	width: 80%;
-	border-radius: 2px;
-}
-
-#botao-NA{
+#visu{
 	background-color: #17a2b8;
     background-image: none;
+    border-color: #51C0CF;
 	color: #fff;
 }
 
-.ArtPost{
-	display: inline-block;
-	width: 100%;
-	height: 25%;
+#visu:hover{
+	color: #17a2b8;
+    background-color: #fff;
+    border-color: #17a2b8;
+}
+
+.conteinerArtConfig{
+	width: 80%;
+	padding: 2%;
 	background-color: #fff;
-	border-style: solid 1px #17a2b8;
-	border-radius: 5px;
+	margin: 0 auto;
+	position: relative;
+	border-radius: 3px;	
 }
-
-.ArtPost img{
-	float: left;
-	width: 30%;
-	height: 100%;
-	margin-bottom: 2%;
-	padding: 0.5%;
-}
-
-#infoCard{
-	display: inline-block;
-	width: 45%;
- 	
-}
-
-#infoOpi{
-	margin: 1%;
-	display: inline-block;
-	width: 15%;
-}
-
-//
 
 .conteinerLogin{
 	display: inline-block;
@@ -660,12 +635,14 @@ textarea {
 
 #nomePerfil{
 	background-color: #17a2b8;
+	border-radius: 2px;
 	border-left: solid 5px #51C0CF;	
 }
 
 
 #nomePerfilProf{
 	background-color: #28a745;
+	border-radius: 2px;
 	border-left: solid 5px #0F6D1B;	
 }
 
@@ -694,6 +671,7 @@ textarea {
 	margin-right: 1%;
 	margin-left: 1%;
 	margin-bottom: 2%;
+
 }
 
 .contPerfil:hover{
@@ -707,6 +685,15 @@ textarea {
 	height: 20%;
 }
 
+#textTitulo{
+	overflow: hidden;
+   	text-overflow: ellipsis;
+   	display: -webkit-box;
+   	line-height: 16px;
+   	max-height: 30px;
+   	font-size: 15px;
+}
+
 .conteinerDiscPage{
 	width: 80%;
 	border-radius: 3px;
@@ -716,17 +703,22 @@ textarea {
 
 #logoDisc{
 	border-radius: 50%;
-	width: 11.5%;
-	height: 16%;
+	max-width: 11%;
+	max-height: 16.5%;
 	display:inline-block; 
-	padding: 2%;
+	padding:1.5%;
+}
+
+#logoDisc img{
+	width: 100%;
 }
 
 #tituloDisc{
-	width: 80%;
+	width: 88%;
 	display: inline-block;
 	padding: 1%;
-	border-radius: 3px;
+	border-radius: 2px;
+	border-left: solid 5px rgba(0, 0, 0, .3);
 }
 
 #logoDisc img{
@@ -769,12 +761,25 @@ textarea {
 	color: #28a745;
 }
 
+#config{
+	border-radius: 49%;
+	padding:10px;
+}
+
 #sombra{
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 25px 0 rgba(0, 0, 0, 0.19);
 }
 
 #sombra2{
 	box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 25px 0 rgba(0, 0, 0, 0.19);
+}
+
+#limiteLinhas{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	line-height: 16px;
+	max-height: 32
 }
 
 .conteiner-footer{
