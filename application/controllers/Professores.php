@@ -278,6 +278,16 @@ class Professores extends CI_Controller
         }
     }
 
+    public function professor_delete_img($codProfessor)
+    {
+        $professor = $this->professor_model->get_img($codProfessor);
+        $img = $professor->imgProfessor;    
+        $caminho = "upload/professores/$img";
+        $this->professor_model->delete_img($codProfessor);
+        echo json_encode(array("status" => TRUE));
+        unlink($caminho);
+    }
+
     public function professor_delete($codProfessor)
     {
         $this->professores_has_disciplinas_model->delete_by_id($codProfessor);

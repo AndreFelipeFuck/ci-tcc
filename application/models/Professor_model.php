@@ -50,8 +50,19 @@ class Professor_model extends CI_Model
         return $this->db->affected_rows();
     }
 
-    public function delete_by_id($codProfessor)
-    {
+    public function delete_img($codProfessor){
+        $this->db->set('imgProfessor', null); 
+        $this->db->where ( 'codProfessor', $codProfessor); 
+        $this->db->update ($this->table);
+    }
+
+    public function get_img($codProfessor){
+        $this->db->select('imgProfessor')->from($this->table)->where("codProfessor = '$codProfessor'");
+        $query = $this->db->get();
+        return $query->row();
+    }
+
+    public function delete_by_id($codProfessor){
         $this->db->where('codProfessor', $codProfessor);
         $this->db->delete($this->table);
     }
