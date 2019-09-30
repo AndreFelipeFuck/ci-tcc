@@ -725,6 +725,15 @@ textarea {
 	margin: 0 auto;
 }
 
+.conteinerComent{
+	width: 80%;
+	background-color: #fff;
+	margin: 0 auto;
+	padding: 2%;
+	border-radius: 3px;
+
+}
+
 #exampleFormControlInput1{
 	width: 60%;
 }
