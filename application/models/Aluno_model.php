@@ -50,7 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         public function get_img($codAluno){
             $this->db->select('imgAluno')->from($this->table)->where("codAluno = '$codAluno'");
             $query = $this->db->get();
-            return $query;
+            return $query->row();
         }
         public function get_by_login($email, $senha){
              $this->db->select('codAluno, email, senha')->from('alunos')->where("email = '$email' and senha = '$senha'");

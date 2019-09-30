@@ -284,16 +284,12 @@ class Alunos extends CI_Controller
 	}
 
 	public function aluno_delete_img($codAluno){
-		$this->db->where('codAluno', $codAluno);
-		$query = $this->db->get('alunos');
-		$file = query->row();
-		$file = $alunos->imgAluno;
-		if (!unlink("upload/alunos/")) { 
-    		echo ("$file"); 
-		}
+		$aluno = $this->aluno_model->get_img($codAluno);
+		$img = $aluno->imgAluno;	
+		$caminho = "upload/alunos/$img";
 		$this->aluno_model->delete_img($codAluno);
 		echo json_encode(array("status" => TRUE));
-		
+		unlink($caminho);
 	}
 
 	public function aluno_delete($codAluno){
