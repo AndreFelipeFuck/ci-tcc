@@ -178,7 +178,14 @@ class Professores extends CI_Controller
 
                 //SE O PROFESSOR QUISER TROCAR A FOTO DE PERFIL
                 }elseif(!empty($imgProfessor['name'])){
-                    
+                    //EXCLUINDO A FOTO DE PERFIL ANTERIOR
+                    $professor = $this->professor_model->get_img($this->input->post('codProfessor'));
+                    $img = $professor->imgProfessor;    
+                    $caminho = "upload/professores/$img";
+                    $this->professor_model->delete_img($this->input->post('codProfessor'));
+                    echo json_encode(array("status" => TRUE));
+                    unlink($caminho);
+                    ///
                     $config = array(
                     'upload_path' => './upload/professores',
                     'allowed_types' => 'jpg',//Arrumar essa parte
@@ -215,7 +222,7 @@ class Professores extends CI_Controller
                     }
                 }
             }
-            //SE O PROFESSOR QUISER TROCAR A SENHAa
+            //SE O PROFESSOR QUISER TROCAR A SENHA
         }elseif($vereficaSenha != null){
                 $this->load->library('form_validation');
 
@@ -245,7 +252,14 @@ class Professores extends CI_Controller
 
                     //SE O PROFESSOR QUISER TROCAR A FOTO DE PERFIL
                     }elseif(!empty($imgProfessor['name'])){
-                        
+                         //EXCLUINDO A FOTO DE PERFIL ANTERIOR
+                            $professor = $this->professor_model->get_img($this->input->post('codProfessor'));
+                            $img = $professor->imgProfessor;    
+                            $caminho = "upload/professores/$img";
+                            $this->professor_model->delete_img($this->input->post('codProfessor'));
+                            echo json_encode(array("status" => TRUE));
+                            unlink($caminho);
+                            ///
                         $config = array(
                         'upload_path' => './upload/professores',
                         'allowed_types' => 'jpg',//Arrumar essa parte
@@ -257,11 +271,11 @@ class Professores extends CI_Controller
                         if ($this->upload->do_upload('imgProfessor')){
                             echo 'Arquivo salvo com sucesso.';
                             $data = array(
-                                'nomeProfessor' => $this->input->post('nomeProfessor'),
+                               'nomeProfessor' => $this->input->post('nomeProfessor'),
                                 'dataNasc' => $this->input->post('dataNasc'),
-                                'anoLetivo' => $this->input->post('anoLetivo'),
                                 'imgProfessor' => $config['file_name'].".jpg",
-                                'curso' => $this->input->post('curso'),
+                                'miniCurriculo' => $this->input->post('miniCurriculo'),
+                                //'institucao' => $this->input->post('institucao'),
                                 'email' => $this->input->post('email'),
                             );
                             $this->professor_model->professor_update(array('codProfessor' => $this->input->post('codProfessor')), $data);
