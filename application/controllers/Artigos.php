@@ -53,41 +53,66 @@ class Artigos extends CI_Controller
 
 	public function artigo_add(){
 		$imgArtigo = $_FILES['imgArtigo'];
+		//DANDO NOME AO ARQUIVO PDF
+			$titulo_pdf = explode(" ", $this->input->post('titulo'));
+			$titulo_pdf = implode("_", $titulo_pdf);
+			$titulo_pdf = $titulo_pdf."_".date("Y-m-d");
+		///
 		if($imgArtigo['name'] == null){
+			$config_pdf = array(
+	           	'upload_path' => './upload/pdf',
+	           	'allowed_types' => 'pdf',
+	           	'file_name' => $titulo_pdf.".pdf",
+	           	'max_size' => '3000'
+	           );
+	           $this->load->library('upload');
+	           $this->upload->initialize($config_pdf);
 
-			if($this->input->post('alunos_codAluno') == 0){
-					$data = array(
-						'titulo' => $this->input->post('titulo'),
-						'corpo' => $this->input->post('corpo'),
-						'professores_codProfessor' => $this->input->post('professores_codProfessor'),
-						'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina'),
-						'resumo' => $this->input->post('resumo'),
-						'dataArtigo' => date("Y-m-d")
-				);
+	           if ($this->upload->do_upload('uploadArtigo')){
+	           		echo 'Arquivo salvo com sucesso.';
 
-			}if ($this->input->post('professores_codProfessor') == 0) {
-				$data = array(
-						'titulo' => $this->input->post('titulo'),
-						'corpo' => $this->input->post('corpo'),
-						'alunos_codAluno' => $this->input->post('alunos_codAluno'),
-						'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina'),
-						'resumo' => $this->input->post('resumo'),
-						'dataArtigo' => date("Y-m-d")
-				)	;
-			}
-				$insert = $this->artigos_model->artigo_add($data);
+        			if($this->input->post('alunos_codAluno') == 0){
+						$data = array(
+							'titulo' => $this->input->post('titulo'),
+							'corpo' => $this->input->post('corpo'),
+							'professores_codProfessor' => $this->input->post('professores_codProfessor'),
+							'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina'),
+							'resumo' => $this->input->post('resumo'),
+							'dataArtigo' => date("Y-m-d"),
+							'uploadArtigo' => $config_pdf['file_name'],
+						);
 
-				$titulo = $this->db->where('titulo', $data['titulo']);
-	           	$corpo = $this->db->where('corpo', $data['corpo']);
-	            $query = $this->db->get('artigos');
-				$codArtigo = $this->artigos_model->get_by_login($titulo, $corpo);
-			    //Defenindo a disciplina do artigo	
-	            if ($query->num_rows() == 1){
-	                $artigo = $query->row();
-	                $url = "?codArtigo=".$artigo->codArtigo;
-	               redirect ("artigos/artigo_page/$url");
-	            }
+					}if ($this->input->post('professores_codProfessor') == 0) {
+						$data = array(
+								'titulo' => $this->input->post('titulo'),
+								'corpo' => $this->input->post('corpo'),
+								'alunos_codAluno' => $this->input->post('alunos_codAluno'),
+								'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina'),
+								'resumo' => $this->input->post('resumo'),
+								'dataArtigo' => date("Y-m-d"),
+								'uploadArtigo' => $config_pdf['file_name'],
+						);
+					}
 
+					$insert = $this->artigos_model->artigo_add($data);
+
+					$titulo = $this->db->where('titulo', $data['titulo']);
+		           	$corpo = $this->db->where('corpo', $data['corpo']);
+		            $query = $this->db->get('artigos');
+					$codArtigo = $this->artigos_model->get_by_login($titulo, $corpo);
+				    //Defenindo a disciplina do artigo	
+		            if ($query->num_rows() == 1){
+		                $artigo = $query->row();
+		                $url = "?codArtigo=".$artigo->codArtigo;
+		               redirect ("artigos/artigo_page/$url");
+		            }
+
+		        }
+		         echo $this->upload->display_errors();
+		        /*echo "Deu errado ";
+		        echo "$titulo_pdf";
+		        print_r($_FILES);*/
+			
 		}elseif(!empty($imgArtigo['name'])){
 			echo "Formulário enviado com sucesso.";
 	           //ENVIANDO IMAGEM PRO BANCO

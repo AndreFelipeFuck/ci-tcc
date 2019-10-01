@@ -45,6 +45,11 @@
 					    <label for="exampleFormControlFile1">Escolha uma imagem:</label>
 					    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="imgArtigo">
 					  </div>
+					   <div>
+					 	<div class="form-group">
+					    <label for="exampleFormControlFile1">Inclua uma versão em pdf</label>
+					    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="uploadArtigo" required>
+					  </div>
 					 </div>
 					 <div class="form-group">
 					 	<label for="Escl-Mat">Matérias:</label>

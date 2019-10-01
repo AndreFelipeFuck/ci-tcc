@@ -161,7 +161,14 @@ class Alunos extends CI_Controller
 
         		//SE O ALUNO QUISER TROCAR A FOTO DE PERFIL
         		}elseif(!empty($imgAluno['name'])){
-        			
+        			//EXCLUIR FOTO ANTIGA DE PERFIL
+        			$aluno = $this->aluno_model->get_img($this->input->post('codAluno'));
+					$img = $aluno->imgAluno;	
+					$caminho = "upload/alunos/$img";
+					$this->aluno_model->delete_img($this->input->post('codAluno'));
+					echo json_encode(array("status" => TRUE));
+					unlink($caminho);
+					///
 	        		echo "Formulário enviado com sucesso.";
 		           //ENVIANDO IMAGEM PRO BANCO
 	          		$ponto = explode(".", $imgAluno['name']);
@@ -236,6 +243,14 @@ class Alunos extends CI_Controller
         		//SE O ALUNO QUISER TROCAR A FOTO DE PERFIL
         		}elseif(!empty($imgAluno['name'])){
         			 echo "Formulário enviado com sucesso.";
+        			 //EXCLUIR FOTO ANTIGA DE PERFIL
+        			$aluno = $this->aluno_model->get_img($this->input->post('codAluno'));
+					$img = $aluno->imgAluno;	
+					$caminho = "upload/alunos/$img";
+					$this->aluno_model->delete_img($this->input->post('codAluno'));
+					echo json_encode(array("status" => TRUE));
+					unlink($caminho);
+					///
 		           //ENVIANDO IMAGEM PRO BANCO
 	          		$ponto = explode(".", $imgAluno['name']);
 		           $config = array(
