@@ -59,5 +59,9 @@ class Home extends CI_Controller
     public function disciplina_view(){
         $this->load->view('disciplinas.php');
     }
+    
+     public function comentar(){
+        $this->load->view('comentario_view');
+     }
 
 }
