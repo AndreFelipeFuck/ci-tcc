@@ -510,6 +510,19 @@ textarea {
     border-color: #17a2b8;
 }
 
+#perigo{
+	background-color: #dc3545;
+    background-image: none;
+    border-color: #dc3545;
+	color: #fff;
+}
+
+#perigo:hover{
+	color: #dc3545;
+    background-color: #fff;
+    border-color: #dc3545;
+}
+
 .conteinerArtConfig{
 	width: 80%;
 	padding: 2%;
@@ -623,6 +636,33 @@ textarea {
 	background-color: #BCBBBB;
  	width: 100%;
  	max-height: 30%;
+}
+
+.fotoPerfilComent {
+	max-width: 10%;
+	max-height: 15%;
+	border-radius: 50%;
+	overflow: hidden;
+	position: relative;
+	float: left;
+}
+
+.fotoPerfilComent img{
+	background-color: #BCBBBB;
+ 	width: 100%;
+ 	max-height: 30%;
+}
+
+.elementoComent{
+	margin: 1%;
+	display: inline-block;
+	width: 75%;
+}
+
+.publicarComent{
+	display: inline-block;
+	width: 10%;
+	float: right;
 }
 
 .infoPerfil{
