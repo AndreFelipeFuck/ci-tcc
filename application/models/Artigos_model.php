@@ -133,7 +133,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         public function get_by_login($titulo, $corpo){
             $this->db->select('codArtigo, titulo, corpo')->from('artigos')->where("titulo = '$titulo' and corpo = '$corpo'");
             $query = $this->db->get();
-             return $query;
+            return $query->row();
         }
 
     }

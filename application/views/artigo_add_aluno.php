@@ -48,7 +48,7 @@
 					   <div>
 					 	<div class="form-group">
 					    <label for="exampleFormControlFile1">Inclua uma versão em pdf</label>
-					    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="uploadArtigo" required>
+					    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="uploadArtigo">
 					  </div>
 					 </div>
 					 <div class="form-group">
