@@ -60,8 +60,8 @@ class Home extends CI_Controller
         $this->load->view('disciplinas.php');
     }
     
-     public function comentar(){
-        $this->load->view('comentario_view');
-     }
+    public function sobre(){
+        $this->load->view('sobre_view');
+    }
 
 }
