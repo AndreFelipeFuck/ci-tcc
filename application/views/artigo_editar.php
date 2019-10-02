@@ -19,7 +19,7 @@
 				<div class="conteinerCadArt" id="sombra">
 					<form  action="<?php echo site_url('artigos/artigo_update')?>" method="post" enctype = "multipart/form-data">
 						<input type="hidden" value="<?= $perfil->codArtigo?>" name="codArtigo"/>
-						<h1>Cadastro de Artigo:</h1>
+						<h1>Editar Artigo:</h1>
 						<br>
 						<div class="form-group">
 						    <label for="exampleFormControlInput1">Titulo do Artigo</label>
@@ -90,7 +90,7 @@
 					<div class="conteinerCadArt" id="sombra">
 						<form  action="<?php echo site_url('artigos/artigo_update')?>" method="post" enctype = "multipart/form-data">
 							<input type="hidden" value="<?= $perfil->codArtigo?>" name="codArtigo"/>
-							<h1>Cadastro de Artigo:</h1>
+							<h1>Editar Artigo:</h1>
 							<br>
 							<div class="form-group">
 							    <label for="exampleFormControlInput1">Titulo do Artigo</label>
