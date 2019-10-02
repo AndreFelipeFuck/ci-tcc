@@ -349,28 +349,70 @@ class Artigos extends CI_Controller
 
 			
 		}elseif(!empty($imgArtigo['name'])){
-			$config = array(
-                    'upload_path' => './upload/artigos',
-                    'allowed_types' => 'jpg',//Arrumar essa parte
-                    'file_name' => md5(time()),
-                    'max_size' => '500'
-                    );
-                    $this->load->library('upload');
-                    $this->upload->initialize($config);
-                    if ($this->upload->do_upload('imgArtigo')){
-                    	$data = array(
-							'titulo' => $this->input->post('titulo'),
-							'corpo' => $this->input->post('corpo'),
-							'imgArtigo' => $config['file_name'].".jpg",
-							'resumo' => $this->input->post('resumo'),
-							'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina')
-						);
-						$this->artigos_model->artigo_update(array('codArtigo' => $this->input->post('codArtigo')), $data);
+			if ($pdfArtigo['name'] != null) {
+				$config_pdf = array(
+			    'upload_path' => './upload/pdf',
+			     'allowed_types' => 'pdf',
+			     'file_name' => $titulo_pdf.".pdf",
+			     'max_size' => '3000');
+				 ///	
+				
+	             $this->load->library('upload');
+	              $this->upload->initialize($config_pdf);
+	              ///
+	                    if ($this->upload->do_upload('uploadArtigo')){
+	                    	$config = array(
+			                'upload_path' => './upload/artigos',
+			                'allowed_types' => 'jpg',//Arrumar essa parte
+			                 'file_name' => md5(time()),
+			                 'max_size' => '500');
+	                    	 $this->upload->initialize($config);
+	                    	if ($this->upload->do_upload('imgArtigo')){
+		                    	$data = array(
+									'titulo' => $this->input->post('titulo'),
+									'corpo' => $this->input->post('corpo'),
+									'imgArtigo' => $config['file_name'].".jpg",
+									'uploadArtigo' => $config_pdf['file_name'],
+									'resumo' => $this->input->post('resumo'),
+									'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina')
+								);
+								$this->artigos_model->artigo_update(array('codArtigo' => $this->input->post('codArtigo')), $data);
 
-						echo json_encode(array("status" => TRUE));
+								echo json_encode(array("status" => TRUE));
 
-			 			redirect ("artigos/artigo_page/$url");
-                    }
+					 			redirect ("artigos/artigo_page/$url");
+	                    	}else{
+	                    		echo $this->upload->display_errors();
+	                    		echo "IMG";	
+	                    	}
+	                    }else{
+							echo $this->upload->display_errors();
+							echo "PDF";	
+						}
+	                   
+	        }else{
+		        $config = array(
+		            'upload_path' => './upload/artigos',
+		            'allowed_types' => 'jpg',//Arrumar essa parte
+		            'file_name' => md5(time()),
+		            'max_size' => '500');
+		            $this->load->library('upload');
+		            $this->upload->initialize($config);
+	            if ($this->upload->do_upload('imgArtigo')){
+		            $data = array(
+						'titulo' => $this->input->post('titulo'),
+						'corpo' => $this->input->post('corpo'),
+						'imgArtigo' => $config['file_name'].".jpg",
+						'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina'));
+					$this->artigos_model->artigo_update(array('codArtigo' => $this->input->post('codArtigo')), $data);
+
+					echo json_encode(array("status" => TRUE));
+
+					redirect ("artigos/artigo_page/$url");
+	            }else{
+	            	echo $this->upload->display_errors();	
+	            }
+	        }
 		}
 	}
 
