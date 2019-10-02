@@ -50,7 +50,7 @@
 	</div>
 	<div class="espaco2"></div>
 	<?php
-	include 'comentario_view';
+		//include 'comentario_view';
 	?>
 <?php 
 	include "rodape.php";
