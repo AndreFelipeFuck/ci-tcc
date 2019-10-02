@@ -42,9 +42,13 @@
 					 	</div>
 						 <div>
 						 	<div class="form-group">
-						    <label for="exampleFormControlFile1">Escolha uma imagem:</label>
+						    <label for="exampleFormControlFile1">Alterar a imagem:</label>
 						    <input type="file" name="imgArtigo" class="form-control-file" id="exampleFormControlFile1">
-						  </div>
+						 </div>
+						 <div class="form-group">
+					    	<label for="exampleFormControlFile1">Alterar pdf:</label>
+					    	<input type="file" class="form-control-file" id="exampleFormControlFile1" name="uploadArtigo">
+					 	</div>
 						 </div>
 						 <div class="form-group">
 						 	<label for="Escl-Mat">Matérias:</label>
@@ -107,11 +111,14 @@
 								 <label for="exampleFormControlInput1">Faça um pequeno resumo do que voce escreveu:</label>
 								  <textarea name="resumo" placeholder="Teoria evolucionista fundamentada nas ideias do naturalista inglês Charles Robert Darwin 1809-1882" required><?php echo $perfil->corpo?></textarea>
 					 		</div>
-							 <div>
-							 	<div class="form-group">
-							    <label for="exampleFormControlFile1">Escolha uma imagem:</label>
-							    <input type="file" name="imgArtigo" class="form-control-file" id="exampleFormControlFile1">
-							  </div>
+						 	<div class="form-group">
+						    	<label for="exampleFormControlFile1">Alterar a imagem:</label>
+						    	<input type="file" name="imgArtigo" class="form-control-file" id="exampleFormControlFile1">
+						 	 </div>
+						 	 <div class="form-group">
+					    		<label for="exampleFormControlFile1">Alterar pdf:</label>
+					    		<input type="file" class="form-control-file" id="exampleFormControlFile1" name="uploadArtigo">
+					 	 	</div>
 							 </div>
 							 <div class="form-group">
 							 	<label for="Escl-Mat">Matérias:</label>
