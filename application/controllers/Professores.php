@@ -277,6 +277,7 @@ class Professores extends CI_Controller
                                 'miniCurriculo' => $this->input->post('miniCurriculo'),
                                 //'institucao' => $this->input->post('institucao'),
                                 'email' => $this->input->post('email'),
+                                'senha' => md5($this->input->post('senha')),
                             );
                             $this->professor_model->professor_update(array('codProfessor' => $this->input->post('codProfessor')), $data);
 

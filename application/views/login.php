@@ -14,12 +14,12 @@
                     <h1>Login</h1>
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Usuário</label>
-                            <input type="email" class="form-control" id="logInput" name="email">
+                            <input type="email" class="form-control" id="logInput" name="email" required>
                         </div>
                         <br>
                          <div class="form-group">
                             <label for="exampleFormControlInput1">Senha</label>
-                            <input type="password" class="form-control" id="logInput" name="senha">
+                            <input type="password" class="form-control" id="logInput" name="senha" required>
                         </div>
                          <br>
                         <div>

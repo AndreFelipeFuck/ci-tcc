@@ -151,7 +151,6 @@ class Alunos extends CI_Controller
 					'anoLetivo' => $this->input->post('anoLetivo'),
 					'curso' => $this->input->post('curso'),
 					'email' => $this->input->post('email'),
-					'senha' => md5($this->input->post('senha')),
 					);
 					$this->aluno_model->aluno_update(array('codAluno' => $this->input->post('codAluno')), $data);
 
@@ -199,7 +198,7 @@ class Alunos extends CI_Controller
 							'anoLetivo' => $this->input->post('anoLetivo'),
 							'curso' => $this->input->post('curso'),
 							'email' => $this->input->post('email'),
-							'senha' => md5($this->input->post('senha')),
+							
 						);
 						$this->aluno_model->aluno_update(array('codAluno' => $this->input->post('codAluno')), $data);
 
@@ -233,6 +232,7 @@ class Alunos extends CI_Controller
 					'anoLetivo' => $this->input->post('anoLetivo'),
 					'curso' => $this->input->post('curso'),
 					'email' => $this->input->post('email'),
+					'senha' => md5($this->input->post('senha')),
 					);
 					$this->aluno_model->aluno_update(array('codAluno' => $this->input->post('codAluno')), $data);
 
