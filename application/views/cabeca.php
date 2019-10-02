@@ -37,7 +37,7 @@
 		        <a class="nav-link" href="<?php echo site_url('artigos/artigos_listar') ?>">Artigos</a>
 		      </li>
 		     <li class="nav-item">
-		        <a class="nav-link" href="<?php echo site_url('home/comentar') ?>">Sobre</a>
+		        <a class="nav-link" href="<?php echo site_url('home/sobre') ?>">Sobre</a>
 		      </li>
 		    </ul>
 		     <form class="form-inline my-2 my-lg-0">
