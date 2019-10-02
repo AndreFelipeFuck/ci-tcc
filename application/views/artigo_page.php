@@ -26,12 +26,9 @@
 				<?php echo $perfil->corpo;?>
 			</article>
 		</div>
-		<?php if ( $perfil->uploadArtigo != null) {?>
-			<div>
-				<a href="<?php echo base_url("upload/pdf/$perfil->uploadArtigo")?>" download>Dowload do arquivo em pdf</a>
-			</div><?php
-		}?>
-		
+		<div>
+			<a href="<?php echo base_url("upload/pdf/$perfil->uploadArtigo")?>" download>Dowload do arquivo em pdf</a>
+		</div>
 		<div class="espaco2"></div>
 		<div class="nomeAutor">
 			<?php if(isset($perfil->nomeProfessor)){?>
@@ -51,6 +48,10 @@
 			<h4 id="nomeMateria"><a href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=<?php echo $perfil->disciplina_codDisciplina?>"><?php echo $perfil->nomeDisciplina?></a></h4>
 		</div>       
 	</div>
+	<div class="espaco2"></div>
+	<?php
+	include 'comentario_view';
+	?>
 <?php 
 	include "rodape.php";
 ?>
