@@ -159,11 +159,11 @@
 				<h3 style="border-bottom: solid 2px #e44747; margin-bottom: 2%; padding-bottom: 1%;">Zona de Risco!</h3>
 				<div id="contZA-info">
 					<div>
-						<button class="btn btn-danger" onclick="delete_aluno(<?php echo $perfil->codAluno;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir Perfil</button>
+						<button class="btn" id="perigo" onclick="delete_aluno(<?php echo $perfil->codAluno;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir Perfil</button>
 					</div>
 					<br>
 					<div>
-						<button class="btn btn-danger" onclick="delete_img(<?php echo $perfil->codAluno;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir Imagem de Perfil</button>
+						<button class="btn" id="perigo" onclick="delete_img(<?php echo $perfil->codAluno;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir Imagem de Perfil</button>
 					</div>
 				</div>
 				<div id="contZA-img" align="center">

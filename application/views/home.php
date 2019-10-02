@@ -119,9 +119,6 @@
         <br>
     <?php }?>
    </section>
-	<div class="espaco2"></div>
-	<?php include 'comentario_view.php' ?>
-	<div class="espaco2"></div>
 	
 
 <?php include "rodape.php"; ?>
