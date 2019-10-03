@@ -114,7 +114,7 @@ class Professores extends CI_Controller
 
                     if ($query->num_rows() == 1){
                         $professor = $query->row();
-                        $this->session->set_userdata("professores", $professor->nomeProfessor);
+                        $this->session->set_userdata("professores", $professor->codProfessor);
                         $codProfessor = $this->professor_model->get_by_login($email, $senha);
                          ////
                         $data_prof_disc = array(
