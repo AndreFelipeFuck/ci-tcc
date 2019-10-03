@@ -307,8 +307,7 @@ class Artigos extends CI_Controller
 			$titulo_pdf = $titulo_pdf."_".date("Y-m-d");
 		///
 		
-
-	         		
+		//SE O USUARIO NÃO QUISER TROCAR A FOTO DO ARTIGO	
 		if($imgArtigo['name'] == null) {
 			if ($pdfArtigo['name'] != null) {
 				$config_pdf = array(
@@ -347,8 +346,15 @@ class Artigos extends CI_Controller
 				redirect ("artigos/artigo_page/$url");
 			}
 
-			
+			// SE O USUARIO QUISER TROCAR A FOTO DO ARTIGO
 		}elseif(!empty($imgArtigo['name'])){
+			//EXCLUIR FOTO ANTIGA DE PERFIL
+        			$artigo = $this->artigos_model->get_img($this->input->post('codArtigo'));
+					$img = $artigo->imgArtigo;	
+					$caminho = "upload/artigos/$img";
+					//echo json_encode(array("status" => TRUE));
+					unlink($caminho);
+			///
 			if ($pdfArtigo['name'] != null) {
 				$config_pdf = array(
 			    'upload_path' => './upload/pdf',
