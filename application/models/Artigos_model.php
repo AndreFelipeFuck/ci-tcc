@@ -130,6 +130,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $this->db->delete($this->table);
         }
 
+        public function delete_img($codArtigo){
+            $this->db->set('imgArtigo', null); 
+            $this->db->where ( 'codArtigo', $codArtigo); 
+            $this->db->update ($this->table);
+        }
+
+        public function get_img($codArtigo){
+            $this->db->select('imgArtigo')->from($this->table)->where("codArtigo = '$codArtigo'");
+            $query = $this->db->get();
+            return $query->row();
+        }
+
         public function get_by_login($titulo, $corpo){
             $this->db->select('codArtigo, titulo, corpo')->from('artigos')->where("titulo = '$titulo' and corpo = '$corpo'");
             $query = $this->db->get();
