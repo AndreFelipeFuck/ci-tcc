@@ -146,8 +146,7 @@ class Artigos extends CI_Controller
 		            if ($query->num_rows() == 1){
 		                $artigo = $query->row();
 		                $url = "?codArtigo=".$artigo->codArtigo;
-		               //redirect ("artigos/artigo_page/$url");
-		                print_r($_FILES);
+		               redirect ("artigos/artigo_page/$url");
 		            }
 
 			}//
@@ -420,6 +419,15 @@ class Artigos extends CI_Controller
 	            }
 	        }
 		}
+	}
+
+	public function artigo_delete_img($codArtigo){
+		$artigo = $this->artigos_model->get_img($codArtigo);
+		$img = $artigo->imgArtigo;	
+		$caminho = "upload/artigos/$img";
+		$this->artigos_model->delete_img($codArtigo);
+		echo json_encode(array("status" => TRUE));
+		print($caminho);
 	}
 
 	public function artigo_delete($codArtigo)
