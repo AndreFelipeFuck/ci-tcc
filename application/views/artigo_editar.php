@@ -10,13 +10,18 @@
 			<title>Atom |Editar Artigo</title>
 
 			  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
-			    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+			    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js)"></script>
 			    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 			    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
 			    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
 			    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
-			 </head>
-
+		
+			 <!-- -->
+			    <script src="<?php echo base_url('assets/jquery/jquery-3.1.0.min.js')?>"></script>
+    			<script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js')?>"></script>
+    			<script src="<?php echo base_url('assets/datatables/js/jquery.dataTables.min.js')?>"></script>
+    			<script src="<?php echo base_url('assets/datatables/js/dataTables.bootstrap.js')?>"></script>
+    		</head>	
 
 			<div class="espaco2"></div>
 				<div class="conteinerCadArt" id="sombra">
@@ -43,11 +48,6 @@
 						    		<input type="file" name="imgArtigo" class="form-control-file" id="exampleFormControlFile1">
 								</div>
 								<br>
-						    	<div>
-           							 <!-- <a href="<?php //echo site_url('artigos/artigo_delete_img')?>" class="btn">Excluir imagem do artigo</a> -->
-						    		<!-- <a href="<?php //echo site_url('artigos/artigo_delete_img')?>"></a> -->
-									
-								</div>
 						<?php }?>
 						</div>
 						<div class="espaco2"></div>
@@ -71,6 +71,14 @@
 						   
 						 </div>
 						 <div class="form-group">
+						 <?php
+					          if ($perfil->imgArtigo == null):?>
+					          	<div class="form-group">
+									<label for="exampleFormControlFile1">Excolher uma imagem:</label>
+						    		<input type="file" name="imgArtigo" class="form-control-file" id="exampleFormControlFile1">
+								</div>
+						<?php endif ?>
+					          	
 						 	<br>
 						 	<label>PDF</label>
 						 	<br>
@@ -116,7 +124,8 @@
 							<h3 style="border-bottom: solid 2px #e44747; margin-bottom: 2%; padding-bottom: 1%;">Zona de Risco!</h3>
 							<div id="contZA-info">
 								<div>
-									<button class="btn" id="perigo"  onclick="delete_img(<?php echo $perfil->codArtigo;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir imagem do artigo</button>
+								 <!-- <a href = "<?php  echo site_url ('artigos/artigo_delete_img')?>?codArtigo= <?php echo $perfil->codArtigo?>" >Deletar</a> -->
+									 <button class="btn" id="perigo"  onclick="delete_img(<?php echo $perfil->codArtigo;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir imagem do artigo</button> 
 								</div>
 							</div>
 							<div id="contZA-img" align="center">
@@ -135,6 +144,11 @@
 			    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
 			    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
 			    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
+			    <!-- -->
+			    <script src="<?php echo base_url('assets/jquery/jquery-3.1.0.min.js')?>"></script>
+    			<script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js')?>"></script>
+    			<script src="<?php echo base_url('assets/datatables/js/jquery.dataTables.min.js')?>"></script>
+    			<script src="<?php echo base_url('assets/datatables/js/dataTables.bootstrap.js')?>"></script>
 
 			<div class="espaco2"></div>
 				<div class="conteinerCadArt" id="sombra">

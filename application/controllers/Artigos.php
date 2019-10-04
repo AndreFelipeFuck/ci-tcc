@@ -427,7 +427,7 @@ class Artigos extends CI_Controller
 		$caminho = "upload/artigos/$img";
 		$this->artigos_model->delete_img($codArtigo);
 		echo json_encode(array("status" => TRUE));
-		print($caminho);
+		unlink($caminho);
 	}
 
 	public function artigo_delete($codArtigo)
