@@ -5,6 +5,7 @@
 <?php 
      $teste = isset($_SESSION['alunos']);
       $teste1 = isset($_SESSION['professores']);?>
+ <!-- ALUNO -->
 <?php if($teste == TRUE){?>
 			<title>Atom |Editar Artigo</title>
 
@@ -25,6 +26,17 @@
 						    <label for="exampleFormControlInput1">Titulo do Artigo</label>
 						    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="<?php echo $perfil->titulo;?>" name="titulo" value ="<?= $perfil->titulo?>" required>
 						 </div>
+						 <div class="espaco2"></div>
+						 <?php
+					          if ($perfil->imgArtigo == null){?>
+									<div style="width: 100%; height: 2px; border-top: solid 2px #17a2b8;"></div><?php
+								}else{
+					               ?>
+					            <figure>
+									<img src="<?php echo base_url("upload/artigos/$perfil->imgArtigo")?>">
+								</figure>
+						<?php }?>
+						<div class="espaco2"></div>
 						  <div class="form-group" id="texto">
 						    <label for="exampleFormControlInput1">Texto do Artigo:</label>
 						    <textarea name="corpo" id="summernote" required><?php echo $perfil->corpo;?></textarea>
@@ -76,6 +88,7 @@
 						<button type="submit" class="btn btn-secundary" value="cancelarArt">Cancelar</button>
 					</form>		
 				</div>
+<!-- PROFESSOR -->
 <?php }elseif($teste1 == TRUE){?>
 				<title>Atom |Editar Artigo</title>
 

@@ -19,6 +19,7 @@
             <figure>
 				<img src="<?php echo base_url("upload/artigos/$perfil->imgArtigo")?>">
 			</figure>
+			
 	<?php }?>
 		
 		<div>
