@@ -430,6 +430,15 @@ class Artigos extends CI_Controller
 		unlink($caminho);
 	}
 
+	public function artigo_delete_pdf($codArtigo){
+		$artigo = $this->artigos_model->get_pdf($codArtigo);
+		$pdf = $artigo->uploadArtigo;	
+		$caminho = "upload/pdf/$pdf";
+		$this->artigos_model->delete_pdf($codArtigo);
+		echo json_encode(array("status" => TRUE));
+		unlink($caminho);
+	}
+
 	public function artigo_delete($codArtigo)
 	{
 		$this->artigos_model->delete_by_id($codArtigo);

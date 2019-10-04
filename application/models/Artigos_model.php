@@ -142,6 +142,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             return $query->row();
         }
 
+        public function delete_pdf($codArtigo){
+            $this->db->set('uploadArtigo', null); 
+            $this->db->where ( 'codArtigo', $codArtigo); 
+            $this->db->update ($this->table);
+        }
+
+        public function get_pdf($codArtigo){
+            $this->db->select('uploadArtigo')->from($this->table)->where("codArtigo = '$codArtigo'");
+            $query = $this->db->get();
+            return $query->row();
+        }
+
         public function get_by_login($titulo, $corpo){
             $this->db->select('codArtigo, titulo, corpo')->from('artigos')->where("titulo = '$titulo' and corpo = '$corpo'");
             $query = $this->db->get();

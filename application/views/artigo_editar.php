@@ -17,7 +17,7 @@
 			    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
 		
 			 <!-- -->
-			    <script src="<?php echo base_url('assets/jquery/jquery-3.1.0.min.js')?>"></script>
+			   <!--  <script src="<?php echo base_url('assets/jquery/jquery-3.1.0.min.js')?>"></script> -->
     			<script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js')?>"></script>
     			<script src="<?php echo base_url('assets/datatables/js/jquery.dataTables.min.js')?>"></script>
     			<script src="<?php echo base_url('assets/datatables/js/dataTables.bootstrap.js')?>"></script>
@@ -80,16 +80,15 @@
 						<?php endif ?>
 					          	
 						 	<br>
-						 	<label>PDF</label>
-						 	<br>
-						 	<div>
-						 		<label for="exampleFormControlFile1">Alterar pdf:</label>
-					    		<input type="file" class="form-control-file" id="exampleFormControlFile1" name="uploadArtigo">
-						 	</div>
-						 	<br>
-						 	<div>
-						 		<button class="btn" id="perigo"  onclick=""><i class="glyphicon glyphicon-remove"></i>Excluir o pdf</button>
-						 	</div>
+						 <?php
+					          if ($perfil->uploadArtigo == null):?>
+							 	<label>PDF</label>
+							 	<div>
+							 		<label for="exampleFormControlFile1">Alterar pdf:</label>
+						    		<input type="file" class="form-control-file" id="exampleFormControlFile1" name="uploadArtigo">
+							 	</div>
+						<?php endif ?>
+						 	
 						</div>
 						 <div class="form-group">
 						 	<label for="Escl-Mat">Matérias:</label>
@@ -124,9 +123,12 @@
 							<h3 style="border-bottom: solid 2px #e44747; margin-bottom: 2%; padding-bottom: 1%;">Zona de Risco!</h3>
 							<div id="contZA-info">
 								<div>
-								 <!-- <a href = "<?php  echo site_url ('artigos/artigo_delete_img')?>?codArtigo= <?php echo $perfil->codArtigo?>" >Deletar</a> -->
 									 <button class="btn" id="perigo"  onclick="delete_img(<?php echo $perfil->codArtigo;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir imagem do artigo</button> 
 								</div>
+								<br>
+								<div>
+						 			<button class="btn" id="perigo"  onclick="delete_pdf(<?php echo $perfil->codArtigo;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir o pdf</button>
+						 		</div>
 							</div>
 							<div id="contZA-img" align="center">
 								<figure><img src="<?php echo base_url('assets/bootstrap/img/cuidado.png')?>" width="120" height="120"></figure>
@@ -259,6 +261,27 @@
 	    // ajax delete data from database
 	    $.ajax({
 	    url : "<?php echo site_url('artigos/artigo_delete_img')?>/" + codArtigo,
+	    type: "POST",
+	    dataType: "JSON",
+	    success: function(data)
+	    {
+	      location.reload();
+	    },
+	    error: function (jqXHR, textStatus, errorThrown)
+	    {
+	    alert('Erro ao deletar');
+	    }
+	    });
+	    }
+	    }
+
+	    function delete_pdf(codArtigo)
+	    {
+	    if(confirm('Voce quer deletar a versão pdf do seu artigo?'))
+	    {
+	    // ajax delete data from database
+	    $.ajax({
+	    url : "<?php echo site_url('artigos/artigo_delete_pdf')?>/" + codArtigo,
 	    type: "POST",
 	    dataType: "JSON",
 	    success: function(data)
