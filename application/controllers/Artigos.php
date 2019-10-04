@@ -7,6 +7,9 @@ class Artigos extends CI_Controller
 		parent::__construct();
 		$this->load->helper('url');
         $this->load->model('artigos_model');
+        $this->load->model('aluno_model');
+        $this->load->model('professor_model');
+        $this->load->model('comentarios_model');
         $this->load->library('pagination');
 	}
 
@@ -454,16 +457,39 @@ class Artigos extends CI_Controller
     public function artigo_page(){
         $codArtigo = $this->input->get('codArtigo');
         $analise = $this->artigos_model->analise($codArtigo);
-        if ($analise->alunos_codAluno == null) {
-        	//PROFESSOR
-        	//echo "professor";
-        	$artigo['perfil'] = $this->artigos_model->get_by_id($codArtigo);
-        	$this->load->view('artigo_page', $artigo);
-        }if($analise->alunos_codAluno != null){
-        	//ALUNO
-        	//echo "ALUNO";
-        	$artigo['perfil'] = $this->artigos_model->get_by_id_aluno($codArtigo);
-        	$this->load->view('artigo_page', $artigo);
+        $teste = 1;
+        
+        if (isset($_SESSION['alunos']) == TRUE ) {
+        	if($analise->alunos_codAluno != null){
+	        	//ALUNO
+	        	$artigo['perfil'] = $this->artigos_model->get_by_id_aluno($codArtigo);
+	        	$artigo['aluno'] = $this->aluno_model->get_by_id($_SESSION['alunos']);
+	        	$artigo['comentarios'] = $this->comentarios_model->comentarios_listar($codArtigo);
+	        	$this->load->view('artigo_page', $artigo);
+	        }
+	    if(isset($_SESSION['professores']) == TRUE){
+	    	if ($analise->alunos_codAluno == null) {
+	        	//PROFESSOR
+	        	//echo "professor";
+	        	$artigo['perfil'] = $this->artigos_model->get_by_id($codArtigo);
+	        	$artigo['professor'] = $this->professores_model->get_by_id($_SESSION['professores']);
+	        	$artigo['comentarios'] = $this->comentarios_model->comentarios_listar($codArtigo);
+        		$this->load->view('artigo_page', $artigo);
+	        }
+	    }
+        }else{
+        	if ($analise->alunos_codAluno == null) {
+	        	//PROFESSOR
+	        	//echo "professor";
+	        	$artigo['perfil'] = $this->artigos_model->get_by_id($codArtigo);
+	        	$artigo['comentarios'] = $this->comentarios_model->comentarios_listar($codArtigo);
+        		$this->load->view('artigo_page', $artigo);
+	        }if($analise->alunos_codAluno != null){
+	        	//ALUNO
+	        	$artigo['perfil'] = $this->artigos_model->get_by_id_aluno($codArtigo);
+	        	$artigo['comentarios'] = $this->comentarios_model->comentarios_listar($codArtigo);
+	        	$this->load->view('artigo_page', $artigo);
+	        }
         }
         
       

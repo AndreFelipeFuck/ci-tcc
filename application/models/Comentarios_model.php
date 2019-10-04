@@ -1,0 +1,42 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+    class Comentarios_model extends CI_Model{
+    	 var $table = 'comentarios';
+        public function __construct()
+        {
+            $this->load->database();
+        }
+
+        public function comentarios_listar($codArtigo)
+        {
+            $this->db->select('codAluno, nomeAluno, imgAluno, dataNasc, curso, email, senha, anoLetivo, comentario')->from('alunos, comentarios, artigos')->where("codArtigo = artigo_codArtigo and codArtigo = '$codArtigo'");
+            $query=$this->db->get();
+            return $query->result();
+        }
+
+        public function get_by_id($codComentario)
+        {
+            $this->db->from($this->table);
+            $this->db->where('codComentario',$codComentario);
+            $query = $this->db->get();
+            return $query->row();
+        }
+
+        public function comentario_add($data)
+        {
+            $this->db->insert($this->table, $data);
+            return $this->db->insert_id();
+        }
+
+        public function comentario_update($where, $data)
+        {
+            $this->db->update($this->table, $data, $where);
+            return $this->db->affected_rows();
+        }
+        public function delete_by_id($codComentario)
+        {
+            $this->db->where('codComentario', $codComentario);
+            $this->db->delete($this->table);
+        }
+    }
