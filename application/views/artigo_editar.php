@@ -35,8 +35,7 @@
 						 </div>
 						 <div class="espaco2"></div>
 						 <div class="form-group"><!-- Para resolver -->
-						 <?php
-					          if ($perfil->imgArtigo == null){?>
+						 <?php if ($perfil->imgArtigo == null){?>
 									<div style="width: 100%; height: 2px; border-top: solid 2px #17a2b8;"></div><?php
 								}else{
 					               ?>
@@ -71,8 +70,7 @@
 						   
 						 </div>
 						 <div class="form-group">
-						 <?php
-					          if ($perfil->imgArtigo == null):?>
+						 <?php if ($perfil->imgArtigo == null):?>
 					          	<div class="form-group">
 									<label for="exampleFormControlFile1">Excolher uma imagem:</label>
 						    		<input type="file" name="imgArtigo" class="form-control-file" id="exampleFormControlFile1">
@@ -80,8 +78,7 @@
 						<?php endif ?>
 					          	
 						 	<br>
-						 <?php
-					          if ($perfil->uploadArtigo == null):?>
+						 <?php if ($perfil->uploadArtigo == null):?>
 							 	<label>PDF</label>
 							 	<div>
 							 		<label for="exampleFormControlFile1">Alterar pdf:</label>
@@ -141,16 +138,18 @@
 				<title>Atom |Editar Artigo</title>
 
 			  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
-			    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+			    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js)"></script>
 			    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 			    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
 			    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
 			    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
-			    <!-- -->
-			    <script src="<?php echo base_url('assets/jquery/jquery-3.1.0.min.js')?>"></script>
+		
+			 <!-- -->
+			   <!--  <script src="<?php echo base_url('assets/jquery/jquery-3.1.0.min.js')?>"></script> -->
     			<script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js')?>"></script>
     			<script src="<?php echo base_url('assets/datatables/js/jquery.dataTables.min.js')?>"></script>
     			<script src="<?php echo base_url('assets/datatables/js/dataTables.bootstrap.js')?>"></script>
+    		</head>	
 
 			<div class="espaco2"></div>
 				<div class="conteinerCadArt" id="sombra">
@@ -164,19 +163,18 @@
 						 </div>
 						 <div class="espaco2"></div>
 						 <div class="form-group"><!-- Para resolver -->
-						 <?php
-					          if ($perfil->imgArtigo == null){?>
+						 <?php if ($perfil->imgArtigo == null){?>
 									<div style="width: 100%; height: 2px; border-top: solid 2px #17a2b8;"></div><?php
 								}else{
 					               ?>
 					            <figure >
 									<img src="<?php echo base_url("upload/artigos/$perfil->imgArtigo")?>" style="width: 80%;">
 								</figure>
-								<div>
+								<div class="form-group">
 									<label for="exampleFormControlFile1">Alterar a imagem:</label>
 						    		<input type="file" name="imgArtigo" class="form-control-file" id="exampleFormControlFile1">
 								</div>
-								
+								<br>
 						<?php }?>
 						</div>
 						<div class="espaco2"></div>
@@ -200,26 +198,30 @@
 						   
 						 </div>
 						 <div class="form-group">
+						 <?php if ($perfil->imgArtigo == null):?>
+					          	<div class="form-group">
+									<label for="exampleFormControlFile1">Excolher uma imagem:</label>
+						    		<input type="file" name="imgArtigo" class="form-control-file" id="exampleFormControlFile1">
+								</div>
+						<?php endif ?>
+					          	
 						 	<br>
-						 	<label>PDF</label>
-						 	<br>
-						 	<div>
-						 		<label for="exampleFormControlFile1">Alterar pdf:</label>
-					    		<input type="file" class="form-control-file" id="exampleFormControlFile1" name="uploadArtigo">
-						 	</div>
-						 	<br>
-						 	<div>
-						 		<button class="btn" id="perigo"  onclick=""><i class="glyphicon glyphicon-remove"></i>Excluir o pdf</button>
-						 	</div>
-					 	</div>
-						 </div>
+						 <?php if ($perfil->uploadArtigo == null):?>
+							 	<label>PDF</label>
+							 	<div>
+							 		<label for="exampleFormControlFile1">Alterar pdf:</label>
+						    		<input type="file" class="form-control-file" id="exampleFormControlFile1" name="uploadArtigo">
+							 	</div>
+						<?php endif ?>
+						 	
+						</div>
 						 <div class="form-group">
 						 	<label for="Escl-Mat">Matérias:</label>
 						  	   	<select class="form-control" id="Escl-Mat" name="disciplina_codDisciplina" required>
 							  	 	<option value="16" <?=($perfil->nomeDisciplina == 'Nenhuma')?'selected':''?>>Nenhuma</option>
 							    	<option value="1" <?=($perfil->nomeDisciplina == 'Biologia')?'selected':''?>>Biologia</option>
 							 		<option value="2" <?=($perfil->nomeDisciplina == 'Física')?'selected':''?>>Física</option>
-							 		<option value="3" <?=($perfil->nomeDisciplina == 'Química')?'selected':''?>>Química</option>
+							 		<option value="3">Química</option>
 							 		<option value="4" <?=($perfil->nomeDisciplina == 'Geografia')?'selected':''?>>Geografia</option>
 							 		<option value="5"<?=($perfil->nomeDisciplina == 'História')?'selected':''?>>História</option>
 							 		<option value="6"<?=($perfil->nomeDisciplina == 'Pr.Textual')?'selected':''?>>Pr.Textual</option>
@@ -237,8 +239,27 @@
 						<div class="espaco2"></div> <br>
 						<button type="submit" class="btn btn-primary" value="confirmaArt">Confirmar</button>
 						<button type="submit" class="btn btn-secundary" value="cancelarArt">Cancelar</button>
-					</form>		
+					</form>
 				</div>
+			</form>
+		</div>
+					<div class="espaco2"></div>
+						<div class="conteinerZonaAlert" id="sombra2">
+							<h3 style="border-bottom: solid 2px #e44747; margin-bottom: 2%; padding-bottom: 1%;">Zona de Risco!</h3>
+							<div id="contZA-info">
+								<div>
+									 <button class="btn" id="perigo"  onclick="delete_img(<?php echo $perfil->codArtigo;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir imagem do artigo</button> 
+								</div>
+								<br>
+								<div>
+						 			<button class="btn" id="perigo"  onclick="delete_pdf(<?php echo $perfil->codArtigo;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir o pdf</button>
+						 		</div>
+							</div>
+							<div id="contZA-img" align="center">
+								<figure><img src="<?php echo base_url('assets/bootstrap/img/cuidado.png')?>" width="120" height="120"></figure>
+								<p style="color: #878585;">Atenção! Suas alterações aqui são sem volta.</p>
+							</div>
+						</div>		
 <?php }else{?>
 
 		<meta http-equiv="refresh" content="0;url=<?php echo site_url('')?>" />

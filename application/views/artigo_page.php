@@ -27,9 +27,11 @@
 				<?php echo $perfil->corpo;?>
 			</article>
 		</div>
-		<div>
-			<a href="<?php echo base_url("upload/pdf/$perfil->uploadArtigo")?>" download>Dowload do arquivo em pdf</a>
-		</div>
+		<?php if(isset($perfil->uploadArtigo)):?>
+			<div>
+				<a href="<?php echo base_url("upload/pdf/$perfil->uploadArtigo")?>" download>Dowload do arquivo em pdf</a>
+			</div>
+		<? endif ?>
 		<div class="espaco2"></div>
 		<div class="nomeAutor">
 			<?php if(isset($perfil->nomeProfessor)){?>
