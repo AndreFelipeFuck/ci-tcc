@@ -106,6 +106,22 @@ body{
 	margin: 1%;
 }
 
+.divInfo{
+	display: inline;
+	width: 58%;
+	float: left;
+}
+
+.divCont{
+	width: 10%;
+}
+
+.divCont a{
+	display: inline;
+	float: right;
+	margin-top: 110%;
+}
+
 .conteinerCad{
 	background-color: #fff;
 	border-radius: 3px;
@@ -776,6 +792,8 @@ textarea {
 	border-radius: 3px;
 }
 
+\\
+
 .contPort{
 	display: inline;
 	width: 32%;
@@ -810,14 +828,14 @@ textarea {
 }
 
 #detPortFont{
-	padding-left: 25%;
-	padding-right: 25%;
+	text-align: center;
 }
 
 #detPortNome{
-	padding-left: 5%;
-	padding-right: 5%;
+	text-align: center;
 }
+
+\\
 
 #exampleFormControlInput1{
 	width: 60%;
@@ -873,7 +891,7 @@ textarea {
 	text-overflow: ellipsis;
 	display: -webkit-box;
 	line-height: 16px;
-	max-height: 32
+	max-height: 50;
 }
 
 .conteiner-footer{
