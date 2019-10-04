@@ -90,12 +90,14 @@
                     }else{?>
                         <img src="<?php echo base_url("upload/artigos/$artigo->imgArtigo")?>">
               <?php }?>
-                <div>
+                <div class="divInfo">
                     <h3><?php echo $artigo->titulo?></h3>
-                    <p><?php echo $artigo->resumo ?></p>
+                    <p id="limiteLinhas"><?php echo $artigo->resumo ?></p>
                 <label>Postado pelo aluno:<h4 id="nomeAutor2"><a href="<?php echo site_url('alunos/aluno_perfil')?>?codAluno=<?php echo $artigo->alunos_codAluno?>" style="color: #17a2b8;"><?php echo $artigo->nomeAluno;?></a></h4></label>
                 <br>
-                    <a href="<?php echo site_url('artigos/artigo_page/')?>?codArtigo=<?php echo $artigo->codArtigo;?>" class="btn" id="visu">Visualizar</a>
+                </div>
+                <div class="divCont">
+                	<a href="<?php echo site_url('artigos/artigo_page/')?>?codArtigo=<?php echo $artigo->codArtigo;?>" class="btn" id="visu">Visualizar</a>
                 </div>
             </article>
         <br>
@@ -113,7 +115,9 @@
                     <h3><?php echo $artigo->titulo?></h3>
                     <p><?php echo $artigo->resumo?></p>
                         <label>Postado pelo professor:<h4 id="nomeAutor2"><a href="<?php echo site_url('professores/professor_perfil')?>?codProfessor=<?php echo $artigo->professores_codProfessor?>" style="color: #28a745;"><?php echo $artigo->nomeProfessor;?></a></h4></label>
-                    <a href="<?php echo site_url('artigos/artigo_page/')?>?codArtigo=<?php echo $artigo->codArtigo;?>" class="btn" id="visu">Visualizar</a>
+                </div>
+                <div class="divCont">
+                	<a href="<?php echo site_url('artigos/artigo_page/')?>?codArtigo=<?php echo $artigo->codArtigo;?>" class="btn" id="visu">Visualizar</a>
                 </div>
             </article>
         <br>
