@@ -1,10 +1,9 @@
 <?php 
 	include "cabeca.php";
-<<<<<<< HEAD
+
 	$teste = isset($_SESSION);
 	//print_r($comentarios);
-=======
->>>>>>> f037a4f79d8b570651837389a2f72c98cd969eff
+
 ?>
 
 <div class="espaco2"></div>
@@ -57,7 +56,7 @@
 		</div>       
 	</div>
 	<div class="espaco2"></div>
-<<<<<<< HEAD
+
 	<div class="conteinerComent" id="sombra">
 		<h1 style="font-size: 30px; border-bottom: solid 2px #17a2b8; margin-bottom: 2%; padding-bottom: 1%;">Comentarios:</h1>
 
@@ -144,11 +143,7 @@
 			
 	
 	</div>
-=======
-	<?php
-		//include 'comentario_view';
-	?>
->>>>>>> f037a4f79d8b570651837389a2f72c98cd969eff
+
 <?php 
 	include "rodape.php";
 ?>
