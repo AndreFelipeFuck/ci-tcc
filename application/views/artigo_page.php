@@ -1,7 +1,5 @@
 <?php 
 	include "cabeca.php";
-	$teste = isset($_SESSION);
-	print_r($comentarios);
 ?>
 
 <div class="espaco2"></div>
@@ -33,7 +31,7 @@
 			<div>
 				<a href="<?php echo base_url("upload/pdf/$perfil->uploadArtigo")?>" download>Dowload do arquivo em pdf</a>
 			</div>
-		<? endif ?>
+		<?php endif ?>
 		<div class="espaco2"></div>
 		<div class="nomeAutor">
 			<?php if(isset($perfil->nomeProfessor)){?>
@@ -54,76 +52,9 @@
 		</div>       
 	</div>
 	<div class="espaco2"></div>
-	<div class="conteinerComent" id="sombra">
-		<h1 style="font-size: 30px; border-bottom: solid 2px #17a2b8; margin-bottom: 2%; padding-bottom: 1%;">Comentarios:</h1>
-
-	<?php if($teste == 1):?>	
-		<div style="padding: 1.5%; border-radius: 3px; margin: 1%;">
-			<section class="fotoPerfilComent">
-			<?php if(isset($aluno)){
-				  if ($aluno->imgAluno == null) {?>
-					<div>
-						<figure><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>" class="img-fluid" alt="smaple image"></figure>
-					</div>
-				<?php }else{?>
-					<div>
-						?><figure class="img-rounded img-responsive"><img src="<?php echo base_url("upload/alunos/$aluno->imgAluno")?>"></figure>
-					</div><?php
-					}?>
-			</section>
-			<div class="elementoComent">
-				<h5><? echo $aluno->nomeAluno ?></h5>
-				<div>
-					<textarea style="height: 10%; max-height: 20%;" placeholder="Deixe um comentario..."></textarea>
-				</div>
-				<div style="margin-top: 0.8%;">
-					<button class="btn" id="visu">Publicar</button>
-					<button class="btn" id="perigo">Cancelar</button>
-				</div>
-			</div>
-			<?php }if(isset($professor)){
-				if ($professor->imgProfessor == null) {?>
-					<div>
-						<figure><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>" class="img-fluid" alt="smaple image"></figure>
-					</div>
-				<?php }else{?>
-					<div>
-						?><figure class="img-rounded img-responsive"><img src="<?php echo base_url("upload/alunos/$professor->imgProfessor")?>"></figure>
-					</div><?php
-				}?>
-			</section>
-			<div class="elementoComent">
-				<h5>Aluno Exemplo</h5>
-				<div>
-					<textarea style="height: 10%; max-height: 20%;" placeholder="Deixe um comentario..."></textarea>
-				</div>
-				<div style="margin-top: 0.8%;">
-					<button class="btn" id="visu">Publicar</button>
-					<button class="btn" id="perigo">Cancelar</button>
-				</div>
-			</div>
-		<?php } ?>
-		</div>
-
-	<?php endif ?>
-	
-		<div style="border: solid 1px rgba(68, 120, 132, .1); padding: 1.5%; border-radius: 3px; margin: 1%;">
-			<?php foreach ($comentarios as $key => $comentario) {?>
-				<section class="fotoPerfilComent">
-					<div>
-						<figure><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>" class="img-fluid" alt="smaple image"></figure>
-					</div>
-				</section>
-				<div class="elementoComent">
-					<h5><?php echo $comentario->nomeAluno ?></h5>
-					<div>
-						<section style="height: 10%; max-height: 20%; border: solid 1px rgba(68, 120, 132, .2); padding: 1.5%; border-radius: 3px;" placeholder="Deixe um comentario..."><h6><?php echo $comentario->comentario ?></h6></section>
-					</div>
-				</div><?php	
-			}?>
-			
-		</div>
-	</div>
+	<?php
+		//include 'comentario_view';
+	?>
 <?php 
 	include "rodape.php";
 ?>
