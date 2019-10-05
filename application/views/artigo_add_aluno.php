@@ -78,10 +78,13 @@
 			</div>
 		</form>
 		</div>
+	</form>
+</div>
 <?php }else{?>
 
 		<meta http-equiv="refresh" content="0;url=<?php echo site_url('')?>" />
 <?php } ?>
+
 <?php 
 	include "rodape.php";
 ?>

@@ -894,6 +894,10 @@ textarea {
 	max-height: 50;
 }
 
+#ta-resumo{
+	height: 20%;
+}
+
 .conteiner-footer{
 	width: 90%;
 	position: relative;
