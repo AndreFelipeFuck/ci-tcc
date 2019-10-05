@@ -73,12 +73,6 @@
     $('[name="nomeAluno"]').val(data.nomeAluno);
     $('[name="email"]').val(data.email);
     $('[name="senha"]').val(data.senha);
-
-
-    $('#modal_form').modal('show'); // show bootstrap modal when complete
-    loaded
-    $('.modal-title').text('Edit Aluno'); // Set title to Bootstrap modal
-    title
     },
     error: function (jqXHR, textStatus, errorThrown)
     {
@@ -86,6 +80,7 @@
     }
     });
     }
+    
     function save()
     {
     var url;
