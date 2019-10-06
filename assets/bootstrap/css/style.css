@@ -96,6 +96,7 @@ body{
 	float: left;
 	margin: 1%;
 	width: 25%;
+	height: 22%;
 	border-radius: 5px;
 
 }
@@ -526,6 +527,32 @@ textarea {
     border-color: #17a2b8;
 }
 
+#bot-azul{
+	background-color: #17a2b8;
+    background-image: none;
+    border-color: #17a2b8;
+	color: #fff;
+}
+
+#bot-azul:hover{
+	color: #17a2b8;
+    background-color: #fff;
+    border-color: #17a2b8;
+}
+
+#bot-verde{
+	background-color:  #28a745;
+    background-image: none;
+    border-color:  #28a745;
+	color: #fff;
+}
+
+#bot-verde:hover{
+	color:  #28a745;
+    background-color: #fff;
+    border-color:  #28a745;
+}
+
 #perigo{
 	background-color: #dc3545;
     background-image: none;
@@ -537,6 +564,19 @@ textarea {
 	color: #dc3545;
     background-color: #fff;
     border-color: #dc3545;
+}
+
+#cancelar{
+	background-color: #DE3B3B;
+    background-image: none;
+    border-color: #DE3B3B;
+	color: #fff;
+}
+
+#cancelar:hover{
+	color: #DE3B3B;
+    background-color: #fff;
+    border-color: #DE3B3B;
 }
 
 .conteinerArtConfig{
@@ -776,7 +816,7 @@ textarea {
 }
 
 .conteinerComent{
-	width: 70%;
+	width: 80%;
 	background-color: #fff;
 	margin: 0 auto;
 	padding: 2%;
@@ -855,7 +895,6 @@ textarea {
 }
 
 #Escl-Mat{
-	width: 20%;
 	background-color: #28a745;
 	color: #fff;
 }
@@ -866,7 +905,6 @@ textarea {
 }
 
 #Escl-Mat:hover{
-	width: 20%;
 	background-color: transparent;
     background-image: none;
 	border-color: #28a745;
@@ -948,8 +986,4 @@ textarea {
 .rodape{
 	width: 100%;
 	background-color: #17a2b8;
-}
-
-.escondido{
-	display: none;
 }
