@@ -111,7 +111,7 @@
 						</div>
 						<div class="espaco2"></div> <br>
 						<button type="submit" class="btn" id="visu" value="confirmaArt">Confirmar</button>
-						<button type="submit" class="btn btn-secundary" value="cancelarArt">Cancelar</button>
+						<button type="submit" class="btn" id="Cancelar" value="cancelarArt">Cancelar</button>
 					</form>
 				</div>
 			</form>

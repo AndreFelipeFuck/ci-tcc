@@ -15,18 +15,19 @@
 		                    ?><div class="fotoPerfil"><img src="<?php echo base_url("upload/alunos/$perfil->imgAluno")?>"></div><?php
 		                 }
 		            ?>
-		            <div style="height: 12%;"></div>
+		            <div style="height: 15%;"></div>
 					<div class="form-group">
 					    <label for="exampleFormControlInput1">Alterar imagem:</label>
 					    <input type="file" class="form-control-file" id="exampleFormControlInput1" name="imgAluno" value="">
 					 </div>
+					 <div style="width: 90%; border-bottom: solid 2px #17a2b8; display: inline-block; margin-left: 5%; margin-right: 5%; margin-top: 2%; opacity: 0.3;""></div>
 					 <div class="espaco2"></div>
 					<div class="form-group">
-					    <label for="exampleFormControlInput1">Nome Completo</label>
+					    <label for="exampleFormControlInput1">Alterar Nome:</label>
 					    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ex: Josef Oliveira" name="nomeAluno" value="<?= $perfil->nomeAluno?>">
 					 </div>
 					  <div class="form-group">
-					    <label for="exampleFormControlInput1">E-mail</label>
+					    <label for="exampleFormControlInput1">Alterar E-mail:</label>
 					    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="exemplo@gmail.com" name="email" value="<?= $perfil->email ?>">
 					 </div>
 					 <div class="form-group">
@@ -39,10 +40,12 @@
 					    <input type="password" class="form-control" id="exampleFormControlInput1" name="senhaconf">
 					 </div>
 					 <div class="form-group">
-					    <label for="exampleFormControlInput1">Data</label>
+					    <label for="exampleFormControlInput1">Alterar Data:</label>
 					    <input type="date" class="form-control" id="exampleFormControlInput2" name="dataNasc" value="<?= $perfil->dataNasc ?>">
 					 </div>
-						 <span>Curso</span>
+					 <div style="width: 90%; border-bottom: solid 2px #17a2b8; display: inline-block; margin-left: 5%; margin-right: 5%; margin-top: 2%; opacity: 0.3;""></div>
+					 <div class="espaco2"></div>
+						 <span>Alterar Curso:</span>
 						 <br>
 
 				<?php if($perfil->curso == "Agropecuária"):?>
@@ -89,7 +92,7 @@
 
 
 					<div class="espaco2"></div>
-					 <span>Ano Letivo</span>
+					 <span>Alterar Ano Letivo:</span>
 						 <br>
 				<?php if($perfil->anoLetivo == "Primeiro"):?>
 						 <div class="form-ano">
@@ -144,14 +147,9 @@
 						 </div>
 				<?php endif ?>
 
-					
-					<div class="espaco2"></div>
-					<div>
-						<label><input type="checkbox" name="termos"> Concordo com os <a href="">Termos de Uso</a> do site.</label>
-					</div>
 					<div class="espaco2"></div><br>
-					<button type="submit" class="btn btn-primary">Confirmar</button>
-					<button type="reset" class="btn btn-secundary">Cancelar</button>
+					<button type="submit" class="btn" id="bot-azul">Confirmar</button>
+					<button type="reset" class="btn" id="cancelar">Cancelar</button>
 				</form>
 			</div>
 			<div class="espaco2"></div>

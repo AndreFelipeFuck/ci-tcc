@@ -30,7 +30,7 @@
 			 </div>
 			 <span>Docente da área:</span>
 				 <br>
-				  	 <select class="form-control" id="Escl-Mat" name="disciplina_codDisciplina" required>
+				  	 <select class="form-control" id="Escl-Mat" style="width: 20%;" name="disciplina_codDisciplina" required>
 				  		<option value="15" name="disciplina_codDisiciplina">Nenhuma</option>
 				    	<option value="1" name="disciplina_codDisiciplina">Biologia</option>
 				 		<option value="2" name="disciplina_codDisiciplina">Física</option>
@@ -63,8 +63,8 @@
 				<label><input type="checkbox" name="termos"> Concordo com os <a href="">Termos de Uso</a> do site.</label>
 			</div>
 			<div class="espaco2"></div><br>
-			<button type="submit" class="btn btn-primary">Confirmar</button>
-			<button type="submit" class="btn btn-secundary">Cancelar</button>
+			<button type="submit" class="btn" id="bot-verde">Confirmar</button>
+			<button type="submit" class="btn" id="cancelar">Cancelar</button>
 		</form>
 		
 	</section>

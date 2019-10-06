@@ -38,22 +38,22 @@
 					 </div>
 					  <div class="form-group">
 					    <label for="exampleFormControlInput1">Faça um pequeno resumo do que voce escreveu:</label>
-					    <textarea name="resumo" placeholder="Teoria evolucionista fundamentada nas ideias do naturalista inglês Charles Robert Darwin 1809-1882" required></textarea>
+					    <textarea name="resumo" placeholder="Teoria evolucionista fundamentada nas ideias do naturalista inglês Charles Robert Darwin 1809-1882" maxlength="380" id="ta-resumo" required></textarea>
 					 </div>
 					 <div>
 					 	<div class="form-group">
-					    <label for="exampleFormControlFile1">Escolha uma imagem:</label>
+					    <label for="exampleFormControlFile1" style="padding-left: 1%; border-left: solid 5px #17a2b8;">Escolha uma imagem:</label>
 					    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="imgArtigo">
 					  </div>
 					   <div>
 					 	<div class="form-group">
-					    <label for="exampleFormControlFile1">Inclua uma versão em pdf</label>
+					    <label for="exampleFormControlFile1" style="padding-left: 1%; border-left: solid 5px #17a2b8;">Inclua uma versão em pdf:</label>
 					    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="uploadArtigo">
 					  </div>
 					 </div>
 					 <div class="form-group">
 					 	<label for="Escl-Mat">Matérias:</label>
-					   	<select class="form-control" id="Escl-Mat" name="disciplina_codDisciplina" required>
+					   	<select class="form-control" id="Escl-Mat" style="width: 15%;" name="disciplina_codDisciplina" required>
 					    	<option value="1">Biologia</option>
 					 		<option value="2">Física</option>
 					 		<option value="3">Química</option>
@@ -72,9 +72,9 @@
 					  	</select>
 					</div>
 					<div class="espaco2"></div> <br>
-					<button type="submit" class="btn btn-primary" value="confirmaArt">Confirmar</button>
-					<button type="submit" class="btn btn-secundary" value="cancelarArt">Cancelar</button>
-				</form>		
+					<button type="submit" class="btn" id="bot-azul" value="confirmaArt">Confirmar</button>
+					<button type="submit" class="btn" id="cancelar" value="cancelarArt">Cancelar</button>
+				</form>	
 			</div>
 		</form>
 		</div>

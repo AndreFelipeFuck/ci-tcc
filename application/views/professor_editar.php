@@ -16,16 +16,17 @@
 	                 }
 	            ?>
 	            <div style="height: 12%;"></div>
+                <div style="width: 90%; border-bottom: solid 2px #28a745; display: inline-block; margin-left: 5%; margin-right: 5%; margin-top: 2%; opacity: 0.3;""></div>
 				<div class="form-group">
 				    <label for="exampleFormControlInput1">Alterar imagem:</label>
 				    <input type="file" class="form-control-file" id="exampleFormControlInput1" name="imgProfessor">
 				 </div>
 				<div class="form-group">
-				    <label for="exampleFormControlInput1">Nome Completo</label>
+				    <label for="exampleFormControlInput1">Alterar Nome:</label>
 				    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ex: Josef Oliveira" name="nomeProfessor" value="<?= $perfil->nomeProfessor?>">
 				 </div>
 				  <div class="form-group">
-				    <label for="exampleFormControlInput1">E-mail</label>
+				    <label for="exampleFormControlInput1">Alterar E-mail:</label>
 				    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="exemplo@gmail.com" name="email" value="<?= $perfil->email?>">
 				 </div>
 				 <div class="form-group">
@@ -38,17 +39,14 @@
 				    <input type="password" class="form-control" id="exampleFormControlInput1" name="senhaconf">
 				 </div>
 				 <div class="form-group">
-				    <label for="exampleFormControlInput1">Data</label>
+				    <label for="exampleFormControlInput1">Alterar Data:</label>
 				    <input type="date" class="form-control" id="exampleFormControlInput2" name="dataNasc" value="<?= $perfil->dataNasc?>">
 				 </div>
-				 
-				<div class="form-group">
-					<label for="exampleFormControlInput1">Data</label>
-					<input type="date" class="form-control" id="exampleFormControlInput2" name="dataNasc" value="<?= $perfil->dataNasc?>">
-				</div>
+                <div style="width: 90%; border-bottom: solid 2px #28a745; display: inline-block; margin-left: 5%; margin-right: 5%; margin-top: 2%; opacity: 0.3;""></div>
+                <div class="espaco2"></div>
                 <div class="form-group">
-                    <label for="Escl-Mat">Matérias:</label>
-                    <select class="form-control" id="Escl-Mat" name="disciplina_codDisciplina" required>
+                    <label for="Escl-Mat">Alterar Matéria:</label>
+                    <select class="form-control" id="Escl-Mat" style="width: 20%;" name="disciplina_codDisciplina" required>
                         <option value="16" <?=($perfil->nomeDisciplina == 'Nenhuma')?'selected':''?>>Nenhuma</option>
                         <option value="1" <?=($perfil->nomeDisciplina == 'Biologia')?'selected':''?>>Biologia</option>
                         <option value="2" <?=($perfil->nomeDisciplina == 'Física')?'selected':''?>>Física</option>
@@ -68,18 +66,14 @@
                     </select>
                 </div>
 				<div class="espaco2"></div>
-				<span>Mini Curriculo:</span>
+				<span>Alterar Mini Curriculo:</span>
 				<br>
 				<div>
 				<textarea class="curriculo" placeholder="Conte-nos mais sobre sua formação..." name="miniCurriculo"><?= $perfil->miniCurriculo?></textarea>
 				</div>
-				<div class="espaco2"></div>
-				<div>
-					<label><input type="checkbox" name="termos"> Concordo com os <a href="">Termos de Uso</a> do site.</label>
-				</div>
-				    <div class="espaco2"></div><br>
-					<button type="submit" class="btn btn-primary">Confirmar</button>
-					<button type="submit" class="btn btn-secundary">Cancelar</button>
+				<div class="espaco2"></div><br>
+					<button type="submit" class="btn" id="bot-verde">Confirmar</button>
+					<button type="submit" class="btn" id="cancelar">Cancelar</button>
 				</form>
 				<div class="espaco2"></div>
 		</section>

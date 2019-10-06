@@ -77,8 +77,8 @@
 				<label><input type="checkbox" name="termos"> Concordo com os <a href="">Termos de Uso</a> do site.</label>
 			</div>
 			<div class="espaco2"></div><br>
-			<button type="submit" class="btn btn-primary">Confirmar</button>
-			<button type="submit" class="btn btn-secundary">Cancelar</button>
+			<button type="submit" class="btn" id="bot-azul">Confirmar</button>
+			<button type="submit" class="btn" id="cancelar">Cancelar</button>
 		</form>
 	</section>
 

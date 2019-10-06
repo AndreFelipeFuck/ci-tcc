@@ -41,7 +41,7 @@
 					 </div>
 					  <div class="form-group">
 					    <label for="exampleFormControlInput1">Faça um pequeno resumo do que voce escreveu:</label>
-					    <textarea name="resumo" placeholder="Teoria evolucionista fundamentada nas ideias do naturalista inglês Charles Robert Darwin 1809-1882" required></textarea>
+					    <textarea name="resumo" placeholder="Teoria evolucionista fundamentada nas ideias do naturalista inglês Charles Robert Darwin 1809-1882" maxlength="32" required></textarea>
 					 </div>
 					 <div>
 					 	<div class="form-group">
@@ -51,7 +51,7 @@
 					 </div>
 					 <div class="form-group">
 					 	<label for="Escl-Mat">Matérias:</label>
-					  	<select class="form-control" id="Escl-Mat" name="disciplina_codDisciplina" required>
+					  	<select class="form-control" id="Escl-Mat" style="width: 12%;" name="disciplina_codDisciplina" required>
 					    	<option value="1">Biologia</option>
 					 		<option value="2">Física</option>
 					 		<option value="3">Química</option>
@@ -71,7 +71,7 @@
 					</div>
 					
 					<div class="espaco2"></div> <br>
-					<button type="submit" class="btn btn-primary" value="confirmaArt">Confirmar</button>
+					<button type="submit" class="btn" id="bot-verde" value="confirmaArt">Confirmar</button>
 					<button type="submit" class="btn btn-secundary" value="cancelarArt">Cancelar</button>
 				</form>		
 			</div>
