@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         public function comentarios_listar($codArtigo)
         {
-            $this->db->select('codAluno, nomeAluno, imgAluno, dataNasc, curso, email, senha, anoLetivo, comentario')->from('alunos, comentarios, artigos')->where("codArtigo = artigo_codArtigo and codArtigo = '$codArtigo'");
+            $this->db->select('codAluno, nomeAluno, imgAluno, dataNasc, curso, email, senha, anoLetivo, comentario, codComentario')->from('alunos, comentarios, artigos')->where("codArtigo = artigo_codArtigo and codArtigo = '$codArtigo'");
             $query=$this->db->get();
             return $query->result();
         }

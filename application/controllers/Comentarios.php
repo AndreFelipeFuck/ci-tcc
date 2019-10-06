@@ -35,4 +35,9 @@ class Comentarios extends CI_Controller
 		redirect ("artigos/artigo_page/$url");
 	 }
 
+	public function comentario_delete($codComentario)
+	{
+		$this->comentarios_model->delete_by_id($codComentario);
+		echo json_encode(array("status" => TRUE));
+	}
 }

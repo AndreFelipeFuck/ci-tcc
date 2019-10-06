@@ -67,11 +67,11 @@ class Login extends CI_Controller
     
     public function sair (){
         $this->session->unset_userdata('alunos', '');
-        redirect("welcome");
+        redirect("home");
     }
 
     public function sairProf (){
         $this->session->unset_userdata('professores', '');
-        redirect("welcome");
+        redirect("home");
     }
 }
