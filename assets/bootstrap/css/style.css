@@ -949,3 +949,7 @@ textarea {
 	width: 100%;
 	background-color: #17a2b8;
 }
+
+.escondido{
+	display: none;
+}

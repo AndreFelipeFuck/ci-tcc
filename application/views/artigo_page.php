@@ -139,18 +139,35 @@
 					</section>
 					<div class="elementoComent">
 						<h5><?php echo $comentario->nomeAluno ?></h5>
-						<div>
+	<?php
+		if (isset($_SESSION['alunos']) == TRUE):
+			if($comentario->codAluno == $_SESSION['alunos']):?>
+						<div class="conteudo" id="comentario1">
 							<section style="height: 10%; max-height: 20%; border: solid 1px rgba(68, 120, 132, .2); padding: 1.5%; border-radius: 3px;" placeholder="Deixe um comentario..."><h6><?php echo $comentario->comentario ?></h6></section>
-							<?php
-								if (isset($_SESSION['alunos']) == TRUE):
-									if($comentario->codAluno == $_SESSION['alunos']):?>
-										<button class="btn btn-success"><i class="glyphicon glyphicon-pencil"></i>Editar</button>
-		            					<button class="btn btn-danger"  onclick="delete_comentario(<?php echo $comentario->codComentario;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir</button><?php
-									endif;
-
-								endif;
-								?>
+							
+										<button class="btn btn-success editar"><i class="glyphicon glyphicon-pencil"></i>Editar</button>
+		            					<button class="btn btn-danger"  onclick="delete_comentario(<?php echo $comentario->codComentario;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir</button>
 						</div>
+						<div  class="conteudo escondido" id="comentario2">
+								<form action="<?php echo site_url('comentarios/comentario_update')?>" id ="editar">
+									<input type="hidden" value="<?php echo $comentario->codComentario ?>" name="codComentario"/>
+									<div class="elementoComent">
+										<div>
+											<textarea style="height: 10%; max-height: 20%;" name="comentario"><?php echo $comentario->comentario ?></textarea>
+										</div>
+										<div style="margin-top: 0.8%;">
+											<button type="submit" class="btn" id="visu" onclick="comentario_update()">Alterar</button>
+											
+										</div>
+									</div>
+								</form>
+								<button class="btn cancelar" id="perigo">Cancelar</button>
+
+						</div>
+	<?php
+		endif;
+
+			endif;?>
 
 					</div>
 				</div><?php	
@@ -167,13 +184,29 @@
 <script src="<?php echo base_url('assets/datatables/js/dataTables.bootstrap.js')?>"></script>
 
 <script>
-	$(document).ready( function () {
-	    $('#codArtigo').DataTable();
-	    } );
-	    var save_method; //for save method string
-	    var table;
+	
+ $(document).ready( function () {
+    $('#codAluno').DataTable();
+    } );
+    var save_method; 
+    var table;
+
+	$(document).ready(function(){
+		$(".editar").click(function(){
+			$('.conteudo').addClass('escondido');
+			$("#comentario2").removeClass('escondido');	
+		})
+	})
+
+	$(document).ready(function(){
+		$(".cancelar").click(function(){
+			$('.conteudo').addClass('escondido');
+			$("#comentario1").removeClass('escondido');	
+		})
+	})
+
+	
 	    function save(){
-	    	alert('teste');
 		    $.ajax({
 			    url : "<?php echo site_url('comentarios/comentario_add')?>",
 			    type: "POST",
@@ -184,6 +217,21 @@
 			    },
 			    error: function (jqXHR, textStatus, errorThrown){
 			    	alert('Erro ao adicionar o seu comentario');
+			    }
+		    });
+		}
+
+		  function comentario_update(){
+		    $.ajax({
+			    url : "<?php echo site_url('comentarios/comentario_update')?>",
+			    type: "POST",
+			    data: $('#editar').serialize(),
+			    dataType: "JSON",
+			   success: function(data){
+			      location.reload();
+			    },
+			    error: function (jqXHR, textStatus, errorThrown){
+			    	alert('Erro ao alterar o comentario');
 			    }
 		    });
 		}

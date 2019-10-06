@@ -31,9 +31,26 @@ class Comentarios extends CI_Controller
 		 	);
 		}
 		$insert = $this->comentarios_model->comentario_add($data);
-		echo "Teste";
-		redirect ("artigos/artigo_page/$url");
+		echo json_encode(array("status" => TRUE));
 	 }
+
+	 public function ajax_edit($codComentario)
+	{
+		$data = $this->artigos_model->get_by_id_simples($codComentario);
+		echo json_encode($data);
+	}
+
+	 public function comentario_update()
+	{
+		$data = array(
+			'comentario' => $this->input->post("comentario"),
+		 	'dataComentario' => date("Y-m-d")	
+			);
+		$this->comentarios_model->comentario_update(array('codComentario' => $this->input->post('codComentario')), $data);
+
+		echo json_encode(array("status" => TRUE));
+
+	}
 
 	public function comentario_delete($codComentario)
 	{
