@@ -69,8 +69,8 @@ class Artigos extends CI_Controller
 			           	'allowed_types' => 'pdf',
 			           	'file_name' => $titulo_pdf.".pdf",
 			           	'max_size' => '3000');
-	           		$this->load->library('upload');
-	           		$this->upload->initialize($config_pdf);
+	           			$this->load->library('upload');
+		           		$this->upload->initialize($config_pdf);
 
 	           if ($this->upload->do_upload('uploadArtigo')){
 	           		echo 'Arquivo salvo com sucesso.';
@@ -444,6 +444,10 @@ class Artigos extends CI_Controller
 
 	public function artigo_delete($codArtigo)
 	{
+		$artigo = $this->artigos_model->get_img($codArtigo);
+		$img = $artigo->imgArtigo;	
+		$caminho = "upload/artigos/$img";
+		unlink($caminho);
 		$this->artigos_model->delete_by_id($codArtigo);
 		echo json_encode(array("status" => TRUE));
 	}
