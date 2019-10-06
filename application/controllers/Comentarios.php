@@ -16,14 +16,14 @@ class Comentarios extends CI_Controller
 
 	 public function comentario_add(){
 	 	$url = "?codArtigo=".$this->input->post("artigo_codArtigo");
-		if ($this->input->post('professores_codProfessor') == 0) {
+		if ($this->input->post('com_professores_codProfessor') == 0) {
 		 	$data = array(
 		 		'comentario' => $this->input->post("comentario"),
 		 		'artigo_codArtigo' => $this->input->post("artigo_codArtigo"),
-		 		'alunos_codAluno' => $this->input->post("alunos_codAluno"),
+		 		'com_alunos_codAluno' => $this->input->post("com_alunos_codAluno"),
 		 		'dataComentario' => date("Y-m-d")
 		 	);
-		}if($this->input->post('alunos_codAluno') == 0){
+		}if($this->input->post('com_alunos_codAluno') == 0){
 			$data = array(
 		 		'comentario' => $this->input->post("comentario"),
 		 		'artigo_codArtigo' => $this->input->post("artigo_codArtigo"),

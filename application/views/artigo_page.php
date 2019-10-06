@@ -2,7 +2,7 @@
 	include "cabeca.php";
 
 	$teste = isset($_SESSION);
-	//print_r($comentarios);
+	print_r($comentarios);
 
 ?>
 
@@ -65,7 +65,7 @@
 			<?php if(isset($aluno)){?>
 				<form action="#" method="post" id ="comentar">
 					<input type="hidden" value="<?= $perfil->codArtigo?>" name="artigo_codArtigo"/>
-					<input type="hidden" value="<?= $aluno->codAluno?>" name="alunos_codAluno"/>
+					<input type="hidden" value="<?= $aluno->codAluno?>" name="com_alunos_codAluno"/>
 					<input type="hidden" value="0" name="professores_codProfessor"/>
 					<section class="fotoPerfilComent">
 			
@@ -94,7 +94,7 @@
 			<?php }if(isset($professor)){?>
 			<form action="<?php echo site_url('comentarios/comentario_add')?>" method="post" id ="comentar">
 				<input type="hidden" value="<?= $perfil->codArtigo?>" name="artigo_codArtigo"/>
-				<input type="hidden" value="<?= $professor->codProfessor?>" name="professores_codProfessor"/>
+				<input type="hidden" value="<?= $professor->codProfessor?>" name="com_professores_codProfessor"/>
 				<input type="hidden" value="0" name="alunos_codAluno"/>
 				<section class="fotoPerfilComent">	
 				<?php	if ($professor->imgProfessor == null) {?>
@@ -138,13 +138,14 @@
 							}?>
 					</section>
 					<div class="elementoComent">
-						<h5><?php echo $comentario->nomeAluno ?></h5>
+							<h5><?php echo $comentario->nomeAluno ?></h5>
+							<div class="conteudo" id="comentario1">
+							<section style="height: 10%; max-height: 20%; border: solid 1px rgba(68, 120, 132, .2); padding: 1.5%; border-radius: 3px;" placeholder="Deixe um comentario..."><h6><?php echo $comentario->comentario ?></h6></section>
+					</div>
 	<?php
 		if (isset($_SESSION['alunos']) == TRUE):
 			if($comentario->codAluno == $_SESSION['alunos']):?>
 						<div class="conteudo" id="comentario1">
-							<section style="height: 10%; max-height: 20%; border: solid 1px rgba(68, 120, 132, .2); padding: 1.5%; border-radius: 3px;" placeholder="Deixe um comentario..."><h6><?php echo $comentario->comentario ?></h6></section>
-							
 										<button class="btn btn-success editar"><i class="glyphicon glyphicon-pencil"></i>Editar</button>
 		            					<button class="btn btn-danger"  onclick="delete_comentario(<?php echo $comentario->codComentario;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir</button>
 						</div>
