@@ -9,6 +9,8 @@ class Alunos extends CI_Controller
         $this->load->library('session');
 		$this->load->model('aluno_model');
 		$this->load->model('artigos_model');
+		$this->load->model('comentarios_model');
+
 	}
 
 	public function index()
@@ -308,6 +310,7 @@ class Alunos extends CI_Controller
 	}
 
 	public function aluno_delete($codAluno){
+		$this->comentarios_model->delete_all_aluno($codAluno);
 		$this->artigos_model->delete_all_aluno($codAluno);
 		$this->aluno_model->delete_by_id($codAluno);
 		echo json_encode(array("status" => TRUE));

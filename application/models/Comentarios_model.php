@@ -39,4 +39,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $this->db->where('codComentario', $codComentario);
             $this->db->delete($this->table);
         }
+        public function delete_all_aluno($com_alunos_codAluno)
+        {
+            $this->db->where('com_alunos_codAluno', $com_alunos_codAluno);
+            $this->db->delete($this->table);
+        }
     }

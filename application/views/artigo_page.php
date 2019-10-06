@@ -2,7 +2,6 @@
 	include "cabeca.php";
 
 	$teste = isset($_SESSION);
-	print_r($comentarios);
 
 ?>
 
