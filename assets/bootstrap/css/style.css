@@ -954,6 +954,10 @@ textarea {
 	display: inline-block;
 }
 
+.escondido{	
+	display: none;	
+}
+
 .botao-rep{
 	display: inline-block;
 	margin-right: 1%;
