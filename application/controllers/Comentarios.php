@@ -27,6 +27,7 @@ class Comentarios extends CI_Controller
 			$data = array(
 		 		'comentario' => $this->input->post("comentario"),
 		 		'artigo_codArtigo' => $this->input->post("artigo_codArtigo"),
+		 		'com_professores_codProfessor' => $this->input->post("com_professores_codProfessor"),
 		 		'dataComentario' => date("Y-m-d")
 		 	);
 		}
