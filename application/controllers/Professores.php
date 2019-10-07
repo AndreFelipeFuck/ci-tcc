@@ -70,8 +70,8 @@ class Professores extends CI_Controller
 
                     if ($query->num_rows() == 1){
                         $professor = $query->row();
-                        $this->session->set_userdata("professores", $professor->nomeProfessor);
-                        $codProfessor = $this->professor_model->get_by_login($email, $senha);
+                        $this->session->set_userdata("professores", $professor->codProfessor);
+                        $codProfessor = $this->professor_model->get_by_login($professor->email, $professor->senha);
                         ////
                         $data_prof_disc = array(
                             'professores_codProfessor' => $professor->codProfessor,
@@ -108,6 +108,7 @@ class Professores extends CI_Controller
                     );
 
                     $insert = $this->professor_model->professor_add($data);
+
                     $this->db->where('email', $data['email']);
                     $this->db->where('senha', $data['senha']);
                     $query = $this->db->get('professores');
@@ -115,7 +116,7 @@ class Professores extends CI_Controller
                     if ($query->num_rows() == 1){
                         $professor = $query->row();
                         $this->session->set_userdata("professores", $professor->codProfessor);
-                        $codProfessor = $this->professor_model->get_by_login($email, $senha);
+                        $codProfessor = $this->professor_model->get_by_login($professor->email, $professor->senhaconf);
                          ////
                         $data_prof_disc = array(
                             'professores_codProfessor' => $professor->codProfessor,
