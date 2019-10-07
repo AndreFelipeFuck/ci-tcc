@@ -45,8 +45,13 @@
 					 </div>
 					 <div>
 					 	<div class="form-group">
-					    <label for="exampleFormControlFile1">Escolha uma imagem:</label>
+					    <label for="exampleFormControlFile1" style="padding-left: 1%; border-left: solid 5px #17a2b8;">Escolha uma imagem:</label>
 					    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="imgArtigo">
+					  </div>
+					   <div>
+					 	<div class="form-group">
+					    <label for="exampleFormControlFile1" style="padding-left: 1%; border-left: solid 5px #17a2b8;">Inclua uma versão em pdf:</label>
+					    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="uploadArtigo">
 					  </div>
 					 </div>
 					 <div class="form-group">
@@ -72,7 +77,7 @@
 					
 					<div class="espaco2"></div> <br>
 					<button type="submit" class="btn" id="bot-verde" value="confirmaArt">Confirmar</button>
-					<button type="submit" class="btn btn-secundary" value="cancelarArt">Cancelar</button>
+					<button type="submit" class="btn" id="cancelar" value="cancelarArt">Cancelar</button>
 				</form>		
 			</div>
 <?php }else{?>

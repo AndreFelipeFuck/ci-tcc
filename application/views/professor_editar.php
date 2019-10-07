@@ -16,7 +16,8 @@
 	                 }
 	            ?>
 	            <div style="height: 12%;"></div>
-                <div style="width: 90%; border-bottom: solid 2px #28a745; display: inline-block; margin-left: 5%; margin-right: 5%; margin-top: 2%; opacity: 0.3;""></div>
+                <div style="width: 90%; border-bottom: solid 2px #28a745; display: inline-block; margin-left: 5%; margin-right: 5%; margin-top: 2%; opacity: 0.3;"></div>
+                <div class="espaco2"></div>
 				<div class="form-group">
 				    <label for="exampleFormControlInput1">Alterar imagem:</label>
 				    <input type="file" class="form-control-file" id="exampleFormControlInput1" name="imgProfessor">
@@ -75,7 +76,6 @@
 					<button type="submit" class="btn" id="bot-verde">Confirmar</button>
 					<button type="submit" class="btn" id="cancelar">Cancelar</button>
 				</form>
-				<div class="espaco2"></div>
 		</section>
 		<div class="espaco2"></div>
 		<div class="conteinerZonaAlert" id="sombra2">
