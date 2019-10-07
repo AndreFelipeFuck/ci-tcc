@@ -464,24 +464,32 @@ class Artigos extends CI_Controller
         $teste = 1;
         
         if (isset($_SESSION['alunos']) == TRUE ) {
-        	if($analise->alunos_codAluno != null){
-	        	//ALUNO
-	        	$artigo['perfil'] = $this->artigos_model->get_by_id_aluno($codArtigo);
-	        	$artigo['aluno'] = $this->aluno_model->get_by_id($_SESSION['alunos']);
-	        	$artigo['comentarios'] = $this->comentarios_model->comentarios_listar($codArtigo);
-	        	$this->load->view('artigo_page', $artigo);
-	        }
-	    if(isset($_SESSION['professores']) == TRUE){
-	    	if ($analise->alunos_codAluno == null) {
+	        	if ($analise->alunos_codAluno == null) {
 	        	//PROFESSOR
 	        	//echo "professor";
 	        	$artigo['perfil'] = $this->artigos_model->get_by_id($codArtigo);
-	        	$artigo['professor'] = $this->professores_model->get_by_id($_SESSION['professores']);
 	        	$artigo['comentarios'] = $this->comentarios_model->comentarios_listar($codArtigo);
         		$this->load->view('artigo_page', $artigo);
+	        }if($analise->alunos_codAluno != null){
+	        	//ALUNO
+	        	$artigo['perfil'] = $this->artigos_model->get_by_id_aluno($codArtigo);
+	        	$artigo['comentarios'] = $this->comentarios_model->comentarios_listar($codArtigo);
+	        	$this->load->view('artigo_page', $artigo);
 	        }
-	    }
-        }else{
+	    }if(isset($_SESSION['professores']) == TRUE){
+	        	if ($analise->alunos_codAluno == null) {
+	        	//PROFESSOR
+	        	//echo "professor";
+	        	$artigo['perfil'] = $this->artigos_model->get_by_id($codArtigo);
+	        	$artigo['comentarios'] = $this->comentarios_model->comentarios_listar($codArtigo);
+        		$this->load->view('artigo_page', $artigo);
+	        }if($analise->alunos_codAluno != null){
+	        	//ALUNO
+	        	$artigo['perfil'] = $this->artigos_model->get_by_id_aluno($codArtigo);
+	        	$artigo['comentarios'] = $this->comentarios_model->comentarios_listar($codArtigo);
+	        	$this->load->view('artigo_page', $artigo);
+	        }
+	    }elseif(isset($_SESSION['professores']) == FALSE && isset($_SESSION['alunos']) == FALSE){
         	if ($analise->alunos_codAluno == null) {
 	        	//PROFESSOR
 	        	//echo "professor";
@@ -495,9 +503,6 @@ class Artigos extends CI_Controller
 	        	$this->load->view('artigo_page', $artigo);
 	        }
         }
-        
-      
-       
         /*$artigo['perfil'] = $this->artigos_model->get_by_id($codArtigo);
         $this->load->view('artigo_page', $artigo);	*/
     }
