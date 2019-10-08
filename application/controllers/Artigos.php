@@ -312,6 +312,11 @@ class Artigos extends CI_Controller
 		//SE O USUARIO NÃO QUISER TROCAR A FOTO DO ARTIGO	
 		if($imgArtigo['name'] == null) {
 			if ($pdfArtigo['name'] != null) {
+				$artigo = $this->artigos_model->get_pdf($this->input->post('codArtigo'));
+				$pdf = $artigo->uploadArtigo;	
+				$caminho = "upload/pdf/$pdf";
+				unlink($caminho);
+
 				$config_pdf = array(
 			    'upload_path' => './upload/pdf',
 			     'allowed_types' => 'pdf',
@@ -358,6 +363,11 @@ class Artigos extends CI_Controller
 					unlink($caminho);
 			///
 			if ($pdfArtigo['name'] != null) {
+				$artigo = $this->artigos_model->get_pdf($this->input->post('codArtigo'));
+				$pdf = $artigo->uploadArtigo;	
+				$caminho = "upload/pdf/$pdf";
+				unlink($caminho);
+
 				$config_pdf = array(
 			    'upload_path' => './upload/pdf',
 			     'allowed_types' => 'pdf',
