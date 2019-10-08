@@ -86,11 +86,16 @@
 						    		<input type="file" class="form-control-file" id="exampleFormControlFile1" name="uploadArtigo">
 							 	</div>
 						<?php endif ?>
+								<label style="padding-left: 1%; border-left: solid 5px  #17a2b8;">PDF</label>
+							 	<div>
+							 		<label for="exampleFormControlFile1">Alterar pdf:</label>
+						    		<input type="file" class="form-control-file" id="exampleFormControlFile1" name="uploadArtigo">
+							 	</div>
 						 	
 						</div>
 						 <div class="form-group">
 						 	<label for="Escl-Mat">Alterar Matéria:</label>
-						  	   	<select class="form-control" id="Escl-Mat" name="disciplina_codDisciplina">
+						  	   	<select class="form-control" id="Escl-Mat" style="width: 20%;" name="disciplina_codDisciplina">
 							  	 	<option value="16" <?=($perfil->nomeDisciplina == 'Nenhuma')?'selected':''?>>Nenhuma</option>
 							    	<option value="1" <?=($perfil->nomeDisciplina == 'Biologia')?'selected':''?>>Biologia</option>
 							 		<option value="2" <?=($perfil->nomeDisciplina == 'Física')?'selected':''?>>Física</option>
@@ -109,10 +114,16 @@
 							 		<option value="14" <?=($perfil->nomeDisciplina == 'Química')?'selected':''?>>Química(tec)</option>
 					  			</select>
 						</div>
-						<div class="espaco2"></div> <br>
+						<div class="espaco2"></div>
 						<button type="submit" class="btn" id="visu" value="confirmaArt">Confirmar</button>
 						<button type="submit" class="btn" id="Cancelar" value="cancelarArt">Cancelar</button>
 					</form>
+					<br>
+						<div>
+							<h5 style="border-bottom: solid 2px #e44747; margin-bottom: 2%; padding-bottom: 1%;">Configurações de Exclusão</h5>
+							<button class="btn" id="perigo"  onclick="delete_img(<?php echo $perfil->codArtigo;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir imagem do artigo</button>
+							<button class="btn" id="perigo"  onclick="delete_pdf(<?php echo $perfil->codArtigo;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir o pdf</button>
+						</div>
 				</div>
 			</form>
 		</div>
@@ -120,13 +131,13 @@
 						<div class="conteinerZonaAlert" id="sombra2">
 							<h3 style="border-bottom: solid 2px #e44747; margin-bottom: 2%; padding-bottom: 1%;">Zona de Risco!</h3>
 							<div id="contZA-info">
-								<div>
+								<!-- <div>
 									 <button class="btn" id="perigo"  onclick="delete_img(<?php echo $perfil->codArtigo;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir imagem do artigo</button> 
 								</div>
 								<br>
 								<div>
 						 			<button class="btn" id="perigo"  onclick="delete_pdf(<?php echo $perfil->codArtigo;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir o pdf</button>
-						 		</div>
+						 		</div> -->
 							</div>
 							<div id="contZA-img" align="center">
 								<figure><img src="<?php echo base_url('assets/bootstrap/img/cuidado.png')?>" width="120" height="120"></figure>

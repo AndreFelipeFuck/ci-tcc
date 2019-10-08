@@ -5,8 +5,9 @@
             <a href="<?php echo site_url('alunos/artigos_add')?>?codAluno=<?php echo $_GET['codAluno']?>" class="btn btn-info">Novo artigo</a>
             <div class="espaco2"></div>
                     <?php foreach($artigos as $artigo){?>
-                        <article class="vidCont">
+                    
                         <?php if($artigo->alunos_codAluno == $_GET['codAluno']):?>
+                            <article class="vidCont">
                                 <?php
                                         if($artigo->imgArtigo == null){?>
                                             <img src="<?php echo base_url('assets/bootstrap/img/eng.png')?>" class="card-img-top" alt="..."><?php
