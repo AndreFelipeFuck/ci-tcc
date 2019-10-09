@@ -1,7 +1,6 @@
 <?php 
 	include "cabeca.php";
 	$teste = isset($_SESSION);
-	//print_r($_SESSION['professores']);
 ?>
 
 <div class="espaco2"></div>
@@ -139,13 +138,63 @@
 							}?>	
 					</section>	
 					<div class="elementoComent">	
-							<h5><?php echo $comentario->nomeAluno ?></h5>	
+							<h5><a href="<?php echo site_url('alunos/aluno_perfil')?>?codAluno=<?php echo $comentario->codAluno?>" style="color: #17a2b8;"><?php echo $comentario->nomeAluno;?></a></h5>	
 							<div class="conteudo" id="comentario1">	
 							<section style="height: 10%; max-height: 20%; border: solid 1px rgba(68, 120, 132, .2); padding: 1.5%; border-radius: 3px;" placeholder="Deixe um comentario..."><h6><?php echo $comentario->comentario ?></h6></section>	
 					</div>	
 	<?php	
 		if (isset($_SESSION['alunos']) == TRUE):	
 			if($comentario->codAluno == $_SESSION['alunos']):?>	
+						<div class="conteudo" id="comentario1">	
+										<button class="btn btn-success editar"><i class="glyphicon glyphicon-pencil"></i>Editar</button>	
+		            					<button class="btn btn-danger"  onclick="delete_comentario(<?php echo $comentario->codComentario;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir</button>	
+						</div>	
+						<div  class="conteudo escondido" id="comentario2">	
+								<form action="<?php echo site_url('comentarios/comentario_update')?>" id ="editar">	
+									<input type="hidden" value="<?php echo $comentario->codComentario ?>" name="codComentario"/>	
+									<div class="elementoComent">	
+										<div>	
+											<textarea style="height: 10%; max-height: 20%;" name="comentario"><?php echo $comentario->comentario ?></textarea>	
+										</div>	
+										<div style="margin-top: 0.8%;">	
+											<button type="submit" class="btn" id="visu" onclick="comentario_update()">Alterar</button>	
+
+ 										</div>	
+									</div>	
+								</form>	
+								<button class="btn cancelar" id="perigo">Cancelar</button>	
+
+ 						</div>	
+	<?php		
+		endif;			
+			endif;?>	
+
+ 					</div>	
+				</div><?php		
+			}?>	
+
+
+ 			<?php foreach ($comentarios_professor as $key => $comentario) {?>	
+				<div style="border: solid 1px rgba(68, 120, 132, .1); padding: 1.5%; border-radius: 3px; margin: 1%;">	
+					<section class="fotoPerfilComent">	
+						<?php if ($comentario->imgProfessor == null) {?>	
+							<div>	
+								<figure><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>" class="img-fluid" alt="smaple image"></figure>	
+							</div>	
+						<?php }else{?>	
+							<div>	
+								?><figure class="img-rounded img-responsive"><img src="<?php echo base_url("upload/alunos/$comentario->imgProfessor")?>"></figure>	
+							</div><?php	
+							}?>	
+					</section>	
+					<div class="elementoComent">	
+							<h5><a href="<?php echo site_url('professores/professor_perfil')?>?codProfessor=<?php echo $comentario->codProfessor?>" style="color: #28a745;"><?php echo $comentario->nomeProfessor;?></a></h5>	
+							<div class="conteudo" id="comentario1">	
+							<section style="height: 10%; max-height: 20%; border: solid 1px rgba(68, 120, 132, .2); padding: 1.5%; border-radius: 3px;" placeholder="Deixe um comentario..."><h6><?php echo $comentario->comentario ?></h6></section>	
+					</div>	
+	<?php	
+		if (isset($_SESSION['professores']) == TRUE):	
+			if($comentario->codProfessor == $_SESSION['professores']):?>	
 						<div class="conteudo" id="comentario1">	
 										<button class="btn btn-success editar"><i class="glyphicon glyphicon-pencil"></i>Editar</button>	
 		            					<button class="btn btn-danger"  onclick="delete_comentario(<?php echo $comentario->codComentario;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir</button>	

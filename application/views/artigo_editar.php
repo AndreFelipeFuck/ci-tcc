@@ -86,6 +86,14 @@
 						    		<input type="file" class="form-control-file" id="exampleFormControlFile1" name="uploadArtigo">
 							 	</div>
 						<?php endif ?>
+
+						<?php if ($perfil->uploadArtigo != null):?>
+							 	<label style="padding-left: 1%; border-left: solid 5px  #17a2b8;">PDF</label>
+							 	<div>
+							 		<label for="exampleFormControlFile1">Alterar pdf:</label>
+						    		<input type="file" class="form-control-file" id="exampleFormControlFile1" name="uploadArtigo">
+							 	</div>
+						<?php endif ?>
 						</div>
 						 <div class="form-group">
 						 	<label for="Escl-Mat">Alterar Matéria:</label>

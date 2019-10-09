@@ -15,6 +15,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             return $query->result();
         }
 
+        public function comentarios_listar_professor($codArtigo)
+        {
+            $this->db->select('codProfessor, nomeProfessor, imgProfessor, comentario, codComentario')->from('professores, comentarios, artigos')->where("codArtigo = artigo_codArtigo and com_professores_codProfessor = codProfessor and codArtigo = '$codArtigo'");
+            $query=$this->db->get();
+            return $query->result();
+        }
+
         public function get_by_id($codComentario)
         {
             $this->db->from($this->table);
