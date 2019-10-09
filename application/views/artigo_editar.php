@@ -49,7 +49,7 @@
 								</div>
 						<?php }?>
 						</div>
-						<div style="width: 90%; border-bottom: solid 2px #17a2b8; display: inline-block; margin-left: 5%; margin-right: 5%; margin-top: 2%; opacity: 0.3;""></div>
+						<div style="width: 90%; border-bottom: solid 2px #17a2b8; display: inline-block; margin-left: 5%; margin-right: 5%; margin-top: 2%; opacity: 0.3;"></div>
 						<div class="espaco2"></div>
 						  <div class="form-group" id="texto">
 						    <label for="exampleFormControlInput1">Alterar texto:</label>
