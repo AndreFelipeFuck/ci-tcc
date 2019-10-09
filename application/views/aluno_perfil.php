@@ -25,19 +25,19 @@
                     <h2 id="nomeFont"><?php echo $perfil->nomeAluno;?></h2>
                 </div>
                 <div id="infoAlign">
-                    <label>Email:</label>
+                    <label style="padding-left: 1%; border-left: solid 3px #17a2b8;">Email:</label>
                     <h6><?php echo $perfil->email;?></h6>
                 </div>
                 <div id="infoAlign">
-                    <label>Data de Nascimento:</label>
+                    <label style="padding-left: 1%; border-left: solid 3px #17a2b8;">Data de Nascimento:</label>
                     <h6><?php echo $perfil->dataNasc;?></h6>
                 </div>
                 <div id="infoAlign">
-                    <label>Curso:</label>
+                    <label style="padding-left: 1%; border-left: solid 3px #17a2b8;">Curso:</label>
                     <h6><?php echo $perfil->curso;?></h6>
                 </div>
                 <div id="infoAlign">
-                    <label>Ano Letivo:</label>
+                    <label style="padding-left: 1%; border-left: solid 3px #17a2b8;">Ano Letivo:</label>
                     <h6><?php echo $perfil->anoLetivo;?></h6>
                 </div>
                 <div id="infoAlign">

@@ -26,15 +26,15 @@
                     <h2 id="nomeFont"><?php echo $perfil->nomeProfessor;?></h2>
                 </div>
                 <div id="infoAlign">
-                    <label>Email:</label>
+                    <label style="padding-left: 1%; border-left: solid 3px #28a745;">Email:</label>
                     <h6><?php echo $perfil->email;?></h6>
                 </div>
                 <div id="infoAlign">
-                    <label>Data de Nascimento:</label>
+                    <label style="padding-left: 1%; border-left: solid 3px #28a745;">Data de Nascimento:</label>
                     <h6><?php echo $perfil->dataNasc;?></h6>
                 </div>
                 <div id="infoAlign">
-                    <label>Leciona na disciplina:</label>
+                    <label style="padding-left: 1%; border-left: solid 3px #28a745;">Leciona na disciplina:</label>
                     <h6><?php echo $perfil->nomeDisciplina;?></h6>
                 </div>
             <!--
@@ -44,7 +44,7 @@
                 </div>
             -->
                 <div id="infoAlign">
-                    <label>Mini curriculo:</label>
+                    <label style="padding-left: 1%; border-left: solid 3px #28a745;">Mini curriculo:</label>
                     <h6><?php echo $perfil->miniCurriculo;?></h6>
                 </div>
                 <div id="infoAlign">
