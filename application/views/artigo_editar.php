@@ -77,7 +77,7 @@
 						    		<input type="file" name="imgArtigo" class="form-control-file" id="exampleFormControlFile1">
 								</div>
 						<?php endif ?>
-					        	<div style="width: 90%; border-bottom: solid 2px #17a2b8; display: inline-block; margin-left: 5%; margin-right: 5%; margin-top: 2%; opacity: 0.3;""></div>
+					        	<div style="width: 90%; border-bottom: solid 2px #17a2b8; display: inline-block; margin-left: 5%; margin-right: 5%; margin-top: 2%; opacity: 0.3;"></div>
 					        	<div class="espaco2"></div>
 						 <?php if ($perfil->uploadArtigo == null):?>
 							 	<label style="padding-left: 1%; border-left: solid 5px  #17a2b8;">PDF</label>
@@ -86,12 +86,6 @@
 						    		<input type="file" class="form-control-file" id="exampleFormControlFile1" name="uploadArtigo">
 							 	</div>
 						<?php endif ?>
-								<label style="padding-left: 1%; border-left: solid 5px  #17a2b8;">PDF</label>
-							 	<div>
-							 		<label for="exampleFormControlFile1">Alterar pdf:</label>
-						    		<input type="file" class="form-control-file" id="exampleFormControlFile1" name="uploadArtigo">
-							 	</div>
-						 	
 						</div>
 						 <div class="form-group">
 						 	<label for="Escl-Mat">Alterar Matéria:</label>
@@ -118,32 +112,16 @@
 						<button type="submit" class="btn" id="visu" value="confirmaArt">Confirmar</button>
 						<button type="submit" class="btn" id="Cancelar" value="cancelarArt">Cancelar</button>
 					</form>
-					<br>
+					<div class="espaco2"></div>
 						<div>
 							<h5 style="border-bottom: solid 2px #e44747; margin-bottom: 2%; padding-bottom: 1%;">Configurações de Exclusão</h5>
 							<button class="btn" id="perigo"  onclick="delete_img(<?php echo $perfil->codArtigo;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir imagem do artigo</button>
 							<button class="btn" id="perigo"  onclick="delete_pdf(<?php echo $perfil->codArtigo;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir o pdf</button>
+							<p style="color: #878585; margin-top: 1%;">Atenção! Suas alterações aqui são sem volta.</p>
 						</div>
 				</div>
 			</form>
 		</div>
-					<div class="espaco2"></div>
-						<div class="conteinerZonaAlert" id="sombra2">
-							<h3 style="border-bottom: solid 2px #e44747; margin-bottom: 2%; padding-bottom: 1%;">Zona de Risco!</h3>
-							<div id="contZA-info">
-								<!-- <div>
-									 <button class="btn" id="perigo"  onclick="delete_img(<?php echo $perfil->codArtigo;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir imagem do artigo</button> 
-								</div>
-								<br>
-								<div>
-						 			<button class="btn" id="perigo"  onclick="delete_pdf(<?php echo $perfil->codArtigo;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir o pdf</button>
-						 		</div> -->
-							</div>
-							<div id="contZA-img" align="center">
-								<figure><img src="<?php echo base_url('assets/bootstrap/img/cuidado.png')?>" width="120" height="120"></figure>
-								<p style="color: #878585;">Atenção! Suas alterações aqui são sem volta.</p>
-							</div>
-						</div>		
 				
 <!-- PROFESSOR -->
 <?php }elseif($teste1 == TRUE){?>
