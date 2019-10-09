@@ -1,6 +1,46 @@
 <?php 
 	include "cabeca.php";
-	$teste = isset($_SESSION);
+	 $teste = isset($_SESSION);
+	 $testando = array_merge($comentarios, $comentarios_professor);
+
+	  usort(
+
+    $testando,
+
+     function( $a, $b ) {
+
+         if( $a ->dataComentario == $b ->dataComentario ) return 0;
+
+         return ( ( $a  ->dataComentario > $b  ->dataComentario ) ? -1 : 1 );
+     }
+);
+
+	// Mostra os valores
+	echo '<pre>';
+	print_r($testando);
+	echo '</pre>';
+
+
+	?>
+
+
+
+
+	// $chave = 0;
+	
+	// function date_compare(){
+	//     $t1 = strtotime();
+	//     $t2 = strtotime();
+	//     return $t1 - $t2;
+	// }    
+	// usort($array, 'date_compare');
+
+	// // foreach ($testando as $key => $comentario) {
+ // //      	if ($comentario->dataComentario < $comentario->dataComentario ) {
+ // //      		echo $comentario->dataComentario;
+ // //      	}
+	// // }
+
 ?>
 
 <div class="espaco2"></div>
