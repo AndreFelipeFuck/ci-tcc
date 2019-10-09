@@ -475,10 +475,10 @@ class Artigos extends CI_Controller
         
         if (isset($_SESSION['alunos']) == TRUE ) {
 	        	if ($analise->alunos_codAluno == null) {
-	        	//PROFESSOR
-	        	// //echo "professor";
-	        	// $artigo['perfil'] = $this->artigos_model->get_by_id($codArtigo);
-	        	// $artigo['comentarios'] = $this->comentarios_model->comentarios_listar($codArtigo);
+	        	$artigo['perfil'] = $this->artigos_model->get_by_id($codArtigo);
+	        	$artigo['comentarios'] = $this->comentarios_model->comentarios_listar($codArtigo);
+	        	$artigo['comentarios_professor'] = $this->comentarios_model->comentarios_listar_professor($codArtigo);
+	        	$artigo['aluno'] = $this->aluno_model->get_by_id($_SESSION['alunos']);
 	        
         		$this->load->view('artigo_page', $artigo);
 	        }if($analise->alunos_codAluno != null){
@@ -500,9 +500,12 @@ class Artigos extends CI_Controller
         		$this->load->view('artigo_page', $artigo);
 	        }if($analise->alunos_codAluno != null){
 	        	//ALUNO
-	        	// $artigo['perfil'] = $this->artigos_model->get_by_id_aluno($codArtigo);
-	        	// $artigo['comentarios'] = $this->comentarios_model->comentarios_listar($codArtigo);
-	        	// $this->load->view('artigo_page', $artigo);
+	        	 $artigo['perfil'] = $this->artigos_model->get_by_id_aluno($codArtigo);
+	        	 $artigo['comentarios'] = $this->comentarios_model->comentarios_listar($codArtigo);
+	        	$artigo['comentarios_professor'] = $this->comentarios_model->comentarios_listar_professor($codArtigo);
+	        	$artigo['comentarios'] = $this->comentarios_model->comentarios_listar($codArtigo);
+	        	$artigo['professor'] = $this->professor_model->get_by_id($_SESSION['professores']);
+	        	 $this->load->view('artigo_page', $artigo);
 	        }
 	    }elseif(isset($_SESSION['professores']) == FALSE && isset($_SESSION['alunos']) == FALSE){
         	if ($analise->alunos_codAluno == null) {
