@@ -312,6 +312,10 @@ class Artigos extends CI_Controller
 		//SE O USUARIO NÃO QUISER TROCAR A FOTO DO ARTIGO	
 		if($imgArtigo['name'] == null) {
 			if ($pdfArtigo['name'] != null) {
+				$artigo = $this->artigos_model->get_pdf($this->input->post('codArtigo'));
+				$pdf = $artigo->uploadArtigo;	
+				$caminho = "upload/pdf/$pdf";
+				unlink($caminho);
 				$config_pdf = array(
 			    'upload_path' => './upload/pdf',
 			     'allowed_types' => 'pdf',
@@ -328,9 +332,7 @@ class Artigos extends CI_Controller
 						'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina'),		
 						);
 					$this->artigos_model->artigo_update(array('codArtigo' => $this->input->post('codArtigo')), $data);
-
 					echo json_encode(array("status" => TRUE));
-
 					redirect ("artigos/artigo_page/$url");
 				}else{
 					echo $this->upload->display_errors();	
@@ -342,12 +344,9 @@ class Artigos extends CI_Controller
 				'resumo' => $this->input->post('resumo'),
 				'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina'));
 				$this->artigos_model->artigo_update(array('codArtigo' => $this->input->post('codArtigo')), $data);
-
 				echo json_encode(array("status" => TRUE));
-
 				redirect ("artigos/artigo_page/$url");
 			}
-
 			// SE O USUARIO QUISER TROCAR A FOTO DO ARTIGO
 		}elseif(!empty($imgArtigo['name'])){
 			//EXCLUIR FOTO ANTIGA DE PERFIL
@@ -358,6 +357,10 @@ class Artigos extends CI_Controller
 					unlink($caminho);
 			///
 			if ($pdfArtigo['name'] != null) {
+				$artigo = $this->artigos_model->get_pdf($this->input->post('codArtigo'));
+				$pdf = $artigo->uploadArtigo;	
+				$caminho = "upload/pdf/$pdf";
+				unlink($caminho);
 				$config_pdf = array(
 			    'upload_path' => './upload/pdf',
 			     'allowed_types' => 'pdf',
@@ -385,9 +388,7 @@ class Artigos extends CI_Controller
 									'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina')
 								);
 								$this->artigos_model->artigo_update(array('codArtigo' => $this->input->post('codArtigo')), $data);
-
 								echo json_encode(array("status" => TRUE));
-
 					 			redirect ("artigos/artigo_page/$url");
 	                    	}else{
 	                    		echo $this->upload->display_errors();
@@ -413,9 +414,7 @@ class Artigos extends CI_Controller
 						'imgArtigo' => $config['file_name'].".jpg",
 						'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina'));
 					$this->artigos_model->artigo_update(array('codArtigo' => $this->input->post('codArtigo')), $data);
-
 					echo json_encode(array("status" => TRUE));
-
 					redirect ("artigos/artigo_page/$url");
 	            }else{
 	            	echo $this->upload->display_errors();	
