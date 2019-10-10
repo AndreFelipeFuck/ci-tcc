@@ -61,7 +61,11 @@ class Artigos extends CI_Controller
 			$titulo_pdf = explode(" ", $this->input->post('titulo'));
 			$titulo_pdf = implode("_", $titulo_pdf);
 			$titulo_pdf = $titulo_pdf."_".date("Y-m-d");
-		///
+		//
+			$ponto_img = explode(".", $imgArtigo['name']);
+			$ponto_img = $ponto_img[1];
+		//
+
 		if($imgArtigo['name'] == null){
 			if ($pdfArtigo['name'] != null) {
 					$config_pdf = array(
@@ -173,9 +177,9 @@ class Artigos extends CI_Controller
 		           		 //ENVIANDO IMAGEM PRO BANCO
 			           $config = array(
 			           	'upload_path' => './upload/artigos',
-			           	'allowed_types' => 'jpg',//Arrumar essa parte
+			           	'allowed_types' => 'gif|jpg|png',//Arrumar essa parte
 			           	'file_name' => md5(time()),
-			           	'max_size' => '500'
+			           	'max_size' => '3000'
 			           );
 			           $this->load->library('upload');
 			           $this->upload->initialize($config);
@@ -192,7 +196,7 @@ class Artigos extends CI_Controller
 									'professores_codProfessor' => $this->input->post('professores_codProfessor'),
 									'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina'),
 									'resumo' => $this->input->post('resumo'),
-									'imgArtigo' => $config['file_name'].".jpg",
+									'imgArtigo' => $config['file_name'].".".$ponto_img,
 									'dataArtigo' => date("Y-m-d"),
 									'uploadArtigo' => $config_pdf['file_name'],
 								);
@@ -204,7 +208,7 @@ class Artigos extends CI_Controller
 									'alunos_codAluno' => $this->input->post('alunos_codAluno'),
 									'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina'),
 									'resumo' => $this->input->post('resumo'),
-									'imgArtigo' => $config['file_name'].".jpg",
+									'imgArtigo' => $config['file_name'].".".$ponto_img,
 									'dataArtigo' => date("Y-m-d"),
 									'uploadArtigo' => $config_pdf['file_name'],
 								);
@@ -215,10 +219,10 @@ class Artigos extends CI_Controller
 							  	$this->db->where('titulo', $data['titulo']);
 			           			$this->db->where('corpo', $data['corpo']);
 			            		$query = $this->db->get('artigos');
+			            		$codArtigo = $this->artigos_model->get_by_login($titulo, $corpo);
 
 			            	if ($query->num_rows() == 1){
 			               		 $artigo = $query->row();
-			               		 $codArtigo = $this->artigos_model->get_by_login($titulo, $corpo);
 			                	$url = "?codArtigo=".$artigo->codArtigo;
 			                	//Defenindo a disciplina do artigo
 			               		redirect ("artigos/artigo_page/$url");
@@ -228,21 +232,23 @@ class Artigos extends CI_Controller
 		    			}else{
 		         			echo $this->upload->display_errors();
 		         		}
+		            }else{
+		            	echo $this->upload->display_errors();
 		            }
 
 		        }else{
 					 	///ENVIANDO IMAGEM PRO BANCO
 				           $config = array(
 				           	'upload_path' => './upload/artigos',
-				           	'allowed_types' => 'jpg',//Arrumar essa parte
+				           	'allowed_types' => 'gif|jpg|png',//Arrumar essa parte
 				           	'file_name' => md5(time()),
-				           	'max_size' => '500'
+				           	'max_size' => '3000'
 				           );
 				           $this->load->library('upload');
 				           $this->upload->initialize($config);
 
 				           if ($this->upload->do_upload('imgArtigo')){
-			        			echo 'Arquivo salvo com sucesso.';
+			        			echo "Teste";
 
 				        		//ENVIAR PARA O BANCO
 				        		if($this->input->post('alunos_codAluno') == 0){
@@ -253,7 +259,7 @@ class Artigos extends CI_Controller
 										'professores_codProfessor' => $this->input->post('professores_codProfessor'),
 										'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina'),
 										'resumo' => $this->input->post('resumo'),
-										'imgArtigo' => $config['file_name'].".jpg",
+										'imgArtigo' => $config['file_name'].".".$ponto_img,
 										'dataArtigo' => date("Y-m-d")
 									);
 								}if ($this->input->post('professores_codProfessor') == 0) {
@@ -264,7 +270,7 @@ class Artigos extends CI_Controller
 										'alunos_codAluno' => $this->input->post('alunos_codAluno'),
 										'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina'),
 										'resumo' => $this->input->post('resumo'),
-										'imgArtigo' => $config['file_name'].".jpg",
+										'imgArtigo' => $config['file_name'].".".$ponto_img,
 										'dataArtigo' => date("Y-m-d")
 									);
 								}
@@ -274,10 +280,10 @@ class Artigos extends CI_Controller
 								  	$this->db->where('titulo', $data['titulo']);
 				           			$this->db->where('corpo', $data['corpo']);
 				            		$query = $this->db->get('artigos');
+				            		$codArtigo = $this->artigos_model->get_by_login($titulo, $corpo);
 
 				            	if ($query->num_rows() == 1){
 				               		 $artigo = $query->row();
-				               		 $codArtigo = $this->artigos_model->get_by_login($titulo, $corpo);
 				                	$url = "?codArtigo=".$artigo->codArtigo;
 				                	//Defenindo a disciplina do artigo
 				               		redirect ("artigos/artigo_page/$url");
@@ -308,6 +314,9 @@ class Artigos extends CI_Controller
 			$titulo_pdf = implode("_", $titulo_pdf);
 			$titulo_pdf = $titulo_pdf."_".date("Y-m-d");
 		///
+			$ponto_img = explode(".", $imgArtigo['name']);
+			$ponto_img = $ponto_img[1];
+		//
 		
 		//SE O USUARIO NÃO QUISER TROCAR A FOTO DO ARTIGO	
 		if($imgArtigo['name'] == null) {
@@ -381,7 +390,7 @@ class Artigos extends CI_Controller
 	                    if ($this->upload->do_upload('uploadArtigo')){
 	                    	$config = array(
 			                'upload_path' => './upload/artigos',
-			                'allowed_types' => 'jpg',//Arrumar essa parte
+			                'allowed_types' => 'jpg | png',//Arrumar essa parte
 			                 'file_name' => md5(time()),
 			                 'max_size' => '500');
 	                    	 $this->upload->initialize($config);
@@ -389,7 +398,7 @@ class Artigos extends CI_Controller
 		                    	$data = array(
 									'titulo' => $this->input->post('titulo'),
 									'corpo' => $this->input->post('corpo'),
-									'imgArtigo' => $config['file_name'].".jpg",
+									'imgArtigo' => $config['file_name'].".".$ponto_img,
 									'uploadArtigo' => $config_pdf['file_name'],
 									'resumo' => $this->input->post('resumo'),
 									'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina')
@@ -420,7 +429,7 @@ class Artigos extends CI_Controller
 		            $data = array(
 						'titulo' => $this->input->post('titulo'),
 						'corpo' => $this->input->post('corpo'),
-						'imgArtigo' => $config['file_name'].".jpg",
+						'imgArtigo' => $config['file_name'].".".$ponto_img,
 						'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina'));
 					$this->artigos_model->artigo_update(array('codArtigo' => $this->input->post('codArtigo')), $data);
 
