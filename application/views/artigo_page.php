@@ -203,7 +203,7 @@
 								}?>	
 						</section>	
 								<div class="elementoComent">	
-									<h5><a href="<?php echo site_url('professores/professor_perfil')?>?codProfessor=<?php echo $comentario->codProfessor?>" style="color: #17a2b8;"><?php echo $comentario->nomeProfessor;?></a></h5>
+									<h5><a href="<?php echo site_url('professores/professor_perfil')?>?codProfessor=<?php echo $comentario->codProfessor?>"  style="color: #28a745;"><?php echo $comentario->nomeProfessor;?></a></h5>
 								</div>	
 								<div class="conteudo" id="comentario1">	
 									<section style="height: 10%; max-height: 20%; border: solid 1px rgba(68, 120, 132, .2); padding: 1.5%; border-radius: 3px;" placeholder="Deixe um comentario..."><h6><?php echo $comentario->comentario ?></h6></section>	
