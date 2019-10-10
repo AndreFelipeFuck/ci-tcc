@@ -14,9 +14,9 @@
 	);
 
 	// Mostra os valores
-	echo '<pre>';
-	print_r($todosComentarios);
-	echo '</pre>';
+	// echo '<pre>';
+	// print_r($todosComentarios);
+	// echo '</pre>';
 
 
 	?>
@@ -140,9 +140,9 @@
 		</div>	
 
  	<?php endif ?>	
-
-
- 			<?php foreach ($todosComentarios as $key => $comentario):?>	
+ 		<?php
+ 			//ALUNO
+ 			 foreach ($todosComentarios as $key => $comentario):?>	
 			<div style="border: solid 1px rgba(68, 120, 132, .1); padding: 1.5%; border-radius: 3px; margin: 1%;">
 				<?php if (isset($comentario->codAluno) == TRUE): ?>
 						<section class="fotoPerfilComent">	
@@ -159,17 +159,23 @@
 								<div class="elementoComent">	
 									<h5><a href="<?php echo site_url('alunos/aluno_perfil')?>?codAluno=<?php echo $comentario->codAluno?>" style="color: #17a2b8;"><?php echo $comentario->nomeAluno;?></a></h5>	
 								</div>
-								<div class="conteudo" id="comentario1">	
+						<?php if (isset($_SESSION['alunos']) == FALSE): ?>
+								<div>	
 									<section style="height: 10%; max-height: 20%; border: solid 1px rgba(68, 120, 132, .2); padding: 1.5%; border-radius: 3px;" placeholder="Deixe um comentario..." class="elementoComent"><h6><?php echo $comentario->comentario ?></h6></section>	
 								</div>	
 
+						<?php endif?>
+								
 						<?php if (isset($_SESSION['alunos']) == TRUE):	
 								if($comentario->codAluno == $_SESSION['alunos']):?>	
-											<div class="conteudo" id="comentario1">	
-															<button class="btn" id="bot-verde"><i class="glyphicon glyphicon-pencil"></i>Editar</button>	
-							            					<button class="btn" id="perigo">  onclick="delete_comentario(<?php echo $comentario->codComentario;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir</button>	
+											<div class="conteudo" id="<?php echo "comentario".$comentario->codComentario?>">
+													
+													<section style="height: 10%; max-height: 20%; border: solid 1px rgba(68, 120, 132, .2); padding: 1.5%; border-radius: 3px;" placeholder="Deixe um comentario..." class="elementoComent"><h6><?php echo $comentario->comentario ?></h6></section>	
+															<button class="btn btn-success editar" id="<?php echo $comentario->codComentario?>"><i class="glyphicon glyphicon-pencil"></i>Editar</button>	
+							            					<button class="btn" id="perigo"  onclick="delete_comentario(<?php echo $comentario->codComentario;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir</button>	
 											</div>	
-											<div  class="conteudo escondido" id="comentario2">	
+
+											<div  class="conteudo escondido" id="<?php echo"alterar".$comentario->codComentario?>">	
 													<form action="<?php echo site_url('comentarios/comentario_update')?>" id ="editar">	
 														<input type="hidden" value="<?php echo $comentario->codComentario ?>" name="codComentario"/>	
 														<div class="elementoComent">	
@@ -182,7 +188,7 @@
 					 										</div>	
 														</div>	
 													</form>	
-													<button class="btn cancelar" id="perigo">Cancelar</button>	
+													<button class="btn btn-danger cancelar" id="<?php echo $comentario->codComentario?>">Cancelar</button>	
 
 					 						</div>	
 							<?php endif;		
@@ -205,17 +211,21 @@
 								<div class="elementoComent">	
 									<h5><a href="<?php echo site_url('professores/professor_perfil')?>?codProfessor=<?php echo $comentario->codProfessor?>"  style="color: #28a745;"><?php echo $comentario->nomeProfessor;?></a></h5>
 								</div>	
-								<div class="conteudo" id="comentario1">	
+
+						<?php if (isset($_SESSION['professores']) == FALSE):?>
+								<div>	
 									<section style="height: 10%; max-height: 20%; border: solid 1px rgba(68, 120, 132, .2); padding: 1.5%; border-radius: 3px;" placeholder="Deixe um comentario..." class="elementoComent"><h6><?php echo $comentario->comentario ?></h6></section>	
 								</div>	
-
+						<?php endif ?>
+								
 						<?php if (isset($_SESSION['professores']) == TRUE):	
 								if($comentario->codProfessor == $_SESSION['professores']):?>
-											<div class="conteudo" id="comentario1">	
-															<button class="btn" id="bot-verde"><i class="glyphicon glyphicon-pencil"></i>Editar</button>	
+											<div class="conteudo" id="<?php echo "comentario".$comentario->codComentario?>">
+															<section style="height: 10%; max-height: 20%; border: solid 1px rgba(68, 120, 132, .2); padding: 1.5%; border-radius: 3px;" placeholder="Deixe um comentario..." class="elementoComent"><h6><?php echo $comentario->comentario ?></h6></section>		
+															<button class="btn btn-success editar" id="<?php echo $comentario->codComentario?>"><i class="glyphicon glyphicon-pencil"></i>Editar</button>	
 							            					<button class="btn" id="perigo" onclick="delete_comentario(<?php echo $comentario->codComentario;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir</button>	
 											</div>	
-											<div  class="conteudo escondido" id="comentario2">	
+											<div  class="conteudo escondido" id="<?php echo "alterar".$comentario->codComentario?>">	
 													<form action="<?php echo site_url('comentarios/comentario_update')?>" id ="editar">	
 														<input type="hidden" value="<?php echo $comentario->codComentario ?>" name="codComentario"/>	
 														<div class="elementoComent">	
@@ -228,7 +238,7 @@
 					 										</div>	
 														</div>	
 													</form>	
-													<button class="btn cancelar" id="perigo">Cancelar</button>	
+													<button class="btn btn-danger cancelar" id="<?php echo $comentario->codComentario?>">Cancelar</button>	
 
 					 						</div>	
 							<?php endif;		
@@ -259,14 +269,16 @@
     var table;	
  	$(document).ready(function(){	
 		$(".editar").click(function(){	
-			$('.conteudo').addClass('escondido');	
-			$("#comentario2").removeClass('escondido');		
+			var id = $(this).attr('id');
+			$("#comentario"+id).addClass('escondido');	
+			$("#alterar"+id).removeClass('escondido');		
 		})	
 	})	
  	$(document).ready(function(){	
 		$(".cancelar").click(function(){	
-			$('.conteudo').addClass('escondido');	
-			$("#comentario1").removeClass('escondido');		
+			var id = $(this).attr('id');
+			$("#alterar"+id).addClass('escondido');	
+			$("#comentario"+id).removeClass('escondido');		
 		})	
 	})	
  		
