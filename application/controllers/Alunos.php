@@ -26,6 +26,10 @@ class Alunos extends CI_Controller
 
 	public function aluno_add(){
 		 $imgAluno = $_FILES['imgAluno'];
+		 ///
+			$ponto_img = explode(".", $imgAluno['name']);
+			$ponto_img = $ponto_img[1];
+		//
 
 		//VALIDAR FORMULARIO
 		$this->load->library('form_validation');
@@ -72,9 +76,9 @@ class Alunos extends CI_Controller
           		$ponto = explode(".", $imgAluno['name']);
 	           $config = array(
 	           	'upload_path' => './upload/alunos',
-	             'allowed_types' =>  'jpg',//Arrumar essa parte
+	             'allowed_types' =>  'gif|jpg|png',//Arrumar essa parte
 	           	'file_name' => md5(time()),
-	           	'max_size' => '1024'
+	           	'max_size' => '3000'
 	           );
 
 	           /*
@@ -93,7 +97,7 @@ class Alunos extends CI_Controller
 		           	$data = array(
 						'nomeAluno' => $this->input->post('nomeAluno'),
 						'dataNasc' => $this->input->post('dataNasc'),
-						'imgAluno' => $config['file_name']."."."$ponto[1]",
+						'imgAluno' => $config['file_name'].".".$ponto_img,
 						'anoLetivo' => $this->input->post('anoLetivo'),
 						'curso' => $this->input->post('curso'),
 						'email' => $this->input->post('email'),
@@ -133,6 +137,10 @@ class Alunos extends CI_Controller
 		$url = "?codAluno=".$this->input->post('codAluno');
 		$imgAluno = $_FILES['imgAluno'];
 		$vereficaSenha = $this ->input->post('senha');
+		///
+			$ponto_img = explode(".", $imgAluno['name']);
+			$ponto_img = $ponto_img[1];
+		//
 
 		//SE O ALUNO NÂO TROCAR A SENHA
 		if ($vereficaSenha == null) {
@@ -172,12 +180,11 @@ class Alunos extends CI_Controller
 					///
 	        		echo "Formulário enviado com sucesso.";
 		           //ENVIANDO IMAGEM PRO BANCO
-	          		$ponto = explode(".", $imgAluno['name']);
 		           $config = array(
 		           	'upload_path' => './upload/alunos',
-		             'allowed_types' =>  'jpg',//Arrumar essa parte
+		             'allowed_types' =>  'gif|jpg|png',//Arrumar essa parte
 		           	'file_name' => md5(time()),
-		           	'max_size' => '1024'
+		           	'max_size' => '3000'
 		           );
 
 		           /*
@@ -196,7 +203,7 @@ class Alunos extends CI_Controller
 			           	$data = array(
 							'nomeAluno' => $this->input->post('nomeAluno'),
 							'dataNasc' => $this->input->post('dataNasc'),
-							'imgAluno' => $config['file_name']."."."$ponto[1]",
+							'imgAluno' => $config['file_name'].".".$ponto_img,
 							'anoLetivo' => $this->input->post('anoLetivo'),
 							'curso' => $this->input->post('curso'),
 							'email' => $this->input->post('email'),
@@ -257,9 +264,9 @@ class Alunos extends CI_Controller
 	          		$ponto = explode(".", $imgAluno['name']);
 		           $config = array(
 		           	'upload_path' => './upload/alunos',
-		             'allowed_types' =>  'jpg',//Arrumar essa parte
+		             'allowed_types' =>  'gif|jpg|png',//Arrumar essa parte
 		           	'file_name' => md5(time()),
-		           	'max_size' => '1024'
+		           	'max_size' => '3000'
 		           );
 
 		           /*
@@ -278,7 +285,7 @@ class Alunos extends CI_Controller
 			           	$data = array(
 							'nomeAluno' => $this->input->post('nomeAluno'),
 							'dataNasc' => $this->input->post('dataNasc'),
-							'imgAluno' => $config['file_name']."."."$ponto[1]",
+							'imgAluno' => $config['file_name'].".".$ponto_img,
 							'anoLetivo' => $this->input->post('anoLetivo'),
 							'curso' => $this->input->post('curso'),
 							'email' => $this->input->post('email'),

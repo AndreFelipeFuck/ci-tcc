@@ -40,8 +40,8 @@
 		        <a class="nav-link" href="<?php echo site_url('home/sobre') ?>">Sobre</a>
 		      </li>
 		    </ul>
-		     <form class="form-inline my-2 my-lg-0">
-		      <input class="form-control mr-sm-2" type="search" placeholder="Pequise aqui..." aria-label="Search">
+		     <form class="form-inline my-2 my-lg-0" action="<?php echo site_url('home/resultado')?>" method = "post">
+		      <input class="form-control mr-sm-2" type="search" name = "busca" placeholder="Pequise aqui..." aria-label="Search">
 		      <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Buscar</button>
 		    </form>
 		    <style type="text/css">

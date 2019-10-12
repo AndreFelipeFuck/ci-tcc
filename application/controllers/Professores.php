@@ -38,6 +38,10 @@ class Professores extends CI_Controller
     
     public function professor_add(){
         $imgProfessor = $_FILES['imgProfessor'];
+         ///
+            $ponto_img = explode(".", $imgProfessor['name']);
+            $ponto_img = $ponto_img[1];
+        //
 
         //VALIDAR FORMULARIO
         $this->load->library('form_validation');
@@ -88,9 +92,9 @@ class Professores extends CI_Controller
                //ENVIANDO IMAGEM PRO BANCO
                $config = array(
                 'upload_path' => './upload/professores',
-                'allowed_types' => 'jpg',//Arrumar essa parte
+                'allowed_types' => 'gif|jpg|png',//Arrumar essa parte
                 'file_name' => md5(time()),
-                'max_size' => '500'
+                'max_size' => '3000'
                );
                $this->load->library('upload');
                $this->upload->initialize($config);
@@ -100,7 +104,7 @@ class Professores extends CI_Controller
                     $data = array(
                         'nomeProfessor' => $this->input->post('nomeProfessor'),
                         'dataNasc' => $this->input->post('dataNasc'),
-                        'imgProfessor' => $config['file_name'].".jpg",
+                        'imgProfessor' => $config['file_name'].".".$ponto_img,
                         'miniCurriculo' => $this->input->post('miniCurriculo'),
                         //'institucao' => $this->input->post('institucao'),
                         'email' => $this->input->post('email'),
@@ -143,6 +147,10 @@ class Professores extends CI_Controller
         $url = "?codProfessor=".$this->input->post('codProfessor');
         $imgProfessor = $_FILES['imgProfessor'];
         $vereficaSenha = $this->input->post('senha');
+         ///
+            $ponto_img = explode(".", $imgProfessor['name']);
+            $ponto_img = $ponto_img[1];
+        //
 
         //SE O PROFESSOR NÂO TROCAR A SENHA
         if($vereficaSenha == null) {
@@ -189,9 +197,9 @@ class Professores extends CI_Controller
                     ///
                     $config = array(
                     'upload_path' => './upload/professores',
-                    'allowed_types' => 'jpg',//Arrumar essa parte
+                    'allowed_types' => 'gif|jpg|png',//Arrumar essa parte
                     'file_name' => md5(time()),
-                    'max_size' => '500'
+                    'max_size' => '3000'
                     );
                     $this->load->library('upload');
                     $this->upload->initialize($config);
@@ -200,7 +208,7 @@ class Professores extends CI_Controller
                         $data = array(
                             'nomeProfessor' => $this->input->post('nomeProfessor'),
                             'dataNasc' => $this->input->post('dataNasc'),
-                            'imgProfessor' => $config['file_name'].".jpg",
+                            'imgProfessor' => $config['file_name'].".".$ponto_img,
                             'miniCurriculo' => $this->input->post('miniCurriculo'),
                             //'institucao' => $this->input->post('institucao'),
                             'email' => $this->input->post('email'),
@@ -263,9 +271,9 @@ class Professores extends CI_Controller
                             ///
                         $config = array(
                         'upload_path' => './upload/professores',
-                        'allowed_types' => 'jpg',//Arrumar essa parte
+                        'allowed_types' => 'gif|jpg|png',//Arrumar essa parte
                         'file_name' => md5(time()),
-                        'max_size' => '500'
+                        'max_size' => '3000'
                         );
                         $this->load->library('upload');
                         $this->upload->initialize($config);
@@ -274,7 +282,7 @@ class Professores extends CI_Controller
                             $data = array(
                                'nomeProfessor' => $this->input->post('nomeProfessor'),
                                 'dataNasc' => $this->input->post('dataNasc'),
-                                'imgProfessor' => $config['file_name'].".jpg",
+                                'imgProfessor' => $config['file_name'].".".$ponto_img,
                                 'miniCurriculo' => $this->input->post('miniCurriculo'),
                                 //'institucao' => $this->input->post('institucao'),
                                 'email' => $this->input->post('email'),

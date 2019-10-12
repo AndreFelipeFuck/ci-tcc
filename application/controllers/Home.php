@@ -14,6 +14,7 @@ class Home extends CI_Controller
         $this->load->helper('url');
         $this->load->library('session');
         $this->load->model('artigos_model');
+        $this->load->model('busca_model');
     }
 
     public function index(){
@@ -23,6 +24,14 @@ class Home extends CI_Controller
         $data['artigos'] = $this->artigos_model->listar_artigos();
         $data['artigosProfessor'] = $this->artigos_model->listar_artigos_professor();
         $this->load->view('home', $data);
+    }
+
+    public function resultado(){
+        $buscar = $this->input->post('busca');
+         $dados['listagem_aluno'] = $this->busca_model->buscar($buscar);
+         $dados['listagem_professor'] = $this->busca_model->buscar_professor($buscar);
+        $this->load->view('resultado', $dados);
+
     }
     
     public function add(){
