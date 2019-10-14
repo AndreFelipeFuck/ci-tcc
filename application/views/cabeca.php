@@ -6,12 +6,22 @@
     <!--Le CSS ==========================================================-->
          <link rel="stylesheet"  href="<?php echo base_url('assets/bootstrap/css/bootstrap.css')?>">
          <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/style.css')?>">
-        <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css')?>">
+         <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css')?>">
+     <!--      <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/jquery-ui.css')?>"> -->
     <!-- ==============================================================-->
 
     <!--Le JS ==========================================================-->
       <script type="text/javascript" src="<?php echo base_url('assets/jquery/jquery.js')?>"></script>
+       <script type="text/javascript" src="<?php echo base_url('assets/jquery/jquery-3.1.0.min.js')?>"></script>
+  <!--     <script type="text/javascript" src="<?php echo base_url('assets/jquery/jquery-ui.js')?>"></script>
+      	<script type="text/javascript" src="<?php echo base_url('assets/jquery/jquery-ui.min.js')?>"></script>   -->
+    	<script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js')?>"></script>
+    	<!-- <script src="<?php echo base_url('assets/bootstrap/js/custom.js')?>"></script> -->
+    	<script src="<?php echo base_url('assets/datatables/js/jquery.dataTables.min.js')?>"></script>
+        <script src="<?php echo base_url('assets/datatables/js/dataTables.bootstrap.js')?>"></script>
     <!-- ==============================================================-->
+  		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="pragma" content="no-cache" />
@@ -40,10 +50,17 @@
 		        <a class="nav-link" href="<?php echo site_url('home/sobre') ?>">Sobre</a>
 		      </li>
 		    </ul>
-		     <form class="form-inline my-2 my-lg-0" action="<?php echo site_url('home/resultado')?>" method = "post">
-		      <input class="form-control mr-sm-2" type="search" name = "busca" placeholder="Pequise aqui..." aria-label="Search">
-		      <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Buscar</button>
-		    </form>
+		    <div class="row">
+			     <form class="form-inline my-2 my-lg-0" action="<?php echo site_url('home/resultado')?>" method = "post">
+			     	<div id="custom-search-input">
+				     		<div class="input-group">
+				     			<input class="form-control mr-sm-2" type="text" name = "busca" placeholder="Pequise aqui..." aria-label="Search" id="termo">
+				     		</div>
+				    </div>
+				    <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Buscar</button>
+			      
+			    </form>
+			</div>
 		    <style type="text/css">
 		    	a:hover{
 		    		color: #343a40;
@@ -67,5 +84,33 @@
 		    </form>
 		  </div>
 		</nav>
+<script>
+  // $( function() {
+  //   $( "#termo" ).autocomplete({
+  //     source: "<?php echo site_url('home/procurar/');?>"
+  //   });
+  // } );
+ 
+  $(document).ready(function() {
+    $( "#termo" ).autocomplete({
+ 
+        source: function(request, response) {
+            $.ajax({
+            url: "<?php echo site_url('home/procurar/');?>",
+            data: {
+                    term : request.term
+             },
+            dataType: "json",
+            success: function(data){
+             
+               response(data);
+            }
+        });
+    },
+    minLength: 1
+ });
+});	
 
+
+</script>
 

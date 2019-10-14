@@ -28,7 +28,7 @@ class Alunos extends CI_Controller
 		 $imgAluno = $_FILES['imgAluno'];
 		 ///
 			$ponto_img = explode(".", $imgAluno['name']);
-			$ponto_img = $ponto_img[1];
+			@$ponto_img = $ponto_img[1];
 		//
 
 		//VALIDAR FORMULARIO
@@ -54,6 +54,7 @@ class Alunos extends CI_Controller
 						'curso' => $this->input->post('curso'),
 						'email' => $this->input->post('email'),
 						'senha' => md5($this->input->post('senha')),
+						'tipo' => 0,
 					);
 					$insert = $this->aluno_model->aluno_add($data);
 
@@ -102,6 +103,7 @@ class Alunos extends CI_Controller
 						'curso' => $this->input->post('curso'),
 						'email' => $this->input->post('email'),
 						'senha' => md5($this->input->post('senha')),
+						'tipo' => 0,
 					);
 					$insert = $this->aluno_model->aluno_add($data);
 

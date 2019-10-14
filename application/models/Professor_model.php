@@ -68,8 +68,8 @@ class Professor_model extends CI_Model
     }
 
     public function get_by_login($email, $senha){
-             $this->db->select('codProfessor, email, senha')->from('professores')->where("email = '$email' and senha = '$senha'");
+             $this->db->select('codProfessor, email, senha')->from('professores')->where("email = '$email' and senha = '$senha' and tipo = 1");
              $query = $this->db->get();
-             return $query;
+             return $query->row();
         }
 }

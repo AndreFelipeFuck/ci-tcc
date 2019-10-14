@@ -22,7 +22,7 @@
                             <input type="password" class="form-control" id="logInput" name="senha" required>
                         </div>
                          <br>
-                        <div>
+                        <!-- <div>
                             <label>Tipo de Usuario</label>
                             <br>
                             <div class="form-ano">
@@ -33,7 +33,7 @@
                                 <input type="radio" name="tipo" value="1">
                                 <label>Professor</label>
                             </div>
-                        </div>
+                        </div> -->
                     <div>
                         <label><input type="checkbox" name="lembra">Lembrar de mim</label>
                     </div>

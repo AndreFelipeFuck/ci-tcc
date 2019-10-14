@@ -33,6 +33,14 @@ class Home extends CI_Controller
         $this->load->view('resultado', $dados);
 
     }
+
+    public function procurar(){
+         $term = $this->input->get('term');
+         $this->db->select('titulo');
+        $this->db->like('titulo', $term);
+        $data = $this->db->get("artigos")->result();
+        echo json_encode( $data);
+    }
     
     public function add(){
         $this->load->view('aluno_add');
