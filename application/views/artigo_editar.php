@@ -101,7 +101,7 @@
 							  	 	<option value="16" <?=($perfil->nomeDisciplina == 'Nenhuma')?'selected':''?>>Nenhuma</option>
 							    	<option value="1" <?=($perfil->nomeDisciplina == 'Biologia')?'selected':''?>>Biologia</option>
 							 		<option value="2" <?=($perfil->nomeDisciplina == 'Física')?'selected':''?>>Física</option>
-							 		<option value="3">Química</option>
+							 		<option value="3" <?=($perfil->nomeDisciplina == 'Química')?'selected':''?>>Química</option>
 							 		<option value="4" <?=($perfil->nomeDisciplina == 'Geografia')?'selected':''?>>Geografia</option>
 							 		<option value="5"<?=($perfil->nomeDisciplina == 'História')?'selected':''?>>História</option>
 							 		<option value="6"<?=($perfil->nomeDisciplina == 'Pr.Textual')?'selected':''?>>Pr.Textual</option>
@@ -113,7 +113,7 @@
 							 		<option value="11" <?=($perfil->nomeDisciplina == 'Sociologia')?'selected':''?>>Sociologia</option>
 							 		<option value="12" <?=($perfil->nomeDisciplina == 'Agropecuária')?'selected':''?>>Agropecuária</option>
 							 		<option value="13" <?=($perfil->nomeDisciplina == 'Informática')?'selected':''?>>Informatica</option>
-							 		<option value="14" <?=($perfil->nomeDisciplina == 'Química')?'selected':''?>>Química(tec)</option>
+							 		<option value="14" <?=($perfil->nomeDisciplina == 'Química(tec)')?'selected':''?>>Química(tec)</option>
 					  			</select>
 						</div>
 						<div class="espaco2"></div>
@@ -224,10 +224,10 @@
 						 <div class="form-group">
 						 	<label for="Escl-Mat">Alterar Matéria:</label>
 						  	   	<select class="form-control" id="Escl-Mat" style="width: 20%;" name="disciplina_codDisciplina">
-							  	 	<option value="16" <?=($perfil->nomeDisciplina == 'Nenhuma')?'selected':''?>>Nenhuma</option>
+							  	 	<<option value="16" <?=($perfil->nomeDisciplina == 'Nenhuma')?'selected':''?>>Nenhuma</option>
 							    	<option value="1" <?=($perfil->nomeDisciplina == 'Biologia')?'selected':''?>>Biologia</option>
 							 		<option value="2" <?=($perfil->nomeDisciplina == 'Física')?'selected':''?>>Física</option>
-							 		<option value="3">Química</option>
+							 		<option value="3" <?=($perfil->nomeDisciplina == 'Química')?'selected':''?>>Química</option>
 							 		<option value="4" <?=($perfil->nomeDisciplina == 'Geografia')?'selected':''?>>Geografia</option>
 							 		<option value="5"<?=($perfil->nomeDisciplina == 'História')?'selected':''?>>História</option>
 							 		<option value="6"<?=($perfil->nomeDisciplina == 'Pr.Textual')?'selected':''?>>Pr.Textual</option>
@@ -239,7 +239,7 @@
 							 		<option value="11" <?=($perfil->nomeDisciplina == 'Sociologia')?'selected':''?>>Sociologia</option>
 							 		<option value="12" <?=($perfil->nomeDisciplina == 'Agropecuária')?'selected':''?>>Agropecuária</option>
 							 		<option value="13" <?=($perfil->nomeDisciplina == 'Informática')?'selected':''?>>Informatica</option>
-							 		<option value="14" <?=($perfil->nomeDisciplina == 'Química')?'selected':''?>>Química(tec)</option>
+							 		<option value="14" <?=($perfil->nomeDisciplina == 'Química(tec)')?'selected':''?>>Química(tec)</option>
 					  			</select>
 						</div>
 						<div class="espaco2"></div>

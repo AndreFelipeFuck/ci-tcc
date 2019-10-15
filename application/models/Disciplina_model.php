@@ -21,6 +21,14 @@ class Disciplina_model extends CI_Model
       return $query->row();
     }
 
+    public function get_by_nome($nomeDisciplina){
+      $this->db->select('codDisciplina');
+      $this->db->from($this->table);
+      $this->db->where('nomeDisciplina',$nomeDisciplina);
+      $query = $this->db->get();
+      return $query->row();
+    }
+
     public function listar_artigos($codDisciplina){
       $this->db->select('codArtigo, resumo, corpo, titulo, imgArtigo, professores_codProfessor, alunos_codAluno, nomeAluno, dataArtigo')->from('disciplinas, artigos, alunos')->where("codDisciplina = disciplina_codDisciplina and codDisciplina = '$codDisciplina' and alunos_codAluno = codAluno");
        $query = $this->db->get();

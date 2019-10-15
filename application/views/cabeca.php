@@ -58,9 +58,11 @@
 		    <div class="row">
 			     <form class="form-inline my-2 my-lg-0" action="<?php echo site_url('home/resultado')?>" method = "get">
 			     	<div id="custom-search-input">
-				     		<div class="input-group">
-				     			<input class="form-control mr-sm-2" type="text" name = "busca" placeholder="Pequise aqui..." aria-label="Search" id="termo">
+             
+				     		<div class="input-group autocomplete">
+				     			<input class="form-control mr-sm-2 ui-widget" type="text" name = "busca" placeholder="Pequise aqui..." aria-label="Search" id="termo">
 				     		</div>
+          
 				    </div>
 				    <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Buscar</button>
 			      
@@ -88,7 +90,7 @@
                 <?php endif;?>
 		    </form>
 		  </div>
-		</nav>
+		
 <script>
 
   $(document).ready(function() {
@@ -114,9 +116,13 @@
     minLength: 1
  });
 });	
+
 </script>
-<style>
-  #ui-id-1{
-     position: absolute;
+</nav>
+<style type="text/css">
+  .ui-menu-item{
+    position: absolute;
+
   }
 </style>
+

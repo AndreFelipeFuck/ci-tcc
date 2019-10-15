@@ -25,7 +25,7 @@
 			    <input type="password" class="form-control" id="exampleFormControlInput1" name="senhaconf">
 			 </div>
 			 <div class="form-group">
-			    <label for="exampleFormControlInput2">Data</label>
+			    <label for="exampleFormControlInput2">Data de nascimento</label>
 			    <input type="date" class="form-control" id="exampleFormControlInput2" name="dataNasc">
 			 </div>
 			 <span>Docente da área:</span>

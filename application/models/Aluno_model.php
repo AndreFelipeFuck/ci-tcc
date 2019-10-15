@@ -52,8 +52,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $query = $this->db->get();
             return $query->row();
         }
-        public function get_by_login($email, $senha){
-             $this->db->select('codAluno, email, senha')->from('alunos')->where("email = '$email' and senha = '$senha' and tipo = 0");
+        public function get_by_login($nomeAluno, $senha){
+             $this->db->select('codAluno, nomeAluno, senha')->from('alunos')->where("nomeAluno = '$nomeAluno' and senha = '$senha' and tipo = 0");
              $query = $this->db->get();
              return $query->row();
         }

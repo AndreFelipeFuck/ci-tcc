@@ -15,6 +15,7 @@ class Home extends CI_Controller
         $this->load->library('session');
         $this->load->model('artigos_model');
         $this->load->model('busca_model');
+        $this->load->model('disciplina_model');
     }
 
     public function index(){
@@ -27,11 +28,19 @@ class Home extends CI_Controller
     }
 
     public function resultado(){
-        $buscar = $this->input->get('busca');
+         $buscar = $this->input->get('busca');
+         $palavraChave =  array('Nenhuma','Biologia','Física','Química','Geografia','História','Pr.Textual','Portugues','Matemática','Inglês','Espanhol','Filosofia','Sociologia', 'Agropecuária','Informática','Química(tec)');
+         foreach ($palavraChave as $key => $value) {
+            if ($buscar == $value) {
+                $disciplina =  $this->disciplina_model->get_by_nome($value);
+                $url = "?codDisciplina=".$disciplina->codDisciplina;
+                echo "$url";
+                redirect ("disciplinas/disciplina_view/$url");
+            }
+          }
          $dados['listagem_aluno'] = $this->busca_model->buscar($buscar);
          $dados['listagem_professor'] = $this->busca_model->buscar_professor($buscar);
         $this->load->view('resultado', $dados);
-
     }
 
     public function procurar(){

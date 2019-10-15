@@ -20,18 +20,18 @@ class Login extends CI_Controller
        
         // $tipo = $this->input->post("tipo");
         $senha = md5($this->input->post("senha"));
-        $email = $this->input->post('email');
-        $testeAluno = $this->aluno_model->get_by_login($email, $senha);
-        $testeProfesssor = $this->professor_model->get_by_login($email, $senha);
+        $nomeCompleto = $this->input->post('nomeCompleto');
+        $testeAluno = $this->aluno_model->get_by_login($nomeCompleto, $senha);
+        $testeProfesssor = $this->professor_model->get_by_login($nomeCompleto, $senha);
         if (!empty($testeAluno)) {
-            $this->db->where('email', $email);
+            $this->db->where('nomeAluno', $nomeCompleto);
             $this->db->where('senha', $senha);
             $query = $this->db->get("alunos");
 
             if ($query->num_rows() == 1){
                  $aluno = $query->row();
                  $this->session->set_userdata("alunos", $aluno->codAluno);
-                $codAluno = $this->aluno_model->get_by_login($email, $senha);
+                $codAluno = $this->aluno_model->get_by_login($nomeCompleto, $senha);
                 $url = "?codAluno=".$aluno->codAluno;
                 redirect ("alunos/aluno_perfil/$url");
                 
@@ -39,14 +39,14 @@ class Login extends CI_Controller
                 redirect('home/login_home');
              }
         }if(!empty($testeProfesssor)){
-            $this->db->where('email', $email);
+            $this->db->where('nomeProfessor', $nomeCompleto);
             $this->db->where('senha', $senha);
             $query = $this->db->get("professores");
 
             if ($query->num_rows() == 1){
               $professor = $query->row();
                  $this->session->set_userdata("professores", $professor->codProfessor);
-                $codProfessor = $this->professor_model->get_by_login($email, $senha);
+                $codProfessor = $this->professor_model->get_by_login($nomeCompleto, $senha);
                  $url = "?codProfessor=".$professor->codProfessor;
                 redirect ("professores/professor_perfil/$url");
             }else{
