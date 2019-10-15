@@ -41,7 +41,7 @@
 					 </div>
 					  <div class="form-group">
 					    <label for="exampleFormControlInput1">Faça um pequeno resumo do que voce escreveu:</label>
-					    <textarea name="resumo" placeholder="Teoria evolucionista fundamentada nas ideias do naturalista inglês Charles Robert Darwin 1809-1882" maxlength="32" required></textarea>
+					    <textarea name="resumo" placeholder="Teoria evolucionista fundamentada nas ideias do naturalista inglês Charles Robert Darwin 1809-1882" maxlength="380" id="ta-resumo" required></textarea>
 					 </div>
 					 <div>
 					 	<div class="form-group">
@@ -80,6 +80,8 @@
 					<button type="submit" class="btn" id="cancelar" value="cancelarArt">Cancelar</button>
 				</form>		
 			</div>
+		</form>
+	</div>
 <?php }else{?>
 
 		<meta http-equiv="refresh" content="0;url=<?php echo site_url('')?>" />

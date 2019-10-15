@@ -37,8 +37,8 @@ class Artigos extends CI_Controller
         $data["links"] = $this->pagination->create_links();*/
 
         //$data['artigos'] = $this->artigos_model->get_all_artigos($config["per_page"], $page);
-     	$data['artigos'] = $this->artigos_model->listar_artigos();
-		$data['artigosProfessor'] = $this->artigos_model->listar_artigos_professor();
+     	$data['artigo_aluno'] = $this->artigos_model->listar_artigos();
+		$data['artigo_professor'] = $this->artigos_model->listar_artigos_professor();
         $data['contar'] = $this->artigos_model->get_count();
 
         $this->load->view('artigos_view', $data);
@@ -464,9 +464,11 @@ class Artigos extends CI_Controller
 	public function artigo_delete($codArtigo)
 	{
 		$artigo = $this->artigos_model->get_img($codArtigo);
-		$img = $artigo->imgArtigo;	
-		$caminho = "upload/artigos/$img";
-		unlink($caminho);
+		if (isset($artigo->imgArtigo)) {
+			$img = $artigo->imgArtigo;	
+			$caminho = "upload/artigos/$img";
+			unlink($caminho);
+		}
 		$this->artigos_model->delete_by_id($codArtigo);
 		echo json_encode(array("status" => TRUE));
 	}

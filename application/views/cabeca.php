@@ -7,18 +7,23 @@
          <link rel="stylesheet"  href="<?php echo base_url('assets/bootstrap/css/bootstrap.css')?>">
          <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/style.css')?>">
          <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css')?>">
+         <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/pagination.css')?>">
      <!--      <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/jquery-ui.css')?>"> -->
+     
     <!-- ==============================================================-->
 
     <!--Le JS ==========================================================-->
       <script type="text/javascript" src="<?php echo base_url('assets/jquery/jquery.js')?>"></script>
        <script type="text/javascript" src="<?php echo base_url('assets/jquery/jquery-3.1.0.min.js')?>"></script>
+
   <!--     <script type="text/javascript" src="<?php echo base_url('assets/jquery/jquery-ui.js')?>"></script>
       	<script type="text/javascript" src="<?php echo base_url('assets/jquery/jquery-ui.min.js')?>"></script>   -->
+
     	<script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js')?>"></script>
     	<!-- <script src="<?php echo base_url('assets/bootstrap/js/custom.js')?>"></script> -->
     	<script src="<?php echo base_url('assets/datatables/js/jquery.dataTables.min.js')?>"></script>
         <script src="<?php echo base_url('assets/datatables/js/dataTables.bootstrap.js')?>"></script>
+           <script src="<?php echo base_url('assets/bootstrap/js/pagination.js')?>"></script>
     <!-- ==============================================================-->
   		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -102,8 +107,8 @@
              },
             dataType: "json",
             success: function(data){
-             
-               response(data);
+              console.log(data);
+               response(data[0]);
             }
         });
     },

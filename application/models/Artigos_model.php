@@ -40,13 +40,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
 
         public function listar_artigos(){
-            $this->db->select('codArtigo, resumo, corpo, titulo, imgArtigo, alunos_codAluno, nomeAluno')->from('artigos, alunos')->where("alunos_codAluno = codAluno");
+            $this->db->select('codArtigo, resumo, titulo, imgArtigo, alunos_codAluno, nomeAluno, dataArtigo')->from('artigos, alunos')->where("alunos_codAluno = codAluno");
             $query = $this->db->get();
             return $query->result();
         }
 
         public function listar_artigos_professor(){
-          $this->db->select('codArtigo, resumo, corpo, titulo, imgArtigo, professores_codProfessor, nomeProfessor')->from('artigos, professores')->where('professores_codProfessor = codProfessor');
+          $this->db->select('codArtigo, resumo, titulo, imgArtigo, professores_codProfessor, nomeProfessor, dataArtigo')->from('artigos, professores')->where('professores_codProfessor = codProfessor');
            $query = $this->db->get();
           return $query->result();
         }
@@ -60,6 +60,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         public function get_count() {
             return $this->db->count_all($this->table);
         }
+
+        public function fetch_artigos($limit, $start) {
+            $this->db->limit($limit, $start);
+            $this->db->select('codArtigo, resumo, corpo, titulo, imgArtigo, professores_codProfessor, nomeProfessor, dataArtigo');
+            $this->db->from('artigos, professores');
+            $this->db->where('professores_codProfessor = codProfessor');
+           $query = $this->db->get();
+           if ($query->num_rows() > 0) {
+               foreach ($query->result() as $row) {
+                   $data[] = $row;
+               }
+               return $data;
+           }
+           return false;
+       
+        }
+
 
         public function get_count_professor($codProfessor){
               $this->db->select('COUNT(codArtigo) as resultado')->from('professores, artigos')->where("professores_codProfessor = codProfessor and codProfessor = '$codProfessor'");

@@ -8,7 +8,7 @@
 
 	         if( $a ->dataArtigo == $b ->dataArtigo ) return 0;
 
-	         return ( ( $a  ->dataComentario > $b  ->dataComentario ) ? -1 : 1 );
+	         return ( ( $a->dataArtigo > $b->dataArtigo ) ? -1 : 1 );
 	     }
 	);
 

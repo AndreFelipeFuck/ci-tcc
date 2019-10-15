@@ -18,8 +18,8 @@ class Disciplinas extends CI_Controller
     public function disciplina_view(){
 		$codDisciplina = $this->input->get('codDisciplina');
 		$disciplina['disciplinas'] = $this->disciplina_model->get_by_id($codDisciplina);
-		$disciplina['artigos'] = $this->disciplina_model->listar_artigos($codDisciplina);
-		$disciplina['artigosProfessor'] = $this->disciplina_model->listar_artigos_professor($codDisciplina);
+		$disciplina['artigos_aluno'] = $this->disciplina_model->listar_artigos($codDisciplina);
+		$disciplina['artigos_professor'] = $this->disciplina_model->listar_artigos_professor($codDisciplina);
 		$this->load->view('disciplina_view', $disciplina);
 	}
 }
