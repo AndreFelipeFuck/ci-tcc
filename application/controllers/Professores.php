@@ -66,6 +66,7 @@ class Professores extends CI_Controller
                         //'institucao' => $this->input->post('institucao'),
                         'email' => $this->input->post('email'),
                         'senha' => md5($this->input->post('senha')),
+                        'tipo' => 1,
                     );
                     $insert = $this->professor_model->professor_add($data);
                     $this->db->where('email', $data['email']);
@@ -109,6 +110,7 @@ class Professores extends CI_Controller
                         //'institucao' => $this->input->post('institucao'),
                         'email' => $this->input->post('email'),
                         'senha' => md5($this->input->post('senha')),
+                        'tipo' => 1,
                     );
 
                     $insert = $this->professor_model->professor_add($data);

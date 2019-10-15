@@ -27,7 +27,7 @@ class Home extends CI_Controller
     }
 
     public function resultado(){
-        $buscar = $this->input->post('busca');
+        $buscar = $this->input->get('busca');
          $dados['listagem_aluno'] = $this->busca_model->buscar($buscar);
          $dados['listagem_professor'] = $this->busca_model->buscar_professor($buscar);
         $this->load->view('resultado', $dados);

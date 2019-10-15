@@ -12,7 +12,7 @@ $artigos = array_merge($artigo_aluno, $artigo_professor);
     );
 
    $json_encode =  json_encode($artigos);
-   echo $json_encode;
+
    
 ?>
 <div class="espaco2"></div>
@@ -73,19 +73,6 @@ $artigos = array_merge($artigo_aluno, $artigo_professor);
                        
              <?php endforeach?>
         </section>
-          <!-- PAGINAÇÃO -->
-            <div  id = "data-container"></div>
-            <div  id = "pagination-container"></div>
-            <script type="text/javascript">
-                $('#pagination-container').pagination({
-                    dataSource: [1, 2, 3, 4, 5, 6, 7],
-                    callback: function(data, pagination) {
-                        // template method of yourself
-                        var html = template(data);
-                    $('#data-container').html(html);
-                 }
-                })
-            </script>
         
     </div>
     

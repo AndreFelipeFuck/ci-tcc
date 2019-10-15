@@ -29,13 +29,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     	}
 
     	public function autocomplete($busca){
-    		$this->db->select('titulo');
-    		$this->db->from('artigos');
-    		$this->db->like('titulo', $busca);
-			$this->db->order_by('titulo', 'ASC');
-			$this->db->limit(10);
-			$query = $this->db->get();
-    		return $query->result();
+    		   $response = array();
+
+               // Select record
+               $this->db->select('titulo');
+               $this->db->like("titulo",$busca);
+
+               $records = $this->db->get('artigos')->result();
+
+               foreach($records as $row ){
+                  $response[] = array($row->titulo);
+               }
+
+            
+             return $response;
+          
     	}
 
 		    

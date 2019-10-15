@@ -8,7 +8,7 @@
          <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/style.css')?>">
          <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css')?>">
          <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/pagination.css')?>">
-     <!--      <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/jquery-ui.css')?>"> -->
+          <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/jquery-ui.css')?>"> 
      
     <!-- ==============================================================-->
 
@@ -16,8 +16,8 @@
       <script type="text/javascript" src="<?php echo base_url('assets/jquery/jquery.js')?>"></script>
        <script type="text/javascript" src="<?php echo base_url('assets/jquery/jquery-3.1.0.min.js')?>"></script>
 
-  <!--     <script type="text/javascript" src="<?php echo base_url('assets/jquery/jquery-ui.js')?>"></script>
-      	<script type="text/javascript" src="<?php echo base_url('assets/jquery/jquery-ui.min.js')?>"></script>   -->
+       <script type="text/javascript" src="<?php echo base_url('assets/jquery/jquery-ui.js')?>"></script>
+      	<script type="text/javascript" src="<?php echo base_url('assets/jquery/jquery-ui.min.js')?>"></script>   
 
     	<script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js')?>"></script>
     	<!-- <script src="<?php echo base_url('assets/bootstrap/js/custom.js')?>"></script> -->
@@ -25,8 +25,8 @@
         <script src="<?php echo base_url('assets/datatables/js/dataTables.bootstrap.js')?>"></script>
            <script src="<?php echo base_url('assets/bootstrap/js/pagination.js')?>"></script>
     <!-- ==============================================================-->
-  		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  		<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="pragma" content="no-cache" />
@@ -56,7 +56,7 @@
 		      </li>
 		    </ul>
 		    <div class="row">
-			     <form class="form-inline my-2 my-lg-0" action="<?php echo site_url('home/resultado')?>" method = "post">
+			     <form class="form-inline my-2 my-lg-0" action="<?php echo site_url('home/resultado')?>" method = "get">
 			     	<div id="custom-search-input">
 				     		<div class="input-group">
 				     			<input class="form-control mr-sm-2" type="text" name = "busca" placeholder="Pequise aqui..." aria-label="Search" id="termo">
@@ -90,12 +90,7 @@
 		  </div>
 		</nav>
 <script>
-  // $( function() {
-  //   $( "#termo" ).autocomplete({
-  //     source: "<?php echo site_url('home/procurar/');?>"
-  //   });
-  // } );
- 
+
   $(document).ready(function() {
     $( "#termo" ).autocomplete({
  
@@ -107,15 +102,21 @@
              },
             dataType: "json",
             success: function(data){
-              console.log(data);
-               response(data[0]);
+               var resp = $.map(data,function(obj){
+                    return obj.titulo;
+               }); 
+              console.log(resp);
+               response(resp);
             }
+            
         });
     },
     minLength: 1
  });
 });	
-
-
 </script>
-
+<style>
+  #ui-id-1{
+     position: absolute;
+  }
+</style>
