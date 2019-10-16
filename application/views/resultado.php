@@ -16,6 +16,7 @@
 	 // print_r($listagem);
 	 // echo '</pre>';
 ?>
+	<div class="espaco2"></div>
 	 <div class="conteinerArtView" id="sombra">     
 	    <section class="conteiner0">
 	            <h1 style="font-size: 35px; border-bottom: solid 2px #17a2b8; margin-bottom: 2%; padding-bottom: 1%;">Resultado da sua pesquisa</h1>

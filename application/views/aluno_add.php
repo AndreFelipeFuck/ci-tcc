@@ -78,7 +78,7 @@
 			</div>
 			<div class="espaco2"></div><br>
 			<button type="submit" class="btn" id="bot-azul">Confirmar</button>
-			<button type="submit" class="btn" id="cancelar">Cancelar</button>
+			<button type="reset" class="btn" id="cancelar">Cancelar</button>
 		</form>
 	</section>
 

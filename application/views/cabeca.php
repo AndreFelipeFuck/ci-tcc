@@ -93,9 +93,9 @@
 		
 <script>
 
-  $(document).ready(function() {
+  $(document).ready(function() { 
     $( "#termo" ).autocomplete({
- 
+       
         source: function(request, response) {
             $.ajax({
             url: "<?php echo site_url('home/procurar/');?>",
@@ -115,13 +115,14 @@
     },
     minLength: 1
  });
+     $("#ui-id-1").addClass('sticky-top');
 });	
 
 </script>
 </nav>
 <style type="text/css">
   .ui-menu-item{
-    position: absolute;
+    
 
   }
 </style>
