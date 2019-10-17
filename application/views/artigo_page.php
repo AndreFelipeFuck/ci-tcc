@@ -171,8 +171,20 @@
 											<div class="conteudo" id="<?php echo "comentario".$comentario->codComentario?>">
 													
 													<section style="height: 10%; max-height: 20%; border: solid 1px rgba(68, 120, 132, .2); padding: 1.5%; border-radius: 3px;" placeholder="Deixe um comentario..." class="elementoComent"><h6><?php echo $comentario->comentario ?></h6></section>	
-															<button class="btn btn-success editar" id="<?php echo $comentario->codComentario?>"><i class="glyphicon glyphicon-pencil"></i>Editar</button>	
-							            					<button class="btn" id="perigo"  onclick="delete_comentario(<?php echo $comentario->codComentario;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir</button>	
+															<!-- <button class="btn btn-success editar" id="<?php echo $comentario->codComentario?>"><i class="glyphicon glyphicon-pencil"></i>Editar</button>	
+							            					<button class="btn" id="perigo"  onclick="delete_comentario(<?php echo $comentario->codComentario;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir</button> -->	
+							            			<div class="dropdown" style="float: right; display: inline; margin-right: 9.8%;">
+								                      <button type="button" id="dropdownMenu2" class="btn dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								                        <img src="<?php echo base_url('assets/bootstrap/img/dot.png')?>" width="12" height="20">
+								                      </button>
+								                      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+								                      	<button class="btn dropdown-item" id="<?php echo $comentario->codComentario?>"><i class="glyphicon glyphicon-pencil"></i>Editar</button>
+								                        <button class="btn dropdown-item" onclick="delete_comentario(<?php echo $comentario->codComentario;?>)" style="color: #dc3545;"><i class="glyphicon glyphicon-remove"></i>Excluir</button>
+								                      </div>
+								                    </div>
+								                    <script type="text/javascript" src="<?php echo base_url('assets/bootstrap/js/bootstrap.js')?>">
+								                      $('.dropdown-toggle').dropdown()
+								                    </script>
 											</div>	
 
 											<div  class="conteudo escondido" id="<?php echo"alterar".$comentario->codComentario?>">	
