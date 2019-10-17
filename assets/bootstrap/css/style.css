@@ -28,6 +28,12 @@ body{
 	margin-top: 2%;
 }
 
+#dropdownMenu{
+	border-radius: 25%;
+	color: #17a2b8;
+	background-color: #fff;
+}
+
 .registro{
 	margin-left: 2%;
 }
