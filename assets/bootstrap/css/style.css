@@ -834,14 +834,13 @@ textarea {
 	border-radius: 3px;
 }
 
-\\
-
 .contPort{
 	display: inline;
 	width: 32%;
 	border: solid 1px rgba(68, 120, 132, .1);
 	border-radius: 2px; 
 	float: left;
+	padding: 1%;
 }
 
 .contPort2{
@@ -852,6 +851,7 @@ textarea {
 	float:left;
 	margin-right: 2%;
 	margin-left: 2%;
+	padding: 1%;
 }
 
 .contPort3{
@@ -860,6 +860,7 @@ textarea {
 	border: solid 1px rgba(68, 120, 132, .1); 
 	border-radius: 2px;
 	float: right;
+	padding: 1%;
 }
 
 #detPort{
@@ -877,7 +878,6 @@ textarea {
 	text-align: center;
 }
 
-\\
 
 #exampleFormControlInput1{
 	width: 60%;
