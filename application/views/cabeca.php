@@ -73,6 +73,7 @@
 		    		color: #343a40;
 		    	}
 		    </style>
+        <div style="margin-left: 1%;"></div>
 		    <form class="form-inline my-2 my-lg-0 registro">
                 <?php 
                 if($this->session->userdata('professores')):?>
@@ -81,8 +82,25 @@
                     <a href="<?php echo site_url('login/sairProf')?>" class="btn btn-outline-info my-2 my-sm-0">Sair</a>
 
                 <?php elseif ($this->session->userdata('alunos')):?>
-                	<a class="regis" href="<?php echo site_url('alunos/aluno_perfil')?>?codAluno=<?php echo $_SESSION['alunos']?>">Perfil</a>
-                    <a href="<?php echo site_url('login/sair')?>" class="btn btn-outline-info my-2 my-sm-0">Sair</a>
+                    <div class="dropdown">
+                      <button type="button" id="dropdownMenu" class="btn dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="<?php echo base_url('assets/bootstrap/img/perfil.png')?>" width="30" style="">
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <button class="dropdown-item" type="button"><a class="btn" href="<?php echo site_url('alunos/aluno_perfil')?>?codAluno=<?php echo $_SESSION['alunos']?>">Perfil</a></button>
+                        <button class="dropdown-item" type="button"><a href="<?php echo site_url('alunos/aluno_editar/')?>?codAluno=<?php echo $perfil->codAluno;?>" class="btn">Configurações</a></button>
+                        <button class="dropdown-item" type="button">Artigos</button>
+                        <button class="dropdown-item" type="button">Sair</button>
+                      </div>
+                    </div>
+                    <script type="text/javascript" src="<?php echo base_url('assets/bootstrap/js/bootstrap.js')?>">
+                      $('.dropdown-toggle').dropdown()
+                    </script>
+
+
+
+                	<!-- <a class="regis" href="<?php echo site_url('alunos/aluno_perfil')?>?codAluno=<?php echo $_SESSION['alunos']?>">Perfil</a>
+                    <a href="<?php echo site_url('login/sair')?>" class="btn btn-outline-info my-2 my-sm-0">Sair</a> -->
 
                 <?php else :?>
                 	<a class="regis" href="<?php echo site_url('home/opiCad')?>">Cadastre-se</a>
