@@ -25,6 +25,7 @@ class Alunos extends CI_Controller
     }
 
 	public function aluno_add(){
+		 $this->load->helper('language');
 		 $imgAluno = $_FILES['imgAluno'];
 		 ///
 			$ponto_img = explode(".", $imgAluno['name']);
@@ -34,14 +35,14 @@ class Alunos extends CI_Controller
 		//VALIDAR FORMULARIO
 		$this->load->library('form_validation');
 
-    	$this->form_validation->set_rules('nomeAluno', 'Nome Completo', 'required|min_length[3]|max_length[20]', array('required' => 'O campo Nome Completo é obrigatorio.'));
-    	$this->form_validation->set_rules('email', 'E-mail', 'required|valid_email', array('required' => 'O campo E-mail é obrigatorio.'));
-     	$this->form_validation->set_rules('senha', 'Senha', 'required|min_length[8]', array('required' => 'Você deve preencher a %s.'));
-     	$this->form_validation->set_rules('senhaconf', 'Confirmar Senha', 'required|matches[senha]', array('required' => 'O campo Confirmar senha é obrigatorio'));
+    	$this->form_validation->set_rules('nomeAluno', 'Nome Completo', 'min_length[3]|max_length[20]', array('required' => 'O campo Nome Completo é obrigatorio.'));
+    	$this->form_validation->set_rules('email', 'E-mail', 'valid_email', array('required' => 'O campo E-mail é obrigatorio.'));
+     	$this->form_validation->set_rules('senha', 'Senha', 'min_length[8]', array('required' => 'Você deve preencher a %s.'));
+     	$this->form_validation->set_rules('senhaconf', 'Confirmar Senha', 'matches[senha]', array('required' => 'O campo Confirmar senha é obrigatorio'));
     	
     	if ($this->form_validation->run() == FALSE) {
-          $erros = array('mensagens' => validation_errors());
-           $this->load->view('aluno_add', $erros);
+          //$erros = array('mensagens' => validation_errors());
+           $this->load->view('aluno_add');
 
 	    }else{
 	    	//SE O ALUNO NÂO QUISER ENVIAR UMA FOTO DE PERFIL
@@ -212,6 +213,7 @@ class Alunos extends CI_Controller
 							
 						);
 						$this->aluno_model->aluno_update(array('codAluno' => $this->input->post('codAluno')), $data);
+						$this->session->set_userdata('imgAluno', $data['imgAluno']);
 
 						echo json_encode(array("status" => TRUE));
 
@@ -295,6 +297,7 @@ class Alunos extends CI_Controller
 						);
 						
 						$this->aluno_model->aluno_update(array('codAluno' => $this->input->post('codAluno')), $data);
+						$this->session->set_userdata('imgAluno', $data['imgAluno']);
 
 						echo json_encode(array("status" => TRUE));
 

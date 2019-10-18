@@ -1,7 +1,3 @@
-<?php
-  print_r($_SESSION);
-
-?>
 <html>
 <head>
    
@@ -23,8 +19,7 @@
        <script type="text/javascript" src="<?php echo base_url('assets/jquery/jquery-ui.js')?>"></script>
       	<script type="text/javascript" src="<?php echo base_url('assets/jquery/jquery-ui.min.js')?>"></script>   
 
-    	<script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js')?>"></script>
-    	<!-- <script src="<?php echo base_url('assets/bootstrap/js/custom.js')?>"></script> -->
+    	<script src="<?php echo base_url('assets/bootstrap/js/bootstrap.js')?>"></script>
     	<script src="<?php echo base_url('assets/datatables/js/jquery.dataTables.min.js')?>"></script>
         <script src="<?php echo base_url('assets/datatables/js/dataTables.bootstrap.js')?>"></script>
            <script src="<?php echo base_url('assets/bootstrap/js/pagination.js')?>"></script>
@@ -100,17 +95,17 @@
                         <a href="<?php echo site_url('login/sairProf')?>" class ="btn dropdown-item" style="color:#dc3545">Sair</a>
                       </div>
                     </div>
-                    <script type="text/javascript" src="<?php echo base_url('assets/bootstrap/js/bootstrap.js')?>">
-                      $('.dropdown-toggle').dropdown()
-                    </script>
-<!-- 
-                	<a class="regis" href="<?php echo site_url('professores/professor_perfil')?>?codProfessor=<?php echo $_SESSION['professores']?>">Perfil</a>
-                    <a href="<?php echo site_url('login/sairProf')?>" class="btn btn-outline-info my-2 my-sm-0">Sair</a> -->
-
                 <?php elseif ($this->session->userdata('alunos')):?>
                     <div class="dropdown">
                       <button type="button" id="dropdownMenu" class="btn dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="<?php echo base_url('assets/bootstrap/img/user.png')?>" width="30" style="">
+                       <?php
+                            $imgAluno = $_SESSION['imgAluno'];
+                            if ($_SESSION['imgAluno'] == null) {
+                               ?><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>" width="30" style=""><?php
+                            }else{
+                                ?><img src="<?php echo base_url("upload/alunos/$imgAluno")?>" width="30" style=""><?php
+                            }
+                        ?>
                       </button>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                        <a class="btn dropdown-item" href="<?php echo site_url('alunos/aluno_perfil')?>?codAluno=<?php echo $_SESSION['alunos']?>">Perfil</a>
@@ -119,15 +114,6 @@
                         <a href="<?php echo site_url('login/sair')?>" class ="btn dropdown-item" style="color:#dc3545">Sair</a>
                       </div>
                     </div>
-                    <script type="text/javascript" src="<?php echo base_url('assets/bootstrap/js/bootstrap.js')?>">
-                      $('.dropdown-toggle').dropdown()
-                    </script>
-
-
-
-                	<!-- <a class="regis" href="<?php echo site_url('alunos/aluno_perfil')?>?codAluno=<?php echo $_SESSION['alunos']?>">Perfil</a>
-                    <a href="<?php echo site_url('login/sair')?>" class="btn btn-outline-info my-2 my-sm-0">Sair</a> -->
-
                 <?php else :?>
                 	<a class="regis" href="<?php echo site_url('home/opiCad')?>">Cadastre-se</a>
                     <a href="<?php echo site_url('home/login_home')?>" class="btn btn-outline-info my-2 my-sm-0"> Entrar</a>
@@ -162,6 +148,9 @@
      $("#ui-id-1").addClass('sticky-top');
 });	
 
+</script>
+<script type="text/javascript">
+   $('.dropdown-toggle').dropdown();
 </script>
 </nav>
 <style type="text/css">

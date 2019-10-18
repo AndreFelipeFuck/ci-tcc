@@ -10,7 +10,7 @@ class Artigos extends CI_Controller
         $this->load->model('aluno_model');
         $this->load->model('professor_model');
         $this->load->model('comentarios_model');
-        $this->load->library('pagination');
+        // $this->load->library('pagination');
 	}
 
 	public function index()

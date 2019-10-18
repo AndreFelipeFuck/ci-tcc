@@ -47,9 +47,16 @@ $artigos = array_merge($artigos_aluno, $artigos_professor);
 <header>
     <title>Atom | Artigos de <?php echo $disciplinas->nomeDisciplina?></title>
 </header>
+ <div  class = "espaco2"></div>
 <div class="conteinerArtView" id="sombra">     
         <section class="conteiner0">
-                <h1 style="font-size: 35px; border-bottom: solid 2px #17a2b8; margin-bottom: 2%; padding-bottom: 1%;">Resultado da sua pesquisa</h1>
+              <div>
+                <div id="logoDisc" style="<?php echo $estilo; ?>">
+                    <figure class="img-rounded img-responsive"><img src="<?php echo base_url("assets/bootstrap/img/$disciplinas->imgDisciplina")?>" width="100" height="100" class="img-fluid" alt="smaple image"></figure>
+                </div>
+                <div id="tituloDisc" style="<?php echo $estilo; ?>"><h1 style="color: #fff">Artigos de <?php echo $disciplinas->nomeDisciplina?></h1><cite style="color: #fff"></cite></div>
+              </div>
+              <div class="espaco2"></div>
 
             <?php if (empty($artigos)):?>
                  <article class="vidCont">

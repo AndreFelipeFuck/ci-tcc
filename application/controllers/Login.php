@@ -31,6 +31,7 @@ class Login extends CI_Controller
             if ($query->num_rows() == 1){
                  $aluno = $query->row();
                  $this->session->set_userdata("alunos", $aluno->codAluno);
+                    $this->session->set_userdata("imgAluno", $aluno->imgAluno);
                 $codAluno = $this->aluno_model->get_by_login($nomeCompleto, $senha);
                 $url = "?codAluno=".$aluno->codAluno;
                 redirect ("alunos/aluno_perfil/$url");
@@ -104,11 +105,13 @@ class Login extends CI_Controller
     
     public function sair (){
         $this->session->unset_userdata('alunos', '');
+        $this->session->unset_userdata('imgAluno', '');
         redirect("home");
     }
 
     public function sairProf (){
         $this->session->unset_userdata('professores', '');
+         $this->session->unset_userdata('imgProfessor', '');
         redirect("home");
     }
 }

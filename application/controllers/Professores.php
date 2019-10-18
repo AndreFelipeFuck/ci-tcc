@@ -37,106 +37,119 @@ class Professores extends CI_Controller
 
     
     public function professor_add(){
+        $this->load->library('form_validation');
+        //VERIFICA EMAIL
+            $marcador['email'] = $this->professor_model->check_email($this->input->post('email'));
+            if ($marcador['email'] == FALSE) {
+                $this->form_validation->set_rules('email', 'E-mail', 'required|valid_email', array('required' => 'O campo E-mail é obrigatorio.'));
+            }
+            
+        //
         $imgProfessor = $_FILES['imgProfessor'];
          ///
             $ponto_img = explode(".", $imgProfessor['name']);
-            $ponto_img = $ponto_img[1];
+            @$ponto_img = $ponto_img[1];
         //
 
         //VALIDAR FORMULARIO
-        $this->load->library('form_validation');
-
         $this->form_validation->set_rules('nomeProfessor', 'Nome Completo', 'required|min_length[3]|max_length[20]', array('required' => 'O campo Nome Completo é obrigatorio.'));
-        $this->form_validation->set_rules('email', 'E-mail', 'required|valid_email', array('required' => 'O campo E-mail é obrigatorio.'));
         $this->form_validation->set_rules('senha', 'Senha', 'required|min_length[8]', array('required' => 'Você deve preencher a %s.'));
         $this->form_validation->set_rules('senhaconf', 'Confirmar Senha', 'required|matches[senha]', array('required' => 'O campo Confirmar senha é obrigatorio'));
-        
-        if ($this->form_validation->run() == FALSE) {
-          $erros = array('mensagens' => validation_errors());
-           $this->load->view('professor_add', $erros);
-
+        //VERIFICA SE O EMAIL È IGAUL
+        if ($marcador['email'] == TRUE) {
+            if ($this->form_validation->run() == TRUE) {
+                $this->load->view('professor_add', $marcador);
+            }      
         }else{
-            //SE O PROFESSOR NÂO QUISER ENVIAR UMA FOTO DE PERFIL
-            if($imgProfessor['name'] == null) {
-                //ENVIAR PARA O BANCO
-                    $data = array(
-                        'nomeProfessor' => $this->input->post('nomeProfessor'),
-                        'dataNasc' => $this->input->post('dataNasc'),
-                        'miniCurriculo' => $this->input->post('miniCurriculo'),
-                        //'institucao' => $this->input->post('institucao'),
-                        'email' => $this->input->post('email'),
-                        'senha' => md5($this->input->post('senha')),
-                        'tipo' => 1,
-                    );
-                    $insert = $this->professor_model->professor_add($data);
-                    $this->db->where('email', $data['email']);
-                    $this->db->where('senha', $data['senha']);
-                    $query = $this->db->get('professores');
+            if ($this->form_validation->run() == FALSE) {
+            
+                $this->load->view('professor_add', $marcador);
 
-                    if ($query->num_rows() == 1){
-                        $professor = $query->row();
-                        $this->session->set_userdata("professores", $professor->codProfessor);
-                        $codProfessor = $this->professor_model->get_by_login($professor->email, $professor->senha);
-                        ////
-                        $data_prof_disc = array(
-                            'professores_codProfessor' => $professor->codProfessor,
-                            'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina')
+            }else{
+                //SE O PROFESSOR NÂO QUISER ENVIAR UMA FOTO DE PERFIL
+                if($imgProfessor['name'] == null) {
+                    //ENVIAR PARA O BANCO
+                        $data = array(
+                            'nomeProfessor' => $this->input->post('nomeProfessor'),
+                            'dataNasc' => $this->input->post('dataNasc'),
+                            'miniCurriculo' => $this->input->post('miniCurriculo'),
+                            //'institucao' => $this->input->post('institucao'),
+                            'email' => $this->input->post('email'),
+                            'senha' => md5($this->input->post('senha')),
+                            'tipo' => 1,
                         );
-                         $insert = $this->professores_has_disciplinas_model->prof_disc_add($data_prof_disc);
-                         ////
-                        $url = "?codProfessor=".$professor->codProfessor;
-                       redirect ("professores/professor_perfil/$url");
-                    }
-            //SE O PROFESSOR QUISER ENVIAR UMA FOTO DE PERFIL
-            }elseif(!empty($imgProfessor['name'])){
-                 echo "Formulário enviado com sucesso.";
-               //ENVIANDO IMAGEM PRO BANCO
-               $config = array(
-                'upload_path' => './upload/professores',
-                'allowed_types' => 'gif|jpg|png',//Arrumar essa parte
-                'file_name' => md5(time()),
-                'max_size' => '3000'
-               );
-               $this->load->library('upload');
-               $this->upload->initialize($config);
+                        $insert = $this->professor_model->professor_add($data);
+                        $this->db->where('email', $data['email']);
+                        $this->db->where('senha', $data['senha']);
+                        $query = $this->db->get('professores');
 
-               if ($this->upload->do_upload('imgProfessor')){
-                    echo 'Arquivo salvo com sucesso.';
-                    $data = array(
-                        'nomeProfessor' => $this->input->post('nomeProfessor'),
-                        'dataNasc' => $this->input->post('dataNasc'),
-                        'imgProfessor' => $config['file_name'].".".$ponto_img,
-                        'miniCurriculo' => $this->input->post('miniCurriculo'),
-                        //'institucao' => $this->input->post('institucao'),
-                        'email' => $this->input->post('email'),
-                        'senha' => md5($this->input->post('senha')),
-                        'tipo' => 1,
-                    );
+                        if ($query->num_rows() == 1){
+                            $professor = $query->row();
+                            $this->session->set_userdata("professores", $professor->codProfessor);
+                            $codProfessor = $this->professor_model->get_by_login($professor->email, $professor->senha);
+                            ////
+                            $data_prof_disc = array(
+                                'professores_codProfessor' => $professor->codProfessor,
+                                'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina')
+                            );
+                             $insert = $this->professores_has_disciplinas_model->prof_disc_add($data_prof_disc);
+                             ////
+                            $url = "?codProfessor=".$professor->codProfessor;
+                           redirect ("professores/professor_perfil/$url");
+                        }
+                //SE O PROFESSOR QUISER ENVIAR UMA FOTO DE PERFIL
+                }elseif(!empty($imgProfessor['name'])){
+                     echo "Formulário enviado com sucesso.";
+                   //ENVIANDO IMAGEM PRO BANCO
+                   $config = array(
+                    'upload_path' => './upload/professores',
+                    'allowed_types' => 'gif|jpg|png',//Arrumar essa parte
+                    'file_name' => md5(time()),
+                    'max_size' => '3000'
+                   );
+                   $this->load->library('upload');
+                   $this->upload->initialize($config);
 
-                    $insert = $this->professor_model->professor_add($data);
-
-                    $this->db->where('email', $data['email']);
-                    $this->db->where('senha', $data['senha']);
-                    $query = $this->db->get('professores');
-
-                    if ($query->num_rows() == 1){
-                        $professor = $query->row();
-                        $this->session->set_userdata("professores", $professor->codProfessor);
-                        $codProfessor = $this->professor_model->get_by_login($professor->email, $professor->senhaconf);
-                         ////
-                        $data_prof_disc = array(
-                            'professores_codProfessor' => $professor->codProfessor,
-                            'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina')
+                   if ($this->upload->do_upload('imgProfessor')){
+                        echo 'Arquivo salvo com sucesso.';
+                        $data = array(
+                            'nomeProfessor' => $this->input->post('nomeProfessor'),
+                            'dataNasc' => $this->input->post('dataNasc'),
+                            'imgProfessor' => $config['file_name'].".".$ponto_img,
+                            'miniCurriculo' => $this->input->post('miniCurriculo'),
+                            //'institucao' => $this->input->post('institucao'),
+                            'email' => $this->input->post('email'),
+                            'senha' => md5($this->input->post('senha')),
+                            'tipo' => 1,
                         );
-                         $insert = $this->professores_has_disciplinas_model->prof_disc_add($data_prof_disc);
-                         ////
-                        $url = "?codProfessor=".$professor->codProfessor;
-                       redirect ("professores/professor_perfil/$url");
-                        
+
+                        $insert = $this->professor_model->professor_add($data);
+
+                        $this->db->where('email', $data['email']);
+                        $this->db->where('senha', $data['senha']);
+                        $query = $this->db->get('professores');
+
+                        if ($query->num_rows() == 1){
+                            $professor = $query->row();
+                            $this->session->set_userdata("professores", $professor->codProfessor);
+                            $codProfessor = $this->professor_model->get_by_login($professor->email, $professor->senhaconf);
+                             ////
+                            $data_prof_disc = array(
+                                'professores_codProfessor' => $professor->codProfessor,
+                                'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina')
+                            );
+                             $insert = $this->professores_has_disciplinas_model->prof_disc_add($data_prof_disc);
+                             ////
+                            $url = "?codProfessor=".$professor->codProfessor;
+                           redirect ("professores/professor_perfil/$url");
+                            
+                        }
                     }
-                }
-            }  
+                }  
+            }
         }
+        
+        
     }
 
     public function ajax_edit($codProfessor)
@@ -216,6 +229,7 @@ class Professores extends CI_Controller
                             'email' => $this->input->post('email'),
                         );
                         $this->professor_model->professor_update(array('codProfessor' => $this->input->post('codProfessor')), $data);
+                        $this->session->set_userdata('imgProfessor', $data['imgProfessor']);
 
                         ////
                         $data_prof_disc = array(

@@ -71,5 +71,19 @@ class Professor_model extends CI_Model
              $this->db->select('codProfessor, nomeProfessor, senha')->from('professores')->where("nomeProfessor = '$nomeProfessor' and senha = '$senha' and tipo = 1");
              $query = $this->db->get();
              return $query->row();
+    }
+
+    public function check_email($email){
+        $marcador = null;
+        $this->db->select('email');
+        $this->db->where('email',$email);
+        $retorno = $this->db->get('professores')->num_rows();
+
+        if($retorno > 0 ){
+             return $marcador = TRUE;
+        }else{ 
+            return $marcador = FALSE;
         }
+    }
+
 }
