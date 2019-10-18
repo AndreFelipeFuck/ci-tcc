@@ -1,3 +1,7 @@
+<?php
+  print_r($_SESSION);
+
+?>
 <html>
 <head>
    
@@ -77,20 +81,42 @@
 		    <form class="form-inline my-2 my-lg-0 registro">
                 <?php 
                 if($this->session->userdata('professores')):?>
+                     <div class="dropdown">
+                      <button type="button" id="dropdownMenu" class="btn dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <?php
+                            $imgProfessor = $_SESSION['imgProfessor'];
+                            if ($_SESSION['imgProfessor'] == null) {
+                               ?><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>" width="30" style=""><?php
+                            }else{
+                                ?><img src="<?php echo base_url("upload/professores/$imgProfessor")?>" width="30" style=""><?php
+                            }
+                        ?>
+                        
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                       <a class="btn dropdown-item" href="<?php echo site_url('professores/professor_perfil')?>?codProfessor=<?php echo $_SESSION['professores']?>">Perfil</a>
+                        <a href="<?php echo site_url('professores/professor_editar/')?>?codProfessor=<?php echo $_SESSION['professores'];?>" class="btn dropdown-item">Configurações</a>
+                       <a href="<?php echo site_url('professores/artigos_view')?>?codProfessor=<?php echo $_SESSION['professores'];?>" class="btn dropdown-item">Artigos</a>
+                        <a href="<?php echo site_url('login/sairProf')?>" class ="btn dropdown-item" style="color:#dc3545">Sair</a>
+                      </div>
+                    </div>
+                    <script type="text/javascript" src="<?php echo base_url('assets/bootstrap/js/bootstrap.js')?>">
+                      $('.dropdown-toggle').dropdown()
+                    </script>
+<!-- 
                 	<a class="regis" href="<?php echo site_url('professores/professor_perfil')?>?codProfessor=<?php echo $_SESSION['professores']?>">Perfil</a>
-
-                    <a href="<?php echo site_url('login/sairProf')?>" class="btn btn-outline-info my-2 my-sm-0">Sair</a>
+                    <a href="<?php echo site_url('login/sairProf')?>" class="btn btn-outline-info my-2 my-sm-0">Sair</a> -->
 
                 <?php elseif ($this->session->userdata('alunos')):?>
                     <div class="dropdown">
                       <button type="button" id="dropdownMenu" class="btn dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="<?php echo base_url('assets/bootstrap/img/perfil.png')?>" width="30" style="">
+                        <img src="<?php echo base_url('assets/bootstrap/img/user.png')?>" width="30" style="">
                       </button>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <button class="dropdown-item" type="button"><a class="btn" href="<?php echo site_url('alunos/aluno_perfil')?>?codAluno=<?php echo $_SESSION['alunos']?>">Perfil</a></button>
-                        <button class="dropdown-item" type="button"><a href="<?php echo site_url('alunos/aluno_editar/')?>?codAluno=<?php echo $perfil->codAluno;?>" class="btn">Configurações</a></button>
-                        <button class="dropdown-item" type="button">Artigos</button>
-                        <button class="dropdown-item" type="button">Sair</button>
+                       <a class="btn dropdown-item" href="<?php echo site_url('alunos/aluno_perfil')?>?codAluno=<?php echo $_SESSION['alunos']?>">Perfil</a>
+                        <a href="<?php echo site_url('alunos/aluno_editar/')?>?codAluno=<?php echo $_SESSION['alunos'];?>" class="btn dropdown-item">Configurações</a>
+                       <a href="<?php echo site_url('alunos/artigos_view')?>?codAluno=<?php echo $_SESSION['alunos'];?>" class="btn dropdown-item">Artigos</a>
+                        <a href="<?php echo site_url('login/sair')?>" class ="btn dropdown-item" style="color:#dc3545">Sair</a>
                       </div>
                     </div>
                     <script type="text/javascript" src="<?php echo base_url('assets/bootstrap/js/bootstrap.js')?>">

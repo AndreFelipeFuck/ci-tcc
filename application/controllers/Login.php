@@ -46,6 +46,7 @@ class Login extends CI_Controller
             if ($query->num_rows() == 1){
               $professor = $query->row();
                  $this->session->set_userdata("professores", $professor->codProfessor);
+                 $this->session->set_userdata("imgProfessor", $professor->imgProfessor);
                 $codProfessor = $this->professor_model->get_by_login($nomeCompleto, $senha);
                  $url = "?codProfessor=".$professor->codProfessor;
                 redirect ("professores/professor_perfil/$url");

@@ -216,6 +216,7 @@ class Professores extends CI_Controller
                             'email' => $this->input->post('email'),
                         );
                         $this->professor_model->professor_update(array('codProfessor' => $this->input->post('codProfessor')), $data);
+
                         ////
                         $data_prof_disc = array(
                             'professores_codProfessor' => $this->input->post('codProfessor'),
@@ -291,7 +292,7 @@ class Professores extends CI_Controller
                                 'senha' => md5($this->input->post('senha')),
                             );
                             $this->professor_model->professor_update(array('codProfessor' => $this->input->post('codProfessor')), $data);
-
+                            $this->session->set_userdata('imgProfessor', $data['imgProfessor']);
                             echo json_encode(array("status" => TRUE));
 
                             //ENVIAR PARA A PAGINA PERFIL
