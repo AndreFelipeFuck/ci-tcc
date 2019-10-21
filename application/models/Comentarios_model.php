@@ -11,9 +11,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         public function comentarios_listar($codArtigo)
         {
             $this->db->select('codAluno, nomeAluno, imgAluno, comentario, codComentario, dataComentario')->from('alunos, comentarios, artigos')->where("codArtigo = artigo_codArtigo and com_alunos_codAluno = codAluno and codArtigo = '$codArtigo'");
+            //umfdfa gfgkfgkfg
             $query=$this->db->get();
             return $query->result();
         }
+        
 
         public function comentarios_listar_professor($codArtigo)
         {

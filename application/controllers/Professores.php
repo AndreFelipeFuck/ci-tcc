@@ -86,6 +86,7 @@ class Professores extends CI_Controller
                         if ($query->num_rows() == 1){
                             $professor = $query->row();
                             $this->session->set_userdata("professores", $professor->codProfessor);
+                             $this->session->set_userdata("imgProfessor", null);
                             $codProfessor = $this->professor_model->get_by_login($professor->email, $professor->senha);
                             ////
                             $data_prof_disc = array(
@@ -132,6 +133,7 @@ class Professores extends CI_Controller
                         if ($query->num_rows() == 1){
                             $professor = $query->row();
                             $this->session->set_userdata("professores", $professor->codProfessor);
+                             $this->session->set_userdata("imgProfessor", $data['imgProfessor']);
                             $codProfessor = $this->professor_model->get_by_login($professor->email, $professor->senhaconf);
                              ////
                             $data_prof_disc = array(
@@ -327,6 +329,7 @@ class Professores extends CI_Controller
         $this->professor_model->delete_img($codProfessor);
         echo json_encode(array("status" => TRUE));
         unlink($caminho);
+        $this->session->set_userdata('imgProfessor', '');
     }
 
     public function professor_delete($codProfessor)

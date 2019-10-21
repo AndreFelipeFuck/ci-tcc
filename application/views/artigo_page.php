@@ -14,9 +14,9 @@
 	);
 
 	// Mostra os valores
-	// echo '<pre>';
-	// print_r($todosComentarios);
-	// echo '</pre>';
+	 // echo '<pre>';
+	 // print_r($comentarios_professor); 
+	 // echo '</pre>';
 
 
 	?>
@@ -120,7 +120,7 @@
 								</div>	
 							<?php }else{?>	
 								<div>	
-									?><figure class="img-rounded img-responsive"><img src="<?php echo base_url("upload/alunos/$professor->imgProfessor")?>"></figure>	
+									?><figure class="img-rounded img-responsive"><img src="<?php echo base_url("upload/professores/$professor->imgProfessor")?>"></figure>	
 								</div><?php	
 								}?>	
 						</section>	
@@ -157,7 +157,14 @@
 								}?>	
 							</section>	
 								<div class="elementoComent">	
-									<h5><a href="<?php echo site_url('alunos/aluno_perfil')?>?codAluno=<?php echo $comentario->codAluno?>" style="color: #17a2b8;"><?php echo $comentario->nomeAluno;?></a></h5>	
+									<h5><a href="<?php echo site_url('alunos/aluno_perfil')?>?codAluno=<?php echo $comentario->codAluno?>" style="color: #17a2b8;"><?php echo $comentario->nomeAluno;?></a></h5>
+									<?php
+										$dataComentario = explode(" ", $comentario->dataComentario);
+										$dataComentario = explode("-", $dataComentario[0]);
+										$dataComentario = array_reverse($dataComentario);
+										$dataComentario = implode("/", $dataComentario);
+									?>
+									<small><?php echo $dataComentario?></small>	
 								</div>
 						<?php if (isset($_SESSION['alunos']) == FALSE): ?>
 								<div>	
@@ -173,18 +180,19 @@
 													<section style="height: 10%; max-height: 20%; border: solid 1px rgba(68, 120, 132, .2); padding: 1.5%; border-radius: 3px;" placeholder="Deixe um comentario..." class="elementoComent"><h6><?php echo $comentario->comentario ?></h6></section>	
 															<!-- <button class="btn btn-success editar" id="<?php echo $comentario->codComentario?>"><i class="glyphicon glyphicon-pencil"></i>Editar</button>	
 							            					<button class="btn" id="perigo"  onclick="delete_comentario(<?php echo $comentario->codComentario;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir</button> -->	
-							            			<div class="dropdown" style="float: right; display: inline; margin-right: 9.8%;">
+							            			<div class="dropdown" style="float: right; display: inline; margin-right: 9.8%;" id="dropdown">
 								                      <button type="button" id="dropdownMenu2" class="btn dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								                        <img src="<?php echo base_url('assets/bootstrap/img/dot.png')?>" width="12" height="20">
 								                      </button>
 								                      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-								                      	<button class="btn dropdown-item" id="<?php echo $comentario->codComentario?>"><i class="glyphicon glyphicon-pencil"></i>Editar</button>
+								                      	<button class="btn dropdown-item editar" id="<?php echo $comentario->codComentario?>"><i class="glyphicon glyphicon-pencil"></i>Editar</button>
 								                        <button class="btn dropdown-item" onclick="delete_comentario(<?php echo $comentario->codComentario;?>)" style="color: #dc3545;"><i class="glyphicon glyphicon-remove"></i>Excluir</button>
 								                      </div>
 								                    </div>
-								                    <script type="text/javascript" src="<?php echo base_url('assets/bootstrap/js/bootstrap.js')?>">
-								                      $('.dropdown-toggle').dropdown()
-								                    </script>
+								                    <script type="text/javascript">
+   														$('#dropdownMenu2').dropdown();
+													</script>
+								                    
 											</div>	
 
 											<div  class="conteudo escondido" id="<?php echo"alterar".$comentario->codComentario?>">	
@@ -216,12 +224,19 @@
 								</div>	
 							<?php }else{?>	
 								<div>	
-								?><figure class="img-rounded img-responsive"><img src="<?php echo base_url("upload/professores/$comentario->imgProfessor")?>"></figure>	
+								<figure class="img-rounded img-responsive"><img src="<?php echo base_url("upload/professores/$comentario->imgProfessor")?>"></figure>	
 								</div><?php	
 								}?>	
 						</section>	
 								<div class="elementoComent">	
 									<h5><a href="<?php echo site_url('professores/professor_perfil')?>?codProfessor=<?php echo $comentario->codProfessor?>"  style="color: #28a745;"><?php echo $comentario->nomeProfessor;?></a></h5>
+									<?php
+										$dataComentario = explode(" ", $comentario->dataComentario);
+										$dataComentario = explode("-", $dataComentario[0]);
+										$dataComentario = array_reverse($dataComentario);
+										$dataComentario = implode("/", $dataComentario);
+									?>
+									<small><?php echo $dataComentario?></small>
 								</div>	
 
 						<?php if (isset($_SESSION['professores']) == FALSE):?>
@@ -233,9 +248,19 @@
 						<?php if (isset($_SESSION['professores']) == TRUE):	
 								if($comentario->codProfessor == $_SESSION['professores']):?>
 											<div class="conteudo" id="<?php echo "comentario".$comentario->codComentario?>">
-															<section style="height: 10%; max-height: 20%; border: solid 1px rgba(68, 120, 132, .2); padding: 1.5%; border-radius: 3px;" placeholder="Deixe um comentario..." class="elementoComent"><h6><?php echo $comentario->comentario ?></h6></section>		
-															<button class="btn btn-success editar" id="<?php echo $comentario->codComentario?>"><i class="glyphicon glyphicon-pencil"></i>Editar</button>	
-							            					<button class="btn" id="perigo" onclick="delete_comentario(<?php echo $comentario->codComentario;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir</button>	
+												<section style="height: 10%; max-height: 20%; border: solid 1px rgba(68, 120, 132, .2); padding: 1.5%; border-radius: 3px;" placeholder="Deixe um comentario..." class="elementoComent"><h6><?php echo $comentario->comentario ?></h6></section>
+							            			<div class="dropdown" style="float: right; display: inline; margin-right: 9.8%;" id="dropdown">
+								                      <button type="button" id="dropdownMenu2" class="btn dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								                        <img src="<?php echo base_url('assets/bootstrap/img/dot.png')?>" width="12" height="20">
+								                      </button>
+								                      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+								                      	<button class="btn dropdown-item editar" id="<?php echo $comentario->codComentario?>"><i class="glyphicon glyphicon-pencil"></i>Editar</button>
+								                        <button class="btn dropdown-item" onclick="delete_comentario(<?php echo $comentario->codComentario;?>)" style="color: #dc3545;"><i class="glyphicon glyphicon-remove"></i>Excluir</button>
+								                      </div>
+								                    </div>
+								                    <script type="text/javascript">
+   														$('#dropdownMenu2').dropdown();
+													</script>
 											</div>	
 											<div  class="conteudo escondido" id="<?php echo "alterar".$comentario->codComentario?>">	
 													<form action="<?php echo site_url('comentarios/comentario_update')?>" id ="editar">	
@@ -260,20 +285,10 @@
 			</div>	
 		<?php endforeach;?>
 </div>
-
-
-
-
-
 <?php 
 	include "rodape.php";
 ?>	
-<script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js')?>"></script>	
-<script src="<?php echo base_url('assets/datatables/js/jquery.dataTables.min.js')?>"></script>	
-<script src="<?php echo base_url('assets/datatables/js/dataTables.bootstrap.js')?>"></script>	
-
- <script>	
-		
+ <script>		
  $(document).ready( function () {	
     $('#codAluno').DataTable();	
     } );	
@@ -293,6 +308,7 @@
 			$("#comentario"+id).removeClass('escondido');		
 		})	
 	})	
+
  		
 	    function save(){	
 		    $.ajax({	

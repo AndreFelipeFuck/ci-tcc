@@ -1,8 +1,5 @@
 <html>
 <head>
-   
-
-    
     <!--Le CSS ==========================================================-->
          <link rel="stylesheet"  href="<?php echo base_url('assets/bootstrap/css/bootstrap.css')?>">
          <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/style.css')?>">
@@ -15,7 +12,7 @@
     <!--Le JS ==========================================================-->
       <script type="text/javascript" src="<?php echo base_url('assets/jquery/jquery.js')?>"></script>
        <script type="text/javascript" src="<?php echo base_url('assets/jquery/jquery-3.1.0.min.js')?>"></script>
-
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
        <script type="text/javascript" src="<?php echo base_url('assets/jquery/jquery-ui.js')?>"></script>
       	<script type="text/javascript" src="<?php echo base_url('assets/jquery/jquery-ui.min.js')?>"></script>   
 
@@ -24,6 +21,9 @@
         <script src="<?php echo base_url('assets/datatables/js/dataTables.bootstrap.js')?>"></script>
            <script src="<?php echo base_url('assets/bootstrap/js/pagination.js')?>"></script>
     <!-- ==============================================================-->
+  
+   
+   
   		<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
 
@@ -88,11 +88,11 @@
                         ?>
                         
                       </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                       <a class="btn dropdown-item" href="<?php echo site_url('professores/professor_perfil')?>?codProfessor=<?php echo $_SESSION['professores']?>">Perfil</a>
-                        <a href="<?php echo site_url('professores/professor_editar/')?>?codProfessor=<?php echo $_SESSION['professores'];?>" class="btn dropdown-item">Configurações</a>
-                       <a href="<?php echo site_url('professores/artigos_view')?>?codProfessor=<?php echo $_SESSION['professores'];?>" class="btn dropdown-item">Artigos</a>
-                        <a href="<?php echo site_url('login/sairProf')?>" class ="btn dropdown-item" style="color:#dc3545">Sair</a>
+                      <div class="dropdown-menu arrow_box " aria-labelledby="dropdownMenu2">
+                         <a class="btn dropdown-item" href="<?php echo site_url('professores/professor_perfil')?>?codProfessor=<?php echo $_SESSION['professores']?>">Perfil</a>
+                          <a href="<?php echo site_url('professores/professor_editar/')?>?codProfessor=<?php echo $_SESSION['professores'];?>" class="btn dropdown-item">Configurações</a>
+                         <a href="<?php echo site_url('professores/artigos_view')?>?codProfessor=<?php echo $_SESSION['professores'];?>" class="btn dropdown-item">Artigos</a>
+                          <a href="<?php echo site_url('login/sairProf')?>" class ="btn dropdown-item" style="color:#dc3545">Sair</a>
                       </div>
                     </div>
                 <?php elseif ($this->session->userdata('alunos')):?>
@@ -107,11 +107,12 @@
                             }
                         ?>
                       </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                       <a class="btn dropdown-item" href="<?php echo site_url('alunos/aluno_perfil')?>?codAluno=<?php echo $_SESSION['alunos']?>">Perfil</a>
-                        <a href="<?php echo site_url('alunos/aluno_editar/')?>?codAluno=<?php echo $_SESSION['alunos'];?>" class="btn dropdown-item">Configurações</a>
-                       <a href="<?php echo site_url('alunos/artigos_view')?>?codAluno=<?php echo $_SESSION['alunos'];?>" class="btn dropdown-item">Artigos</a>
-                        <a href="<?php echo site_url('login/sair')?>" class ="btn dropdown-item" style="color:#dc3545">Sair</a>
+                      <div class="dropdown-menu arrow_box" aria-labelledby="dropdownMenu2">
+                        
+                         <a class="btn dropdown-item" href="<?php echo site_url('alunos/aluno_perfil')?>?codAluno=<?php echo $_SESSION['alunos']?>">Perfil</a>
+                          <a href="<?php echo site_url('alunos/aluno_editar/')?>?codAluno=<?php echo $_SESSION['alunos'];?>" class="btn dropdown-item">Configurações</a>
+                         <a href="<?php echo site_url('alunos/artigos_view')?>?codAluno=<?php echo $_SESSION['alunos'];?>" class="btn dropdown-item">Artigos</a>
+                          <a href="<?php echo site_url('login/sair')?>" class ="btn dropdown-item" style="color:#dc3545">Sair</a>
                       </div>
                     </div>
                 <?php else :?>
@@ -148,15 +149,42 @@
      $("#ui-id-1").addClass('sticky-top');
 });	
 
+var popper = new Popper(referenceElement, onPopper, {
+    placement: 'bottom'
+});
+
 </script>
 <script type="text/javascript">
    $('.dropdown-toggle').dropdown();
 </script>
 </nav>
 <style type="text/css">
-  .ui-menu-item{
-    
+.dropdown-menu {
+  border-color: #51c0cf;
+}
+.arrow_box {
+  position: absolute;
+  margin-top: 11px;
+}
+.arrow_box:after, .arrow_box:before {
+  bottom: 100%;
+  left: 16%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
 
-  }
+.arrow_box:after {
+  border-width: 10px;
+  margin-left: -10px;
+}
+.arrow_box:before {
+  border-bottom-color: #51c0cf;
+  border-width: 10px;
+  margin-left: -10px;
+}
 </style>
 
