@@ -150,8 +150,9 @@ class Professores extends CI_Controller
                 }  
             }
         }
-        
-        
+            if ($this->form_validation->run() == FALSE) {
+                $this->load->view('professor_add', $marcador);
+            }
     }
 
     public function ajax_edit($codProfessor)

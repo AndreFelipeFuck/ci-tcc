@@ -19,7 +19,15 @@
 			  <div class="form-group">
 			    <label for="exampleFormControlInput1">E-mail</label>
 			    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="exemplo@gmail.com" name="email" value="<?php echo set_value('email'); ?>" >
-			    <small style="color:#dc3545"><?php  echo  form_error('email');?></small>
+			     <?php 
+			    if(!empty($email)){
+				    if($email == FALSE){
+				    	?><small style="color:#dc3545"><?php  echo  form_error('email');?></small><?php
+				    }elseif($email == TRUE){
+				    	?><small style="color:#dc3545"><?php echo "Esse email já pertence a outro usuário, tente outro";?></small><?php
+				    }
+			    }
+			    ?>
 			 </div>
 			 <div class="form-group">
 			 	 

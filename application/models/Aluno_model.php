@@ -57,7 +57,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
              $query = $this->db->get();
              return $query->row();
         }
+        public function check_email($email){
+            $marcador = null;
+            $this->db->select('email');
+            $this->db->where('email',$email);
+            $retorno = $this->db->get('alunos')->num_rows();
 
+            if($retorno > 0 ){
+                 return $marcador = TRUE;
+            }else{ 
+                return $marcador = FALSE;
+            }
+        }
 
     }
 

@@ -1,7 +1,6 @@
 body{
-	
+	background-image: url('/ci_tcc/assets/bootstrap/css/fundo.jpg');
 }
-
 .imglogo{
 	width: 80px;
 	height: 80px;

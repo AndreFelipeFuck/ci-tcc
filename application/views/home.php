@@ -111,9 +111,9 @@
                     }else{?>
                         <img src="<?php echo base_url("upload/artigos/$artigo->imgArtigo")?>">
               <?php }?>
-                <div>
+                <div class="divInfo">
                     <h3><?php echo $artigo->titulo?></h3>
-                    <p><?php echo $artigo->resumo?></p>
+                    <p id="limiteLinhas"><?php echo $artigo->resumo?></p>
                         <label>Postado pelo professor:<h4 id="nomeAutor2"><a href="<?php echo site_url('professores/professor_perfil')?>?codProfessor=<?php echo $artigo->professores_codProfessor?>" style="color: #28a745;"><?php echo $artigo->nomeProfessor;?></a></h4></label>
                 </div>
                 <div class="divCont">

@@ -27,6 +27,13 @@ class Alunos extends CI_Controller
 	public function aluno_add(){
 		 $this->load->helper('language');
 		 $imgAluno = $_FILES['imgAluno'];
+		 //VERIFICA EMAIL
+            $marcador['email'] = $this->aluno_model->check_email($this->input->post('email'));
+            if ($marcador['email'] == FALSE) {
+                $this->form_validation->set_rules('email', 'E-mail', 'required|valid_email', array('required' => 'O campo E-mail é obrigatorio.'));
+            }
+            
+        //
 		 ///
 			$ponto_img = explode(".", $imgAluno['name']);
 			@$ponto_img = $ponto_img[1];
@@ -35,101 +42,107 @@ class Alunos extends CI_Controller
 		//VALIDAR FORMULARIO
 		$this->load->library('form_validation');
 
-    	$this->form_validation->set_rules('nomeAluno', 'Nome Completo', 'min_length[3]|max_length[20]', array('required' => 'O campo Nome Completo é obrigatorio.'));
-    	$this->form_validation->set_rules('email', 'E-mail', 'valid_email', array('required' => 'O campo E-mail é obrigatorio.'));
+    	$this->form_validation->set_rules('nomeAluno', 'Nome Completo', 'min_length[3]|max_length[20]', array('required' => 'O campo Nome Completo é obrigatorio.'));	
      	$this->form_validation->set_rules('senha', 'Senha', 'min_length[8]', array('required' => 'Você deve preencher a %s.'));
      	$this->form_validation->set_rules('senhaconf', 'Confirmar Senha', 'matches[senha]', array('required' => 'O campo Confirmar senha é obrigatorio'));
-    	
-    	if ($this->form_validation->run() == FALSE) {
-          //$erros = array('mensagens' => validation_errors());
-           $this->load->view('aluno_add');
+    	 if ($marcador['email'] == TRUE) {
+            if ($this->form_validation->run() == TRUE) {
+                $this->load->view('aluno_add', $marcador);
+            }      
+        }else{
+		    	if ($this->form_validation->run() == FALSE) {
+		          //$erros = array('mensagens' => validation_errors());
+		           $this->load->view('aluno_add');
 
-	    }else{
-	    	//SE O ALUNO NÂO QUISER ENVIAR UMA FOTO DE PERFIL
-          	if($imgAluno['name'] == null) {
-          		//ENVIAR PARA O BANCO
-		           	$data = array(
-						'nomeAluno' => $this->input->post('nomeAluno'),
-						'dataNasc' => $this->input->post('dataNasc'),
-						'anoLetivo' => $this->input->post('anoLetivo'),
-						'curso' => $this->input->post('curso'),
-						'email' => $this->input->post('email'),
-						'senha' => md5($this->input->post('senha')),
-						'tipo' => 0,
-					);
-					$insert = $this->aluno_model->aluno_add($data);
+			    }else{
+			    	//SE O ALUNO NÂO QUISER ENVIAR UMA FOTO DE PERFIL
+		          	if($imgAluno['name'] == null) {
+		          		//ENVIAR PARA O BANCO
+				           	$data = array(
+								'nomeAluno' => $this->input->post('nomeAluno'),
+								'dataNasc' => $this->input->post('dataNasc'),
+								'anoLetivo' => $this->input->post('anoLetivo'),
+								'curso' => $this->input->post('curso'),
+								'email' => $this->input->post('email'),
+								'senha' => md5($this->input->post('senha')),
+								'tipo' => 0,
+							);
+							$insert = $this->aluno_model->aluno_add($data);
 
-					//ENVIAR PARA A PAGINA PERFIL
-					  	$this->db->where('email', $data['email']);
-			           	$this->db->where('senha', $data['senha']);
-			            $query = $this->db->get('alunos');
+							//ENVIAR PARA A PAGINA PERFIL
+							  	$this->db->where('email', $data['email']);
+					           	$this->db->where('senha', $data['senha']);
+					            $query = $this->db->get('alunos');
 
-			            if ($query->num_rows() == 1){
-			                $aluno = $query->row();
-			                $this->session->set_userdata("alunos", $aluno->codAluno);
-			                 $this->session->set_userdata("imgProfessor", null);
-			                $codAluno = $this->aluno_model->get_by_login($email, $senha);
-			                $url = "?codAluno=".$aluno->codAluno;
-			               redirect ("alunos/aluno_perfil/$url");
-			            }
-			//SE O ALUNO QUISER ENVIAR UMA FOTO DE PERFIL
-          	}elseif(!empty($imgAluno['name'])){
-          		 echo "Formulário enviado com sucesso.";
-	           //ENVIANDO IMAGEM PRO BANCO
-          		$ponto = explode(".", $imgAluno['name']);
-	           $config = array(
-	           	'upload_path' => './upload/alunos',
-	             'allowed_types' =>  'gif|jpg|png',//Arrumar essa parte
-	           	'file_name' => md5(time()),
-	           	'max_size' => '3000'
-	           );
+					            if ($query->num_rows() == 1){
+					                $aluno = $query->row();
+					                $this->session->set_userdata("alunos", $aluno->codAluno);
+					                 $this->session->set_userdata("imgProfessor", null);
+					                $codAluno = $this->aluno_model->get_by_login($email, $senha);
+					                $url = "?codAluno=".$aluno->codAluno;
+					               redirect ("alunos/aluno_perfil/$url");
+					            }
+					//SE O ALUNO QUISER ENVIAR UMA FOTO DE PERFIL
+		          	}elseif(!empty($imgAluno['name'])){
+		          		 echo "Formulário enviado com sucesso.";
+			           //ENVIANDO IMAGEM PRO BANCO
+		          		$ponto = explode(".", $imgAluno['name']);
+			           $config = array(
+			           	'upload_path' => './upload/alunos',
+			             'allowed_types' =>  'gif|jpg|png',//Arrumar essa parte
+			           	'file_name' => md5(time()),
+			           	'max_size' => '3000'
+			           );
 
-	           /*
-	           CONFIGURAÇÔES PARA UPLOAD DE IMAGEM
-	           max_width:
-	           max_height:
-	           */
+			           /*
+			           CONFIGURAÇÔES PARA UPLOAD DE IMAGEM
+			           max_width:
+			           max_height:
+			           */
 
-	           $this->load->library('upload');
-	           $this->upload->initialize($config);
+			           $this->load->library('upload');
+			           $this->upload->initialize($config);
 
-	           if ($this->upload->do_upload('imgAluno')){
-        			echo 'Arquivo salvo com sucesso.';
+			           if ($this->upload->do_upload('imgAluno')){
+		        			echo 'Arquivo salvo com sucesso.';
 
-	        		//ENVIAR PARA O BANCO
-		           	$data = array(
-						'nomeAluno' => $this->input->post('nomeAluno'),
-						'dataNasc' => $this->input->post('dataNasc'),
-						'imgAluno' => $config['file_name'].".".$ponto_img,
-						'anoLetivo' => $this->input->post('anoLetivo'),
-						'curso' => $this->input->post('curso'),
-						'email' => $this->input->post('email'),
-						'senha' => md5($this->input->post('senha')),
-						'tipo' => 0,
-					);
-					$insert = $this->aluno_model->aluno_add($data);
+			        		//ENVIAR PARA O BANCO
+				           	$data = array(
+								'nomeAluno' => $this->input->post('nomeAluno'),
+								'dataNasc' => $this->input->post('dataNasc'),
+								'imgAluno' => $config['file_name'].".".$ponto_img,
+								'anoLetivo' => $this->input->post('anoLetivo'),
+								'curso' => $this->input->post('curso'),
+								'email' => $this->input->post('email'),
+								'senha' => md5($this->input->post('senha')),
+								'tipo' => 0,
+							);
+							$insert = $this->aluno_model->aluno_add($data);
 
-					//ENVIAR PARA A PAGINA PERFIL
-					  	$this->db->where('email', $data['email']);
-			           	$this->db->where('senha', $data['senha']);
-			            $query = $this->db->get('alunos');
+							//ENVIAR PARA A PAGINA PERFIL
+							  	$this->db->where('email', $data['email']);
+					           	$this->db->where('senha', $data['senha']);
+					            $query = $this->db->get('alunos');
 
-			            if ($query->num_rows() == 1){
-			                $aluno = $query->row();
-			                $this->session->set_userdata("alunos", $aluno->codAluno);
-			                 $this->session->set_userdata("imgProfessor", $data['imgAluno']);
-			                $codAluno = $this->aluno_model->get_by_login($email, $senha);
-			                $url = "?codAluno=".$aluno->codAluno;
-			               redirect ("alunos/aluno_perfil/$url");
-			            }
+					            if ($query->num_rows() == 1){
+					                $aluno = $query->row();
+					                $this->session->set_userdata("alunos", $aluno->codAluno);
+					                 $this->session->set_userdata("imgProfessor", $data['imgAluno']);
+					                $codAluno = $this->aluno_model->get_by_login($email, $senha);
+					                $url = "?codAluno=".$aluno->codAluno;
+					               redirect ("alunos/aluno_perfil/$url");
+					            }
 
-    			}else{
-         			echo $this->upload->display_errors();
-         		}
-          	}
-	          
+		    			}else{
+		         			echo $this->upload->display_errors();
+		         		}
+		          	}
+			          
+			    }
 	    }
-	     
+	    	 if ($this->form_validation->run() == FALSE) {
+                $this->load->view('aluno_add', $marcador);
+            } 
     }
 
 	public function ajax_edit($codAluno)

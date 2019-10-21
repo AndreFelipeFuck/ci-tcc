@@ -20,7 +20,7 @@
 				    if($email == FALSE){
 				    	?><small style="color:#dc3545"><?php  echo  form_error('email');?></small><?php
 				    }elseif($email == TRUE){
-				    	?><small style="color:#dc3545"><?echo "Esse email já pertence a outro usuário, tente outro";?></small><?php
+				    	?><small style="color:#dc3545"><?php echo "Esse email já pertence a outro usuário, tente outro";?></small><?php
 				    }
 			    }
 			    ?>
@@ -38,6 +38,7 @@
 			 <div class="form-group">
 			    <label for="exampleFormControlInput1">Confirmar Senha</label>
 			    <input type="password" class="form-control" id="exampleFormControlInput1" name="senhaconf">
+			    <small style="color:#dc3545" ><?php  echo  form_error('senhaconf');?></small>
 			 </div>
 			 <div class="form-group">
 			    <label for="exampleFormControlInput2">Data de nascimento</label>
