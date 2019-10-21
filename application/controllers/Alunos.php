@@ -182,6 +182,8 @@ class Alunos extends CI_Controller
 					$this->aluno_model->delete_img($this->input->post('codAluno'));
 					echo json_encode(array("status" => TRUE));
 					unlink($caminho);
+					
+		
 					///
 	        		echo "Formulário enviado com sucesso.";
 		           //ENVIANDO IMAGEM PRO BANCO

@@ -204,12 +204,12 @@
 															</div>	
 															<div style="margin-top: 0.8%;">	
 																<button type="submit" class="btn" id="visu" onclick="comentario_update()">Alterar</button>	
-
+																<a class="btn btn-danger cancelar" id="<?php echo $comentario->codComentario?>" style="color: #fff">Cancelar</a>	
 					 										</div>	
 														</div>	
 													</form>	
-													<button class="btn btn-danger cancelar" id="<?php echo $comentario->codComentario?>">Cancelar</button>	
-
+														
+															
 					 						</div>	
 							<?php endif;		
 
@@ -271,11 +271,11 @@
 															</div>	
 															<div style="margin-top: 0.8%;">	
 																<button type="submit" class="btn" id="visu" onclick="comentario_update()">Alterar</button>	
-
+																<a class="btn btn-danger cancelar" id="<?php echo $comentario->codComentario?>">Cancelar</a>	
 					 										</div>	
 														</div>	
 													</form>	
-													<button class="btn btn-danger cancelar" id="<?php echo $comentario->codComentario?>">Cancelar</button>	
+													
 
 					 						</div>	
 							<?php endif;		
