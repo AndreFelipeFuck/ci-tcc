@@ -1,8 +1,4 @@
-<?php  
-	
-	include "cabeca.php";
-
-?>
+<?php  include "cabeca.php";?>
 <head>
 	<title>Atom | Cadastro de Aluno</title>
 </head>
@@ -88,6 +84,9 @@
 			<div class="form-group">
 			    <label for="exampleFormControlInput1">Envie uma imagem de perfil:</label>
 			    <input type="file" class="form-control-file" id="exampleFormControlInput1" name="imgAluno">
+			<?php if(!empty($erro)):
+				    ?><small style="color:#dc3545" ><?php echo $erro;?></small><?php
+			    endif;?>
 			 </div>
 			<div class="espaco2"></div>
 			<div>

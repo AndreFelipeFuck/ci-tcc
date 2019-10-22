@@ -133,9 +133,10 @@ class Alunos extends CI_Controller
 					               redirect ("alunos/aluno_perfil/$url");
 					            }
 
-		    			}else{
-		         			echo $this->upload->display_errors();
-		         		}
+		    			}else{	
+                        	$erro['erro'] = $this->upload->display_errors();
+                         	$this->load->view('aluno_add', $erro);
+                        }
 		          	}
 			          
 			    }
@@ -198,7 +199,6 @@ class Alunos extends CI_Controller
 					
 		
 					///
-	        		echo "Formulário enviado com sucesso.";
 		           //ENVIANDO IMAGEM PRO BANCO
 		           $config = array(
 		           	'upload_path' => './upload/alunos',
@@ -217,7 +217,6 @@ class Alunos extends CI_Controller
 		           $this->upload->initialize($config);
 
 		           if($this->upload->do_upload('imgAluno')){
-	        			echo 'Arquivo salvo com sucesso.';
 
 		        		//ENVIAR PARA O BANCO
 			           	$data = array(
@@ -272,7 +271,6 @@ class Alunos extends CI_Controller
 
         		//SE O ALUNO QUISER TROCAR A FOTO DE PERFIL
         		}elseif(!empty($imgAluno['name'])){
-        			 echo "Formulário enviado com sucesso.";
         			 //EXCLUIR FOTO ANTIGA DE PERFIL
         			$aluno = $this->aluno_model->get_img($this->input->post('codAluno'));
 					$img = $aluno->imgAluno;	

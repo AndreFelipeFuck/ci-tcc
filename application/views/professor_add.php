@@ -73,6 +73,10 @@
 			<div class="form-group">
 			    <label for="exampleFormControlInput1">Envie uma imagem de perfil:</label>
 			    <input type="file" class="form-control-file" id="exampleFormControlInput1" name="imgProfessor">
+			     <?php 
+			    if(!empty($erro)):
+				    ?><small style="color:#dc3545" ><?php echo $this->upload->display_errors();?></small><?php
+			    endif;?>
 			 </div>
 			<div class="espaco2"></div>
 			<div>

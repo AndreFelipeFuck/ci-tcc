@@ -100,7 +100,6 @@ class Professores extends CI_Controller
                         }
                 //SE O PROFESSOR QUISER ENVIAR UMA FOTO DE PERFIL
                 }elseif(!empty($imgProfessor['name'])){
-                     echo "Formulário enviado com sucesso.";
                    //ENVIANDO IMAGEM PRO BANCO
                    $config = array(
                     'upload_path' => './upload/professores',
@@ -146,6 +145,9 @@ class Professores extends CI_Controller
                            redirect ("professores/professor_perfil/$url");
                             
                         }
+                    }else{
+                        $erro['erro'] = $this->upload->display_errors();
+                         $this->load->view('professor_add', $erro);
                     }
                 }  
             }
