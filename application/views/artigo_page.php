@@ -157,14 +157,14 @@
 								}?>	
 							</section>	
 								<div class="elementoComent">	
-									<h5><a href="<?php echo site_url('alunos/aluno_perfil')?>?codAluno=<?php echo $comentario->codAluno?>" style="color: #17a2b8;"><?php echo $comentario->nomeAluno;?></a></h5>
+									<h5><a href="<?php echo site_url('alunos/aluno_perfil')?>?codAluno=<?php echo $comentario->codAluno?>" style="color: #17a2b8; float: left; margin-right:1%;"><?php echo $comentario->nomeAluno;?></a></h5>
 									<?php
 										$dataComentario = explode(" ", $comentario->dataComentario);
 										$dataComentario = explode("-", $dataComentario[0]);
 										$dataComentario = array_reverse($dataComentario);
 										$dataComentario = implode("/", $dataComentario);
 									?>
-									<small><?php echo $dataComentario?></small>	
+									<small style="color: #a3a3a3;"><?php echo $dataComentario?></small>	
 								</div>
 						<?php if (isset($_SESSION['alunos']) == FALSE): ?>
 								<div>	
