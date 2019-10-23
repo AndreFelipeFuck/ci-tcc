@@ -390,9 +390,9 @@ class Artigos extends CI_Controller
 	                    if ($this->upload->do_upload('uploadArtigo')){
 	                    	$config = array(
 			                'upload_path' => './upload/artigos',
-			                'allowed_types' => 'jpg | png',//Arrumar essa parte
+			                'allowed_types' => 'gif|jpg|png',//Arrumar essa parte
 			                 'file_name' => md5(time()),
-			                 'max_size' => '500');
+			                 'max_size' => '3000');
 	                    	 $this->upload->initialize($config);
 	                    	if ($this->upload->do_upload('imgArtigo')){
 		                    	$data = array(
@@ -420,9 +420,9 @@ class Artigos extends CI_Controller
 	        }else{
 		        $config = array(
 		            'upload_path' => './upload/artigos',
-		            'allowed_types' => 'jpg',//Arrumar essa parte
+		            'allowed_types' => 'gif|jpg|png',//Arrumar essa parte
 		            'file_name' => md5(time()),
-		            'max_size' => '500');
+		            'max_size' => '3000');
 		            $this->load->library('upload');
 		            $this->upload->initialize($config);
 	            if ($this->upload->do_upload('imgArtigo')){
