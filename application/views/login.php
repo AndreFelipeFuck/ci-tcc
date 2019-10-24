@@ -1,7 +1,6 @@
 
 <?php  include "cabeca.php";?>
-<?php if(isset($_SESSION['alunos']) == TRUE or isset($_SESSION['professores']) == TRUE
- ){?>
+<?php if(isset($_SESSION['alunos']) == null and isset($_SESSION['professores']) == null){?>
     <div class="espaco2"></div>
         <section class="logFun">
             <div class="ConteinerLogin"> 
