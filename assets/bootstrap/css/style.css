@@ -687,7 +687,6 @@ textarea {
 .fotoPerfil {
 	max-width: 20%;
 	max-height: 30%;
-	border-radius: 50%;
 	overflow: hidden;
 	position: relative;
 	float: left;

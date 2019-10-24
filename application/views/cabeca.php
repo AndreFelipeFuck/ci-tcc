@@ -83,9 +83,9 @@
                         <?php
                             $imgProfessor = $_SESSION['imgProfessor'];
                             if ($_SESSION['imgProfessor'] == null) {
-                               ?><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>" width="30" style=""><?php
+                               ?><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>" width="30" class="rounded-circle"><?php
                             }else{
-                                ?><img src="<?php echo base_url("upload/professores/$imgProfessor")?>" width="30" style=""><?php
+                                ?><img src="<?php echo base_url("upload/professores/$imgProfessor")?>" width="30" class="rounded-circle"><?php
                             }
                         ?>
                         
@@ -103,9 +103,9 @@
                        <?php
                             $imgAluno = $_SESSION['imgAluno'];
                             if ($_SESSION['imgAluno'] == null) {
-                               ?><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>" width="30" style=""><?php
+                               ?><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>" width="30" class="rounded-circle"><?php
                             }else{
-                                ?><img src="<?php echo base_url("upload/alunos/$imgAluno")?>" width="30" style=""><?php
+                                ?><img src="<?php echo base_url("upload/alunos/$imgAluno")?>" width="30" class="rounded-circle"><?php
                             }
                         ?>
                       </button>

@@ -11,9 +11,9 @@
                 <div class="view overlay">
                 <?php
                     if ($perfil->imgProfessor == null) {
-                       ?><figure class="img-rounded img-responsive"><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>" class="img-fluid" alt="smaple image"></figure><?php
+                       ?><figure class="img-rounded img-responsive"><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>" class=" rounded-circle img-fluid" alt="smaple image"></figure><?php
                     }else{
-                        ?><figure class="img-rounded img-responsive"><img src="<?php echo base_url("upload/professores/$perfil->imgProfessor")?>" class="img-fluid" alt="smaple image"></figure><?php
+                        ?><figure class="img-rounded img-responsive"><img src="<?php echo base_url("upload/professores/$perfil->imgProfessor")?>" class=" rounded-circle img-fluid" alt="smaple image"></figure><?php
                     }
                 ?>
                     <div class="mask flex-center rgba-black-strong">
