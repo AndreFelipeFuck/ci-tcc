@@ -51,26 +51,27 @@
                     <h4><span class="badge badge-secondary" style="background-color:#28a745;">Professor</span></h4>
                 </div>
                   <?php 
-                    $teste = isset($_SESSION['professores']);
-                    if($teste == TRUE):?>
+                  if(!empty($_SESSION['professores'])):
+                    if($_SESSION['professores'] == $_GET['codProfessor']):?>
                         <a href="<?php echo site_url('professores/professor_editar/')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn" style="background-color:#28a745; border-radius: 49%; padding:10px;"><img src="<?php echo base_url('assets/bootstrap/img/config.png')?>" width="30" height="30"></a>
 
                 <!--<a href="<?php echo site_url('professores/artigos_add')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn btn-warning">Novo artigo</a>
 
                 <a href="<?php echo site_url('professores/artigos_view')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn btn-warning">Visualizar Artigos</a>-->
-            <?php endif ?>
-
+                    <?php endif ?>
+                <?php endif; ?>
             </section>
         <div style="width: 90%; border-bottom: solid 2px #28a745; display: inline-block; margin-left: 5%; margin-right: 5%; margin-top: 2%; opacity: 0.3;"></div>
             <br><br>
             <div id="infoAlign">
                 <?php 
-                            $teste = isset($_SESSION['professores']);
-                            if($teste == TRUE):?>
+                    if(!empty($_SESSION['professores'])):
+                            if($_SESSION['professores'] == $_GET['codProfessor']):?>
                                 <a href="<?php echo site_url('professores/artigos_add')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn" style="background-color: #28a745; color: #fff;">Novo artigo</a>
 
                                  <a href="<?php echo site_url('professores/artigos_view')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn" style="background-color: #28a745; color: #fff;">Visualizar Artigos</a>
-                            <?php endif ?>
+                    <?php endif;?>
+                <?php endif; ?>
                 </div>
                 <br><br>
     <?php foreach($artigos as $artigo):?>

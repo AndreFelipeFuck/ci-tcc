@@ -20,6 +20,8 @@
     	<script src="<?php echo base_url('assets/datatables/js/jquery.dataTables.min.js')?>"></script>
         <script src="<?php echo base_url('assets/datatables/js/dataTables.bootstrap.js')?>"></script>
            <script src="<?php echo base_url('assets/bootstrap/js/pagination.js')?>"></script>
+           <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
+		    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
     <!-- ==============================================================-->
   
    

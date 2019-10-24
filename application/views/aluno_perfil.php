@@ -43,22 +43,23 @@
                 <div id="infoAlign">
                     <h4><span class="badge badge-secondary" style="background-color:#17a2b8;">Aluno</span></h4>
                     <?php 
-                    $teste = isset($_SESSION['alunos']);
-                    if($teste == TRUE):?>
-                        <a href="<?php echo site_url('alunos/aluno_editar/')?>?codAluno=<?php echo $perfil->codAluno;?>" class="btn" style=" background-color:#17a2b8; border-radius: 49%; padding:10px;"><img src="<?php echo base_url('assets/bootstrap/img/config.png')?>" width="30" height="30"></a>
-                    <?php endif ?>
-                    
+                    if(!empty($_SESSION['alunos'])):
+                        if($_SESSION['alunos'] == $_GET['codAluno']):?>
+                            <a href="<?php echo site_url('alunos/aluno_editar/')?>?codAluno=<?php echo $perfil->codAluno;?>" class="btn" style=" background-color:#17a2b8; border-radius: 49%; padding:10px;"><img src="<?php echo base_url('assets/bootstrap/img/config.png')?>" width="30" height="30"></a>
+                        <?php endif; ?>
+                    <?php endif; ?>
 
                 </div>
             </section>
         <div style="width: 90%; border-bottom: solid 2px #17a2b8; display: inline-block; margin-left: 5%; margin-right: 5%; margin-top: 2%; opacity: 0.3;"></div><br><br>
                 <div id="infoAlign">
                        <?php 
-                            $teste = isset($_SESSION['alunos']);
-                            if($teste == TRUE):?>
-                                <a href="<?php echo site_url('alunos/artigos_add')?>?codAluno=<?php echo $perfil->codAluno;?>" class="btn" style="background-color: #17a2b8; color: #fff;">Novo artigo</a>
-                                <a href="<?php echo site_url('alunos/artigos_view')?>?codAluno=<?php echo $perfil->codAluno;?>" class="btn" style="background-color: #17a2b8; color: #fff;">Visualizar Artigos</a>
-                            <?php endif ?>
+                        if(!empty($_SESSION['alunos'])):
+                                if($_SESSION['alunos'] == $_GET['codAluno']):?>
+                                    <a href="<?php echo site_url('alunos/artigos_add')?>?codAluno=<?php echo $perfil->codAluno;?>" class="btn" style="background-color: #17a2b8; color: #fff;">Novo artigo</a>
+                                    <a href="<?php echo site_url('alunos/artigos_view')?>?codAluno=<?php echo $perfil->codAluno;?>" class="btn" style="background-color: #17a2b8; color: #fff;">Visualizar Artigos</a>
+                            <?php endif; ?>
+                        <?php endif; ?>
                 </div>
                 <br><br>
     <?php foreach($artigos as $artigo):?>

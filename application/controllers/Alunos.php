@@ -161,6 +161,16 @@ class Alunos extends CI_Controller
 			$ponto_img = $ponto_img[1];
 		//
 
+		 //VERIFICA EMAIL
+			$marcador['email'] = $this->aluno_model->check_email($this->input->post('email'));
+			if($marcador['email'] == $this->input->post('email')){
+				$this->form_validation->set_rules('email', 'E-mail', 'required|valid_email', array('required' => 'O campo E-mail é obrigatorio.'));
+			}elseif($marcador['email'] == FALSE){
+
+			}
+		 
+	 	//
+
 		//SE O ALUNO NÂO TROCAR A SENHA
 		if ($vereficaSenha == null) {
 			$this->load->library('form_validation');

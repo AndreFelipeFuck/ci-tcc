@@ -137,6 +137,12 @@
 					</form>	
 
 		<?php endif ?>	
+
+		<?php if(!isset($professor) and !isset($aluno)):?>
+			<h4>Para poder comentar é preciso ter uma conta no Atom</h4>
+			<a href="<?php echo site_url('home/opiCad')?>" class="btn btn-outline-info my-2 my-sm-0">Cadastre-se</a>
+        	<a href="<?php echo site_url('home/login_home')?>" class="btn btn-outline-info my-2 my-sm-0"> Entrar</a>
+		<?php endif ?>
 		</div>	
 
  	<?php endif ?>	
