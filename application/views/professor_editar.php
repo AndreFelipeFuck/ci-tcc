@@ -10,9 +10,9 @@
 				<h1 style="font-size: 35px; border-bottom: solid 2px #28a745; margin-bottom: 2%; padding-bottom: 1%;">Editar Perfil:</h1>
 				<?php
 	                if ($perfil->imgProfessor == null) {
-	                    ?><div class="fotoPerfil"><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>"></div><?php
+	                    ?><div class="fotoPerfil"><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>" class="rounded-circle"></div><?php
 	                }else{
-	                    ?><div class="fotoPerfil"><img src="<?php echo base_url("upload/professores/$perfil->imgProfessor")?>"></div><?php
+	                    ?><div class="fotoPerfil"><img src="<?php echo base_url("upload/professores/$perfil->imgProfessor")?>" class="rounded-circle"></div><?php
 	                 }
 	            ?>
 	            <div style="height: 12%;"></div>
