@@ -86,13 +86,13 @@
 
  					<?php if ($aluno->imgAluno == null){?>	
 							<div>	
-								<figure><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>" class="img-fluid" alt="smaple image"></figure>	
+								<figure class="img-rounded img-responsive"><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>" class="rounded-circle img-fluid" alt="smaple image"></figure>	
 							</div>	
 						<?php }else{?>	
 							<div>	
-								?><figure class="img-rounded img-responsive"><img src="<?php echo base_url("upload/alunos/$aluno->imgAluno")?>"></figure>	
-							</div><?php	
-							}?>	
+								<figure class="img-rounded img-responsive"><img src="<?php echo base_url("upload/alunos/$aluno->imgAluno")?>" class="rounded-circle img-fluid" alt="smaple image"></figure>	
+							</div>
+							<?php            	}?>	
 					</section>	
 					<div class="elementoComent">	
 						<h5><?php echo $aluno->nomeAluno ?></h5>	
@@ -120,7 +120,7 @@
 								</div>	
 							<?php }else{?>	
 								<div>	
-									?><figure class="img-rounded img-responsive"><img src="<?php echo base_url("upload/professores/$professor->imgProfessor")?>"></figure>	
+									?><figure class="img-rounded img-responsive"><img src="<?php echo base_url("upload/professores/$professor->imgProfessor")?>" class="rounded-circle img-fluid" alt="smaple image"></figure>	
 								</div><?php	
 								}?>	
 						</section>	
@@ -158,7 +158,7 @@
 								</div>	
 							<?php }else{?>	
 								<div>	
-								?><figure class="img-rounded img-responsive"><img src="<?php echo base_url("upload/alunos/$comentario->imgAluno")?>"></figure>	
+								<figure class="img-rounded img-responsive"><img src="<?php echo base_url("upload/alunos/$comentario->imgAluno")?>"></figure>	
 								</div><?php	
 								}?>	
 							</section>	
