@@ -139,9 +139,11 @@
 		<?php endif ?>	
 
 		<?php if(!isset($professor) and !isset($aluno)):?>
+		<div style="text-align: center; border-bottom: solid 2px rgba(23,164, 184, 0.3); padding-bottom: 3%;">
 			<h4>Para poder comentar é preciso ter uma conta no Atom</h4>
 			<a href="<?php echo site_url('home/opiCad')?>" class="btn btn-outline-info my-2 my-sm-0">Cadastre-se</a>
         	<a href="<?php echo site_url('home/login_home')?>" class="btn btn-outline-info my-2 my-sm-0"> Entrar</a>
+        </div>
 		<?php endif ?>
 		</div>	
 
