@@ -1,5 +1,5 @@
 <?php include 'cabeca.php';?>
-<?php if($_SESSION['alunos'] == $_GET['codAluno']):?>
+<?php if($_SESSION['alunos'] == $_GET['codAluno']){?>
        
         <div class="espaco2"></div>
             <div class="conteinerArtConfig" id="sombra">   

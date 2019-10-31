@@ -14,9 +14,9 @@
 	);
 
 	// Mostra os valores
-	 // echo '<pre>';
-	 // print_r($comentarios_professor); 
-	 // echo '</pre>';
+	  //echo '<pre>';
+	  //print_r($todosComentarios); 
+	  //echo '</pre>';
 
 
 	?>
@@ -28,7 +28,13 @@
 		</div>
 		<div class="publicacao">
 			<label>Postado em:</label>
-			<label id="hora"> <?php echo $perfil->dataArtigo?></label>
+			<?php
+				$dataArtigo = explode(" ", $perfil->dataArtigo);
+				$dataArtigo = explode("-", $dataArtigo[0]);
+				$dataArtigo = array_reverse($dataArtigo);
+				$dataArtigo = implode("/", $dataArtigo);
+			?>
+			<label id="hora"> <?php echo $dataArtigo?></label>
 		</div>
 	<?php
           if ($perfil->imgArtigo == null){?>
@@ -172,7 +178,7 @@
 									?>
 									<small style="color: #a3a3a3;"><?php echo $dataComentario?></small>	
 								</div>
-						<?php if (isset($_SESSION['alunos']) == FALSE): ?>
+						<?php if (isset($_SESSION['alunos']) != $comentario->codAluno): ?>
 								<div>	
 									<section style="height: 10%; max-height: 20%; border: solid 1px rgba(68, 120, 132, .2); padding: 1.5%; border-radius: 3px;" placeholder="Deixe um comentario..." class="elementoComent"><h6><?php echo $comentario->comentario ?></h6></section>	
 								</div>	
@@ -242,10 +248,10 @@
 										$dataComentario = array_reverse($dataComentario);
 										$dataComentario = implode("/", $dataComentario);
 									?>
-									<small><?php echo $dataComentario?></small>
+									<small style="color: #a3a3a3;"><?php echo $dataComentario?></small>	
 								</div>	
 
-						<?php if (isset($_SESSION['professores']) == FALSE):?>
+						<?php if (isset($_SESSION['professores']) != $comentario->codProfessor):?>
 								<div>	
 									<section style="height: 10%; max-height: 20%; border: solid 1px rgba(68, 120, 132, .2); padding: 1.5%; border-radius: 3px;" placeholder="Deixe um comentario..." class="elementoComent"><h6><?php echo $comentario->comentario ?></h6></section>	
 								</div>	
@@ -277,7 +283,7 @@
 															</div>	
 															<div style="margin-top: 0.8%;">	
 																<button type="submit" class="btn" id="visu" onclick="comentario_update()">Alterar</button>	
-																<a class="btn btn-danger cancelar" id="<?php echo $comentario->codComentario?>">Cancelar</a>	
+																<a class="btn btn-danger cancelar" id="<?php echo $comentario->codComentario?>" style="color: #fff;">Cancelar</a>	
 					 										</div>	
 														</div>	
 													</form>	

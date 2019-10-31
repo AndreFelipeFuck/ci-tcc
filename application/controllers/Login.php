@@ -17,7 +17,6 @@ class Login extends CI_Controller
                  $this->load->model('professor_model');
         }
     public function entrar(){
-       
         // $tipo = $this->input->post("tipo");
         $senha = md5($this->input->post("senha"));
         $nomeCompleto = $this->input->post('nomeCompleto');

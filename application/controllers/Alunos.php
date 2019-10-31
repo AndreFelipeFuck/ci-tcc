@@ -42,7 +42,7 @@ class Alunos extends CI_Controller
 		//VALIDAR FORMULARIO
 		$this->load->library('form_validation');
 
-    	$this->form_validation->set_rules('nomeAluno', 'Nome Completo', 'min_length[3]|max_length[20]', array('required' => 'O campo Nome Completo é obrigatorio.'));	
+    	$this->form_validation->set_rules('nomeAluno', 'Nome Completo', 'min_length[3]|max_length[50]', array('required' => 'O campo Nome Completo é obrigatorio.'));	
      	$this->form_validation->set_rules('senha', 'Senha', 'min_length[8]', array('required' => 'Você deve preencher a %s.'));
      	$this->form_validation->set_rules('senhaconf', 'Confirmar Senha', 'matches[senha]', array('required' => 'O campo Confirmar senha é obrigatorio'));
     	 if ($marcador['email'] == TRUE) {
@@ -77,7 +77,7 @@ class Alunos extends CI_Controller
 					            if ($query->num_rows() == 1){
 					                $aluno = $query->row();
 					                $this->session->set_userdata("alunos", $aluno->codAluno);
-					                 $this->session->set_userdata("imgProfessor", null);
+					                 $this->session->set_userdata("imgAluno", null);
 					                $codAluno = $this->aluno_model->get_by_login($email, $senha);
 					                $url = "?codAluno=".$aluno->codAluno;
 					               redirect ("alunos/aluno_perfil/$url");
@@ -127,7 +127,7 @@ class Alunos extends CI_Controller
 					            if ($query->num_rows() == 1){
 					                $aluno = $query->row();
 					                $this->session->set_userdata("alunos", $aluno->codAluno);
-					                 $this->session->set_userdata("imgProfessor", $data['imgAluno']);
+					                 $this->session->set_userdata("imgAluno", $data['imgAluno']);
 					                $codAluno = $this->aluno_model->get_by_login($email, $senha);
 					                $url = "?codAluno=".$aluno->codAluno;
 					               redirect ("alunos/aluno_perfil/$url");
