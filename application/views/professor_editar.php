@@ -8,7 +8,7 @@
 			<form method="post" action="<?php echo site_url('professores/professor_update_perfil')?>" enctype = "multipart/form-data">
 				<input type="hidden" value="<?= $perfil->codProfessor?>" name="codProfessor"/>
 				<h1 style="font-size: 35px; border-bottom: solid 2px #28a745; margin-bottom: 2%; padding-bottom: 1%;">Editar Perfil:</h1>
-                    <div class="fotoPerfilEdit ">
+                    <div class="fotoPerfilEdit">
         				<?php
         	                if ($perfil->imgProfessor == null) {
         	                    ?><figure class="img-rounded img-responsive"><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>" class="rounded-circle img-fluid" alt="smaple image"></figure><?php
@@ -19,9 +19,15 @@
                     </div>
                 <div style="width: 90%; border-bottom: solid 2px #28a745; display: inline-block; margin-left: 5%; margin-right: 5%; margin-top: 2%; opacity: 0.3;"></div>
 				<div class="form-group">
-				    <label for="exampleFormControlInput1">Alterar imagem:</label>
-				    <input type="file" class="form-control-file" id="exampleFormControlInput1" name="imgProfessor">
+                    <div class="espaco2"></div>
+    				    <label for="exampleFormControlInput1">Alterar imagem:</label>
+    				    <input type="file" class="form-control-file" id="exampleFormControlInput1" name="imgProfessor">
+                        <br>
+                        <button class="btn btn-danger" id="perigo" onclick="delete_img(<?php echo $perfil->codProfessor;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir Imagem</button> 
+
 				 </div>
+                <div style="width: 90%; border-bottom: solid 2px #28a745; display: inline-block; margin-left: 5%; margin-right: 5%; margin-top: 2%; opacity: 0.3;"></div>
+                <div class="espaco2"></div>
 				<div class="form-group">
 				    <label for="exampleFormControlInput1">Alterar Nome:</label>
 				    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ex: Josef Oliveira" name="nomeProfessor" value="<?= $perfil->nomeProfessor?>">
@@ -43,7 +49,7 @@
 				    <label for="exampleFormControlInput1">Alterar Data:</label>
 				    <input type="date" class="form-control" id="exampleFormControlInput2" name="dataNasc" value="<?= $perfil->dataNasc?>">
 				 </div>
-                <div style="width: 90%; border-bottom: solid 2px #28a745; display: inline-block; margin-left: 5%; margin-right: 5%; margin-top: 2%; opacity: 0.3;""></div>
+                <div style="width: 90%; border-bottom: solid 2px #28a745; display: inline-block; margin-left: 5%; margin-right: 5%; margin-top: 2%; opacity: 0.3;"></div>
                 <div class="espaco2"></div>
                 <div class="form-group">
                     <label for="Escl-Mat">Alterar Matéria:</label>
@@ -83,11 +89,7 @@
 			<div id="contZA-info">
 				<div>
 					<button class="btn btn-danger" id="perigo" onclick="delete_professor(<?php echo $perfil->codProfessor;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir Perfil</button>
-				</div>
-                <br>
-                <div>
-                   <button class="btn btn-danger" id="perigo" onclick="delete_img(<?php echo $perfil->codProfessor;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir Imagem de Perfil</button> 
-                </div>
+				</div>   
 			</div>
 			<div id="contZA-img" align="center">
 				<figure><img src="<?php echo base_url('assets/bootstrap/img/cuidado.png')?>" width="120" height="120"></figure>
