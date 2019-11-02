@@ -16,10 +16,14 @@
 			            ?>
 		        	</div>
 		           	<div style="width: 90%; border-bottom: solid 2px #17a2b8; display: inline-block; margin-left: 5%; margin-right: 5%; margin-top: 2%; opacity: 0.3;"></div>
+		           	<div class="espaco2"></div>
 					<div class="form-group">
 					    <label for="exampleFormControlInput1">Alterar imagem:</label>
 					    <input type="file" class="form-control-file" id="exampleFormControlInput1" name="imgAluno" value="">
-					 </div>
+					    <br>
+						<button class="btn" id="perigo" onclick="delete_img(<?php echo $perfil->codAluno;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir Imagem</button>
+					</div>
+					<div style="width: 90%; border-bottom: solid 2px #17a2b8; display: inline-block; margin-left: 5%; margin-right: 5%; margin-top: 2%; opacity: 0.3;"></div>
 					 <div class="espaco2"></div>
 					<div class="form-group">
 					    <label for="exampleFormControlInput1">Alterar Nome:</label>
@@ -42,7 +46,7 @@
 					    <label for="exampleFormControlInput1">Alterar Data:</label>
 					    <input type="date" class="form-control" id="exampleFormControlInput2" name="dataNasc" value="<?= $perfil->dataNasc ?>">
 					 </div>
-					 <div style="width: 90%; border-bottom: solid 2px #17a2b8; display: inline-block; margin-left: 5%; margin-right: 5%; margin-top: 2%; opacity: 0.3;""></div>
+					 <div style="width: 90%; border-bottom: solid 2px #17a2b8; display: inline-block; margin-left: 5%; margin-right: 5%; margin-top: 2%; opacity: 0.3;"></div>
 					 <div class="espaco2"></div>
 						 <span>Alterar Curso:</span>
 						 <br>
@@ -157,10 +161,6 @@
 				<div id="contZA-info">
 					<div>
 						<button class="btn" id="perigo" onclick="delete_aluno(<?php echo $perfil->codAluno;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir Perfil</button>
-					</div>
-					<br>
-					<div>
-						<button class="btn" id="perigo" onclick="delete_img(<?php echo $perfil->codAluno;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir Imagem de Perfil</button>
 					</div>
 				</div>
 				<div id="contZA-img" align="center">

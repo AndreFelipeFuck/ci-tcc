@@ -1,7 +1,6 @@
 body{
-	
+	background-image: url('/ci_tcc/assets/bootstrap/css/fundo.jpg');
 }
-
 .imglogo{
 	width: 80px;
 	height: 80px;
@@ -40,7 +39,7 @@ body{
 
 .regis{
 	margin-right: 5px;
-	color: #6c757d;
+	color: #17a2b8;
 }
 
 #regis a:hover{
@@ -688,16 +687,31 @@ textarea {
 .fotoPerfil {
 	max-width: 20%;
 	max-height: 30%;
-	border-radius: 50%;
 	overflow: hidden;
 	position: relative;
 	float: left;
+
 }
+
+.fotoPerfilEdit{
+	max-width: 100%;
+	max-height: 100%;
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+}
+
+.fotoPerfilEdit img{
+	background-color: #BCBBBB;
+ 	height: 46%;
+ 	width: 50%;
+}
+
 
 .fotoPerfil img{
 	background-color: #BCBBBB;
  	width: 100%;
- 	max-height: 30%;
+ 	height: 100%;
 }
 
 .fotoPerfilComent {
@@ -714,7 +728,6 @@ textarea {
 	background-color: #BCBBBB;
  	width: 100%;
  	height: 100%;
- 	max-height: 25%;
 }
 
 .elementoComent{
