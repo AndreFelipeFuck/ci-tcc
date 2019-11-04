@@ -43,10 +43,14 @@
 					            <figure>
 									<img src="<?php echo base_url("upload/artigos/$perfil->imgArtigo")?>" style="width: 100%; border-radius: 3px;">
 								</figure>
+						<div class="espaco2"></div>
 								<div class="form-group">
 									<label for="exampleFormControlFile1">Selecione outra imagem:</label>
 						    	<input type="file" name="imgArtigo" class="form-control-file" id="exampleFormControlFile1">
+								<br>
+									<a class="btn" id="perigo" style="color:#fff;" onclick="delete_img(<?php echo $perfil->codArtigo;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir imagem do artigo</a>
 								</div>
+
 						<?php }?>
 						</div>
 						<div style="width: 90%; border-bottom: solid 2px #17a2b8; display: inline-block; margin-left: 5%; margin-right: 5%; margin-top: 2%; opacity: 0.3;"></div>
@@ -68,9 +72,6 @@
 					 	</div>
 						 <div>
 						 <div class="form-group">
-						   
-						 </div>
-						 <div class="form-group">
 						 <?php if ($perfil->imgArtigo == null):?>
 					          	<div class="form-group">
 									<label for="exampleFormControlFile1">Escolha uma imagem:</label>
@@ -82,7 +83,7 @@
 						 <?php if ($perfil->uploadArtigo == null):?>
 							 	<label style="padding-left: 1%; border-left: solid 5px  #17a2b8;">PDF</label>
 							 	<div>
-							 		<label for="exampleFormControlFile1">Alterar pdf:</label>
+							 		<label for="exampleFormControlFile1">Incluir pdf:</label>
 						    		<input type="file" class="form-control-file" id="exampleFormControlFile1" name="uploadArtigo">
 							 	</div>
 						<?php endif ?>
@@ -92,9 +93,13 @@
 							 	<div>
 							 		<label for="exampleFormControlFile1">Alterar pdf:</label>
 						    		<input type="file" class="form-control-file" id="exampleFormControlFile1" name="uploadArtigo">
+						    		<br>
+						    		<a class="btn" id="perigo"  onclick="delete_pdf(<?php echo $perfil->codArtigo;?>)"><i class="glyphicon glyphicon-remove" style="color: #fff"></i>Excluir o pdf</a>
 							 	</div>
 						<?php endif ?>
 						</div>
+						<div style="width: 90%; border-bottom: solid 2px #17a2b8; display: inline-block; margin-left: 5%; margin-right: 5%; margin-top: 2%; opacity: 0.3;"></div>
+						<div class="espaco2"></div>
 						 <div class="form-group">
 						 	<label for="Escl-Mat">Alterar Matéria:</label>
 						  	   	<select class="form-control" id="Escl-Mat" style="width: 20%;" name="disciplina_codDisciplina">
@@ -121,12 +126,6 @@
 						<button type="submit" class="btn" id="Cancelar" value="cancelarArt">Cancelar</button>
 					</form>
 					<div class="espaco2"></div>
-						<div>
-							<h5 style="border-bottom: solid 2px #e44747; margin-bottom: 2%; padding-bottom: 1%;">Configurações de Exclusão</h5>
-							<button class="btn" id="perigo"  onclick="delete_img(<?php echo $perfil->codArtigo;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir imagem do artigo</button>
-							<button class="btn" id="perigo"  onclick="delete_pdf(<?php echo $perfil->codArtigo;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir o pdf</button>
-							<p style="color: #878585; margin-top: 1%;">Atenção! Suas alterações aqui são sem volta.</p>
-						</div>
 				</div>
 			</form>
 		</div>
