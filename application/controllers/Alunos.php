@@ -175,7 +175,7 @@ class Alunos extends CI_Controller
 		if ($vereficaSenha == null) {
 			$this->load->library('form_validation');
 
-			$this->form_validation->set_rules('nomeAluno', 'Nome Completo', 'required|min_length[3]|max_length[20]', array('required' => 'O campo Nome Completo é obrigatorio.'));
+			$this->form_validation->set_rules('nomeAluno', 'Nome Completo', 'required|min_length[3]|max_length[50]', array('required' => 'O campo Nome Completo é obrigatorio.'));
     		$this->form_validation->set_rules('email', 'E-mail', 'required|valid_email', array('required' => 'O campo E-mail é obrigatorio.'));
 
     		if ($this->form_validation->run() == FALSE) {

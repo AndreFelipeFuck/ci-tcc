@@ -9,7 +9,7 @@
 
 	         if( $a ->dataComentario == $b ->dataComentario ) return 0;
 
-	         return ( ( $a  ->dataComentario > $b  ->dataComentario ) ? -1 : 1 );
+	         return ( ( $a  ->dataComentario < $b  ->dataComentario ) ? -1 : 1 );
 	     }
 	);
 
@@ -180,7 +180,7 @@
 									?>
 									<small style="color: #a3a3a3;"><?php echo $dataComentario?></small>	
 								</div>
-						<?php if (isset($_SESSION['alunos']) != $comentario->codAluno): ?>
+						<?php if (isset($_SESSION['alunos']) == FALSE): ?>
 								<div>	
 									<section style="height: 10%; max-height: 20%; border: solid 1px rgba(68, 120, 132, .2); padding: 1.5%; border-radius: 3px;" placeholder="Deixe um comentario..." class="elementoComent"><h6><?php echo $comentario->comentario ?></h6></section>	
 								</div>	
@@ -188,6 +188,11 @@
 						<?php endif?>
 								
 						<?php if (isset($_SESSION['alunos']) == TRUE):	
+								if ($comentario->codAluno != $_SESSION['alunos']):?>
+									<div>	
+										<section style="height: 10%; max-height: 20%; border: solid 1px rgba(68, 120, 132, .2); padding: 1.5%; border-radius: 3px;" placeholder="Deixe um comentario..." class="elementoComent"><h6><?php echo $comentario->comentario ?></h6></section>	
+									</div>	
+								<?php endif;
 								if($comentario->codAluno == $_SESSION['alunos']):?>	
 											<div class="conteudo" id="<?php echo "comentario".$comentario->codComentario?>">
 													

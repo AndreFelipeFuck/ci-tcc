@@ -1,5 +1,9 @@
 <?php  include "cabeca.php";
 //print_r($_SESSION);
+$dataNasc = explode(" ", $perfil->dataNasc);
+$dataNasc = explode("-", $dataNasc[0]);
+$dataNasc = array_reverse($dataNasc);
+$dataNasc = implode("/", $dataNasc);
 ?>
 <head>
     <title>Atom | <?php echo $perfil->nomeProfessor;?></title>
@@ -31,7 +35,7 @@
                 </div>
                 <div id="infoAlign">
                     <label style="padding-left: 1%; border-left: solid 3px #28a745;">Data de Nascimento:</label>
-                    <h6><?php echo $perfil->dataNasc;?></h6>
+                    <h6><?php echo $dataNasc;?></h6>
                 </div>
                 <div id="infoAlign">
                     <label style="padding-left: 1%; border-left: solid 3px #28a745;">Leciona na disciplina:</label>

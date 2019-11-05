@@ -48,7 +48,7 @@
 									<label for="exampleFormControlFile1">Selecione outra imagem:</label>
 						    	<input type="file" name="imgArtigo" class="form-control-file" id="exampleFormControlFile1">
 								<br>
-									<a class="btn" id="perigo" style="color:#fff;" onclick="delete_img(<?php echo $perfil->codArtigo;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir imagem do artigo</a>
+									<a class="btn" id="perigo" onclick="delete_img(<?php echo $perfil->codArtigo;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir imagem do artigo</a>
 								</div>
 
 						<?php }?>
@@ -92,7 +92,7 @@
 							 	<label style="padding-left: 1%; border-left: solid 5px  #17a2b8;">PDF</label>
 							 	<div>
 							 		<label for="exampleFormControlFile1">Alterar pdf:</label>
-						    		<input type="file" class="form-control-file" id="exampleFormControlFile1" name="uploadArtigo">
+						    		<input type="file" class="form-control-file" id="exampleFormControlFile1" name="uploadArtigo" value ="<?= $perfil->uploadArtigo?>">
 						    		<br>
 						    		<a class="btn" id="perigo"  onclick="delete_pdf(<?php echo $perfil->codArtigo;?>)"><i class="glyphicon glyphicon-remove" style="color: #fff"></i>Excluir o pdf</a>
 							 	</div>

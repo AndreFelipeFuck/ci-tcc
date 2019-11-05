@@ -44,8 +44,7 @@ class Comentarios extends CI_Controller
 	 public function comentario_update()
 	{
 		$data = array(
-			'comentario' => $this->input->post("comentario"),
-		 	'dataComentario' => date("Y-m-d H:i:s", time())	
+			'comentario' => $this->input->post("comentario"),	
 			);
 		$this->comentarios_model->comentario_update(array('codComentario' => $this->input->post('codComentario')), $data);
 
