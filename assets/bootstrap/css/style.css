@@ -265,8 +265,8 @@ body{
 
 #btn-ex4:hover {
 	color: #fff;
-    background-color: #5d3011;
-    border-color: #5d3011;
+    background-color: #F2975A;
+    border-color: #F2975A;
 }
 
 #btn-ex5{
@@ -291,8 +291,8 @@ body{
 
 #btn-ex6:hover {
 	color: #fff;
-    background-color: #173f5f;
-    border-color: #173f5f;
+    background-color: #356BB0;
+    border-color: #356BB0;
 }
 
 #btn-ex7{
@@ -343,8 +343,8 @@ body{
 
 #btn-ex10:hover {
 	color: #fff;
-    background-color: #763c7d;
-    border-color: #763c7d;
+    background-color: #AC65BE;
+    border-color: #AC65BE;
 }
 
 #btn-ex11{
@@ -465,7 +465,7 @@ textarea {
 	margin: 0 auto;
 	position: relative;
 	padding: 2%;
-	width: 70%;
+	width: 60%;
 	border-radius: 2px;
 }
 
@@ -717,7 +717,7 @@ textarea {
 .fotoPerfilComent {
 	max-width: 10%;
 	max-height: 13%;
-	border-radius: 50%;
+	
 	overflow: hidden;
 	position: relative;
 	display: inline-block;
@@ -837,7 +837,7 @@ textarea {
 }
 
 .conteinerComent{
-	width: 70%;
+	width: 60%;
 	background-color: #fff;
 	margin: 0 auto;
 	padding: 2%;
