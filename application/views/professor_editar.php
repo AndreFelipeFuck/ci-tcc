@@ -22,8 +22,11 @@
                     <div class="espaco2"></div>
     				    <label for="exampleFormControlInput1">Alterar imagem:</label>
     				    <input type="file" class="form-control-file" id="exampleFormControlInput1" name="imgProfessor">
-                        <br>
+                       
+                    <?php if ($perfil->imgProfessor != null):?>
+                         <br>
                         <button class="btn btn-danger" id="perigo" onclick="delete_img(<?php echo $perfil->codProfessor;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir Imagem</button> 
+                    <?php endif ?>
 
 				 </div>
                 <div style="width: 90%; border-bottom: solid 2px #28a745; display: inline-block; margin-left: 5%; margin-right: 5%; margin-top: 2%; opacity: 0.3;"></div>

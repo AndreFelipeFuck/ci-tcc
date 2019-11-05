@@ -12,7 +12,8 @@
 			<div class="conteinerCadArt" id="sombra">
 				<form  action="<?php echo site_url('artigos/artigo_add')?>" method="post" enctype = "multipart/form-data">
 					<input type="hidden" value="<?= $perfil->codProfessor?>" name="professores_codProfessor"/>
-					<input type="hidden" value="0" name="alunos_codAluno"/>
+					<input type="hidden" value="<?= $perfil->codProfessor?>" name="professores_codProfessor"/>
+					<input type="hidden" value="<?= $perfil->codDisciplina?>" name="disciplina_codDisciplina"/>
 					<h1 style="font-size: 35px; border-bottom: solid 2px #17a2b8; margin-bottom: 2%; padding-bottom: 1%;">Cadastro de Artigo:</h1>
 					<div class="form-group">
 					    <label for="exampleFormControlInput">Titulo do Artigo</label>
@@ -44,7 +45,7 @@
 					    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="uploadArtigo">
 					  </div>
 					 </div>
-					 <div class="form-group">
+					 <!-- <div class="form-group">
 					 	<label for="Escl-Mat">Matérias:</label>
 					  	<select class="form-control" id="Escl-Mat" style="width: 12%;" name="disciplina_codDisciplina" required>
 					    	<option value="1">Biologia</option>
@@ -63,7 +64,7 @@
 					 		<option value="13">Informatica</option>
 					 		<option value="14">Química(tec)</option>
 					  	</select>
-					</div>
+					</div> -->
 					
 					<div class="espaco2"></div> <br>
 					<button type="submit" class="btn" id="bot-verde" value="confirmaArt">Confirmar</button>

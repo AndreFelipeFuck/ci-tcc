@@ -20,8 +20,11 @@
 					<div class="form-group">
 					    <label for="exampleFormControlInput1">Alterar imagem:</label>
 					    <input type="file" class="form-control-file" id="exampleFormControlInput1" name="imgAluno" value="">
-					    <br>
+					    
+					   <?php if ($perfil->imgAluno != null):?>
+					   	<br>
 						<button class="btn" id="perigo" onclick="delete_img(<?php echo $perfil->codAluno;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir Imagem</button>
+					<?php endif ?>
 					</div>
 					<div style="width: 90%; border-bottom: solid 2px #17a2b8; display: inline-block; margin-left: 5%; margin-right: 5%; margin-top: 2%; opacity: 0.3;"></div>
 					 <div class="espaco2"></div>
