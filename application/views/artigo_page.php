@@ -122,7 +122,7 @@
 
 	 					<?php if ($professor->imgProfessor == null){?>	
 								<div>	
-									<figure><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>" class="img-fluid" alt="smaple image"></figure>	
+									<figure><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>" class="rounded-circle img-fluid" alt="smaple image"></figure>	
 								</div>	
 							<?php }else{?>	
 								<div>	
@@ -162,11 +162,11 @@
 						<section class="fotoPerfilComent">	
 							<?php if ($comentario->imgAluno == null) {?>	
 								<div>	
-									<figure><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>" class="img-fluid" alt="smaple image"></figure>	
+									<figure><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>" class="rounded-circle img-fluid" alt="smaple image"></figure>	
 								</div>	
 							<?php }else{?>	
 								<div>	
-								<figure class="img-rounded img-responsive"><img src="<?php echo base_url("upload/alunos/$comentario->imgAluno")?>"></figure>	
+								<figure class="img-rounded img-responsive"><img src="<?php echo base_url("upload/alunos/$comentario->imgAluno")?>" class="rounded-circle img-fluid" alt="smaple image"></figure>	
 								</div><?php	
 								}?>	
 							</section>	
@@ -199,7 +199,7 @@
 													<section style="height: 10%; max-height: 20%; border: solid 1px rgba(68, 120, 132, .2); padding: 1.5%; border-radius: 3px;" placeholder="Deixe um comentario..." class="elementoComent"><h6><?php echo $comentario->comentario ?></h6></section>	
 															<!-- <button class="btn btn-success editar" id="<?php echo $comentario->codComentario?>"><i class="glyphicon glyphicon-pencil"></i>Editar</button>	
 							            					<button class="btn" id="perigo"  onclick="delete_comentario(<?php echo $comentario->codComentario;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir</button> -->	
-							            			<div class="dropdown" style="float: right; display: inline; margin-right: 9.8%;" id="dropdown">
+							            			<div class="dropdown" style="float: right; display: inline; margin-right: 8.8%;" id="dropdown">
 								                      <button type="button" id="dropdownMenu2" class="btn dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								                        <img src="<?php echo base_url('assets/bootstrap/img/dot.png')?>" width="12" height="20">
 								                      </button>
@@ -239,11 +239,11 @@
 						<section class="fotoPerfilComent">	
 							<?php if ($comentario->imgProfessor == null) {?>	
 								<div>	
-									<figure><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>" class="img-fluid" alt="smaple image"></figure>	
+									<figure><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>" class="rounded-circle img-fluid" alt="smaple image"></figure>	
 								</div>	
 							<?php }else{?>	
 								<div>	
-								<figure class="img-rounded img-responsive"><img src="<?php echo base_url("upload/professores/$comentario->imgProfessor")?>"></figure>	
+								<figure class="img-rounded img-responsive"><img src="<?php echo base_url("upload/professores/$comentario->imgProfessor")?>" class="rounded-circle img-fluid" alt="smaple image"></figure>	
 								</div><?php	
 								}?>	
 						</section>	
@@ -268,7 +268,7 @@
 								if($comentario->codProfessor == $_SESSION['professores']):?>
 											<div class="conteudo" id="<?php echo "comentario".$comentario->codComentario?>">
 												<section style="height: 10%; max-height: 20%; border: solid 1px rgba(68, 120, 132, .2); padding: 1.5%; border-radius: 3px;" placeholder="Deixe um comentario..." class="elementoComent"><h6><?php echo $comentario->comentario ?></h6></section>
-							            			<div class="dropdown" style="float: right; display: inline; margin-right: 9.8%;" id="dropdown">
+							            			<div class="dropdown" style="float: right; display: inline; margin-right: 8.8%;" id="dropdown">
 								                      <button type="button" id="dropdownMenu2" class="btn dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								                        <img src="<?php echo base_url('assets/bootstrap/img/dot.png')?>" width="12" height="20">
 								                      </button>
