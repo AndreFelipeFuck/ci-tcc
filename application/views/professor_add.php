@@ -69,6 +69,7 @@
 			<div>
 			<textarea class="curriculo" placeholder="Conte-nos mais sobre sua formação..." name="miniCurriculo" value="<?php echo set_value('miniCurriculo');?>"></textarea>
 			</div>
+			<small style="color:#dc3545"><?php  echo  form_error('miniCurriculo');?></small>
 			<div class="espaco2"></div>
 			<div class="form-group">
 			    <label for="exampleFormControlInput1">Envie uma imagem de perfil:</label>

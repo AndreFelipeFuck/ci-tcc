@@ -55,6 +55,7 @@ class Professores extends CI_Controller
         $this->form_validation->set_rules('nomeProfessor', 'Nome Completo', 'required|min_length[3]|max_length[20]', array('required' => 'O campo Nome Completo é obrigatorio.'));
         $this->form_validation->set_rules('senha', 'Senha', 'required|min_length[8]', array('required' => 'Você deve preencher a %s.'));
         $this->form_validation->set_rules('senhaconf', 'Confirmar Senha', 'required|matches[senha]', array('required' => 'O campo Confirmar senha é obrigatorio'));
+        $this->form_validation->set_rules('miniCurriculo', 'Mini Curriculo', 'required|max_length[240]');
         //VERIFICA SE O EMAIL È IGAUL
         if ($marcador['email'] == TRUE) {
             if ($this->form_validation->run() == TRUE) {
