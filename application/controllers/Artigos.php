@@ -463,12 +463,20 @@ class Artigos extends CI_Controller
 
 	public function artigo_delete($codArtigo)
 	{
-		$artigo = $this->artigos_model->get_img($codArtigo);
-		if (isset($artigo->imgArtigo)) {
-			$img = $artigo->imgArtigo;	
+		$artigo_img = $this->artigos_model->get_img($codArtigo);
+		$artigo_pdf = $this->artigos_model->get_pdf($codArtigo);
+		if (isset($artigo_img->imgArtigo)) {
+			$img = $artigo_img->imgArtigo;	
 			$caminho = "upload/artigos/$img";
 			unlink($caminho);
 		}
+
+		if (isset($artigo_pdf->uploadArtigo)) {
+			$pdf = $artigo_pdf->uploadArtigo;
+			$caminho = "upload/pdf/$pdf";
+			unlink($caminho);
+		}
+		$this->comentarios_model->delete_all_artigos($codArtigo);
 		$this->artigos_model->delete_by_id($codArtigo);
 		echo json_encode(array("status" => TRUE));
 	}

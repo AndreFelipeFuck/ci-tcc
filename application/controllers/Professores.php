@@ -15,8 +15,9 @@ class Professores extends CI_Controller
         $this->load->helper('url');
         $this->load->library('session');
         $this->load->model('professor_model');
-         $this->load->model('artigos_model');
-          $this->load->model('professores_has_disciplinas_model');
+        $this->load->model('artigos_model');
+        $this->load->model('professores_has_disciplinas_model');
+        $this->load->model('comentarios_model');
 
         /*$professor = $this->session->userdata("professores");
         if (empty($professor)) {
@@ -339,6 +340,7 @@ class Professores extends CI_Controller
     public function professor_delete($codProfessor)
     {
         $this->professores_has_disciplinas_model->delete_by_id($codProfessor);
+        $this->comentarios_model->delete_all_professor($codProfessor);
         $this->artigos_model->delete_all_professor($codProfessor);
         $this->professor_model->delete_by_id($codProfessor);
         echo json_encode(array("status" => TRUE));

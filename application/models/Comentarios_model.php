@@ -48,9 +48,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $this->db->where('codComentario', $codComentario);
             $this->db->delete($this->table);
         }
+
+        public function delete_all_artigos($artigo_codArtigo){
+            $this->db->where('artigo_codArtigo', $artigo_codArtigo);
+            $this->db->delete($this->table);
+        }
+
         public function delete_all_aluno($com_alunos_codAluno)
         {
             $this->db->where('com_alunos_codAluno', $com_alunos_codAluno);
+            $this->db->delete($this->table);
+        }
+
+        public function delete_all_professor($com_professores_codProfessor)
+        {
+            $this->db->where('com_professores_codProfessor', $com_professores_codProfessor);
             $this->db->delete($this->table);
         }
     }
