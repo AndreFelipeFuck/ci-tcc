@@ -16,7 +16,7 @@ $dataNasc = implode("/", $dataNasc);
                     if ($perfil->imgAluno == null) {
                        ?><figure class="img-rounded rounded-circle img-responsive"><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>" class=" rounded-circle img-fluid" alt="smaple image"></figure><?php
                     }else{
-                        ?><figure class="img-rounded img-responsive"><img src="<?php echo base_url("upload/alunos/$perfil->imgAluno")?>" class=" rounded-circle img-fluid" alt="smaple image"></figure><?php
+                        ?><figure class="img-rounded img-responsive"><img src="<?php echo base_url("upload/alunos/$perfil->imgAluno")?>" class="rounded-circle img-fluid" alt="smaple image"></figure><?php
                     }
                 ?>
                     <div class="mask flex-center rgba-black-strong">
