@@ -1,6 +1,6 @@
 <?php  include "cabeca.php";
 //print_r($_SESSION);
-print_r($perfil);
+//print_r($perfil);
 $dataNasc = explode(" ", $perfil->dataNasc);
 $dataNasc = explode("-", $dataNasc[0]);
 $dataNasc = array_reverse($dataNasc);
@@ -63,7 +63,7 @@ $dataNasc = implode("/", $dataNasc);
                     <?php if($perfil->admin == 1):?>
                          <a href="<?php echo site_url('professores/professor_admin/')?>?codProfessor=<?php echo $perfil->codProfessor;?>&codDisciplina=<?php echo $perfil->codDisciplina;?>" class="btn" style="background-color:red; border-radius: 49%; padding:10px;"><img src="<?php echo base_url('assets/bootstrap/img/config.png')?>" width="30" height="30"></a>
 
-                         <a href="<?php echo site_url('professores/professor_admin/')?>?codProfessor=<?php echo $perfil->codProfessor;?>&nomeDisciplina=<?php echo $perfil->nomeDisciplina;?>" class="btn" style="background-color:yellow; border-radius: 49%; padding:10px;"><img src="<?php echo base_url('assets/bootstrap/img/config.png')?>" width="30" height="30"></a>
+                         <a href="<?php echo site_url('professores/professor_admin_artigos/')?>?codProfessor=<?php echo $perfil->codProfessor;?>&codDisciplina=<?php echo $perfil->codDisciplina;?>" class="btn" style="background-color:yellow; border-radius: 49%; padding:10px;"><img src="<?php echo base_url('assets/bootstrap/img/config.png')?>" width="30" height="30"></a>
 
                      <?php endif?>
                 <?php endif; ?>

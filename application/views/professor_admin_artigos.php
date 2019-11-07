@@ -1,32 +1,66 @@
 <?php include 'cabeca.php';?>
 <?php 
+    $artigos = array_merge($artigos_aluno, $artigos_professor);
+
+      usort($artigos,
+
+         function( $a, $b ) {
+
+             if( $a ->dataArtigo == $b ->dataArtigo ) return 0;
+
+             return ( ( $a->dataArtigo > $b->dataArtigo ) ? -1 : 1 );
+         }
+    );
+  //print_r($artigos);
   $teste = isset($_SESSION['professores']);
   if($teste == TRUE){
 ?>
-<div class="container">
-    <br><br><br/><br/>
+<dir class="espaco2"></dir>
+<div class="conteinerTelaAdmin" id="sombra">
     <table id="" class="table table-striped table-bordered" >
 
         <thead>
         <tr>
+            <th>Imagem</th>
+            <th>Nome</th> 
+            <th>Usuário</th>
+            <th>Resumo</th>
+            <th>Ação</th>
 
-            <th>Nome</th>
-            <th>Email</th>
-            <th>Excluir</th>
         </tr>
         </thead>
         <tbody>
 
-        <?php foreach($professores as $professor){?>
-            <?php if($_SESSION['professores'] != $professor->codProfessor):?>
+        <?php foreach($artigos as $artigo){?>
                 <tr>
-                    <td><a href="<?php echo site_url('professores/professor_perfil/')?>?codProfessor=<?php echo $professor->codProfessor;?>"><?php echo $professor->nomeProfessor;?></a></td>
-                    <td><?php echo $professor->email;?></td>
+                    <td>    
+                        <?php
+                                if($artigo->imgArtigo == null){?>
+                                    <img src="<?php echo base_url('assets/bootstrap/img/crisp.jpg')?>"  class="imgAd">
+                            <?php
+                                }else{?>
+                                    <img src="<?php echo base_url("upload/artigos/$artigo->imgArtigo")?>" class="imgAd">
+                          <?php }?>
+                    </td>
+                    <td><?php echo $artigo->titulo ?></td>
                     <td>
-                        <button class="btn btn-danger" onclick="delete_professor(<?php echo $professor->codProfessor;?>)"><i class="glyphicon glyphicon-remove"></i>EXCLUIR</button>
+                         <?php if (isset($artigo->alunos_codAluno) == TRUE): ?>
+                 
+                               <h4 id="nomeAutor2"><a href="<?php echo site_url('alunos/aluno_perfil')?>?codAluno=<?php echo $artigo->alunos_codAluno?>" style="color: #17a2b8;"><?php echo $artigo->nomeAluno;?></a></h4>
+                        
+                         <?php endif ?>
+
+                        <?php if (isset($artigo->professores_codProfessor) == TRUE):?>
+                         
+                           <h4 id="nomeAutor2"><a href="<?php echo site_url('professores/professor_perfil')?>?codProfessor=<?php echo $artigo->professores_codProfessor?>" style="color: #28a745;"><?php echo $artigo->nomeProfessor;?></a></h4>
+                            
+                        <?php endif ?>
+                    </td>
+                    <td><?php echo $artigo->resumo?></td>
+                    <td>
+                        <button class="btn btn-danger" onclick="delete_artigo(<?php echo $artigo->codArtigo;?>)"><i class="glyphicon glyphicon-remove"></i>EXCLUIR</button>
                     </td>
                 </tr>
-            <?php endif?>
         <?php }?>
 
     </table>
@@ -44,75 +78,14 @@
     } );
     var save_method; //for save method string
     var table;
-    function add_professor()
+    
+    function delete_artigo(codArtigo)
     {
-        save_method = 'add';
-        $('#form')[0].reset(); // reset form on modals
-        $('#modal_form').modal('show'); // show bootstrap modal
-        //$('.modal-title').text('Add Person'); // Set Title to Bootstrap modal title
-    }
-    function edit_professor(codProfessor)
-    {
-        save_method = 'update';
-        $('#form')[0].reset(); // reset form on modals
-        //Ajax Load data from ajax
-        $.ajax({
-            url : "<?php echo site_url('professores/ajax_edit')?>/" + codProfessor,
-            type: "GET",
-            dataType: "JSON",
-            success: function(data)
-            {
-                $('[name="codProfessor"]').val(data.codProfessor);
-                $('[name="nomeProfessor"]').val(data.nomeProfessor);
-                $('[name="email"]').val(data.email);
-                $('[name="senha"]').val(data.senha);
-
-
-                $('#modal_form').modal('show'); // show bootstrap modal when complete
-                loaded
-                $('.modal-title').text('Editar Professor'); // Set title to Bootstrap modal
-                title
-            },
-            error: function (jqXHR, textStatus, errorThrown)
-            {
-                alert('Erro no ajax');
-            }
-        });
-    }
-    function save()
-    {
-        var url;
-        if(save_method == 'add')
-        {
-            url = "<?php echo site_url('professores/professor_add')?>";
-        }else{
-            url = "<?php echo site_url('professores/professor_update')?>";
-        }
-        // ajax adding data to database
-        $.ajax({
-            url : url,
-            type: "POST",
-            data: $('#form').serialize(),
-            dataType: "JSON",
-            success: function(data)
-            {
-                //if success close modal and reload ajax table
-                $('#modal_form').modal('hide');
-                location.reload();// for reload a page
-            },
-            error: function (jqXHR, textStatus, errorThrown)
-            {
-                alert('Error adding / update data');
-            }
-        });
-    }
-    function delete_professor(codProfessor)
-    {
-        if(confirm('Voce quer deletar o professor?'))
+        if(confirm('Voce quer deletar este artigo?'))
         {
             // ajax delete data from database
             $.ajax({
-                url : "<?php echo site_url('professores/professor_delete')?>/" + codProfessor,
+                url : "<?php echo site_url('artigos/artigo_delete')?>/" + codArtigo,
                 type: "POST",
                 dataType: "JSON",
                 success: function(data)
@@ -127,57 +100,3 @@
         }
     }
 </script>
-<div class="modal fade" id="modal_form" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Professor Form</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-
-                        label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
-            <div class="modal-body form">
-                <form action="#" id="form" class="form-horizontal">
-                    <input type="hidden" value="" name="codProfessor"/>
-                    <div class="form-body">
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Nome</label>
-                            <div class="col-md-9">
-
-                                <input name="nomeProfessor" placeholder="Book ISBN" class="form-
-    control" type="text">
-
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">email</label>
-                            <div class="col-md-9">
-
-                                <input name="email" placeholder="Book_title" class="form-
-    control" type="text">
-
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">senha</label>
-                            <div class="col-md-9">
-
-                                <input name="senha" placeholder="Book Author" class="form-control" type="password">
-                            </div>
-                        </div>
-
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-
-                <button type="button" id="btnSave" onclick="save()" class="btn btn-
-                        primary">Save</button>
-
-                <button type="button" class="btn btn-danger" data-
-                        dismiss="modal">Cancel</button>
-
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<!-- End Bootstrap modal -->

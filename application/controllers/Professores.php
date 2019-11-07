@@ -368,7 +368,8 @@ class Professores extends CI_Controller
         $codProfessor = $this->input->get('codProfessor');
         $codDisciplina = $this->input->get('codDisciplina');
         $professor['admin'] = $this->professor_model->get_by_id($codProfessor);
-        $professor['artigos'] = $this->disciplina_model->listar_artigos($codDisciplina);
+        $professor['artigos_aluno'] = $this->disciplina_model->listar_artigos($codDisciplina);
+        $professor['artigos_professor'] = $this->disciplina_model->listar_artigos_professor($codDisciplina);
         $this->load->view('professor_admin_artigos', $professor);
     }
 

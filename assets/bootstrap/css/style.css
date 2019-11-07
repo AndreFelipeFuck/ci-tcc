@@ -94,6 +94,15 @@ body, html{
 	padding: 2%;
 }
 
+.imgAd{
+	display: inline;
+	float: left;
+	margin: 1%;
+	width: 25%;
+	height: 22%;
+	border-radius: 5px;
+}
+
 .vidCont{
 	width: 100%;
 	display: inline-block;
@@ -474,6 +483,14 @@ textarea {
 	position: relative;
 	padding: 2%;
 	width: 60%;
+	border-radius: 2px;
+}
+.conteinerTelaAdmin{
+	background-color: #fff;
+	margin: 0 auto;
+	position: relative;
+	padding: 2%;
+	width: 80%;
 	border-radius: 2px;
 }
 

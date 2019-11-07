@@ -3,8 +3,9 @@
   $teste = isset($_SESSION['professores']);
   if($teste == TRUE){
 ?>
-<div class="container">
-    <br><br><br/><br/>
+<div class="espaco2"></div>
+<div class="conteinerTelaAdmin" id="sombra">
+
     <table id="" class="table table-striped table-bordered" >
 
         <thead>
@@ -29,8 +30,10 @@
             <?php endif?>
         <?php }?>
 
+        </tbody>    
     </table>
 </div>
+
 <?php }else{?>
 
         <meta http-equiv="refresh" content="0;url=<?php echo site_url('')?>" />
