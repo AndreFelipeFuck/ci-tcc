@@ -34,7 +34,7 @@
         <meta charset="utf-8">
  
 </head>
-<body style=";">
+<body class="bdg">
 		<nav class="navbar navbar-expand-lg navbar-light sticky-top" id="sombra2">
 		  <a class="navbar-brand" href="<?php echo site_url('')?>"><img src="<?php echo base_url('assets/bootstrap/img/logo.png')?>" class="imglogo"></a>
 		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
