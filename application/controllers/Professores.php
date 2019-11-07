@@ -17,6 +17,7 @@ class Professores extends CI_Controller
         $this->load->model('professor_model');
         $this->load->model('artigos_model');
         $this->load->model('professores_has_disciplinas_model');
+         $this->load->model('disciplina_model');
         $this->load->model('comentarios_model');
 
         /*$professor = $this->session->userdata("professores");
@@ -27,13 +28,7 @@ class Professores extends CI_Controller
     }
     public function index()
     {
-        $professor = $this->session->userdata("professores");
-        if (empty($professor)) {
-            redirect("home/login_home");
-        }
-
-        $data['professores'] = $this->professor_model->get_all_professor();
-        $this->load->view('professor_view', $data);
+    
     }
 
     
@@ -359,6 +354,22 @@ class Professores extends CI_Controller
         $codProfessor = $this->input->get('codProfessor');
         $professor['perfil'] = $this->professor_model->get_by_id($codProfessor);
         $this->load->view('professor_editar', $professor);
+    }
+
+    public function professor_admin(){
+        $codProfessor = $this->input->get('codProfessor');
+        $codDisciplina = $this->input->get('codDisciplina');
+        $professor['admin'] = $this->professor_model->get_by_id($codProfessor);
+        $professor['professores'] = $this->professor_model->get_all_professor($codDisciplina);
+        $this->load->view('professor_view', $professor);
+    }
+
+    public function professor_admin_artigos(){
+        $codProfessor = $this->input->get('codProfessor');
+        $codDisciplina = $this->input->get('codDisciplina');
+        $professor['admin'] = $this->professor_model->get_by_id($codProfessor);
+        $professor['artigos'] = $this->disciplina_model->listar_artigos($codDisciplina);
+        $this->load->view('professor_admin_artigos', $professor);
     }
 
     public function artigos_add(){

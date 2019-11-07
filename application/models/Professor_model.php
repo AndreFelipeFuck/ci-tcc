@@ -14,29 +14,21 @@ class Professor_model extends CI_Model
         $this->load->database();
     }
 
-    ///////////////////////////////////////////CRUD////////////////////////////////////////
-
-    public function get_all_professor()
+    public function get_all_professor($codDisciplina)
     {
-        $this->db->from('professores');
+        $this->db->from('professores, professores_has_disciplinas, disciplinas');
+        $this->db->where("professores_codProfessor = codProfessor and disciplina_codDisciplina = codDisciplina and codDisciplina = '$codDisciplina'");
         $query=$this->db->get();
         return $query->result();
     }
 
     public function get_by_id($codProfessor)
     {
-        $this->db->select('codProfessor`, imgProfessor, email, miniCurriculo, instituicao, dataNasc, senha, nomeProfessor, nomeDisciplina, codDisciplina')->from('professores_has_disciplinas, disciplinas, professores')->where("professores_codProfessor = codProfessor and disciplina_codDisciplina = codDisciplina and codProfessor ='$codProfessor'");
+        $this->db->select('codProfessor`, imgProfessor, email, miniCurriculo, instituicao, dataNasc, senha, nomeProfessor, nomeDisciplina, codDisciplina, admin, codDisciplina')->from('professores_has_disciplinas, disciplinas, professores')->where("professores_codProfessor = codProfessor and disciplina_codDisciplina = codDisciplina and codProfessor ='$codProfessor'");
         $this->db->where('codProfessor',$codProfessor);
         $query = $this->db->get();
         return $query->row();
     }
-
-    /*public function get_by_id($codProfessor)
-    {
-       $this->db->select('codProfessor, codArtigo ,imgProfessor, nomeCompleto, miniCurriculo, email, institucao, dataNasc, titulo, imgArtigo')->from('artigos ,professores')->where("codProfessor = '$codProfessor' and professores_codProfessor = codProfessor");
-            $query = $this->db->get();
-            return $query->row();
-    }*/
 
     public function professor_add($data)
     {

@@ -1,5 +1,6 @@
 <?php  include "cabeca.php";
 //print_r($_SESSION);
+print_r($perfil);
 $dataNasc = explode(" ", $perfil->dataNasc);
 $dataNasc = explode("-", $dataNasc[0]);
 $dataNasc = array_reverse($dataNasc);
@@ -58,11 +59,13 @@ $dataNasc = implode("/", $dataNasc);
                   if(!empty($_SESSION['professores'])):
                     if($_SESSION['professores'] == $_GET['codProfessor']):?>
                         <a href="<?php echo site_url('professores/professor_editar/')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn" style="background-color:#28a745; border-radius: 49%; padding:10px;"><img src="<?php echo base_url('assets/bootstrap/img/config.png')?>" width="30" height="30"></a>
-
-                <!--<a href="<?php echo site_url('professores/artigos_add')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn btn-warning">Novo artigo</a>
-
-                <a href="<?php echo site_url('professores/artigos_view')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn btn-warning">Visualizar Artigos</a>-->
                     <?php endif ?>
+                    <?php if($perfil->admin == 1):?>
+                         <a href="<?php echo site_url('professores/professor_admin/')?>?codProfessor=<?php echo $perfil->codProfessor;?>&codDisciplina=<?php echo $perfil->codDisciplina;?>" class="btn" style="background-color:red; border-radius: 49%; padding:10px;"><img src="<?php echo base_url('assets/bootstrap/img/config.png')?>" width="30" height="30"></a>
+
+                         <a href="<?php echo site_url('professores/professor_admin/')?>?codProfessor=<?php echo $perfil->codProfessor;?>&nomeDisciplina=<?php echo $perfil->nomeDisciplina;?>" class="btn" style="background-color:yellow; border-radius: 49%; padding:10px;"><img src="<?php echo base_url('assets/bootstrap/img/config.png')?>" width="30" height="30"></a>
+
+                     <?php endif?>
                 <?php endif; ?>
             </section>
         <div style="width: 90%; border-bottom: solid 2px #28a745; display: inline-block; margin-left: 5%; margin-right: 5%; margin-top: 2%; opacity: 0.3;"></div>

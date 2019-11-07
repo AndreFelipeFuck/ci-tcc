@@ -1,4 +1,8 @@
 <?php include 'cabeca.php';?>
+<?php 
+  $teste = isset($_SESSION['professores']);
+  if($teste == TRUE){
+?>
 <div class="container">
     <br><br><br/><br/>
     <table id="" class="table table-striped table-bordered" >
@@ -6,38 +10,33 @@
         <thead>
         <tr>
 
-            <th>NOME</th>
-            <th>EMAIL</th>
-            <th>INTITUIÇÃO</th>
-            <th>AÇÃO</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Excluir</th>
         </tr>
         </thead>
         <tbody>
 
         <?php foreach($professores as $professor){?>
-            <tr>
-                <td><?php echo $professor->nomeProfessor;?></td>
-                <td><?php echo $professor->email;?></td>
-                <td><?php echo $professor->institucao;?></td>
-                <td>
-                    <button class="btn btn-success" onclick="edit_professor(<?php echo $professor->codProfessor;?>)"><i class="glyphicon glyphicon-pencil"></i>EDITAR</button>
-
-                    <button class="btn btn-danger" onclick="delete_professor(<?php echo $professor->codProfessor;?>)"><i class="glyphicon glyphicon-remove"></i>EXCLUIR</button>
-
-                    <a href="<?php echo site_url('professores/professor_perfil/')?>?codProfessor=<?php echo $professor->codProfessor;?>" class="btn btn-warning">SAIBA MAIS</a>
-
-                </td>
-            </tr>
+            <?php if($_SESSION['professores'] != $professor->codProfessor):?>
+                <tr>
+                    <td><a href="<?php echo site_url('professores/professor_perfil/')?>?codProfessor=<?php echo $professor->codProfessor;?>"><?php echo $professor->nomeProfessor;?></a></td>
+                    <td><?php echo $professor->email;?></td>
+                    <td>
+                        <button class="btn btn-danger" onclick="delete_professor(<?php echo $professor->codProfessor;?>)"><i class="glyphicon glyphicon-remove"></i>EXCLUIR</button>
+                    </td>
+                </tr>
+            <?php endif?>
         <?php }?>
 
     </table>
 </div>
+<?php }else{?>
 
-<script src="<?php echo base_url('assets/jquery/jquery-3.1.0.min.js')?>"></script>
+        <meta http-equiv="refresh" content="0;url=<?php echo site_url('')?>" />
+<?php } ?>
+<?php include "rodape.php"; ?>
 
-<script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js')?>"></script>
-<script src="<?php echo base_url('assets/datatables/js/jquery.dataTables.min.js')?>"></script>
-<script src="<?php echo base_url('assets/datatables/js/dataTables.bootstrap.js')?>"></script>
 
 <script>
     $(document).ready( function () {
