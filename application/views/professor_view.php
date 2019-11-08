@@ -1,11 +1,15 @@
 <?php include 'cabeca.php';?>
+<?php print_r($admin);?>
+<?php if ($admin->admin == 1) {
+    ?><meta http-equiv="refresh" content="0;url=<?php echo site_url('')?>" /><?php
+}?>
 <?php 
   $teste = isset($_SESSION['professores']);
   if($teste == TRUE){
 ?>
 <div class="espaco2"></div>
 <div class="conteinerTelaAdmin" id="sombra">
-
+     <h1 style="font-size: 35px; border-bottom: solid 2px #17a2b8; margin-bottom: 2%; padding-bottom: 1%;">Professores de <?php echo $admin->nomeDisciplina?> </h1>
     <table id="" class="table table-striped table-bordered" >
 
         <thead>

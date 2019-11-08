@@ -25,7 +25,7 @@
                        
                     <?php if ($perfil->imgProfessor != null):?>
                          <br>
-                        <button class="btn btn-danger" id="perigo" onclick="delete_img(<?php echo $perfil->codProfessor;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir Imagem</button> 
+                        <a class="btn btn-danger" id="perigo" onclick="delete_img(<?php echo $perfil->codProfessor;?>)"><i class="glyphicon glyphicon-remove" style="color: #fff"></i>Excluir Imagem</a> 
                     <?php endif ?>
 
 				 </div>
@@ -57,7 +57,6 @@
                 <div class="form-group">
                     <label for="Escl-Mat">Alterar Matéria:</label>
                     <select class="form-control" id="Escl-Mat" style="width: 20%;" name="disciplina_codDisciplina" required>
-                        <option value="16" <?=($perfil->nomeDisciplina == 'Nenhuma')?'selected':''?>>Nenhuma</option>
                         <option value="1" <?=($perfil->nomeDisciplina == 'Biologia')?'selected':''?>>Biologia</option>
                         <option value="2" <?=($perfil->nomeDisciplina == 'Física')?'selected':''?>>Física</option>
                         <option value="3">Química</option>

@@ -265,6 +265,12 @@
 						<?php endif ?>
 								
 						<?php if (isset($_SESSION['professores']) == TRUE):	
+								if ($comentario->codProfessor != $_SESSION['professores']):?>
+									<div>	
+										<section style="height: 10%; max-height: 20%; border: solid 1px rgba(68, 120, 132, .2); padding: 1.5%; border-radius: 3px;" placeholder="Deixe um comentario..." class="elementoComent"><h6><?php echo $comentario->comentario ?></h6></section>	
+									</div>	
+								<?php endif;
+
 								if($comentario->codProfessor == $_SESSION['professores']):?>
 											<div class="conteudo" id="<?php echo "comentario".$comentario->codComentario?>">
 												<section style="height: 10%; max-height: 20%; border: solid 1px rgba(68, 120, 132, .2); padding: 1.5%; border-radius: 3px;" placeholder="Deixe um comentario..." class="elementoComent"><h6><?php echo $comentario->comentario ?></h6></section>

@@ -17,14 +17,16 @@
 ?>
 <dir class="espaco2"></dir>
 <div class="conteinerTelaAdmin" id="sombra">
+    <h1 style="font-size: 35px; border-bottom: solid 2px #17a2b8; margin-bottom: 2%; padding-bottom: 1%;">Tela de admin</h1>
     <table id="" class="table table-striped table-bordered" >
 
         <thead>
         <tr>
             <th>Imagem</th>
             <th>Nome</th> 
-            <th>Usuário</th>
             <th>Resumo</th>
+            <th>Data do Artigo</th>
+            <th>Usuário</th>
             <th>Ação</th>
 
         </tr>
@@ -43,6 +45,8 @@
                           <?php }?>
                     </td>
                     <td><?php echo $artigo->titulo ?></td>
+                    <td><?php echo $artigo->resumo?></td>
+                    <td><?php echo $artigo->dataArtigo?></td>
                     <td>
                          <?php if (isset($artigo->alunos_codAluno) == TRUE): ?>
                  
@@ -56,7 +60,6 @@
                             
                         <?php endif ?>
                     </td>
-                    <td><?php echo $artigo->resumo?></td>
                     <td>
                         <button class="btn btn-danger" onclick="delete_artigo(<?php echo $artigo->codArtigo;?>)"><i class="glyphicon glyphicon-remove"></i>EXCLUIR</button>
                     </td>
