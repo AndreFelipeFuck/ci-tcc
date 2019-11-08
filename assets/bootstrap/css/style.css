@@ -1,13 +1,11 @@
 body, html{
-	height: 100%;
+	
 	
 }
 
 .bdg{
-	background-image: url('/ci_tcc/assets/bootstrap/img/fundo.jpg');
-	height: 100%;
+	background-image: url('/ci_tcc/assets/bootstrap/img/fundo_tcc.png');
 	background-repeat: repeat;
-  	background-size: cover;
 }
 
 .imglogo{
