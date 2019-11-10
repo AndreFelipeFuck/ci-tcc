@@ -96,9 +96,12 @@ body, html{
 	display: inline;
 	float: left;
 	margin: 1%;
-	width: 25%;
 	height: 22%;
 	border-radius: 5px;
+}
+
+.imgAd img{
+	
 }
 
 .vidCont{

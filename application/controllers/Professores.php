@@ -232,8 +232,6 @@ class Professores extends CI_Controller
                         );
                         $this->professor_model->professor_update(array('codProfessor' => $this->input->post('codProfessor')), $data);
                         $this->session->set_userdata('imgProfessor', $data['imgProfessor']);
-
-                        ////
                         $data_prof_disc = array(
                             'professores_codProfessor' => $this->input->post('codProfessor'),
                             'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina')
@@ -340,6 +338,15 @@ class Professores extends CI_Controller
         $this->professor_model->delete_by_id($codProfessor);
         echo json_encode(array("status" => TRUE));
         $this->session->set_userdata('professores');
+    }
+
+    public function professor_delete_admin($codProfessor)
+    {
+        $this->professores_has_disciplinas_model->delete_by_id($codProfessor);
+        $this->comentarios_model->delete_all_professor($codProfessor);
+        $this->artigos_model->delete_all_professor($codProfessor);
+        $this->professor_model->delete_by_id($codProfessor);
+        echo json_encode(array("status" => TRUE));
     }
 
     public function professor_perfil(){

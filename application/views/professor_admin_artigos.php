@@ -11,7 +11,10 @@
              return ( ( $a->dataArtigo > $b->dataArtigo ) ? -1 : 1 );
          }
     );
-  //print_r($artigos);
+  print_r($artigos);
+if ($admin->admin != 1) {
+    ?><meta http-equiv="refresh" content="0;url=<?php echo site_url('')?>" /><?php
+}
   $teste = isset($_SESSION['professores']);
   if($teste == TRUE){
 ?>

@@ -60,12 +60,12 @@ class Artigos extends CI_Controller
 		//DANDO NOME AO ARQUIVO PDF
 			$titulo_pdf = explode(" ", $this->input->post('titulo'));
 			$titulo_pdf = implode("_", $titulo_pdf);
-			$titulo_pdf = $titulo_pdf."_".date("Y-m-d");
+			$titulo_pdf = $titulo_pdf."_".date("Y-m-d H:i:s");
 		//
 			$ponto_img = explode(".", $imgArtigo['name']);
 			$ponto_img = $ponto_img[1];
 		//
-
+		//SEM IMAGEM
 		if($imgArtigo['name'] == null){
 			if ($pdfArtigo['name'] != null) {
 					$config_pdf = array(
@@ -86,7 +86,7 @@ class Artigos extends CI_Controller
 							'professores_codProfessor' => $this->input->post('professores_codProfessor'),
 							'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina'),
 							'resumo' => $this->input->post('resumo'),
-							'dataArtigo' => date("Y-m-d"),
+							'dataArtigo' => date("Y-m-d H:i:s"),
 							'uploadArtigo' => $config_pdf['file_name'],
 						);
 
@@ -97,7 +97,7 @@ class Artigos extends CI_Controller
 								'alunos_codAluno' => $this->input->post('alunos_codAluno'),
 								'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina'),
 								'resumo' => $this->input->post('resumo'),
-								'dataArtigo' => date("Y-m-d"),
+								'dataArtigo' => date("Y-m-d H:i:s"),
 								'uploadArtigo' => $config_pdf['file_name'],
 						);
 					}
@@ -106,8 +106,9 @@ class Artigos extends CI_Controller
 
 					$titulo = $this->db->where('titulo', $data['titulo']);
 		           	$corpo = $this->db->where('corpo', $data['corpo']);
+		           	$dataArtigo = $this->db->where('dataArtigo', $data['dataArtigo']);
 		            $query = $this->db->get('artigos');
-					$codArtigo = $this->artigos_model->get_by_login($titulo, $corpo);
+					$codArtigo = $this->artigos_model->get_by_login($titulo, $corpo ,$dataArtigo);
 				    //Defenindo a disciplina do artigo	
 		            if ($query->num_rows() == 1){
 		                $artigo = $query->row();
@@ -129,7 +130,7 @@ class Artigos extends CI_Controller
 							'professores_codProfessor' => $this->input->post('professores_codProfessor'),
 							'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina'),
 							'resumo' => $this->input->post('resumo'),
-							'dataArtigo' => date("Y-m-d"),
+							'dataArtigo' => date("Y-m-d H:i:s"),
 						);
 
 					}if ($this->input->post('professores_codProfessor') == 0) {
@@ -139,7 +140,7 @@ class Artigos extends CI_Controller
 								'alunos_codAluno' => $this->input->post('alunos_codAluno'),
 								'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina'),
 								'resumo' => $this->input->post('resumo'),
-								'dataArtigo' => date("Y-m-d"),
+								'dataArtigo' => date("Y-m-d H:i:s"),
 						);
 					}
 
@@ -147,8 +148,9 @@ class Artigos extends CI_Controller
 
 					$titulo = $this->db->where('titulo', $data['titulo']);
 		           	$corpo = $this->db->where('corpo', $data['corpo']);
+		           	$dataArtigo = $this->db->where('dataArtigo', $data['dataArtigo']);
 		            $query = $this->db->get('artigos');
-					$codArtigo = $this->artigos_model->get_by_login($titulo, $corpo);
+					$codArtigo = $this->artigos_model->get_by_login($titulo, $corpo, $dataArtigo);
 				    //Defenindo a disciplina do artigo	
 		            if ($query->num_rows() == 1){
 		                $artigo = $query->row();
@@ -161,7 +163,7 @@ class Artigos extends CI_Controller
 		        /*echo "Deu errado ";
 		        echo "$titulo_pdf";
 		        print_r($_FILES);*/
-			
+		//COM IMAGEM
 		}elseif(!empty($imgArtigo['name'])){
 			/////
 				if ($pdfArtigo['name'] != null) {
@@ -197,7 +199,7 @@ class Artigos extends CI_Controller
 									'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina'),
 									'resumo' => $this->input->post('resumo'),
 									'imgArtigo' => $config['file_name'].".".$ponto_img,
-									'dataArtigo' => date("Y-m-d"),
+									'dataArtigo' => date("Y-m-d H:i:s"),
 									'uploadArtigo' => $config_pdf['file_name'],
 								);
 							}if ($this->input->post('professores_codProfessor') == 0) {
@@ -209,7 +211,7 @@ class Artigos extends CI_Controller
 									'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina'),
 									'resumo' => $this->input->post('resumo'),
 									'imgArtigo' => $config['file_name'].".".$ponto_img,
-									'dataArtigo' => date("Y-m-d"),
+									'dataArtigo' => date("Y-m-d H:i:s"),
 									'uploadArtigo' => $config_pdf['file_name'],
 								);
 							}
@@ -218,8 +220,9 @@ class Artigos extends CI_Controller
 							//ENVIAR PARA A PAGINA PERFIL
 							  	$this->db->where('titulo', $data['titulo']);
 			           			$this->db->where('corpo', $data['corpo']);
+			           			$this->db->where('dataArtigo', $data['dataArtigo']);
 			            		$query = $this->db->get('artigos');
-			            		$codArtigo = $this->artigos_model->get_by_login($titulo, $corpo);
+			            		$codArtigo = $this->artigos_model->get_by_login($titulo, $corpo, $dataArtigo);
 
 			            	if ($query->num_rows() == 1){
 			               		 $artigo = $query->row();
@@ -260,7 +263,7 @@ class Artigos extends CI_Controller
 										'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina'),
 										'resumo' => $this->input->post('resumo'),
 										'imgArtigo' => $config['file_name'].".".$ponto_img,
-										'dataArtigo' => date("Y-m-d")
+										'dataArtigo' => date("Y-m-d H:i:s")
 									);
 								}if ($this->input->post('professores_codProfessor') == 0) {
 									 	$data = array(
@@ -271,7 +274,7 @@ class Artigos extends CI_Controller
 										'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina'),
 										'resumo' => $this->input->post('resumo'),
 										'imgArtigo' => $config['file_name'].".".$ponto_img,
-										'dataArtigo' => date("Y-m-d")
+										'dataArtigo' => date("Y-m-d H:i:s")
 									);
 								}
 								$insert = $this->artigos_model->artigo_add($data);
@@ -279,8 +282,9 @@ class Artigos extends CI_Controller
 								//ENVIAR PARA A PAGINA PERFIL
 								  	$this->db->where('titulo', $data['titulo']);
 				           			$this->db->where('corpo', $data['corpo']);
+				           			$this->db->where('dataArtigo', $data['dataArtigo']);
 				            		$query = $this->db->get('artigos');
-				            		$codArtigo = $this->artigos_model->get_by_login($titulo, $corpo);
+				            		$codArtigo = $this->artigos_model->get_by_login($titulo, $corpo,$dataArtigo);
 
 				            	if ($query->num_rows() == 1){
 				               		 $artigo = $query->row();
@@ -291,7 +295,9 @@ class Artigos extends CI_Controller
 				            	}
 
 			    			}else{
-			         			echo $this->upload->display_errors();
+			    				$urlAluno = "?codAluno=".$this->input->post('alunos_codAluno');
+		    					$erro['erro'] = $this->upload->display_errors();
+                         		$this->load->view('artigo_add_aluno'.$urlAluno, $erro);
 			         		}
 		        }
 		}	
@@ -312,7 +318,7 @@ class Artigos extends CI_Controller
 		//DANDO NOME AO ARQUIVO PDF
 			$titulo_pdf = explode(" ", $this->input->post('titulo'));
 			$titulo_pdf = implode("_", $titulo_pdf);
-			$titulo_pdf = $titulo_pdf."_".date("Y-m-d");
+			$titulo_pdf = $titulo_pdf."_".date("Y-m-d H:i:s");
 		///
 			$ponto_img = explode(".", $imgArtigo['name']);
 			$ponto_img = $ponto_img[1];

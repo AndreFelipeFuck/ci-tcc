@@ -215,14 +215,14 @@
 											</div>	
 
 											<div  class="conteudo escondido" id="<?php echo"alterar".$comentario->codComentario?>">	
-													<form action="<?php echo site_url('comentarios/comentario_update')?>" id ="editar">	
+													<form action="#" id ="editar">	
 														<input type="hidden" value="<?php echo $comentario->codComentario ?>" name="codComentario"/>	
 														<div class="elementoComent">	
 															<div>	
 																<textarea style="height: 10%; max-height: 20%;" name="comentario"><?php echo $comentario->comentario ?></textarea>	
 															</div>	
 															<div style="margin-top: 0.8%;">	
-																<button type="submit" class="btn" id="visu" onclick="comentario_update()">Alterar</button>	
+																<button type="submit" class="btn" id="visu" onclick="comentario_update($comentario->codComentario)">Alterar</button>	
 																<a class="btn btn-danger cancelar" id="<?php echo $comentario->codComentario?>" style="color: #fff">Cancelar</a>	
 					 										</div>	
 														</div>	
@@ -349,9 +349,9 @@
 			    }	
 		    });	
 		}	
- 		  function comentario_update(){	
+ 		  function comentario_update($codComentario){	
 		    $.ajax({	
-			    url : "<?php echo site_url('comentarios/comentario_update')?>",	
+			    url : "<?php echo site_url('comentarios/comentario_update')?>/" + codComentario,	
 			    type: "POST",	
 			    data: $('#editar').serialize(),	
 			    dataType: "JSON",	

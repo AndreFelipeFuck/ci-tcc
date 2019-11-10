@@ -1,6 +1,5 @@
 <?php include 'cabeca.php';?>
-<?php print_r($admin);?>
-<?php if ($admin->admin == 1) {
+<?php if ($admin->admin != 1) {
     ?><meta http-equiv="refresh" content="0;url=<?php echo site_url('')?>" /><?php
 }?>
 <?php 
@@ -14,7 +13,7 @@
 
         <thead>
         <tr>
-
+            <th>Imagem</th>
             <th>Nome</th>
             <th>Email</th>
             <th>Excluir</th>
@@ -25,10 +24,19 @@
         <?php foreach($professores as $professor){?>
             <?php if($_SESSION['professores'] != $professor->codProfessor):?>
                 <tr>
+                    <td>
+                    <?php
+                        if ($professor->imgProfessor == null) {
+                           ?><figure class="img-rounded img-responsive"><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>" class=" rounded-circle img-fluid" alt="smaple image"></figure><?php
+                        }else{
+                            ?><figure class="img-rounded img-responsive"><img src="<?php echo base_url("upload/professores/$professor->imgProfessor")?>" class=" rounded-circle img-fluid" alt="smaple image"></figure><?php
+                        }
+                    ?>
+                    </td>
                     <td><a href="<?php echo site_url('professores/professor_perfil/')?>?codProfessor=<?php echo $professor->codProfessor;?>"><?php echo $professor->nomeProfessor;?></a></td>
                     <td><?php echo $professor->email;?></td>
                     <td>
-                        <button class="btn btn-danger" onclick="delete_professor(<?php echo $professor->codProfessor;?>)"><i class="glyphicon glyphicon-remove"></i>EXCLUIR</button>
+                        <a class="btn btn-danger" onclick="delete_professor(<?php echo $professor->codProfessor;?>)" style="color: #fff;"><i class="glyphicon glyphicon-remove" ></i>EXCLUIR</a>
                     </td>
                 </tr>
             <?php endif?>
@@ -119,7 +127,7 @@
         {
             // ajax delete data from database
             $.ajax({
-                url : "<?php echo site_url('professores/professor_delete')?>/" + codProfessor,
+                url : "<?php echo site_url('professores/professor_delete_admin')?>/" + codProfessor,
                 type: "POST",
                 dataType: "JSON",
                 success: function(data)
@@ -134,57 +142,4 @@
         }
     }
 </script>
-<div class="modal fade" id="modal_form" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Professor Form</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-
-                        label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
-            <div class="modal-body form">
-                <form action="#" id="form" class="form-horizontal">
-                    <input type="hidden" value="" name="codProfessor"/>
-                    <div class="form-body">
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Nome</label>
-                            <div class="col-md-9">
 
-                                <input name="nomeProfessor" placeholder="Book ISBN" class="form-
-    control" type="text">
-
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">email</label>
-                            <div class="col-md-9">
-
-                                <input name="email" placeholder="Book_title" class="form-
-    control" type="text">
-
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">senha</label>
-                            <div class="col-md-9">
-
-                                <input name="senha" placeholder="Book Author" class="form-control" type="password">
-                            </div>
-                        </div>
-
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-
-                <button type="button" id="btnSave" onclick="save()" class="btn btn-
-                        primary">Save</button>
-
-                <button type="button" class="btn btn-danger" data-
-                        dismiss="modal">Cancel</button>
-
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<!-- End Bootstrap modal -->
