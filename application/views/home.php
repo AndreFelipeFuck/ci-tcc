@@ -77,7 +77,7 @@
 	</section>
 	<div class="espaco2"></div>
 	<section class="conteiner2" id="sombra">
-		<h2 style="font-size: 35px; border-bottom: solid 2px #17a2b8; margin-bottom: 2%; padding-bottom: 1%;">Artigos:</h2>
+		<h2 style="font-size: 35px; border-bottom: solid 2px #17a2b8; margin-bottom: 2%; padding-bottom: 1%;">Artigos Recentes:</h2>
 		<br>
 			
      
