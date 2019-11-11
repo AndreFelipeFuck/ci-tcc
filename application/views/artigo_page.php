@@ -84,7 +84,7 @@
  	<?php if($teste == 1):?>		
 		<div style="padding: 1.5%; border-radius: 3px; margin: 1%;">	
 			<?php if(isset($aluno)):?>	
-				<form action="#" method="post" id ="comentar">	
+				<form method="post" id ="comentar">	
 					<input type="hidden" value="<?= $perfil->codArtigo?>" name="artigo_codArtigo"/>	
 					<input type="hidden" value="<?= $aluno->codAluno?>" name="com_alunos_codAluno"/>	
 					<input type="hidden" value="0" name="professores_codProfessor"/>	
@@ -114,7 +114,7 @@
 			<?php endif ?>	
 
  			<?php if(isset($professor)):?>	
-				<form action="#" method="post" id ="comentar">	
+				<form method="post" id ="comentar">	
 						<input type="hidden" value="<?= $perfil->codArtigo?>" name="artigo_codArtigo"/>	
 						<input type="hidden" value="<?= $professor->codProfessor?>" name="com_professores_codProfessor"/>	
 						<input type="hidden" value="0" name="professores_codProfessor"/>	
@@ -215,14 +215,14 @@
 											</div>	
 
 											<div  class="conteudo escondido" id="<?php echo"alterar".$comentario->codComentario?>">	
-													<form action="#" id ="editar">	
+													<form id ="editar">	
 														<input type="hidden" value="<?php echo $comentario->codComentario ?>" name="codComentario"/>	
 														<div class="elementoComent">	
 															<div>	
 																<textarea style="height: 10%; max-height: 20%;" name="comentario"><?php echo $comentario->comentario ?></textarea>	
 															</div>	
 															<div style="margin-top: 0.8%;">	
-																<button type="submit" class="btn" id="visu" onclick="comentario_update($comentario->codComentario)">Alterar</button>	
+																<button type="submit" class="btn" id="visu" onclick="comentario_update()">Alterar</button>	
 																<a class="btn btn-danger cancelar" id="<?php echo $comentario->codComentario?>" style="color: #fff">Cancelar</a>	
 					 										</div>	
 														</div>	
@@ -310,9 +310,6 @@
 			</div>	
 		<?php endforeach;?>
 </div>
-<?php 
-	include "rodape.php";
-?>	
  <script>		
  $(document).ready( function () {	
     $('#codAluno').DataTable();	
@@ -349,9 +346,9 @@
 			    }	
 		    });	
 		}	
- 		  function comentario_update($codComentario){	
+ 		  function comentario_update(){	
 		    $.ajax({	
-			    url : "<?php echo site_url('comentarios/comentario_update')?>/" + codComentario,	
+			    url : "<?php echo site_url('comentarios/comentario_update')?>/",	
 			    type: "POST",	
 			    data: $('#editar').serialize(),	
 			    dataType: "JSON",	
@@ -384,6 +381,8 @@
 	    }	
 	    }	
 </script>
-
+<?php 
+	include "rodape.php";
+?>	
 
  

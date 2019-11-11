@@ -22,8 +22,8 @@ class Home extends CI_Controller
         $data = array(
             'artigos' => null
         );
-        $data['artigos'] = $this->artigos_model->listar_artigos();
-        $data['artigosProfessor'] = $this->artigos_model->listar_artigos_professor();
+        $data['artigos'] = $this->artigos_model->get_artigos_by_data_aluno();
+        $data['artigosProfessor'] = $this->artigos_model->get_artigos_by_data_professor();
         $this->load->view('home', $data);
     }
 

@@ -57,21 +57,21 @@
                 <div class="form-group">
                     <label for="Escl-Mat">Alterar Matéria:</label>
                     <select class="form-control" id="Escl-Mat" style="width: 20%;" name="disciplina_codDisciplina" required>
-                        <option value="1" <?=($perfil->nomeDisciplina == 'Biologia')?'selected':''?>>Biologia</option>
-                        <option value="2" <?=($perfil->nomeDisciplina == 'Física')?'selected':''?>>Física</option>
-                        <option value="3">Química</option>
-                        <option value="4" <?=($perfil->nomeDisciplina == 'Geografia')?'selected':''?>>Geografia</option>
-                        <option value="5"<?=($perfil->nomeDisciplina == 'História')?'selected':''?>>História</option>
-                        <option value="6"<?=($perfil->nomeDisciplina == 'Pr.Textual')?'selected':''?>>Pr.Textual</option>
-                        <option value="15"<?=($perfil->nomeDisciplina == 'Portugues')?'selected':''?>>Portugues</option>
-                        <option value="7"<?=($perfil->nomeDisciplina == 'Matemática')?'selected':''?>>Matemática</option>
-                        <option value="8"<?=($perfil->nomeDisciplina == 'Inglês')?'selected':''?>>Inglês</option>
-                        <option value="9"<?=($perfil->nomeDisciplina == 'Espanhol')?'selected':''?>>Espanhol</option>
-                        <option value="10" <?=($perfil->nomeDisciplina == 'Filosofia')?'selected':''?>>Filosofia</option>
-                        <option value="11" <?=($perfil->nomeDisciplina == 'Sociologia')?'selected':''?>>Sociologia</option>
-                        <option value="12" <?=($perfil->nomeDisciplina == 'Agropecuária')?'selected':''?>>Agropecuária</option>
-                        <option value="13" <?=($perfil->nomeDisciplina == 'Informatica')?'selected':''?>>Informatica</option>
-                        <option value="14" <?=($perfil->nomeDisciplina == 'Química')?'selected':''?>>Química(tec)</option>
+                        <option value="1" <?php if($perfil->nomeDisciplina == 'Biologia'){echo "selected";}?>>Biologia</option>
+                        <option value="2" <?php if($perfil->nomeDisciplina == 'Física'){echo "selected";}?>>Física</option>
+                        <option value="3" <?php if($perfil->nomeDisciplina == 'Química'){echo "selected";}?>>Química</option>
+                        <option value="4" <?php if($perfil->nomeDisciplina == 'Geografia'){echo "selected";}?>>Geografia</option>
+                        <option value="5"<?php if($perfil->nomeDisciplina == 'História'){echo "selected";}?>>História</option>
+                        <option value="6"<?php if($perfil->nomeDisciplina == 'Pr.Textual'){echo "selected";}?>>Pr.Textual</option>
+                        <option value="15"<?php if($perfil->nomeDisciplina == 'Portugues'){echo "selected";}?>>Portugues</option>
+                        <option value="7"<?php if($perfil->nomeDisciplina == 'Matemática'){echo "selected";}?>>Matemática</option>
+                        <option value="8"<?php if($perfil->nomeDisciplina == 'Inglês'){echo "selected";}?>>Inglês</option>
+                        <option value="9"<?php if($perfil->nomeDisciplina == 'Espanhol'){echo "selected";}?>>Espanhol</option>
+                        <option value="10" <?php if($perfil->nomeDisciplina == 'Filosofia'){echo "selected";}?>>Filosofia</option>
+                        <option value="11" <?php if($perfil->nomeDisciplina == 'Sociologia'){echo "selected";}?>>Sociologia</option>
+                        <option value="12" <?php if($perfil->nomeDisciplina == 'Agropecuária'){echo "selected";}?>>Agropecuária</option>
+                        <option value="13" <?php if($perfil->nomeDisciplina == 'Informática'){echo "selected";}?>>Informatica</option>
+                        <option value="14" <?php if($perfil->nomeDisciplina == 'Química(tec)'){echo "selected";}?>>Química(tec)</option>
                     </select>
                 </div>
 				<div class="espaco2"></div>
