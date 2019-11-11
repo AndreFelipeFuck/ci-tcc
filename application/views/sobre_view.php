@@ -21,17 +21,17 @@
 			<h1 style="font-size: 35px; border-bottom: solid 2px #17a2b8; margin-bottom: 2%; padding-bottom: 1%;">Desenvolvedores</h1>
 			<div class="espaco2"></div>
 			<div class="contPort">
-				<figure id="detPort"><img src="<?php echo base_url('assets//bootstrap/img/bio.png')?>"></figure>
+				<figure id="detPort" class="img-responsive"><img src="<?php echo base_url('assets//bootstrap/img/programador.png')?>" class="img-fluid" alt="smaple image"></figure>
 				<h3 id="detPortFont">Desenvolvedor</h3>
 				<h5 id="detPortNome">André Felipe Fuck</h5>
 			</div>
 			<div class="contPort2">
-				<figure id="detPort"><img src="<?php echo base_url('assets//bootstrap/img/bio.png')?>"></figure>
+				<figure id="detPort" class="img-responsive"><img src="<?php echo base_url('assets//bootstrap/img/artista.png')?>" class="img-fluid" alt="smaple image"></figure>
 				<h3 id="detPortFont">Desenvolvedora</h3>
 				<h5 id="detPortNome">Camile Victoria Pohlmann</h5>
 			</div>
 			<div class="contPort3">
-				<figure id="detPort"><img src="<?php echo base_url('assets//bootstrap/img/bio.png')?>"></figure>
+				<figure id="detPort" class="img-responsive"><img src="<?php echo base_url('assets//bootstrap/img/escrita.png')?>" class="img-fluid" alt="smaple image"></figure>
 				<h3 id="detPortFont">Desenvolvedor</h3>
 				<h5 id="detPortNome">Giovani Migliorini</h5>
 			</div>
