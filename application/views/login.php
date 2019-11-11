@@ -7,7 +7,6 @@
                 <section class="logTex">
                     <div>
                         <h1>Seja Bem-Vindo de Volta!</h1>
-                        <p><h4>"A mente que se abre a uma nova ideia jamais voltará ao seu tamanho original"<br>-Albert Einstein</h4></p>
                     </div>
                 </section>
                 <section class="logCad" id="sombra">
