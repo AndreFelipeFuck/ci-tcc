@@ -74,6 +74,15 @@
                         <option value="14" <?php if($perfil->nomeDisciplina == 'Química(tec)'){echo "selected";}?>>Química(tec)</option>
                     </select>
                 </div>
+                <div class="espaco2"></div>
+                <div class="form-group">
+                    <span>Professor na instituição</span>
+                    <select class="form-control" id="Escl-Mat" style="width: 20%;" name="instituicao" required>
+                        <option value="ifc" name="instituicao">IFC</option>
+                        <option value="ifsc" name="instituicao">IFSC</option>
+                        <option value="ufsc" name="instituicao">UFSC</option>
+                    </select>
+                </div>
 				<div class="espaco2"></div>
 				<span>Alterar Mini Curriculo:</span>
 				<br>

@@ -30,7 +30,8 @@ class Login extends CI_Controller
             if ($query->num_rows() == 1){
                  $aluno = $query->row();
                  $this->session->set_userdata("alunos", $aluno->codAluno);
-                    $this->session->set_userdata("imgAluno", $aluno->imgAluno);
+                $this->session->set_userdata("imgAluno", $aluno->imgAluno);
+                 $this->session->set_userdata("nome", $aluno->nomeAluno);
                 $codAluno = $this->aluno_model->get_by_login($nomeCompleto, $senha);
                 $url = "?codAluno=".$aluno->codAluno;
                 redirect ("alunos/aluno_perfil/$url");
@@ -47,6 +48,7 @@ class Login extends CI_Controller
               $professor = $query->row();
                  $this->session->set_userdata("professores", $professor->codProfessor);
                  $this->session->set_userdata("imgProfessor", $professor->imgProfessor);
+                 $this->session->set_userdata("nome", $professor->nomeProfessor);
                 $codProfessor = $this->professor_model->get_by_login($nomeCompleto, $senha);
                  $url = "?codProfessor=".$professor->codProfessor;
                 redirect ("professores/professor_perfil/$url");

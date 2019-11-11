@@ -47,7 +47,6 @@
 			 <span>Docente da área:</span>
 				 <br>
 				  	 <select class="form-control" id="Escl-Mat" style="width: 20%;" name="disciplina_codDisciplina" required>
-				  		<option value="15" name="disciplina_codDisiciplina">Nenhuma</option>
 				    	<option value="1" name="disciplina_codDisiciplina">Biologia</option>
 				 		<option value="2" name="disciplina_codDisiciplina">Física</option>
 				 		<option value="3" name="disciplina_codDisiciplina">Química</option>
@@ -63,6 +62,14 @@
 				 		<option value="13" name="disciplina_codDisiciplina">Informatica</option>
 				 		<option value="14" name="disciplina_codDisiciplina">Química(tec)</option>
 			  		</select>
+			<div class="espaco2"></div>
+			<span>Professor na instituição</span>
+				<br>
+				  <select class="form-control" id="Escl-Mat" style="width: 20%;" name="instituicao" required>
+				  	<option value="ifc" name="instituicao">IFC</option>
+				    <option value="ifsc" name="instituicao">IFSC</option>
+				 	<option value="ufsc" name="instituicao">UFSC</option>
+			  	</select>
 			<div class="espaco2"></div>
 			<span>Mini Curriculo:</span>
 			<br>

@@ -42,6 +42,10 @@ $dataNasc = implode("/", $dataNasc);
                     <label style="padding-left: 1%; border-left: solid 3px #28a745;">Leciona na disciplina:</label>
                     <h6><?php echo $perfil->nomeDisciplina;?></h6>
                 </div>
+                <div id="infoAlign">
+                    <label style="padding-left: 1%; border-left: solid 3px #28a745;">Pertence a instituição:</label>
+                    <h6><?php echo $perfil->instituicao;?></h6>
+                </div>
             <!--
                 <div id="infoAlign">
                     <label>Institucao:</label>

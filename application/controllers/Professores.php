@@ -70,7 +70,7 @@ class Professores extends CI_Controller
                             'nomeProfessor' => $this->input->post('nomeProfessor'),
                             'dataNasc' => $this->input->post('dataNasc'),
                             'miniCurriculo' => $this->input->post('miniCurriculo'),
-                            //'institucao' => $this->input->post('institucao'),
+                            'instituicao' => $this->input->post('instituicao'),
                             'email' => $this->input->post('email'),
                             'senha' => md5($this->input->post('senha')),
                             'tipo' => 1,
@@ -114,7 +114,7 @@ class Professores extends CI_Controller
                             'dataNasc' => $this->input->post('dataNasc'),
                             'imgProfessor' => $config['file_name'].".".$ponto_img,
                             'miniCurriculo' => $this->input->post('miniCurriculo'),
-                            //'institucao' => $this->input->post('institucao'),
+                            'instituicao' => $this->input->post('instituicao'),
                             'email' => $this->input->post('email'),
                             'senha' => md5($this->input->post('senha')),
                             'tipo' => 1,
@@ -186,7 +186,7 @@ class Professores extends CI_Controller
                        'nomeProfessor' => $this->input->post('nomeProfessor'),
                         'dataNasc' => $this->input->post('dataNasc'),
                         'miniCurriculo' => $this->input->post('miniCurriculo'),
-                        //'institucao' => $this->input->post('institucao'),
+                        'instituicao' => $this->input->post('instituicao'),
                         'email' => $this->input->post('email'),
                     );
                     $this->professor_model->professor_update(array('codProfessor' => $this->input->post('codProfessor')), $data);
@@ -227,7 +227,7 @@ class Professores extends CI_Controller
                             'dataNasc' => $this->input->post('dataNasc'),
                             'imgProfessor' => $config['file_name'].".".$ponto_img,
                             'miniCurriculo' => $this->input->post('miniCurriculo'),
-                            //'institucao' => $this->input->post('institucao'),
+                            'instituicao' => $this->input->post('instituicao'),
                             'email' => $this->input->post('email'),
                         );
                         $this->professor_model->professor_update(array('codProfessor' => $this->input->post('codProfessor')), $data);
@@ -266,7 +266,7 @@ class Professores extends CI_Controller
                             'nomeProfessor' => $this->input->post('nomeProfessor'),
                             'dataNasc' => $this->input->post('dataNasc'),
                             'miniCurriculo' => $this->input->post('miniCurriculo'),
-                            //'institucao' => $this->input->post('institucao'),
+                            'instituicao' => $this->input->post('instituicao'),
                             'email' => $this->input->post('email'),
                             'senha' => md5($this->input->post('senha')),
                         );
@@ -301,7 +301,7 @@ class Professores extends CI_Controller
                                 'dataNasc' => $this->input->post('dataNasc'),
                                 'imgProfessor' => $config['file_name'].".".$ponto_img,
                                 'miniCurriculo' => $this->input->post('miniCurriculo'),
-                                //'institucao' => $this->input->post('institucao'),
+                                'instituicao' => $this->input->post('instituicao'),
                                 'email' => $this->input->post('email'),
                                 'senha' => md5($this->input->post('senha')),
                             );
