@@ -17,7 +17,7 @@
                                                     ?><img src="<?php echo base_url("upload/artigos/$artigo->imgArtigo")?>" class="card-img-top" alt="...">
                                         <?php }?>
 
-                                        <div>
+                                        <div class="divInfo">
                                             <h3><?php echo $artigo->titulo;?></h3>
                                             <p id="limiteLinhas"><?php echo $artigo->resumo;?></p>
                                             <br>
@@ -70,4 +70,8 @@
     }
     }
 </script>
+
+<?php
+	include "rodape.php";
+?>
     

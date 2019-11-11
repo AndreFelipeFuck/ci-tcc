@@ -60,8 +60,9 @@ $artigos = array_merge($artigos_aluno, $artigos_professor);
 
             <?php if (empty($artigos)):?>
                  <article class="vidCont">
-                    <div>
-                        <h2>Não há nenhum artigo sobre <?php echo $disciplinas->nomeDisciplina?> ;(</h2>
+                    <div class="BlockNoResult">
+                        <figure class="detPort"><img src="<?php echo base_url("assets/bootstrap/img/bio.png")?>"></figure>
+                        <h5 style="text-align: center;">Não há nenhum artigo sobre <?php echo $disciplinas->nomeDisciplina?>...</h>
                     </div>
                  </article>
             <?php endif ?>

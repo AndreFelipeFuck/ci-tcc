@@ -1,11 +1,12 @@
 <html>
 <head>
     <!--Le CSS ==========================================================-->
-         <link rel="stylesheet"  href="<?php echo base_url('assets/bootstrap/css/bootstrap.css')?>">
-         <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/style.css')?>">
-         <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css')?>">
-         <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/pagination.css')?>">
-          <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/jquery-ui.css')?>"> 
+        <link rel="stylesheet"  href="<?php echo base_url('assets/bootstrap/css/bootstrap.css')?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/style.css')?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css')?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/pagination.css')?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/jquery-ui.css')?>"> 
+        <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
      
     <!-- ==============================================================-->
 

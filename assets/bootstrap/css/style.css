@@ -1,11 +1,7 @@
-body, html{
-	
-	
-}
-
 .bdg{
 	background-image: url('/ci_tcc/assets/bootstrap/img/fundo_tcc.png');
 	background-repeat: repeat;
+	font-family: 'Comfortaa', cursive;
 }
 
 .imglogo{
