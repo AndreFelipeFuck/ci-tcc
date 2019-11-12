@@ -40,25 +40,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
 
         public function listar_artigos(){
-            $this->db->select('codArtigo, resumo, titulo, imgArtigo, alunos_codAluno, nomeAluno, dataArtigo')->from('artigos, alunos')->where("alunos_codAluno = codAluno");
+            $this->db->select('codArtigo, resumo, titulo, imgArtigo, alunos_codAluno, nomeAluno, dataArtigo, nomeDisciplina, codDisciplina')->from('artigos, alunos, disciplinas')->where("alunos_codAluno = codAluno and codDisciplina = disciplina_codDisciplina");
             $query = $this->db->get();
             return $query->result();
         }
 
         public function listar_artigos_professor(){
-          $this->db->select('codArtigo, resumo, titulo, imgArtigo, professores_codProfessor, nomeProfessor, dataArtigo')->from('artigos, professores')->where('professores_codProfessor = codProfessor');
+          $this->db->select('codArtigo, resumo, titulo, imgArtigo, professores_codProfessor, nomeProfessor, dataArtigo, nomeDisciplina, codDisciplina')->from('artigos, professores, disciplinas')->where('professores_codProfessor = codProfessor and codDisciplina = disciplina_codDisciplina');
            $query = $this->db->get();
           return $query->result();
         }
 
         public function get_artigos_by_data_professor(){
-           $this->db->select('codArtigo, resumo, corpo, titulo, imgArtigo, professores_codProfessor, nomeProfessor')->from('artigos, professores')->where('professores_codProfessor = codProfessor')->order_by('dataArtigo DESC')->limit(5);
+           $this->db->select('codArtigo, resumo, corpo, titulo, imgArtigo, professores_codProfessor, nomeProfessor, dataArtigo, nomeDisciplina, codDisciplina')->from('artigos, professores, disciplinas')->where('professores_codProfessor = codProfessor and codDisciplina = disciplina_codDisciplina')->order_by('dataArtigo DESC')->limit(5);
             $query=$this->db->get();
             return $query->result();
         }
 
           public function get_artigos_by_data_aluno(){
-           $this->db->select('codArtigo, resumo, corpo, titulo, imgArtigo, alunos_codAluno, nomeAluno')->from('artigos, alunos')->where('alunos_codAluno = codAluno')->order_by('dataArtigo DESC')->limit(5);
+           $this->db->select('codArtigo, resumo, corpo, titulo, imgArtigo, alunos_codAluno, nomeAluno, dataArtigo, nomeDisciplina, codDisciplina')->from('artigos, alunos, disciplinas')->where('alunos_codAluno = codAluno and codDisciplina = disciplina_codDisciplina')->order_by('dataArtigo DESC')->limit(5);
             $query=$this->db->get();
             return $query->result();
         }

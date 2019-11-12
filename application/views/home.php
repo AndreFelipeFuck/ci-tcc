@@ -1,5 +1,6 @@
 <?php 
 	include "cabeca.php";
+
  ?>
 
 <div class="espaco2"></div>
@@ -75,54 +76,86 @@
 		  </a>
 		</nav>	
 	</section>
-	<div class="espaco2"></div>
-	<section class="conteiner2" id="sombra">
-		<h2 style="font-size: 35px; border-bottom: solid 2px #17a2b8; margin-bottom: 2%; padding-bottom: 1%;">Artigos:</h2>
-		<br>
-			
-     
-        <?php foreach($artigos as $artigo){?>
-            <article class="vidCont">
-                <?php
-                    if($artigo->imgArtigo == null){?>
-                        <img src="<?php echo base_url('assets/bootstrap/img/crisp.jpg')?>">
-                <?php
-                    }else{?>
-                        <img src="<?php echo base_url("upload/artigos/$artigo->imgArtigo")?>">
-              <?php }?>
-                <div class="divInfo">
-                    <h3><?php echo $artigo->titulo?></h3>
-                    <p id="limiteLinhas"><?php echo $artigo->resumo ?></p>
-                <label>Postado pelo aluno:<h4 id="nomeAutor2"><a href="<?php echo site_url('alunos/aluno_perfil')?>?codAluno=<?php echo $artigo->alunos_codAluno?>" style="color: #17a2b8;"><?php echo $artigo->nomeAluno;?></a></h4></label>
-                <br>
-                </div>
-                <div class="divCont">
-                	<a href="<?php echo site_url('artigos/artigo_page/')?>?codArtigo=<?php echo $artigo->codArtigo;?>" class="btn" id="visu">Visualizar</a>
-                </div>
-            </article>
-        <br>
-    <?php }?>
-     <?php foreach($artigosProfessor as $artigo){?>
-            <article class="vidCont">
-                <?php
-                    if($artigo->imgArtigo == null){?>
-                        <img src="<?php echo base_url('assets/bootstrap/img/crisp.jpg')?>">
-                <?php
-                    }else{?>
-                        <img src="<?php echo base_url("upload/artigos/$artigo->imgArtigo")?>">
-              <?php }?>
-                <div class="divInfo">
-                    <h3><?php echo $artigo->titulo?></h3>
-                    <p id="limiteLinhas"><?php echo $artigo->resumo?></p>
-                        <label>Postado pelo professor:<h4 id="nomeAutor2"><a href="<?php echo site_url('professores/professor_perfil')?>?codProfessor=<?php echo $artigo->professores_codProfessor?>" style="color: #28a745;"><?php echo $artigo->nomeProfessor;?></a></h4></label>
-                </div>
-                <div class="divCont">
-                	<a href="<?php echo site_url('artigos/artigo_page/')?>?codArtigo=<?php echo $artigo->codArtigo;?>" class="btn" id="visu">Visualizar</a>
-                </div>
-            </article>
-        <br>
-    <?php }?>
-   </section>
+<?php
+	$artigos = array_merge($artigos, $artigosProfessor);
+
+      usort($artigos,
+
+         function( $a, $b ) {
+
+             if( $a ->dataArtigo == $b ->dataArtigo ) return 0;
+
+             return ( ( $a->dataArtigo < $b->dataArtigo ) ? -1 : 1 );
+         }
+    );
+
+  // print_r($artigos); 
+
+   
+?>
+<div class="espaco2"></div>
+    <div class="conteinerArtView" id="sombra">     
+      <section class="conteiner0">
+            <h1 style="font-size: 35px; border-bottom: solid 2px #17a2b8; margin-bottom: 2%; padding-bottom: 1%;">Artigos Recentes</h1>
+           <?php if (empty($artigos)):?>
+                 <article class="vidCont">
+                    <div>
+                        <h2>Não há nenhum artigo no momento ;(</h2>
+                    </div>
+                 </article>
+            <?php endif ?>
+            <?php foreach($artigos as $artigo):?>
+                <?php if (isset($artigo->alunos_codAluno) == TRUE): ?>
+                     <article class="vidCont">
+                            <?php
+                                if($artigo->imgArtigo == null){?>
+                                    <img src="<?php echo base_url('assets/bootstrap/img/crisp.jpg')?>">
+                            <?php
+                                }else{?>
+                                    <img src="<?php echo base_url("upload/artigos/$artigo->imgArtigo")?>">
+                          <?php }?>
+                            <div class="divInfo">
+                                <h3><?php echo $artigo->titulo?></h3>
+                                <p id="limiteLinhas"><?php echo $artigo->resumo?></p>
+                                <label>Postado pelo aluno:<h4 id="nomeAutor2"><a href="<?php echo site_url('alunos/aluno_perfil')?>?codAluno=<?php echo $artigo->alunos_codAluno?>" style="color: #17a2b8;"><?php echo $artigo->nomeAluno;?></a></h4></label>
+                                <br>
+                                 <label >Disciplina:<h4 id="nomeAutor2"><a href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=<?php echo $artigo->codDisciplina?>" style="color: #17a2b8;"><?php echo $artigo->nomeDisciplina;?></a></h4></label>
+                            </div>
+                                <div class="divCont">
+                                    <a href="<?php echo site_url('artigos/artigo_page/')?>?codArtigo=<?php echo $artigo->codArtigo;?>" class="btn" id="visu";>Visualizar</a>
+                                </div>
+                        </article>
+                    <br>
+                <?php endif ?>
+
+                <?php if (isset($artigo->professores_codProfessor) == TRUE):?>
+                         <article class="vidCont">
+                            <?php
+                                if($artigo->imgArtigo == null){?>
+                                    <img src="<?php echo base_url('assets/bootstrap/img/crisp.jpg')?>">
+                            <?php
+                                }else{?>
+                                    <img src="<?php echo base_url("upload/artigos/$artigo->imgArtigo")?>">
+                          <?php }?>
+                            <div class="divInfo">
+                                <h3><?php echo $artigo->titulo?></h3>
+                                <p id="limiteLinhas"><?php echo $artigo->resumo?></p>
+                                    <label>Postado pelo professor:<h4 id="nomeAutor2"><a href="<?php echo site_url('professores/professor_perfil')?>?codProfessor=<?php echo $artigo->professores_codProfessor?>" style="color: #28a745;"><?php echo $artigo->nomeProfessor;?></a></h4></label>
+                                    <br>
+                                    <label >Disciplina:<h4 id="nomeAutor2"><a href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=<?php echo $artigo->codDisciplina?>" style="color: #17a2b8;"><?php echo $artigo->nomeDisciplina;?></a></h4></label>
+                            </div>
+                                <div class="divCont">
+                                    <a href="<?php echo site_url('artigos/artigo_page/')?>?codArtigo=<?php echo $artigo->codArtigo;?>" class="btn" id="visu">Visualizar</a>
+                                </div>
+                         </article>
+                     <br>
+                <?php endif ?>
+
+                       
+             <?php endforeach?>
+        </section>
+        
+    </div>
 	
 
 <?php include "rodape.php"; ?>
