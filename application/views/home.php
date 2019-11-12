@@ -8,7 +8,7 @@
 	 	<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 		  <div class="carousel-inner">
 		    <div class="carousel-item active">
-		      <img class="d-block w-100" src="<?php echo base_url('assets/bootstrap/img/crisp.jpg')?>" alt="First slide">
+		      <img class="d-block w-100" src="<?php echo base_url('assets/bootstrap/img/slide1.png')?>" alt="First slide">
 		    </div>
 		    <div class="carousel-item">
 		      <img class="d-block w-100" src="<?php echo base_url('assets/bootstrap/img/bac.png')?>" alt="Second slide">
@@ -77,7 +77,7 @@
 	</section>
 	<div class="espaco2"></div>
 	<section class="conteiner2" id="sombra">
-		<h2 style="font-size: 35px; border-bottom: solid 2px #17a2b8; margin-bottom: 2%; padding-bottom: 1%;">Artigos Recentes:</h2>
+		<h2 style="font-size: 35px; border-bottom: solid 2px #17a2b8; margin-bottom: 2%; padding-bottom: 1%;">Artigos:</h2>
 		<br>
 			
      
