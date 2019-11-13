@@ -40,8 +40,7 @@ $artigos = array_merge($artigo_aluno, $artigo_professor);
                             <div class="divInfo">
                                 <h3><?php echo $artigo->titulo?></h3>
                                 <p id="limiteLinhas"><?php echo $artigo->resumo?></p>
-                                <label>Postado pelo aluno:<h4 id="nomeAutor2"><a href="<?php echo site_url('alunos/aluno_perfil')?>?codAluno=<?php echo $artigo->alunos_codAluno?>" style="color: #17a2b8;"><?php echo $artigo->nomeAluno;?></a></h4></label>
-                                 <br>
+                                <label style="margin-right: 10%;">Postado pelo aluno:<h4 id="nomeAutor2"><a href="<?php echo site_url('alunos/aluno_perfil')?>?codAluno=<?php echo $artigo->alunos_codAluno?>" style="color: #17a2b8;"><?php echo $artigo->nomeAluno;?></a></h4></label>
                                  <label >Disciplina:<h4 id="nomeAutor2"><a href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=<?php echo $artigo->codDisciplina?>" style="color: #17a2b8;"><?php echo $artigo->nomeDisciplina;?></a></h4></label>
                             </div>
                                 <div class="divCont">
@@ -63,8 +62,7 @@ $artigos = array_merge($artigo_aluno, $artigo_professor);
                             <div class="divInfo">
                                 <h3><?php echo $artigo->titulo?></h3>
                                 <p id="limiteLinhas"><?php echo $artigo->resumo?></p>
-                                    <label>Postado pelo professor:<h4 id="nomeAutor2"><a href="<?php echo site_url('professores/professor_perfil')?>?codProfessor=<?php echo $artigo->professores_codProfessor?>" style="color: #28a745;"><?php echo $artigo->nomeProfessor;?></a></h4></label>
-                                     <br>
+                                    <label style="margin-right: 10%;">Postado pelo professor:<h4 id="nomeAutor2"><a href="<?php echo site_url('professores/professor_perfil')?>?codProfessor=<?php echo $artigo->professores_codProfessor?>" style="color: #28a745;"><?php echo $artigo->nomeProfessor;?></a></h4></label>
                                  <label >Disciplina:<h4 id="nomeAutor2"><a href="<?php echo site_url('disciplinas/disciplina_view/')?>?codDisciplina=<?php echo $artigo->codDisciplina?>" style="color: #17a2b8;"><?php echo $artigo->nomeDisciplina;?></a></h4></label>
                             </div>
                                 <div class="divCont">
