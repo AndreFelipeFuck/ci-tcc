@@ -113,7 +113,7 @@
 	float: left;
 	margin: 1%;
 	width: 25%;
-	height: 22%;
+	height: 25%;
 	border-radius: 5px;
 
 }
@@ -132,12 +132,13 @@
 
 .divCont{
 	width: 10%;
+
 }
 
 .divCont a{
 	display: inline;
 	float: right;
-	margin-top: 110%;
+	margin-top: 120%;
 }
 
 .conteinerCad{
