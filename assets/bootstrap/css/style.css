@@ -981,6 +981,13 @@ textarea {
 	height: 20%;
 }
 
+#slideLegend{
+	background-color: rgba(0, 0, 0, 0.50);
+	text-align: left;
+	padding-left: 2%;
+	font-style: bold;
+}
+
 .conteiner-footer{
 	width: 90%;
 	position: relative;
