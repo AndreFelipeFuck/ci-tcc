@@ -13,6 +13,10 @@
 		    </div>
 		    <div class="carousel-item">
 		      <img class="d-block w-100" src="<?php echo base_url('assets/bootstrap/img/slide2.png')?>" alt="Second slide">
+		      <div class="carousel-caption d-none d-md-block" id="slideLegend">
+			    <h1>Junte-se a nós!</h1>
+			    <h5>Venha aprender mais rapido com a gente, sem sair de casa</h5>
+			  </div>
 		    </div>
 		    <div class="carousel-item">
 		      <img class="d-block w-100" src="<?php echo base_url('assets/bootstrap/img/eng.png')?>" alt="Third slide">
