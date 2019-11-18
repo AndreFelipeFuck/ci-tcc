@@ -60,10 +60,10 @@ $artigos = array_merge($artigos_aluno, $artigos_professor);
 
             <?php if (empty($artigos)):?>
                  <article class="vidCont">
-                    <div class="BlockNoResult">
-                        <figure class="detPort"><img src="<?php echo base_url("assets/bootstrap/img/bio.png")?>"></figure>
-                        <h5 style="text-align: center;">Não há nenhum artigo sobre <?php echo $disciplinas->nomeDisciplina?>...</h>
-                    </div>
+                    <section id="BlockNoResult">
+                        <div><figure class="img-responsive"><img src="<?php echo base_url("assets/bootstrap/img/bio.png")?>" class="img-fluid" alt="smaple image"></figure></div>
+                        <div><h5>Não há nenhum artigo sobre <?php echo $disciplinas->nomeDisciplina?>...</h5></div>
+                    </section>
                  </article>
             <?php endif ?>
             <?php foreach($artigos as $artigo):?>
