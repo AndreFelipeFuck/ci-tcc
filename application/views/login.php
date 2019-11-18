@@ -14,7 +14,7 @@
                         <h1>Login</h1>
                             <div class="form-group">
                                 <label for="exampleFormControlInput1">Usuário</label>
-                                <input type="text" class="form-control" id="logInput" name="nomeCompleto" required>
+                                <input type="email" class="form-control" id="logInput" name="email" required>
                             </div>
                             <br>
                             <div class="form-group">

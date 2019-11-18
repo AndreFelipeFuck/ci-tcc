@@ -53,8 +53,21 @@
 					 <div class="espaco2"></div>
 						 <span>Alterar Curso:</span>
 						 <br>
+				<?php if($perfil->curso == null):?>
+						 <div class="form-curso">
+						 	<input type="radio" name="curso" value="Agropecuária" checked>
+						 	<label>Agropecuária</label>
+						 </div>
+						 <div class="form-curso">
+						 	<input type="radio" name="curso" value="Informática">
+						 	<label>Informática</label>
+						 </div>
+						 <div class="form-curso">
+						 	<input type="radio" name="curso" value="Química">
+						 	<label>Química</label>
+						 </div>
 
-				<?php if($perfil->curso == "Agropecuária"):?>
+				<?php elseif($perfil->curso == "Agropecuária"):?>
 						 <div class="form-curso">
 						 	<input type="radio" name="curso" value="Agropecuária" checked>
 						 	<label>Agropecuária</label>

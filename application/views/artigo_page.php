@@ -215,7 +215,7 @@
 											</div>	
 
 											<div  class="conteudo escondido" id="<?php echo"alterar".$comentario->codComentario?>">	
-													<form id ="editar">	
+													<form id ="editar" action="<?php echo site_url('comentarios/comentario_update')?>">	
 														<input type="hidden" value="<?php echo $comentario->codComentario ?>" name="codComentario"/>	
 														<div class="elementoComent">	
 															<div>	

@@ -23,6 +23,13 @@
 				    	?><small style="color:#dc3545"><?php echo "Esse email já pertence a outro usuário, tente outro";?></small><?php
 				    }
 			    }
+			    if(!empty($email_verifica)){
+				    if($email_verifica == FALSE){
+				    	?><small style="color:#dc3545"><?php  echo  form_error('email');?></small><?php
+				    }elseif($email_verifica == TRUE){
+				    	?><small style="color:#dc3545"><?php echo "O seu email não pertence a instituição";?></small><?php
+				    }
+			    }
 			    ?>
 			      
 			 </div>
@@ -74,7 +81,7 @@
 			<span>Mini Curriculo:</span>
 			<br>
 			<div>
-			<textarea class="curriculo" placeholder="Conte-nos mais sobre sua formação..." name="miniCurriculo" value="<?php echo set_value('miniCurriculo');?>"></textarea>
+			<textarea class="curriculo" placeholder="Conte-nos mais sobre sua formação..." name="miniCurriculo" ><?php echo set_value('miniCurriculo'); ?></textarea>
 			</div>
 			<small style="color:#dc3545"><?php  echo  form_error('miniCurriculo');?></small>
 			<div class="espaco2"></div>

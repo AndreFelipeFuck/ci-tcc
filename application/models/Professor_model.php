@@ -59,8 +59,8 @@ class Professor_model extends CI_Model
         $this->db->delete($this->table);
     }
 
-    public function get_by_login($nomeProfessor, $senha){
-             $this->db->select('codProfessor, nomeProfessor, senha')->from('professores')->where("nomeProfessor = '$nomeProfessor' and senha = '$senha' and tipo = 1");
+    public function get_by_login($email, $senha){
+             $this->db->select('codProfessor, email, senha')->from('professores')->where("email = '$email' and senha = '$senha' and tipo = 1");
              $query = $this->db->get();
              return $query->row();
     }
@@ -69,11 +69,24 @@ class Professor_model extends CI_Model
         $marcador = null;
         $this->db->select('email');
         $this->db->where('email',$email);
-        $retorno = $this->db->get('professores')->num_rows();
+        $this->db->from('professores');
+        $retorno = $this->db->get()->num_rows();
 
         if($retorno > 0 ){
              return $marcador = TRUE;
         }else{ 
+            return $marcador = FALSE;
+        }
+    }
+
+    public function check_professor($codDisciplina){
+        $marcador = null;
+        $this->db->select('nomeProfessor')->from('professores, disciplinas, professores_has_disciplinas')->where(" professores_codProfessor = codProfessor and disciplina_codDisciplina = codDisciplina and codDisciplina = '$codDisciplina'");
+        $retorno = $this->db->get()->num_rows();
+
+        if($retorno == 0){
+            return $marcador = TRUE;
+        }else{
             return $marcador = FALSE;
         }
     }

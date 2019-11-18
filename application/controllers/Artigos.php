@@ -60,7 +60,7 @@ class Artigos extends CI_Controller
 		//DANDO NOME AO ARQUIVO PDF
 			$titulo_pdf = explode(" ", $this->input->post('titulo'));
 			$titulo_pdf = implode("_", $titulo_pdf);
-			$titulo_pdf = $titulo_pdf."_".date("Y-m-d H:i:s");
+			$titulo_pdf = $titulo_pdf."_".date("Y-m-d");
 		//
 			$ponto_img = explode(".", $imgArtigo['name']);
 			$ponto_img = $ponto_img[1];
@@ -295,9 +295,13 @@ class Artigos extends CI_Controller
 				            	}
 
 			    			}else{
-			    				$urlAluno = "?codAluno=".$this->input->post('alunos_codAluno');
-		    					$erro['erro'] = $this->upload->display_errors();
-                         		$this->load->view('artigo_add_aluno'.$urlAluno, $erro);
+
+			    				//$urlAluno = "?codAluno=".$this->input->post('alunos_codAluno');
+			    				//$urlProfessor = "?codProfessor=".$this->input->post('professores_codProfessor');
+		    					//$erro['erro'] = 
+		    					 echo $this->upload->display_errors();
+		    					 //redirect("artigos/artigo_add/$urlAluno");
+                         		//$this->load->view('artigo_add_aluno'.$urlAluno, $erro);
 			         		}
 		        }
 		}	
@@ -318,7 +322,7 @@ class Artigos extends CI_Controller
 		//DANDO NOME AO ARQUIVO PDF
 			$titulo_pdf = explode(" ", $this->input->post('titulo'));
 			$titulo_pdf = implode("_", $titulo_pdf);
-			$titulo_pdf = $titulo_pdf."_".date("Y-m-d H:i:s");
+			$titulo_pdf = $titulo_pdf."_".date("Y-m-d");
 		///
 			$ponto_img = explode(".", $imgArtigo['name']);
 			$ponto_img = $ponto_img[1];

@@ -12,7 +12,7 @@
 		      <img class="d-block w-100" src="<?php echo base_url('assets/bootstrap/img/slide1.png')?>" alt="First slide">
 		    </div>
 		    <div class="carousel-item">
-		      <img class="d-block w-100" src="<?php echo base_url('assets/bootstrap/img/bac.png')?>" alt="Second slide">
+		      <img class="d-block w-100" src="<?php echo base_url('assets/bootstrap/img/slide2.png')?>" alt="Second slide">
 		    </div>
 		    <div class="carousel-item">
 		      <img class="d-block w-100" src="<?php echo base_url('assets/bootstrap/img/eng.png')?>" alt="Third slide">

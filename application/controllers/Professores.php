@@ -39,7 +39,13 @@ class Professores extends CI_Controller
             if ($marcador['email'] == FALSE) {
                 $this->form_validation->set_rules('email', 'E-mail', 'required|valid_email', array('required' => 'O campo E-mail é obrigatorio.'));
             }
-            
+            $verifica_email_professor = explode("@", $this->input->post('email'));
+            $email_certo = ['ifc.edu.br'];
+            foreach ($email_certo as $key => $value) {
+                if ($value != $verifica_email_professor[1]) {
+                   $email_verifica['email_verifica'] = TRUE;
+                }
+            }
         //
         $imgProfessor = $_FILES['imgProfessor'];
          ///
@@ -53,7 +59,13 @@ class Professores extends CI_Controller
         $this->form_validation->set_rules('senhaconf', 'Confirmar Senha', 'required|matches[senha]', array('required' => 'O campo Confirmar senha é obrigatorio'));
         $this->form_validation->set_rules('miniCurriculo', 'Mini Curriculo', 'required|max_length[240]');
         //VERIFICA SE O EMAIL È IGAUL
-        if ($marcador['email'] == TRUE) {
+        if (isset($email_verifica)) {
+            if ($email_verifica['email_verifica'] == TRUE) {
+                 if ($this->form_validation->run() == TRUE) {
+                    $this->load->view('professor_add', $email_verifica);
+                }    
+            } 
+        }elseif ($marcador['email'] == TRUE) {
             if ($this->form_validation->run() == TRUE) {
                 $this->load->view('professor_add', $marcador);
             }      
@@ -75,6 +87,14 @@ class Professores extends CI_Controller
                             'senha' => md5($this->input->post('senha')),
                             'tipo' => 1,
                         );
+                    //VERIFICAR ADIMIN
+                        $admin = $this->professor_model->check_professor($this->input->post('disciplina_codDisciplina'));
+                        if ($admin == TRUE) {
+                            $data['admin'] = 1;
+                        }
+
+
+                    //
                         $insert = $this->professor_model->professor_add($data);
                         $this->db->where('email', $data['email']);
                         $this->db->where('senha', $data['senha']);
@@ -84,6 +104,7 @@ class Professores extends CI_Controller
                             $professor = $query->row();
                             $this->session->set_userdata("professores", $professor->codProfessor);
                              $this->session->set_userdata("imgProfessor", null);
+                            $this->session->set_userdata("nome", $data['nomeProfessor']);
                             $codProfessor = $this->professor_model->get_by_login($professor->email, $professor->senha);
                             ////
                             $data_prof_disc = array(
@@ -130,6 +151,7 @@ class Professores extends CI_Controller
                             $professor = $query->row();
                             $this->session->set_userdata("professores", $professor->codProfessor);
                              $this->session->set_userdata("imgProfessor", $data['imgProfessor']);
+                             $this->session->set_userdata("nome", $data['nomeProfessor']);
                             $codProfessor = $this->professor_model->get_by_login($professor->email, $professor->senhaconf);
                              ////
                             $data_prof_disc = array(

@@ -78,6 +78,7 @@ class Alunos extends CI_Controller
 					                $aluno = $query->row();
 					                $this->session->set_userdata("alunos", $aluno->codAluno);
 					                 $this->session->set_userdata("imgAluno", null);
+					                 $this->session->set_userdata("nome", $data['nomeAluno']);
 					                $codAluno = $this->aluno_model->get_by_login($email, $senha);
 					                $url = "?codAluno=".$aluno->codAluno;
 					               redirect ("alunos/aluno_perfil/$url");
@@ -128,6 +129,7 @@ class Alunos extends CI_Controller
 					                $aluno = $query->row();
 					                $this->session->set_userdata("alunos", $aluno->codAluno);
 					                 $this->session->set_userdata("imgAluno", $data['imgAluno']);
+					                 $this->session->set_userdata("nome", $data['nomeAluno']);
 					                $codAluno = $this->aluno_model->get_by_login($email, $senha);
 					                $url = "?codAluno=".$aluno->codAluno;
 					               redirect ("alunos/aluno_perfil/$url");

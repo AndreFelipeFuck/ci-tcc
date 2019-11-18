@@ -92,7 +92,7 @@
                         
                       </button>
                       <div class="dropdown-menu arrow_box " aria-labelledby="dropdownMenu2">
-                         <a class="btn dropdown-item" href="<?php echo site_url('professores/professor_perfil')?>?codProfessor=<?php echo $_SESSION['professores']?>"><?php echo $_SESSION['nome']?></a>
+                         <a class="btn dropdown-item" href="<?php echo site_url('professores/professor_perfil')?>?codProfessor=<?php echo $_SESSION['professores']?>"><?php echo mb_strimwidth($_SESSION['nome'], 0, 15, "...")?></a>
                           <a href="<?php echo site_url('professores/professor_editar/')?>?codProfessor=<?php echo $_SESSION['professores'];?>" class="btn dropdown-item">Configurações</a>
                          <a href="<?php echo site_url('professores/artigos_view')?>?codProfessor=<?php echo $_SESSION['professores'];?>" class="btn dropdown-item">Artigos</a>
                           <a href="<?php echo site_url('login/sairProf')?>" class ="btn dropdown-item" style="color:#dc3545">Sair</a>
@@ -112,7 +112,7 @@
                       </button>
                       <div class="dropdown-menu arrow_box" aria-labelledby="dropdownMenu2">
                         
-                         <a class="btn dropdown-item" href="<?php echo site_url('alunos/aluno_perfil')?>?codAluno=<?php echo $_SESSION['alunos']?>"><?php echo $_SESSION['nome']?></a>
+                         <a class="btn dropdown-item" href="<?php echo site_url('alunos/aluno_perfil')?>?codAluno=<?php echo $_SESSION['alunos']?>"><?php echo mb_strimwidth($_SESSION['nome'], 0, 15, "...")?></a>
                           <a href="<?php echo site_url('alunos/aluno_editar/')?>?codAluno=<?php echo $_SESSION['alunos'];?>" class="btn dropdown-item">Configurações</a>
                          <a href="<?php echo site_url('alunos/artigos_view')?>?codAluno=<?php echo $_SESSION['alunos'];?>" class="btn dropdown-item">Artigos</a>
                           <a href="<?php echo site_url('login/sair')?>" class ="btn dropdown-item" style="color:#dc3545">Sair</a>
