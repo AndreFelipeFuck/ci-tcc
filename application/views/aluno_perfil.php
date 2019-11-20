@@ -70,7 +70,7 @@ $dataNasc = implode("/", $dataNasc);
              
                     <div class="contPerfil">
             <?php if($artigo->imgArtigo == null){?>
-                        <figure><img src="<?php echo base_url('assets/bootstrap/img/eng.png')?>"></figure><?php
+                        <figure><img src="<?php echo base_url('assets/bootstrap/img/artigo.png')?>"></figure><?php
                 }else{
                         ?><figure><img src="<?php echo base_url("upload/artigos/$artigo->imgArtigo")?>"></figure>
             <?php }?>

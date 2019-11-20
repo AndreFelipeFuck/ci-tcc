@@ -50,7 +50,7 @@ $dataNasc = implode("/", $dataNasc);
                 </div>
             -->
                 <div id="infoAlign">
-                    <label style="padding-left: 1%; border-left: solid 3px #28a745;">Mini curriculo:</label>
+                    <label style="padding-left: 1%; border-left: solid 3px #28a745;">Descrição:</label>
                     <h6><?php echo $perfil->miniCurriculo;?></h6>
                 </div>
                 <div id="infoAlign">
@@ -86,7 +86,7 @@ $dataNasc = implode("/", $dataNasc);
              
                     <div class="contPerfil">
             <?php if($artigo->imgArtigo == null){?>
-                        <figure><img src="<?php echo base_url('assets/bootstrap/img/eng.png')?>"></figure><?php
+                        <figure><img src="<?php echo base_url('assets/bootstrap/img/artigo.png')?>"></figure><?php
                 }else{
                         ?><figure><img src="<?php echo base_url("upload/artigos/$artigo->imgArtigo")?>"></figure>
         <?php   } ?>

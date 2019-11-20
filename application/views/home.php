@@ -19,7 +19,7 @@
 			  </div>
 		    </div>
 		    <div class="carousel-item">
-		      <img class="d-block w-100" src="<?php echo base_url('assets/bootstrap/img/eng.png')?>" alt="Third slide">
+		      <img class="d-block w-100" src="<?php echo base_url('assets/bootstrap/img/slide3.png')?>" alt="Third slide">
 		    </div>
 		  </div>
 		  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -113,7 +113,7 @@
                      <article class="vidCont">
                             <?php
                                 if($artigo->imgArtigo == null){?>
-                                    <img src="<?php echo base_url('assets/bootstrap/img/crisp.jpg')?>">
+                                    <img src="<?php echo base_url('assets/bootstrap/img/semImagem.png')?>">
                             <?php
                                 }else{?>
                                     <img src="<?php echo base_url("upload/artigos/$artigo->imgArtigo")?>">
@@ -135,7 +135,7 @@
                          <article class="vidCont">
                             <?php
                                 if($artigo->imgArtigo == null){?>
-                                    <img src="<?php echo base_url('assets/bootstrap/img/crisp.jpg')?>">
+                                    <img src="<?php echo base_url('assets/bootstrap/img/semImagem.png')?>">
                             <?php
                                 }else{?>
                                     <img src="<?php echo base_url("upload/artigos/$artigo->imgArtigo")?>">

@@ -71,7 +71,7 @@ $artigos = array_merge($artigos_aluno, $artigos_professor);
                      <article class="vidCont">
                             <?php
                                 if($artigo->imgArtigo == null){?>
-                                    <img src="<?php echo base_url('assets/bootstrap/img/crisp.jpg')?>">
+                                    <img src="<?php echo base_url('assets/bootstrap/img/semImagem.png')?>">
                             <?php
                                 }else{?>
                                     <img src="<?php echo base_url("upload/artigos/$artigo->imgArtigo")?>">
@@ -92,7 +92,7 @@ $artigos = array_merge($artigos_aluno, $artigos_professor);
                          <article class="vidCont">
                             <?php
                                 if($artigo->imgArtigo == null){?>
-                                    <img src="<?php echo base_url('assets/bootstrap/img/crisp.jpg')?>">
+                                    <img src="<?php echo base_url('assets/bootstrap/img/semImagem.png')?>">
                             <?php
                                 }else{?>
                                     <img src="<?php echo base_url("upload/artigos/$artigo->imgArtigo")?>">

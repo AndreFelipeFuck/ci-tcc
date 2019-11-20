@@ -78,7 +78,7 @@
 				 	<option value="ufsc" name="instituicao">UFSC</option>
 			  	</select>
 			<div class="espaco2"></div>
-			<span>Mini Curriculo:</span>
+			<span>Descrição:</span>
 			<br>
 			<div>
 			<textarea class="curriculo" placeholder="Conte-nos mais sobre sua formação..." name="miniCurriculo" ><?php echo set_value('miniCurriculo'); ?></textarea>
