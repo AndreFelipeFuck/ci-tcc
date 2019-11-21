@@ -12,7 +12,7 @@
                                     <article class="vidCont">
                                         <?php
                                                 if($artigo->imgArtigo == null){?>
-                                                    <img src="<?php echo base_url('assets/bootstrap/img/eng.png')?>" class="card-img-top" alt="..."><?php
+                                                    <img src="<?php echo base_url('assets/bootstrap/img/semImagem.png')?>" class="card-img-top" alt="..."><?php
                                                 }else{
                                                     ?><img src="<?php echo base_url("upload/artigos/$artigo->imgArtigo")?>" class="card-img-top" alt="...">
                                         <?php }?>

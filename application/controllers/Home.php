@@ -48,7 +48,7 @@ class Home extends CI_Controller
          $this->db->select('titulo');
         $this->db->like('titulo', $term);
          $this->db->order_by("titulo", "asc");
-        $this->db->limit(10);
+        $this->db->limit(5);
         $data = $this->db->get("artigos")->result();
         echo json_encode( $data);
     }

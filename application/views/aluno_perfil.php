@@ -61,7 +61,7 @@ $dataNasc = implode("/", $dataNasc);
                         if(!empty($_SESSION['alunos'])):
                                 if($_SESSION['alunos'] == $_GET['codAluno']):?>
                                     <a href="<?php echo site_url('alunos/artigos_add')?>?codAluno=<?php echo $perfil->codAluno;?>" class="btn" style="background-color: #17a2b8; color: #fff;">Novo artigo</a>
-                                    <a href="<?php echo site_url('alunos/artigos_view')?>?codAluno=<?php echo $perfil->codAluno;?>" class="btn" style="background-color: #17a2b8; color: #fff;">Visualizar Artigos</a>
+                                    <a href="<?php echo site_url('alunos/artigos_view')?>?codAluno=<?php echo $perfil->codAluno;?>" class="btn" style="background-color: #17a2b8; color: #fff;">Meus Artigos</a>
                             <?php endif; ?>
                         <?php endif; ?>
                 </div>
@@ -70,7 +70,7 @@ $dataNasc = implode("/", $dataNasc);
              
                     <div class="contPerfil">
             <?php if($artigo->imgArtigo == null){?>
-                        <figure><img src="<?php echo base_url('assets/bootstrap/img/eng.png')?>"></figure><?php
+                        <figure><img src="<?php echo base_url('assets/bootstrap/img/artigo.png')?>"></figure><?php
                 }else{
                         ?><figure><img src="<?php echo base_url("upload/artigos/$artigo->imgArtigo")?>"></figure>
             <?php }?>

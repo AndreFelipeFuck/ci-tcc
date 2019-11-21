@@ -77,7 +77,7 @@ $dataNasc = implode("/", $dataNasc);
                             if($_SESSION['professores'] == $_GET['codProfessor']):?>
                                 <a href="<?php echo site_url('professores/artigos_add')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn" style="background-color: #28a745; color: #fff;">Novo artigo</a>
 
-                                 <a href="<?php echo site_url('professores/artigos_view')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn" style="background-color: #28a745; color: #fff;">Visualizar Artigos</a>
+                                 <a href="<?php echo site_url('professores/artigos_view')?>?codProfessor=<?php echo $perfil->codProfessor;?>" class="btn" style="background-color: #28a745; color: #fff;">Meus Artigos</a>
                     <?php endif;?>
                 <?php endif; ?>
                 </div>
@@ -86,7 +86,7 @@ $dataNasc = implode("/", $dataNasc);
              
                     <div class="contPerfil">
             <?php if($artigo->imgArtigo == null){?>
-                        <figure><img src="<?php echo base_url('assets/bootstrap/img/eng.png')?>"></figure><?php
+                        <figure><img src="<?php echo base_url('assets/bootstrap/img/artigo.png')?>"></figure><?php
                 }else{
                         ?><figure><img src="<?php echo base_url("upload/artigos/$artigo->imgArtigo")?>"></figure>
         <?php   } ?>

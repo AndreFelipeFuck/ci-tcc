@@ -61,7 +61,7 @@ $artigos = array_merge($artigos_aluno, $artigos_professor);
             <?php if (empty($artigos)):?>
                  <article class="vidCont">
                     <section id="BlockNoResult">
-                        <div><figure class="img-responsive"><img src="<?php echo base_url("assets/bootstrap/img/bio.png")?>" class="img-fluid" alt="smaple image"></figure></div>
+                        <div><figure class="img-responsive"><img src="<?php echo base_url("assets/bootstrap/img/semResultado.png")?>" class="img-fluid" alt="smaple image"></figure></div>
                         <div><h5>Não há nenhum artigo sobre <?php echo $disciplinas->nomeDisciplina?>...</h5></div>
                     </section>
                  </article>
@@ -71,7 +71,7 @@ $artigos = array_merge($artigos_aluno, $artigos_professor);
                      <article class="vidCont">
                             <?php
                                 if($artigo->imgArtigo == null){?>
-                                    <img src="<?php echo base_url('assets/bootstrap/img/crisp.jpg')?>">
+                                    <img src="<?php echo base_url('assets/bootstrap/img/semImagem.png')?>">
                             <?php
                                 }else{?>
                                     <img src="<?php echo base_url("upload/artigos/$artigo->imgArtigo")?>">
@@ -92,7 +92,7 @@ $artigos = array_merge($artigos_aluno, $artigos_professor);
                          <article class="vidCont">
                             <?php
                                 if($artigo->imgArtigo == null){?>
-                                    <img src="<?php echo base_url('assets/bootstrap/img/crisp.jpg')?>">
+                                    <img src="<?php echo base_url('assets/bootstrap/img/semImagem.png')?>">
                             <?php
                                 }else{?>
                                     <img src="<?php echo base_url("upload/artigos/$artigo->imgArtigo")?>">

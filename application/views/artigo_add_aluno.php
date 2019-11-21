@@ -26,8 +26,9 @@
 					      $('#summernote').summernote({
 					        placeholder: 'Digite seu texto aqui..',
 					        tabsize: 2,
-					        height: 100
+					        height: 100,
 					      });
+
 					    </script>
 					 </div>
 					  <div class="form-group">

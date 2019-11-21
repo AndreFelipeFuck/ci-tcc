@@ -6,7 +6,7 @@
             <div class="ConteinerLogin"> 
                 <section class="logTex">
                     <div>
-                        <h1>Seja Bem-Vindo de Volta!</h1>
+                        <h1>Seja Bem-Vindo!</h1>
                     </div>
                 </section>
                 <section class="logCad" id="sombra">

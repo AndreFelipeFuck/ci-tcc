@@ -35,6 +35,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                $this->db->select('titulo');
                $this->db->like("titulo",$busca);
 
+
                $records = $this->db->get('artigos')->result();
 
                foreach($records as $row ){
