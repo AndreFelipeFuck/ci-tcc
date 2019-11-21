@@ -23,9 +23,10 @@
 
 	        <?php if (empty($listagem)):?>
 	        	 <article class="vidCont">
-	        	 	<div>
-	        	 		<h2>Não encontramos o que voce pesquisou. ;(</h2>
-	        	 	</div>
+				 <section id="BlockNoResult">
+                        <div><figure class="img-responsive"><img src="<?php echo base_url("assets/bootstrap/img/semResultado.png")?>" class="img-fluid" alt="smaple image"></figure></div>
+                        <div><h5>Não há nenhum artigo sobre <?php echo $_GET['busca']?>...</h5></div>
+                    </section>
 	        	 </article>
 	        <?php endif ?>
 			<?php foreach($listagem as $artigo):?>

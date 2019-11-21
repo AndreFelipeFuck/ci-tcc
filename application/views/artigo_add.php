@@ -24,9 +24,9 @@
 					    <textarea name="corpo" id="summernote" required></textarea>
 					    <script>
 					      $('#summernote').summernote({
+									height: 500,
 					        placeholder: 'Digite seu texto aqui..',
 					        tabsize: 2,
-					        height: 100
 					      });
 					     
 					    </script>

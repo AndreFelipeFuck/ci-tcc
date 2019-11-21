@@ -217,6 +217,8 @@ class Professores extends CI_Controller
                             'professores_codProfessor' => $this->input->post('codProfessor'),
                             'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina')
                         );
+                        
+                        $this->session->set_userdata('nome', $data['nomeProfessor']);
                         $this->professores_has_disciplinas_model->prof_disc_update(array('professores_codProfessor' => $this->input->post('codProfessor')), $data_prof_disc);
                     ////
 
@@ -259,6 +261,7 @@ class Professores extends CI_Controller
                             'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina')
                         );
                          $this->professores_has_disciplinas_model->prof_disc_update(array('professores_codProfessor' => $this->input->post('codProfessor')), $data_prof_disc);
+                         $this->session->set_userdata('nome', $data['nomeProfessor']);
                          ////
 
                         echo json_encode(array("status" => TRUE));
@@ -293,7 +296,7 @@ class Professores extends CI_Controller
                             'senha' => md5($this->input->post('senha')),
                         );
                         $this->professor_model->professor_update(array('codProfessor' => $this->input->post('codProfessor')), $data);
-
+                        $this->session->set_userdata('nome', $data['nomeProfessor']);
                         echo json_encode(array("status" => TRUE));
                         //ENVIAR PARA A PAGINA PERFIL
                         redirect ("professores/professor_perfil/$url");
@@ -329,6 +332,7 @@ class Professores extends CI_Controller
                             );
                             $this->professor_model->professor_update(array('codProfessor' => $this->input->post('codProfessor')), $data);
                             $this->session->set_userdata('imgProfessor', $data['imgProfessor']);
+                            $this->session->set_userdata('nome', $data['nomeProfessor']);
                             echo json_encode(array("status" => TRUE));
 
                             //ENVIAR PARA A PAGINA PERFIL

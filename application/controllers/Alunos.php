@@ -194,6 +194,7 @@ class Alunos extends CI_Controller
 					'email' => $this->input->post('email'),
 					);
 					$this->aluno_model->aluno_update(array('codAluno' => $this->input->post('codAluno')), $data);
+					$this->session->set_userdata('nome', $data['nomeAluno']);
 
 					echo json_encode(array("status" => TRUE));
 					//ENVIAR PARA A PAGINA PERFIL
@@ -242,6 +243,8 @@ class Alunos extends CI_Controller
 						);
 						$this->aluno_model->aluno_update(array('codAluno' => $this->input->post('codAluno')), $data);
 						$this->session->set_userdata('imgAluno', $data['imgAluno']);
+						$this->session->set_userdata('nome', $data['nomeAluno']);
+						
 
 						echo json_encode(array("status" => TRUE));
 
@@ -276,6 +279,7 @@ class Alunos extends CI_Controller
 					'senha' => md5($this->input->post('senha')),
 					);
 					$this->aluno_model->aluno_update(array('codAluno' => $this->input->post('codAluno')), $data);
+					$this->session->set_userdata('nome', $data['nomeAluno']);
 
 					echo json_encode(array("status" => TRUE));
 					//ENVIAR PARA A PAGINA PERFIL
@@ -324,6 +328,7 @@ class Alunos extends CI_Controller
 						);
 						
 						$this->aluno_model->aluno_update(array('codAluno' => $this->input->post('codAluno')), $data);
+						$this->session->set_userdata('nome', $data['nomeAluno']);
 						$this->session->set_userdata('imgAluno', $data['imgAluno']);
 
 						echo json_encode(array("status" => TRUE));

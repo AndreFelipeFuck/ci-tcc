@@ -1,3 +1,4 @@
+<?php if(isset($_SESSION['alunos']) == null and isset($_SESSION['professores']) == null){?>
 <?php  include "cabeca.php"; ?>
 <head>
 	<title>Atom | Cadastro de Professor</title>
@@ -103,5 +104,7 @@
 		</form>
 		
 	</section>
-
 <?php include "rodape.php"; ?>
+<?php }else{?>
+    <meta http-equiv="refresh" content="0;url=<?php echo site_url('')?>" />
+<?php } ?>
