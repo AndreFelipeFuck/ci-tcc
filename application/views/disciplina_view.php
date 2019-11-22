@@ -61,8 +61,10 @@ $artigos = array_merge($artigos_aluno, $artigos_professor);
             <?php if (empty($artigos)):?>
                  <article class="vidCont">
                     <section id="BlockNoResult">
-                        <div><figure class="img-responsive"><img src="<?php echo base_url("assets/bootstrap/img/semResultado.png")?>" class="img-fluid" alt="smaple image"></figure></div>
-                        <div><h5>Não há nenhum artigo sobre <?php echo $disciplinas->nomeDisciplina?>...</h5></div>
+                        <div class="img-responsive">
+                          <img src="<?php echo base_url("assets/bootstrap/img/semResultado.png")?>" class="img-fluid" alt="smaple image">
+                          <h5>Não há nenhum artigo sobre <?php echo $disciplinas->nomeDisciplina?>...</h5>
+                        </div>
                     </section>
                  </article>
             <?php endif ?>
