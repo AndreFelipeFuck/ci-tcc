@@ -16,7 +16,7 @@
 					<input type="hidden" value="<?= $perfil->codDisciplina?>" name="disciplina_codDisciplina"/>
 					<h1 style="font-size: 35px; border-bottom: solid 2px #17a2b8; margin-bottom: 2%; padding-bottom: 1%;">Cadastro de Artigo:</h1>
 					<div class="form-group">
-					    <label for="exampleFormControlInput">Titulo do Artigo</label>
+					    <label for="exampleFormControlInput">Titulo do Artigo:</label>
 					    <input type="text" class="form-control" id="exampleFormControlInput" placeholder="Ex:'Lamarckismo e Darwinismo'" name="titulo" required>
 					 </div>
 					  <div class="form-group" id="texto">

@@ -414,9 +414,41 @@ class Professores extends CI_Controller
 
     public function artigos_view(){
         $codProfessor = $this->input->get('codProfessor');
-        $professor['artigos'] = $this->professor_model->get_by_id($codProfessor);
-        $professor['artigos'] = $this->artigos_model->get_all_artigos();
-        $professor['contar'] = $this->artigos_model->get_count_professor($codProfessor);
+        $this->load->library('pagination');
+        $config = array(
+            "base_url" => "http://localhost/ci_tcc/index.php/professores/artigos_view",
+            "per_page" => 20,
+            "num_links" => 3,
+            "uri_segment" => 3,
+            "total_rows" => 200,
+            "full_tag_open" => "<ul class='pagination'>",
+            "full_tag_close" => "</ul>",
+            "first_link" => FALSE,
+            "last_link" => FALSE,
+            "reuse_query_string" => TRUE,
+            //"use_page_numbers" => TRUE,
+            "first_tag_open" => "<li>",
+            "first_tag_close" => "</li>",
+            "prev_link" => "Anterior",
+            "prev_tag_open" => "<li class='prev'>",
+            "prev_tag_close" => "</li>",
+            "next_link" => "Próxima",
+            "next_tag_open" => "<li class='next'>",
+            "next_tag_close" => "</li>",
+            "last_tag_open" => "<li>",
+            "last_tag_close" => "</li>",
+            "cur_tag_open" => "<li class='active'><a href='#'>",
+            "cur_tag_close" => "</a></li>",
+            "num_tag_open" => "<li>",
+            "num_tag_close" => "</li>"
+        );
+        $config['first_url'] = $config['base_url'].'?'.http_build_query($_GET);
+        //if (count($_GET) > 0) $config['suffix'] = '?' . http_build_query($_GET, '', "&");
+        $this->pagination->initialize($config);
+        $professor['pagination'] = $this->pagination->create_links();
+        $offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $professor['artigos'] = $this->artigos_model->get_all_id_professor_pag($codProfessor, $config['per_page'],$offset );
+        
         $this->load->view('artigos_view_professor', $professor);
     }
 

@@ -30,6 +30,7 @@
                                     </article>
                         <?php endif?>           
                         <?php }?>
+                        <?php echo $pagination; ?>
             <p> <?php  ?> </p>
         </div>
 <?php }else{?>

@@ -25,20 +25,51 @@ class Artigos extends CI_Controller
     }
 
     public function artigos_listar(){
-    	/*$config['base_url'] = base_url('artigos/artigos_listar');
-    	$config['total_rows'] = $this->artigos_model->get_count();
-		$config ["per_page"] = 2;
-        $config ["uri_segment"] = 1;
+    	$this->load->library('pagination');
+    	$config = array(
+			"base_url" => "http://localhost/ci_tcc/index.php/artigos/artigos_listar",
+			"per_page" => 10,
+			"num_links" => 3,
+			"uri_segment" => 3,
+			"total_rows" => $this->artigos_model->get_count(),
+			"full_tag_open" => "<ul class='pagination'>",
+			"full_tag_close" => "</ul>",
+			"first_link" => FALSE,
+			"last_link" => FALSE,
+			"first_tag_open" => "<li>",
+			"first_tag_close" => "</li>",
+			"prev_link" => "Anterior",
+			"prev_tag_open" => "<li class='prev'>",
+			"prev_tag_close" => "</li>",
+			"next_link" => "Próxima",
+			"next_tag_open" => "<li class='next'>",
+			"next_tag_close" => "</li>",
+			"last_tag_open" => "<li>",
+			"last_tag_close" => "</li>",
+			"cur_tag_open" => "<li class='active'><a href='#'>",
+			"cur_tag_close" => "</a></li>",
+			"num_tag_open" => "<li>",
+			"num_tag_close" => "</li>"
+		);
+		$offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+		///
+     	$artigo_aluno = $this->artigos_model->listar_artigos($config['per_page'],$offset);
+		$artigo_professor = $this->artigos_model->listar_artigos_professor($config['per_page'],$offset);
+		if ($artigo_professor == null) {
+			$artigo_aluno = $this->artigos_model->listar_artigos(20,$offset);
+			$config['per_page'] = 20;
+		}elseif($artigo_aluno == null){
+			$artigo_professor = $this->artigos_model->listar_artigos_professor(20,$offset);
+			$config['per_page'] = 20;
+		}
+		///
+
 		
-		 $this->pagination->initialize($config);
+		$this->pagination->initialize($config);
+		$data['pagination'] = $this->pagination->create_links();
 
-        $page = ($this->uri->segment(1))? $this->uri->segment(1):0;
 
-        $data["links"] = $this->pagination->create_links();*/
-
-        //$data['artigos'] = $this->artigos_model->get_all_artigos($config["per_page"], $page);
-     	$data['artigo_aluno'] = $this->artigos_model->listar_artigos();
-		$data['artigo_professor'] = $this->artigos_model->listar_artigos_professor();
+		$data['artigos'] = array_merge($artigo_aluno, $artigo_professor);
         $data['contar'] = $this->artigos_model->get_count();
 
         $this->load->view('artigos_view', $data);

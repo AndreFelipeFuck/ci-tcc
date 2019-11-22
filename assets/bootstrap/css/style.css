@@ -98,6 +98,12 @@
 	border-radius: 5px;
 }
 
+.imgAd2{
+	width: 25%;
+	height: 22%;
+	margin: 1%;
+}
+
 .vidCont{
 	width: 100%;
 	display: inline-block;

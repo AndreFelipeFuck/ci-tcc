@@ -27,9 +27,9 @@
                     <td>
                     <?php
                         if ($professor->imgProfessor == null) {
-                           ?><figure class="img-rounded img-responsive"><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>" class=" rounded-circle img-fluid" alt="smaple image"></figure><?php
+                           ?><figure class="img-rounded img-responsive"><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>" class=" rounded-circle img-fluid" alt="smaple image" style ="width: 20%;"></figure><?php
                         }else{
-                            ?><figure class="img-rounded img-responsive"><img src="<?php echo base_url("upload/professores/$professor->imgProfessor")?>" class=" rounded-circle img-fluid" alt="smaple image"></figure><?php
+                            ?><figure class="img-rounded img-responsive"><img src="<?php echo base_url("upload/professores/$professor->imgProfessor")?>" class=" rounded-circle img-fluid" alt="smaple image" style ="width: 20%;"></figure><?php
                         }
                     ?>
                     </td>

@@ -41,16 +41,22 @@ if ($admin->admin != 1) {
                     <td>    
                         <?php
                                 if($artigo->imgArtigo == null){?>
-                                    <img src="<?php echo base_url('assets/bootstrap/img/crisp.jpg')?>"  class="imgAd">
+                                    <img src="<?php echo base_url('assets/bootstrap/img/artigo.png')?>"  class="img-thumbnail" style = "width: 20%;">
                             <?php
                                 }else{?>
-                                    <img src="<?php echo base_url("upload/artigos/$artigo->imgArtigo")?>" class="imgAd">
+                                    <img src="<?php echo base_url("upload/artigos/$artigo->imgArtigo")?>" class="img-thumbnail" style = "width: 20%;">
                           <?php }?>
                     </td>
                     <td><?php echo $artigo->titulo ?></td>
                     <td><?php echo $artigo->resumo?></td>
-                    <td><?php echo $artigo->dataArtigo?></td>
-                    <td>
+                    <?php
+                    $dataArtigo = explode(" ", $artigo->dataArtigo);
+                    $dataArtigo = explode("-", $dataArtigo[0]);
+                    $dataArtigo = array_reverse($dataArtigo);
+                    $dataArtigo = implode("/", $dataArtigo);?>
+                    <td><?php echo $dataArtigo?></td>
+                    ?>
+                    <td >
                          <?php if (isset($artigo->alunos_codAluno) == TRUE): ?>
                  
                                <h4 id="nomeAutor2"><a href="<?php echo site_url('alunos/aluno_perfil')?>?codAluno=<?php echo $artigo->alunos_codAluno?>" style="color: #17a2b8;"><?php echo $artigo->nomeAluno;?></a></h4>

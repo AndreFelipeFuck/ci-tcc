@@ -77,10 +77,10 @@
 				 	<input type="radio" name="anoLetivo" value="Terceiro">
 				 	<label>Terceiro</label>
 				 </div>
-				 <div class="form-ano">
+				 <!-- <div class="form-ano">
 				 	<input type="radio" name="anoLetivo" value="Superior">
 				 	<label>Superior</label>
-				 </div>
+				 </div> -->
 			<div class="espaco2"></div>
 			<div class="form-group">
 			    <label for="exampleFormControlInput1">Envie uma imagem de perfil:</label>

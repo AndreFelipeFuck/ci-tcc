@@ -1,5 +1,5 @@
 <?php include 'cabeca.php';
-$artigos = array_merge($artigo_aluno, $artigo_professor);
+//$artigos = array_merge($artigo_aluno, $artigo_professor);
 
       usort($artigos,
 
@@ -7,10 +7,13 @@ $artigos = array_merge($artigo_aluno, $artigo_professor);
 
              if( $a ->dataArtigo == $b ->dataArtigo ) return 0;
 
-             return ( ( $a->dataArtigo < $b->dataArtigo ) ? -1 : 1 );
+             return ( ( $a->dataArtigo > $b->dataArtigo ) ? -1 : 1 );
          }
     );
 
+    ?><pre><?php
+      //print_r($artigos);
+   ?></pre><?php
    $json_encode =  json_encode($artigos);
 
    
@@ -20,6 +23,7 @@ $artigos = array_merge($artigo_aluno, $artigo_professor);
       <section class="conteiner0">
             <h1 style="font-size: 35px; border-bottom: solid 2px #17a2b8; margin-bottom: 2%; padding-bottom: 1%;">Artigos</h1>
             <h4 style="background-color: #51C0CF; font-size: 20px; margin-bottom: 2%; width: 24%; padding: 0.5%; border-left: solid 5px #17a2b8; border-radius: 2px; color: #fff;">No momento há <?php echo $contar?> artigo(s)</h4>
+
            <?php if (empty($artigos)):?>
                  <article class="vidCont">
                     <div>
@@ -70,10 +74,13 @@ $artigos = array_merge($artigo_aluno, $artigo_professor);
                                 </div>
                          </article>
                      <br>
+
                 <?php endif ?>
 
                        
              <?php endforeach?>
+             
+                <?php echo $pagination; ?>
         </section>
         
     </div>

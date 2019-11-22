@@ -126,10 +126,10 @@
 						 	<input type="radio" name="anoLetivo" value="Terceiro">
 						 	<label>Terceiro</label>
 						 </div>
-						 <div class="form-ano">
+						<!--  <div class="form-ano">
 						 	<input type="radio" name="anoLetivo" value="Superior">
 						 	<label>Superior</label>
-						 </div>
+						 </div> -->
 				<?php elseif($perfil->anoLetivo == "Segundo"): ?>
 					 <div class="form-ano">
 						 	<input type="radio" name="anoLetivo" value="Primeiro">
@@ -143,10 +143,10 @@
 						 	<input type="radio" name="anoLetivo" value="Terceiro">
 						 	<label>Terceiro</label>
 						 </div>
-						 <div class="form-ano">
+						 <!-- <div class="form-ano">
 						 	<input type="radio" name="anoLetivo" value="Superior">
 						 	<label>Superior</label>
-						 </div>
+						 </div> -->
 				<?php elseif($perfil->anoLetivo == "Terceiro"): ?>
 					 <div class="form-ano">
 						 	<input type="radio" name="anoLetivo" value="Primeiro">
@@ -160,10 +160,10 @@
 						 	<input type="radio" name="anoLetivo" value="Terceiro" checked>
 						 	<label>Terceiro</label>
 						 </div>
-						 <div class="form-ano">
+						 <!-- <div class="form-ano">
 						 	<input type="radio" name="anoLetivo" value="Superior">
 						 	<label>Superior</label>
-						 </div>
+						 </div> -->
 				<?php endif ?>
 
 					<div class="espaco2"></div><br>
