@@ -94,8 +94,17 @@ class Artigos extends CI_Controller
 			$titulo_pdf = $titulo_pdf."_".date("Y-m-d");
 		//
 			$ponto_img = explode(".", $imgArtigo['name']);
-			$ponto_img = $ponto_img[1];
+			@$ponto_img = $ponto_img[1];
 		//
+			$codProfessor = $this->input->post('professores_codProfessor');
+			$codAluno = $this->input->post('alunos_codAluno');
+			if(!empty($codProfessor) ){
+				$url = "professores/artigos_add?codProfessor=".$codProfessor;
+			}elseif(!empty($codAluno)){
+				$url = "alunos/artigos_add?codAluno=".$codAluno;
+			}
+
+			
 		//SEM IMAGEM
 		if($imgArtigo['name'] == null){
 			if ($pdfArtigo['name'] != null) {
@@ -149,7 +158,16 @@ class Artigos extends CI_Controller
 		            }
 
 		        }else{
-		         	echo $this->upload->display_errors();
+		         	//echo $this->upload->display_errors();
+		         	$titulo = $this->input->post('titulo');
+		         	$corpo = $this->input->post('corpo');
+		         	$resumo =  $this->input->post('resumo');
+		         	$upload_erro_pdf = $this->upload->display_errors();
+                    $this->session->set_flashdata('upload_erro_pdf', "$upload_erro_pdf");
+                    $this->session->set_flashdata('titulo', "$titulo");
+                    $this->session->set_flashdata('corpo', "$corpo");
+                     $this->session->set_flashdata('resumo', "$resumo");
+		           	redirect("$url");
 		        }
 			}else{
 					echo 'Arquivo salvo com sucesso.';
@@ -264,10 +282,25 @@ class Artigos extends CI_Controller
 			            	}
 
 		    			}else{
-		         			echo $this->upload->display_errors();
+		         			//echo $this->upload->display_errors();
+		         			$titulo = $this->input->post('titulo');
+		         			$upload_erro_pdf = $this->upload->display_errors();
+                    		$this->session->set_flashdata('upload_erro_pdf', "$upload_erro_pdf");
+                    		$this->session->set_flashdata('titulo', "$titulo");
+                    		$this->session->set_flashdata();
+		           			redirect("$url");
 		         		}
 		            }else{
-		            	echo $this->upload->display_errors();
+		            	///echo $this->upload->display_errors();
+		            	$titulo = $this->input->post('titulo');
+			         	$corpo = $this->input->post('corpo');
+			         	$resumo =  $this->input->post('resumo');
+			         	$upload_erro = $this->upload->display_errors();
+	                    $this->session->set_flashdata('upload_erro', "$upload_erro");
+	                    $this->session->set_flashdata('titulo', "$titulo");
+	                    $this->session->set_flashdata('corpo', "$corpo");
+	                     $this->session->set_flashdata('resumo', "$resumo");
+			           	redirect("$url");
 		            }
 
 		        }else{
@@ -327,12 +360,15 @@ class Artigos extends CI_Controller
 
 			    			}else{
 
-			    				//$urlAluno = "?codAluno=".$this->input->post('alunos_codAluno');
-			    				//$urlProfessor = "?codProfessor=".$this->input->post('professores_codProfessor');
-		    					//$erro['erro'] = 
-		    					 echo $this->upload->display_errors();
-		    					 //redirect("artigos/artigo_add/$urlAluno");
-                         		//$this->load->view('artigo_add_aluno'.$urlAluno, $erro);
+			    				$titulo = $this->input->post('titulo');
+					         	$corpo = $this->input->post('corpo');
+					         	$resumo =  $this->input->post('resumo');
+					         	$upload_erro = $this->upload->display_errors();
+			                    $this->session->set_flashdata('upload_erro', "$upload_erro");
+			                    $this->session->set_flashdata('titulo', "$titulo");
+			                    $this->session->set_flashdata('corpo', "$corpo");
+			                     $this->session->set_flashdata('resumo', "$resumo");
+					           	redirect("$url");
 			         		}
 		        }
 		}	

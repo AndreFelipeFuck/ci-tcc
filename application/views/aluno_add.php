@@ -8,11 +8,15 @@
 	<section class="conteinerCad" id="sombra">
 		<form style="padding: 1%;" action="<?php echo site_url('alunos/aluno_add')?>" method="post" enctype = "multipart/form-data">
 			<h1 style="font-size: 35px; border-bottom: solid 2px #17a2b8; margin-bottom: 2%; padding-bottom: 1%;">Cadastro:</h1>
+
+			<!-- Text input-->
 			<div class="form-group">
 			    <label for="exampleFormControlInput1">Nome Completo</label>
 			    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ex: Josef Oliveira" name="nomeAluno" value="<?php echo set_value('nomeAluno'); ?>" >
 			    <small style="color:#dc3545"><?php  echo  form_error('nomeAluno');?></small>
 			 </div>
+
+			 <!-- Email input-->
 			  <div class="form-group">
 			    <label for="exampleFormControlInput1">E-mail</label>
 			    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="exemplo@gmail.com" name="email" value="<?php echo set_value('email'); ?>" >
@@ -26,8 +30,9 @@
 			    }
 			    ?>
 			 </div>
+
+			 <!-- Password input-->
 			 <div class="form-group">
-			 	 
 			    <label for="exampleFormControlInput1">Senha</label>
 			    <input type="password" class="form-control" id="exampleFormControlInput1" name="senha">
 			    <?php if (empty(form_error('senha')) ){
@@ -35,14 +40,16 @@
 			    }else{
 			    	?><small style="color:#dc3545" ><?php  echo  form_error('senha');?></small><?php
 			    }?>
-			    
-			   
 			 </div>
+
+			 <!-- Password input-->
 			 <div class="form-group">
 			    <label for="exampleFormControlInput1">Confirmar Senha</label>
 			    <input type="password" class="form-control" id="exampleFormControlInput1" name="senhaconf">
 			    <small style="color:#dc3545"><?php  echo  form_error('senhaconf');?></small>
 			 </div>
+
+			 
 			 <div class="form-group">
 			    <label for="exampleFormControlInput2">Data de nascimento</label>
 			    <input type="date" class="form-control" id="exampleFormControlInput2" name="dataNasc">

@@ -141,6 +141,12 @@ class Professores extends CI_Controller
                             'tipo' => 1,
                         );
 
+                        //VERIFICAR ADIMIN
+                        $admin = $this->professor_model->check_professor($this->input->post('disciplina_codDisciplina'));
+                        if ($admin == TRUE) {
+                            $data['admin'] = 1;
+                        }
+
                         $insert = $this->professor_model->professor_add($data);
 
                         $this->db->where('email', $data['email']);
@@ -188,7 +194,26 @@ class Professores extends CI_Controller
         $vereficaSenha = $this->input->post('senha');
          ///
             $ponto_img = explode(".", $imgProfessor['name']);
-            $ponto_img = $ponto_img[1];
+            @$ponto_img = $ponto_img[1];
+        //
+        //VERIFICA EMAIL
+            $marcador['email'] = $this->professor_model->check_email($this->input->post('email'));
+            if($this->input->post('email') != $this->input->post('email_teste')){
+                $marcador['email'] = TRUE;
+            }else{
+                $marcador['email'] = FALSE;
+            }
+
+            $verifica_email_professor = explode("@", $this->input->post('email'));
+            $email_certo = ['ifc.edu.br'];
+            foreach ($email_certo as $key => $value) {
+                if ($value != $verifica_email_professor[1]) {
+                   $email_verifica['email_verifica'] = TRUE;
+                }
+            }
+
+            $email_erro = "O email escolhido já pertence a outro usuário, se quiser trocar de email, tente outro";
+            $email_marcador = "O seu email não pertence a instituição";
         //
 
         //SE O PROFESSOR NÂO TROCAR A SENHA
@@ -197,80 +222,123 @@ class Professores extends CI_Controller
 
             $this->form_validation->set_rules('nomeProfessor', 'Nome Completo', 'required|min_length[3]|max_length[20]', array('required' => 'O campo Nome Completo é obrigatorio.'));
             $this->form_validation->set_rules('email', 'E-mail', 'required|valid_email', array('required' => 'O campo E-mail é obrigatorio.'));
+            $this->form_validation->set_rules('miniCurriculo', 'Mini Curriculo', 'required|max_length[50]');
 
-            if ($this->form_validation->run() == FALSE) {
-                 $erros = array('mensagens' => validation_errors());
-                $this->load->view('professor_editar', $erros);
+            //VERIFICA SE O EMAIL È IGAUL
+            if (isset($email_verifica)) {
+                if ($email_verifica['email_verifica'] == TRUE) {
+                     if ($this->form_validation->run() == FALSE) {
+                        $form_nome = form_error('nomeProfessor'); 
+                        $form_minicurriculo = form_error('miniCurriculo');    
+                        //Mandando mensagem de erro
+                        $this->session->set_flashdata('form_nome', "$form_nome" );
+                        $this->session->set_flashdata('email_marcador', "$email_marcador");
+                        $this->session->set_flashdata('form_minicurriculo', "$form_minicurriculo");
+                        redirect("professores/professor_editar/$url");
+                    }    
+                } 
+            }elseif ($marcador['email'] == TRUE) {
+                if ($this->form_validation->run() == FALSE) {
+                    $form_nome = form_error('nomeProfessor'); 
+                    $form_minicurriculo = form_error('miniCurriculo');  
+                    //Mandando mensagem de erro
+                    $this->session->set_flashdata('form_nome', "$form_nome" );
+                    $this->session->set_flashdata('email_erro', "$email_erro");
+                    $this->session->set_flashdata('form_minicurriculo', "$form_minicurriculo");
+                    redirect("professores/professor_editar/$url");
+                }      
             }else{
-                //SE O PROFESSOR NÂO QUISER TROCAR DE FOTO DE PERFIL
-                if($imgProfessor['name'] == null) {
-                    $data = array(
-                       'nomeProfessor' => $this->input->post('nomeProfessor'),
-                        'dataNasc' => $this->input->post('dataNasc'),
-                        'miniCurriculo' => $this->input->post('miniCurriculo'),
-                        'instituicao' => $this->input->post('instituicao'),
-                        'email' => $this->input->post('email'),
-                    );
-                    $this->professor_model->professor_update(array('codProfessor' => $this->input->post('codProfessor')), $data);
-                    ////
-                        $data_prof_disc = array(
-                            'professores_codProfessor' => $this->input->post('codProfessor'),
-                            'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina')
-                        );
-                        
-                        $this->session->set_userdata('nome', $data['nomeProfessor']);
-                        $this->professores_has_disciplinas_model->prof_disc_update(array('professores_codProfessor' => $this->input->post('codProfessor')), $data_prof_disc);
-                    ////
+                if ($this->form_validation->run() == FALSE) {
+                    $form_nome = form_error('nomeProfessor');  
+                    $form_minicurriculo = form_error('miniCurriculo');  
+                    $this->session->set_flashdata('form_nome', "$form_nome" );
+                    $this->session->set_flashdata('form_minicurriculo', "$form_minicurriculo");
+                    redirect("professores/professor_editar/$url");
+                }else{
+                        //SE O PROFESSOR NÂO QUISER TROCAR DE FOTO DE PERFIL
+                        if($imgProfessor['name'] == null) {
+                            $data = array(
+                               'nomeProfessor' => $this->input->post('nomeProfessor'),
+                                'dataNasc' => $this->input->post('dataNasc'),
+                                'miniCurriculo' => $this->input->post('miniCurriculo'),
+                                'instituicao' => $this->input->post('instituicao'),
+                                'email' => $this->input->post('email'),
+                            );
+                            ///
+                            if($this->input->post('disciplina_codDisciplina') != $this->input->post('verifica_disciplina_codDisciplina') ){
+                                $data['admin'] = 0;
+                            }
+                            ///
+                            $this->professor_model->professor_update(array('codProfessor' => $this->input->post('codProfessor')), $data);
+                            ////
+                                $data_prof_disc = array(
+                                    'professores_codProfessor' => $this->input->post('codProfessor'),
+                                    'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina')
+                                );
+                                
+                                $this->session->set_userdata('nome', $data['nomeProfessor']);
+                                $this->professores_has_disciplinas_model->prof_disc_update(array('professores_codProfessor' => $this->input->post('codProfessor')), $data_prof_disc);
+                            ////
 
-                    echo json_encode(array("status" => TRUE));
-                    //ENVIAR PARA A PAGINA PERFIL
-                    redirect ("professores/professor_perfil/$url");
-
-                //SE O PROFESSOR QUISER TROCAR A FOTO DE PERFIL
-                }elseif(!empty($imgProfessor['name'])){
-                    //EXCLUINDO A FOTO DE PERFIL ANTERIOR
-                    $professor = $this->professor_model->get_img($this->input->post('codProfessor'));
-                    $img = $professor->imgProfessor;    
-                    $caminho = "upload/professores/$img";
-                    $this->professor_model->delete_img($this->input->post('codProfessor'));
-                    echo json_encode(array("status" => TRUE));
-                    unlink($caminho);
-                    ///
-                    $config = array(
-                    'upload_path' => './upload/professores',
-                    'allowed_types' => 'gif|jpg|png',//Arrumar essa parte
-                    'file_name' => md5(time()),
-                    'max_size' => '3000'
-                    );
-                    $this->load->library('upload');
-                    $this->upload->initialize($config);
-                    if ($this->upload->do_upload('imgProfessor')){
-                        echo 'Arquivo salvo com sucesso.';
-                        $data = array(
-                            'nomeProfessor' => $this->input->post('nomeProfessor'),
-                            'dataNasc' => $this->input->post('dataNasc'),
-                            'imgProfessor' => $config['file_name'].".".$ponto_img,
-                            'miniCurriculo' => $this->input->post('miniCurriculo'),
-                            'instituicao' => $this->input->post('instituicao'),
-                            'email' => $this->input->post('email'),
-                        );
-                        $this->professor_model->professor_update(array('codProfessor' => $this->input->post('codProfessor')), $data);
-                        $this->session->set_userdata('imgProfessor', $data['imgProfessor']);
-                        $data_prof_disc = array(
-                            'professores_codProfessor' => $this->input->post('codProfessor'),
-                            'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina')
-                        );
-                         $this->professores_has_disciplinas_model->prof_disc_update(array('professores_codProfessor' => $this->input->post('codProfessor')), $data_prof_disc);
-                         $this->session->set_userdata('nome', $data['nomeProfessor']);
-                         ////
-
-                        echo json_encode(array("status" => TRUE));
-
-                        //ENVIAR PARA A PAGINA PERFIL
+                            echo json_encode(array("status" => TRUE));
+                            //ENVIAR PARA A PAGINA PERFIL
                             redirect ("professores/professor_perfil/$url");
-                    }else{
-                         redirect ("professores/professor_perfil/$url");
-                    }
+
+                        //SE O PROFESSOR QUISER TROCAR A FOTO DE PERFIL
+                        }elseif(!empty($imgProfessor['name'])){
+                            
+                            $config = array(
+                            'upload_path' => './upload/professores',
+                            'allowed_types' => 'gif|jpg|png',//Arrumar essa parte
+                            'file_name' => md5(time()),
+                            'max_size' => '3000'
+                            );
+                            $this->load->library('upload');
+                            $this->upload->initialize($config);
+                            if ($this->upload->do_upload('imgProfessor')){
+                                //EXCLUINDO A FOTO DE PERFIL ANTERIOR
+                                $professor = $this->professor_model->get_img($this->input->post('codProfessor'));
+                                $img = $professor->imgProfessor;    
+                                $caminho = "upload/professores/$img";
+                                $this->professor_model->delete_img($this->input->post('codProfessor'));
+                                 echo json_encode(array("status" => TRUE));
+                                unlink($caminho);
+                                ///
+                                echo 'Arquivo salvo com sucesso.';
+                                $data = array(
+                                    'nomeProfessor' => $this->input->post('nomeProfessor'),
+                                    'dataNasc' => $this->input->post('dataNasc'),
+                                    'imgProfessor' => $config['file_name'].".".$ponto_img,
+                                    'miniCurriculo' => $this->input->post('miniCurriculo'),
+                                    'instituicao' => $this->input->post('instituicao'),
+                                    'email' => $this->input->post('email'),
+                                );
+
+                                ///
+                                if($this->input->post('disciplina_codDisciplina') != $this->input->post('verifica_disciplina_codDisciplina') ){
+                                    $data['admin'] = 0;
+                                }
+                                ///
+                                $this->professor_model->professor_update(array('codProfessor' => $this->input->post('codProfessor')), $data);
+                                $this->session->set_userdata('imgProfessor', $data['imgProfessor']);
+                                $data_prof_disc = array(
+                                    'professores_codProfessor' => $this->input->post('codProfessor'),
+                                    'disciplina_codDisciplina' => $this->input->post('disciplina_codDisciplina')
+                                );
+                                 $this->professores_has_disciplinas_model->prof_disc_update(array('professores_codProfessor' => $this->input->post('codProfessor')), $data_prof_disc);
+                                 $this->session->set_userdata('nome', $data['nomeProfessor']);
+                                 ////
+
+                                echo json_encode(array("status" => TRUE));
+
+                                //ENVIAR PARA A PAGINA PERFIL
+                                    redirect ("professores/professor_perfil/$url");
+                            }else{
+                               $upload_erro = $this->upload->display_errors();
+                                $this->session->set_flashdata('upload_erro', "$upload_erro");
+                                redirect("professores/professor_editar/$url");
+                            }
+                        }
                 }
             }
             //SE O PROFESSOR QUISER TROCAR A SENHA
@@ -282,66 +350,120 @@ class Professores extends CI_Controller
                 $this->form_validation->set_rules('senha', 'Senha', 'required|min_length[8]', array('required' => 'Você deve preencher a %s.'));
                 $this->form_validation->set_rules('senhaconf', 'Confirmar Senha', 'required|matches[senha]', array('required' => 'O campo Confirmar senha é obrigatorio'));
 
-                if ($this->form_validation->run() == FALSE) {
-                     $erros = array('mensagens' => validation_errors());
-                     redirect ("professores/professor_perfil/$url");
+                if (isset($email_verifica)) {
+                    if ($email_verifica['email_verifica'] == TRUE) {
+                         if ($this->form_validation->run() == FALSE) {
+                            $form_nome = form_error('nomeProfessor'); 
+                            $form_senha = form_error('senha');
+                            $form_senhaconf = form_error('senhaconf'); 
+                            $form_minicurriculo = form_error('miniCurriculo');    
+                            //Mandando mensagem de erro
+                            $this->session->set_flashdata('form_senhaconf', "$form_senhaconf" );
+                            $this->session->set_flashdata('form_senha', "$form_senha" );
+                            $this->session->set_flashdata('form_nome', "$form_nome" );
+                            $this->session->set_flashdata('email_marcador', "$email_marcador");
+                             $this->session->set_flashdata('form_minicurriculo', "$form_minicurriculo");
+                            redirect("professores/professor_editar/$url");
+                        }    
+                    } 
+                }elseif ($marcador['email'] == TRUE) {
+                    if ($this->form_validation->run() == FALSE) {
+                        $form_nome = form_error('nomeProfessor'); 
+                        $form_senha = form_error('senha');
+                         $form_senhaconf = form_error('senhaconf');  
+                        $form_nome = form_error('nomeProfessor'); 
+                        $form_minicurriculo = form_error('miniCurriculo');   
+                        //Mandando mensagem de erro
+                        $this->session->set_flashdata('form_senhaconf', "$form_senhaconf" );
+                        $this->session->set_flashdata('form_senha', "$form_senha" );
+                        $this->session->set_flashdata('form_nome', "$form_nome" );
+                        $this->session->set_flashdata('email_erro', "$email_erro");
+                        $this->session->set_flashdata('form_minicurriculo', "$form_minicurriculo");
+                        redirect("professores/professor_editar/$url");
+                    }      
                 }else{
-                    if($imgProfessor['name'] == null) {
-                        $data = array(
-                            'nomeProfessor' => $this->input->post('nomeProfessor'),
-                            'dataNasc' => $this->input->post('dataNasc'),
-                            'miniCurriculo' => $this->input->post('miniCurriculo'),
-                            'instituicao' => $this->input->post('instituicao'),
-                            'email' => $this->input->post('email'),
-                            'senha' => md5($this->input->post('senha')),
-                        );
-                        $this->professor_model->professor_update(array('codProfessor' => $this->input->post('codProfessor')), $data);
-                        $this->session->set_userdata('nome', $data['nomeProfessor']);
-                        echo json_encode(array("status" => TRUE));
-                        //ENVIAR PARA A PAGINA PERFIL
-                        redirect ("professores/professor_perfil/$url");
+                    if ($this->form_validation->run() == FALSE) {
+                        $form_nome = form_error('nomeProfessor');   
+                        $form_senha = form_error('senha');
+                        $form_senhaconf = form_error('senhaconf');  
+                        $form_nome = form_error('nomeProfessor');
+                        $form_minicurriculo = form_error('miniCurriculo'); 
+                        $this->session->set_flashdata('form_senhaconf', "$form_senhaconf" );
+                        $this->session->set_flashdata('form_senha', "$form_senha" );  
+                        $this->session->set_flashdata('form_nome', "$form_nome" );
+                        $this->session->set_flashdata('form_minicurriculo', "$form_minicurriculo");
+                        redirect("professores/professor_editar/$url");
+                    }else{
+                            if($imgProfessor['name'] == null) {
+                                $data = array(
+                                    'nomeProfessor' => $this->input->post('nomeProfessor'),
+                                    'dataNasc' => $this->input->post('dataNasc'),
+                                    'miniCurriculo' => $this->input->post('miniCurriculo'),
+                                    'instituicao' => $this->input->post('instituicao'),
+                                    'email' => $this->input->post('email'),
+                                    'senha' => md5($this->input->post('senha')),
+                                );
 
-                    //SE O PROFESSOR QUISER TROCAR A FOTO DE PERFIL
-                    }elseif(!empty($imgProfessor['name'])){
-                         //EXCLUINDO A FOTO DE PERFIL ANTERIOR
-                            $professor = $this->professor_model->get_img($this->input->post('codProfessor'));
-                            $img = $professor->imgProfessor;    
-                            $caminho = "upload/professores/$img";
-                            $this->professor_model->delete_img($this->input->post('codProfessor'));
-                            echo json_encode(array("status" => TRUE));
-                            unlink($caminho);
-                            ///
-                        $config = array(
-                        'upload_path' => './upload/professores',
-                        'allowed_types' => 'gif|jpg|png',//Arrumar essa parte
-                        'file_name' => md5(time()),
-                        'max_size' => '3000'
-                        );
-                        $this->load->library('upload');
-                        $this->upload->initialize($config);
-                        if ($this->upload->do_upload('imgProfessor')){
-                            echo 'Arquivo salvo com sucesso.';
-                            $data = array(
-                               'nomeProfessor' => $this->input->post('nomeProfessor'),
-                                'dataNasc' => $this->input->post('dataNasc'),
-                                'imgProfessor' => $config['file_name'].".".$ponto_img,
-                                'miniCurriculo' => $this->input->post('miniCurriculo'),
-                                'instituicao' => $this->input->post('instituicao'),
-                                'email' => $this->input->post('email'),
-                                'senha' => md5($this->input->post('senha')),
-                            );
-                            $this->professor_model->professor_update(array('codProfessor' => $this->input->post('codProfessor')), $data);
-                            $this->session->set_userdata('imgProfessor', $data['imgProfessor']);
-                            $this->session->set_userdata('nome', $data['nomeProfessor']);
-                            echo json_encode(array("status" => TRUE));
-
-                            //ENVIAR PARA A PAGINA PERFIL
+                                ///
+                                if($this->input->post('disciplina_codDisciplina') != $this->input->post('verifica_disciplina_codDisciplina') ){
+                                 $data['admin'] = 0;
+                                }
+                                ///
+                                $this->professor_model->professor_update(array('codProfessor' => $this->input->post('codProfessor')), $data);
+                                $this->session->set_userdata('nome', $data['nomeProfessor']);
+                                echo json_encode(array("status" => TRUE));
+                                //ENVIAR PARA A PAGINA PERFIL
                                 redirect ("professores/professor_perfil/$url");
-                        }else{
-                             redirect ("professores/professor_perfil/$url");
-                        }
-                   }
-                }   
+
+                            //SE O PROFESSOR QUISER TROCAR A FOTO DE PERFIL
+                            }elseif(!empty($imgProfessor['name'])){
+                                 //EXCLUINDO A FOTO DE PERFIL ANTERIOR
+                                    $professor = $this->professor_model->get_img($this->input->post('codProfessor'));
+                                    $img = $professor->imgProfessor;    
+                                    $caminho = "upload/professores/$img";
+                                    $this->professor_model->delete_img($this->input->post('codProfessor'));
+                                    echo json_encode(array("status" => TRUE));
+                                    unlink($caminho);
+                                    ///
+                                $config = array(
+                                'upload_path' => './upload/professores',
+                                'allowed_types' => 'gif|jpg|png',//Arrumar essa parte
+                                'file_name' => md5(time()),
+                                'max_size' => '3000'
+                                );
+                                $this->load->library('upload');
+                                $this->upload->initialize($config);
+                                if ($this->upload->do_upload('imgProfessor')){
+                                    echo 'Arquivo salvo com sucesso.';
+                                    $data = array(
+                                       'nomeProfessor' => $this->input->post('nomeProfessor'),
+                                        'dataNasc' => $this->input->post('dataNasc'),
+                                        'imgProfessor' => $config['file_name'].".".$ponto_img,
+                                        'miniCurriculo' => $this->input->post('miniCurriculo'),
+                                        'instituicao' => $this->input->post('instituicao'),
+                                        'email' => $this->input->post('email'),
+                                        'senha' => md5($this->input->post('senha')),
+                                    );
+                                    ///
+                                     if($this->input->post('disciplina_codDisciplina') != $this->input->post('verifica_disciplina_codDisciplina') ){
+                                        $data['admin'] = 0;
+                                    }
+                                    ///
+                                    $this->professor_model->professor_update(array('codProfessor' => $this->input->post('codProfessor')), $data);
+                                    $this->session->set_userdata('imgProfessor', $data['imgProfessor']);
+                                    $this->session->set_userdata('nome', $data['nomeProfessor']);
+                                    echo json_encode(array("status" => TRUE));
+
+                                    //ENVIAR PARA A PAGINA PERFIL
+                                        redirect ("professores/professor_perfil/$url");
+                                }else{
+                                    $upload_erro = $this->upload->display_errors();
+                                    $this->session->set_flashdata('upload_erro', "$upload_erro");
+                                    redirect("professores/professor_editar/$url");
+                                }
+                            }
+                    } 
+                }  
         }
     }
 

@@ -1,7 +1,7 @@
 <?php 
 	include "cabeca.php";
 ?>
-<?php if($_SESSION['professores'] == $_GET['codProfessor']){?>
+<?php //if($_SESSION['professores'] == $_GET['codProfessor']){?>
 		<head>
 
 		<title>Atom | Cadastro de Artigo</title>	
@@ -17,11 +17,13 @@
 					<h1 style="font-size: 35px; border-bottom: solid 2px #17a2b8; margin-bottom: 2%; padding-bottom: 1%;">Cadastro de Artigo:</h1>
 					<div class="form-group">
 					    <label for="exampleFormControlInput">Titulo do Artigo:</label>
-					    <input type="text" class="form-control" id="exampleFormControlInput" placeholder="Ex:'Lamarckismo e Darwinismo'" name="titulo" required>
+					    <input type="text" class="form-control" id="exampleFormControlInput" placeholder="Ex:'Lamarckismo e Darwinismo'"  value= "<?php if($this->session->flashdata('titulo')){ echo $_SESSION['titulo'];}?>" name="titulo"  required>
 					 </div>
 					  <div class="form-group" id="texto">
 					    <label for="exampleFormControlInput1">Texto do Artigo:</label>
-					    <textarea name="corpo" id="summernote" required></textarea>
+					    <textarea name="corpo" id="summernote" required>
+					    	<?php if($this->session->flashdata('corpo')){ echo $_SESSION['corpo'];}?>
+					    </textarea>
 					    <script>
 					      $('#summernote').summernote({
 									height: 500,
@@ -33,17 +35,33 @@
 					 </div>
 					  <div class="form-group">
 					    <label for="exampleFormControlInput1">Faça um pequeno resumo do que voce escreveu:</label>
-					    <textarea name="resumo" placeholder="Teoria evolucionista fundamentada nas ideias do naturalista inglês Charles Robert Darwin 1809-1882" maxlength="380" id="ta-resumo" required></textarea>
+					    <textarea name="resumo" placeholder="Teoria evolucionista fundamentada nas ideias do naturalista inglês Charles Robert Darwin 1809-1882" maxlength="380" id="ta-resumo" required>
+					    	<?php if($this->session->flashdata('resumo')){ echo $_SESSION['resumo'];}?>
+					    </textarea>
 					 </div>
+
+
 					 <div>
 					 	<div class="form-group">
 					    <label for="exampleFormControlFile1" style="padding-left: 1%; border-left: solid 5px #17a2b8;">Escolha uma imagem:</label>
 					    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="imgArtigo">
+					    ?php 
+                            if($this->session->flashdata('upload_erro')){
+                                ?><small style="color:#dc3545"><?php echo $_SESSION['upload_erro'];?></small><?php
+                            }
+                         ?>
 					  </div>
+
+
 					   <div>
 					 	<div class="form-group">
 					    <label for="exampleFormControlFile1" style="padding-left: 1%; border-left: solid 5px #17a2b8;">Inclua uma versão em pdf:</label>
 					    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="uploadArtigo">
+					    <?php 
+                            if($this->session->flashdata('upload_erro_pdf')){
+                                ?><small style="color:#dc3545"><?php echo $_SESSION['$upload_erro_pdf'];?></small><?php
+                            }
+                         ?>
 					  </div>
 					 </div>
 					 <!-- <div class="form-group">
@@ -74,10 +92,10 @@
 			</div>
 		</form>
 	</div>
-<?php }else{?>
+<?php //}else{?>
 
-		<meta http-equiv="refresh" content="0;url=<?php echo site_url('')?>" />
-<?php } ?>
+		<!-- <meta http-equiv="refresh" content="0;url=<?php echo site_url('')?>" /> -->
+<?php //} ?>
 
 <?php 
 	include "rodape.php";

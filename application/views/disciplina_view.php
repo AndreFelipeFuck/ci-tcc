@@ -63,7 +63,7 @@ $artigos = array_merge($artigos_aluno, $artigos_professor);
                     <section id="BlockNoResult">
                         <div class="img-responsive">
                           <img src="<?php echo base_url("assets/bootstrap/img/semResultado.png")?>" class="img-fluid" alt="smaple image">
-                          <h5>Desculpe, no momento não há nenhum artigo de  <?php echo $disciplinas->nomeDisciplina?>...</h5>
+                          <h5>Desculpe, no momento não há nenhum artigo de  <?php echo $disciplinas->nomeDisciplina?>.</h5>
                         </div>
                     </section>
                  </article>
