@@ -2,7 +2,9 @@
 	include "cabeca.php";
 
  ?>
-
+<header>
+    <title>Atom | Home</title>
+</header>
 <div class="espaco2"></div>
 
 	<div class="conteiner0">
@@ -15,7 +17,7 @@
 		      <img class="d-block w-100" src="<?php echo base_url('assets/bootstrap/img/slide2.png')?>" alt="Second slide">
 		      <div class="carousel-caption d-none d-md-block" id="slideLegend">
 			    <h1>Junte-se a nós!</h1>
-			    <h5>Venha aprender mais rapido com a gente, sem sair de casa</h5>
+			    <h5>Compartilhe seus trabalhos com a gente e ajude outras pessoas!</h5>
 			  </div>
 		    </div>
 		    <div class="carousel-item">

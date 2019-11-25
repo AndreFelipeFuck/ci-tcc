@@ -2,6 +2,7 @@
 	include "cabeca.php";
 ?>
 <head>
+	
 <?php 
      $teste = isset($_SESSION['alunos']);
       $teste1 = isset($_SESSION['professores']);?>
@@ -24,7 +25,7 @@
 </head>	
 
 			<div class="espaco2"></div>
-				<div class="conteinerCad" id="sombra">
+				<div class="conteinerCadArt" id="sombra">
 					<form  action="<?php echo site_url('artigos/artigo_update')?>" method="post" enctype = "multipart/form-data">
 
 						<input type="hidden" value="<?= $perfil->codArtigo?>" name="codArtigo"/>

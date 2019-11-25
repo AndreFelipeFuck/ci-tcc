@@ -33,6 +33,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="pragma" content="no-cache" />
         <meta charset="utf-8">
+        <link rel="icon" href="<?php echo base_url('assets/bootstrap/img/logo.png')?>">
  
 </head>
 <body class="bdg">

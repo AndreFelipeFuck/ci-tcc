@@ -1,9 +1,12 @@
 <?php 
 	include "cabeca.php";
 ?>
+<header>
+    <title>Atom | Disciplinas</title>
+</header>
 <div class="espaco2"></div>
 	<div class="conteinerMtr" id="sombra">
-		<h1 style="font-size: 35px; border-bottom: solid 2px #17a2b8; margin-bottom: 2%; padding-bottom: 1%;">Materias</h1>
+		<h1 style="font-size: 35px; border-bottom: solid 2px #17a2b8; margin-bottom: 2%; padding-bottom: 1%;">Disciplinas</h1>
 
 		<h4 style="border-bottom: solid 2px #17a2b8; width: 8.5%;">Integrado:</h4>
 		<div class="contMtr">

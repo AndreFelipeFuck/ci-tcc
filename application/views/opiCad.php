@@ -1,6 +1,9 @@
 <?php 
 	include "cabeca.php";
  ?>
+ <header>
+    <title>Atom | Cadastre-se</title>
+</header>
  <div class="espaco2"></div>
 	<section class="conteinerOpi">
 		<div class="divOpi" id="sombra">

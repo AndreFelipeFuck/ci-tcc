@@ -1,5 +1,8 @@
 <?php if($_SESSION['alunos'] == $_GET['codAluno']){?>
 <?php  include "cabeca.php";?>
+<header>
+    <title>Atom | Editar Perfil</title>
+</header>
 		<div class="espaco2"></div>
 			<div class="conteinerCad" id="sombra">
 				<h5 class="text-danger"><?php  echo  validation_errors();  ?></h5>

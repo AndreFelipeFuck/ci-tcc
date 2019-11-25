@@ -1,6 +1,9 @@
 
 <?php  include "cabeca.php";?>
 <?php if(isset($_SESSION['alunos']) == null and isset($_SESSION['professores']) == null){?>
+    <header>
+    <title>Atom | Login</title>
+    </header>
     <div class="espaco2"></div>
         <section class="logFun">
             <div class="ConteinerLogin"> 
