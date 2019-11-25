@@ -3,7 +3,9 @@
 <?php 
      $teste = isset($_SESSION['professores']);?>
 <?php if($teste == TRUE){?>
-	
+<header>
+    <title>Atom | Editar Perfil</title>
+</header>
 	<div class="espaco2"></div>
 		<section class="conteinerCadProf" id="sombra">
 			<form method="post" action="<?php echo site_url('professores/professor_update_perfil')?>" enctype = "multipart/form-data">
