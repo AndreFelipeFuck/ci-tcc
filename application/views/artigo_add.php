@@ -1,7 +1,7 @@
 <?php 
 	include "cabeca.php";
 ?>
-<?php //if($_SESSION['professores'] == $_GET['codProfessor']){?>
+<?php if($_SESSION['professores'] == $_GET['codProfessor']){?>
 		<head>
 
 		<title>Atom | Cadastro de Artigo</title>	
@@ -45,7 +45,7 @@
 					 	<div class="form-group">
 					    <label for="exampleFormControlFile1" style="padding-left: 1%; border-left: solid 5px #17a2b8;">Escolha uma imagem:</label>
 					    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="imgArtigo">
-					    ?php 
+					    <?php 
                             if($this->session->flashdata('upload_erro')){
                                 ?><small style="color:#dc3545"><?php echo $_SESSION['upload_erro'];?></small><?php
                             }
@@ -92,10 +92,10 @@
 			</div>
 		</form>
 	</div>
-<?php //}else{?>
+<?php }else{?>
 
-		<!-- <meta http-equiv="refresh" content="0;url=<?php echo site_url('')?>" /> -->
-<?php //} ?>
+		 <meta http-equiv="refresh" content="0;url=<?php echo site_url('')?>"> 
+<?php } ?>
 
 <?php 
 	include "rodape.php";
