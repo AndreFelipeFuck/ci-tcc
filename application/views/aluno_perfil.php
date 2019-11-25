@@ -10,20 +10,15 @@ $dataNasc = implode("/", $dataNasc);
 </head>
 <div class="espaco2"></div>
     <div class="conteinerPerfil" id="sombra">
-            <section class="fotoPerfil">
-                <div class="view overlay">
+                <div class="fotoPerfil">
                     <?php
-                    if ($perfil->imgAluno == null) {
-                       ?><figure class="img-rounded rounded-circle img-responsive"><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>" class=" rounded-circle img-fluid" alt="smaple image"></figure><?php
-                    }else{
-                        ?><figure class="img-rounded img-responsive"><img src="<?php echo base_url("upload/alunos/$perfil->imgAluno")?>" class="rounded-circle img-fluid" alt="smaple image"></figure><?php
-                    }
-                ?>
-                    <div class="mask flex-center rgba-black-strong">
-                        <p class="white-text"><!--Editar foto--></p>
-                    </div>
+                        if ($perfil->imgAluno == null) {
+                           ?><figure class="img-rounded rounded-circle img-responsive"><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>" class=" rounded-circle img-fluid" alt="smaple image"></figure><?php
+                        }else{
+                            ?><figure class="img-rounded img-responsive"><img src="<?php echo base_url("upload/alunos/$perfil->imgAluno")?>" class="rounded-circle img-fluid" alt="smaple image"></figure><?php
+                        }
+                    ?>
                 </div>
-            </section>
             <section class="InfoPerfil">
                 <div id="nomePerfil">
                     <h2 id="nomeFont"><?php echo $perfil->nomeAluno;?></h2>

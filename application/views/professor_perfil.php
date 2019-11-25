@@ -12,8 +12,7 @@ $dataNasc = implode("/", $dataNasc);
 <div class="espaco2"></div>
 <br>
     <div class="conteinerPerfil" id="sombra">
-            <section class="fotoPerfil">
-                <div class="view overlay">
+                <div class="fotoPerfil">
                 <?php
                     if ($perfil->imgProfessor == null) {
                        ?><figure class="img-rounded img-responsive"><img src="<?php echo base_url('assets/bootstrap/img/user.png')?>" class="rounded-circle img-fluid" alt="smaple image"></figure><?php
@@ -22,7 +21,6 @@ $dataNasc = implode("/", $dataNasc);
                     }
                 ?>
                 </div>
-            </section>
             <section class="InfoPerfil">
                 <div id="nomePerfilProf">
                     <h2 id="nomeFont"><?php echo $perfil->nomeProfessor;?></h2>

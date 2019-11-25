@@ -1,7 +1,7 @@
 <?php 
 	include "cabeca.php";
 ?>
-<?php //if($_SESSION['professores'] == $_GET['codProfessor']){?>
+<?php if($_SESSION['professores'] == $_GET['codProfessor']){?>
 		<head>
 
 		<title>Atom | Cadastro de Artigo</title>	
@@ -96,10 +96,10 @@
 			</div>
 		</form>
 	</div>
-<?php //}else{?>
+<?php }else{?>
 
-		<!-- <meta http-equiv="refresh" content="0;url=<?php echo site_url('')?>" /> -->
-<?php //} ?>
+		 <meta http-equiv="refresh" content="0;url=<?php echo site_url('')?>"> 
+<?php } ?>
 
 <?php 
 	include "rodape.php";

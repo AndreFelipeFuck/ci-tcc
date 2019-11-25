@@ -720,7 +720,7 @@ textarea {
 
 .fotoPerfil {
 	max-width: 20%;
-	max-height: 30%;
+	max-height: 33%;
 	overflow: hidden;
 	position: relative;
 	float: left;
@@ -737,7 +737,7 @@ textarea {
 
 .fotoPerfilEdit img{
 	background-color: #BCBBBB;
- 	height: 46%;
+ 	height: 49%;
  	width: 50%;
 }
 
@@ -745,13 +745,14 @@ textarea {
 .fotoPerfil img{
 	background-color: #BCBBBB;
  	width: 100%;
- 	/*height: 100%;*/
+ 	height: 100%;
+
+
 }
 
 .fotoPerfilComent {
 	max-width: 10%;
-	max-height: 13%;
-	
+	max-height: 25%;
 	overflow: hidden;
 	position: relative;
 	display: inline-block;
