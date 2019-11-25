@@ -1,5 +1,8 @@
 <?php include 'cabeca.php';?>
 <?php if($_SESSION['alunos'] == $_GET['codAluno']){?>
+<header>
+    <title>Atom | Artigos Postados</title>
+</header>
        
         <div class="espaco2"></div>
             <div class="conteinerArtConfig" id="sombra">   
