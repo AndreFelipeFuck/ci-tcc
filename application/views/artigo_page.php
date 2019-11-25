@@ -21,6 +21,9 @@
 
 	?>
 
+<header>
+    <title>Atom | <?php echo $perfil->titulo;?></title>
+</header>
 <div class="espaco2"></div>
 	<div class="conteinerTelaArt" id="sombra">
 		<div class="tituloArt">
