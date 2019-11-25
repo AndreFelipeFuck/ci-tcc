@@ -2,7 +2,7 @@
 	include "cabeca.php";
  ?>
  <header>
-    <title>Atom | Cadastro-se</title>
+    <title>Atom | Cadastre-se</title>
 </header>
  <div class="espaco2"></div>
 	<section class="conteinerOpi">
