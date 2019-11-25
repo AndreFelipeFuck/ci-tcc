@@ -18,6 +18,9 @@
 
    
 ?>
+<header>
+    <title>Atom | Artigos</title>
+</header>
 <div class="espaco2"></div>
     <div class="conteinerArtView" id="sombra">     
       <section class="conteiner0">
