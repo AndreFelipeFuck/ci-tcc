@@ -6407,7 +6407,7 @@ a.close.disabled {
   display: inline;
   left: auto;
   padding:5px;
-  background-color: rgba(0, 0, 0, 0.50);
+  background-color: rgba(0, 0, 0, 0.60);
 }
 
 @-webkit-keyframes spinner-border {
