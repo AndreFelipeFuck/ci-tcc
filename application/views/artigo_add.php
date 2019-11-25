@@ -35,9 +35,13 @@
 					 </div>
 					  <div class="form-group">
 					    <label for="exampleFormControlInput1">Faça um pequeno resumo do que voce escreveu:</label>
-					    <textarea name="resumo" placeholder="Teoria evolucionista fundamentada nas ideias do naturalista inglês Charles Robert Darwin 1809-1882" maxlength="380" id="ta-resumo" required>
-					    	<?php if($this->session->flashdata('resumo')){ echo $_SESSION['resumo'];}?>
-					    </textarea>
+					    <?php
+					    	if($this->session->flashdata('resumo')){?>
+					    		 <textarea name="resumo" placeholder="Teoria evolucionista fundamentada nas ideias do naturalista inglês Charles Robert Darwin 1809-1882" maxlength="380" id="ta-resumo" required><?php echo $_SESSION['resumo'];?></textarea>
+					    		<?php
+					    	}else{?>
+					    		 <textarea name="resumo" placeholder="Teoria evolucionista fundamentada nas ideias do naturalista inglês Charles Robert Darwin 1809-1882" maxlength="380" id="ta-resumo" required></textarea>
+					   <?php }?>
 					 </div>
 
 
@@ -45,7 +49,7 @@
 					 	<div class="form-group">
 					    <label for="exampleFormControlFile1" style="padding-left: 1%; border-left: solid 5px #17a2b8;">Escolha uma imagem:</label>
 					    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="imgArtigo">
-					    ?php 
+					    <?php 
                             if($this->session->flashdata('upload_erro')){
                                 ?><small style="color:#dc3545"><?php echo $_SESSION['upload_erro'];?></small><?php
                             }
@@ -59,7 +63,7 @@
 					    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="uploadArtigo">
 					    <?php 
                             if($this->session->flashdata('upload_erro_pdf')){
-                                ?><small style="color:#dc3545"><?php echo $_SESSION['$upload_erro_pdf'];?></small><?php
+                                ?><small style="color:#dc3545"><?php echo $_SESSION['upload_erro_pdf'];?></small><?php
                             }
                          ?>
 					  </div>

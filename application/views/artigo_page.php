@@ -84,7 +84,7 @@
  	<?php if($teste == 1):?>		
 		<div style="padding: 1.5%; border-radius: 3px; margin: 1%;">	
 			<?php if(isset($aluno)):?>	
-				<form method="post" id ="comentar">	
+				<form method="post" id ="comentar" >	
 					<input type="hidden" value="<?= $perfil->codArtigo?>" name="artigo_codArtigo"/>	
 					<input type="hidden" value="<?= $aluno->codAluno?>" name="com_alunos_codAluno"/>	
 					<input type="hidden" value="0" name="professores_codProfessor"/>	
@@ -114,7 +114,7 @@
 			<?php endif ?>	
 
  			<?php if(isset($professor)):?>	
-				<form method="post" id ="comentar">	
+				<form method="post" id ="comentar" >	
 						<input type="hidden" value="<?= $perfil->codArtigo?>" name="artigo_codArtigo"/>	
 						<input type="hidden" value="<?= $professor->codProfessor?>" name="com_professores_codProfessor"/>	
 						<input type="hidden" value="0" name="professores_codProfessor"/>	

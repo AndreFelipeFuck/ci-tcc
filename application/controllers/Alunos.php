@@ -190,6 +190,9 @@ class Alunos extends CI_Controller
 	            	$this->session->set_flashdata('email_erro', "$email_erro");
 	               redirect("alunos/aluno_editar/$url");
 	            ///
+	            }else{
+	            	$this->session->set_flashdata('email_erro', "$email_erro");
+	               redirect("alunos/aluno_editar/$url");
 	            }      
         	}else{
 		    	if ($this->form_validation->run() == FALSE) {

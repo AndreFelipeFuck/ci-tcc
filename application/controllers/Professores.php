@@ -235,6 +235,9 @@ class Professores extends CI_Controller
                         $this->session->set_flashdata('email_marcador', "$email_marcador");
                         $this->session->set_flashdata('form_minicurriculo', "$form_minicurriculo");
                         redirect("professores/professor_editar/$url");
+                    }else{
+                          $this->session->set_flashdata('email_marcador', "$email_marcador");
+                          redirect("professores/professor_editar/$url");
                     }    
                 } 
             }elseif ($marcador['email'] == TRUE) {
@@ -246,6 +249,9 @@ class Professores extends CI_Controller
                     $this->session->set_flashdata('email_erro', "$email_erro");
                     $this->session->set_flashdata('form_minicurriculo', "$form_minicurriculo");
                     redirect("professores/professor_editar/$url");
+                }else{
+                     $this->session->set_flashdata('email_erro', "$email_erro");
+                     redirect("professores/professor_editar/$url");
                 }      
             }else{
                 if ($this->form_validation->run() == FALSE) {
