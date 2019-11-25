@@ -94,7 +94,7 @@ class Artigos extends CI_Controller
 			$titulo_pdf = $titulo_pdf."_".date("Y-m-d");
 		//
 			$ponto_img = explode(".", $imgArtigo['name']);
-			@$ponto_img = $ponto_img[1];
+			$ponto_img = $ponto_img[1];
 		//
 			$codProfessor = $this->input->post('professores_codProfessor');
 			$codAluno = $this->input->post('alunos_codAluno');
@@ -106,6 +106,7 @@ class Artigos extends CI_Controller
 
 		//SEM IMAGEM
 		if($imgArtigo['name'] == null){
+
 			if ($pdfArtigo['name'] != null) {
 					$config_pdf = array(
 			           	'upload_path' => './upload/pdf',
@@ -116,8 +117,7 @@ class Artigos extends CI_Controller
 		           		$this->upload->initialize($config_pdf);
 
 	           if ($this->upload->do_upload('uploadArtigo')){
-	           		echo 'Arquivo salvo com sucesso.';
-
+	           		
         			if($this->input->post('alunos_codAluno') == 0){
 						$data = array(
 							'titulo' => $this->input->post('titulo'),
@@ -169,7 +169,6 @@ class Artigos extends CI_Controller
 		           	redirect("$url");
 		        }
 			}else{
-					echo 'Arquivo salvo com sucesso.';
 
         			if($this->input->post('alunos_codAluno') == 0){
 						$data = array(
@@ -206,11 +205,8 @@ class Artigos extends CI_Controller
 		               redirect ("artigos/artigo_page/$url");
 		            }
 
-			}//
-			
-		        /*echo "Deu errado ";
-		        echo "$titulo_pdf";
-		        print_r($_FILES);*/
+			}
+		
 		//COM IMAGEM
 		}elseif(!empty($imgArtigo['name'])){
 			/////
@@ -235,7 +231,7 @@ class Artigos extends CI_Controller
 			           $this->upload->initialize($config);
 
 			           if ($this->upload->do_upload('imgArtigo')){
-		        			echo 'Arquivo salvo com sucesso.';
+		        		
 
 			        		//ENVIAR PARA O BANCO
 			        		if($this->input->post('alunos_codAluno') == 0){
@@ -291,14 +287,9 @@ class Artigos extends CI_Controller
 		         		}
 		            }else{
 		            	///echo $this->upload->display_errors();
-		            	$titulo = $this->input->post('titulo');
-			         	$corpo = $this->input->post('corpo');
-			         	$resumo =  $this->input->post('resumo');
+		            	
 			         	$upload_erro = $this->upload->display_errors();
 	                    $this->session->set_flashdata('upload_erro', "$upload_erro");
-	                    $this->session->set_flashdata('titulo', "$titulo");
-	                    $this->session->set_flashdata('corpo', "$corpo");
-	                     $this->session->set_flashdata('resumo', "$resumo");
 			           	redirect("$url");
 		            }
 
@@ -389,24 +380,14 @@ class Artigos extends CI_Controller
 			$titulo_pdf = implode("_", $titulo_pdf);
 			$titulo_pdf = $titulo_pdf."_".date("Y-m-d");
 		///
-			$ponto_img = explode(".", $imgArtigo['name']);
+			@$ponto_img = explode(".", $imgArtigo['name']);
 			$ponto_img = $ponto_img[1];
-		//
-		$codProfessor = $this->input->post('professores_codProfessor');
-		$codAluno = $this->input->post('alunos_codAluno');
-		if(!empty($codProfessor) ){
-			$url = "professores/artigos_add?codProfessor=".$codProfessor;
-		}elseif(!empty($codAluno)){
-			$url = "alunos/artigos_add?codAluno=".$codAluno;
-		}
-		
+
 		//SE O USUARIO NÃO QUISER TROCAR A FOTO DO ARTIGO	
 		if($imgArtigo['name'] == null) {
+
 			if ($pdfArtigo['name'] != null) {
-				$artigo = $this->artigos_model->get_pdf($this->input->post('codArtigo'));
-				$pdf = $artigo->uploadArtigo;	
-				$caminho = "upload/pdf/$pdf";
-				unlink($caminho);
+
 
 				$config_pdf = array(
 			    'upload_path' => './upload/pdf',
@@ -414,8 +395,15 @@ class Artigos extends CI_Controller
 			     'file_name' => $titulo_pdf.".pdf",
 			     'max_size' => '3000');
 				 $this->load->library('upload'); 
-				 	$this->upload->initialize($config_pdf);
+				 $this->upload->initialize($config_pdf);
+
 				if ($this->upload->do_upload('uploadArtigo')){
+
+					$artigo = $this->artigos_model->get_pdf($this->input->post('codArtigo'));
+					$pdf = $artigo->uploadArtigo;	
+					$caminho = "upload/pdf/$pdf";
+					unlink($caminho);
+
 		           	$data = array(
 						'titulo' => $this->input->post('titulo'),
 						'corpo' => $this->input->post('corpo'),
@@ -429,12 +417,10 @@ class Artigos extends CI_Controller
 
 					redirect ("artigos/artigo_page/$url");
 				}else{
-					$titulo = $this->input->post('titulo');
+					
          			$upload_erro_pdf = $this->upload->display_errors();
             		$this->session->set_flashdata('upload_erro_pdf', "$upload_erro_pdf");
-            		$this->session->set_flashdata('titulo', "$titulo");
-            		$this->session->set_flashdata();
-           			redirect("$url");
+           			redirect("artigos/artigo_editar/$url");
 				}
 			}else{
 				$data = array(
@@ -459,10 +445,6 @@ class Artigos extends CI_Controller
 					unlink($caminho);
 			///
 			if ($pdfArtigo['name'] != null) {
-				$artigo = $this->artigos_model->get_pdf($this->input->post('codArtigo'));
-				$pdf = $artigo->uploadArtigo;	
-				$caminho = "upload/pdf/$pdf";
-				unlink($caminho);
 
 				$config_pdf = array(
 			    'upload_path' => './upload/pdf',
@@ -481,7 +463,14 @@ class Artigos extends CI_Controller
 			                 'file_name' => md5(time()),
 			                 'max_size' => '3000');
 	                    	 $this->upload->initialize($config);
+
 	                    	if ($this->upload->do_upload('imgArtigo')){
+
+								$artigo = $this->artigos_model->get_pdf($this->input->post('codArtigo'));
+								$pdf = $artigo->uploadArtigo;	
+								$caminho = "upload/pdf/$pdf";
+								unlink($caminho);
+
 		                    	$data = array(
 									'titulo' => $this->input->post('titulo'),
 									'corpo' => $this->input->post('corpo'),
@@ -498,25 +487,17 @@ class Artigos extends CI_Controller
 	                    	}else{
 	                    		// echo $this->upload->display_errors();
 	                    		// echo "IMG";	
-	                    		$titulo = $this->input->post('titulo');
-					         	$corpo = $this->input->post('corpo');
-					         	$resumo =  $this->input->post('resumo');
 					         	$upload_erro = $this->upload->display_errors();
 			                    $this->session->set_flashdata('upload_erro', "$upload_erro");
-			                    $this->session->set_flashdata('titulo', "$titulo");
-			                    $this->session->set_flashdata('corpo', "$corpo");
-			                     $this->session->set_flashdata('resumo', "$resumo");
-					           	redirect("$url");
+					           	redirect("artigos/artigo_editar/$url");
 	                    	}
 	                    }else{
 							// echo $this->upload->display_errors();
 							// echo "PDF";	
-							$titulo = $this->input->post('titulo');
+							
 		         			$upload_erro_pdf = $this->upload->display_errors();
                     		$this->session->set_flashdata('upload_erro_pdf', "$upload_erro_pdf");
-                    		$this->session->set_flashdata('titulo', "$titulo");
-                    		$this->session->set_flashdata();
-		           			redirect("$url");
+		           			redirect("artigos/artigo_editar/$url");
 						}
 	                   
 	        }else{
