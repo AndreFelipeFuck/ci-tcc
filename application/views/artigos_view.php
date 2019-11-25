@@ -26,9 +26,12 @@
 
            <?php if (empty($artigos)):?>
                  <article class="vidCont">
-                    <div>
-                        <h2>Não há nenhum artigo no momento ;(</h2>
-                    </div>
+                    <section id="BlockNoResult">
+                        <div class="img-responsive">
+                          <img src="<?php echo base_url("assets/bootstrap/img/semResultado.png")?>" class="img-fluid" alt="smaple image">
+                          <h5>Desculpe, no momento não há nenhum artigo de no momento.</h5>
+                        </div>
+                    </section>
                  </article>
             <?php endif ?>
             <?php foreach($artigos as $artigo):?>

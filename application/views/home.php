@@ -103,9 +103,12 @@
             <h1 style="font-size: 35px; border-bottom: solid 2px #17a2b8; margin-bottom: 2%; padding-bottom: 1%;">Artigos Recentes</h1>
            <?php if (empty($artigos)):?>
                  <article class="vidCont">
-                    <div>
-                        <h2>Não há nenhum artigo no momento ;(</h2>
-                    </div>
+                    <section id="BlockNoResult">
+                        <div class="img-responsive">
+                          <img src="<?php echo base_url("assets/bootstrap/img/semResultado.png")?>" class="img-fluid" alt="smaple image">
+                          <h5>Desculpe, no momento não há nenhum artigo no momento.</h5>
+                        </div>
+                    </section>
                  </article>
             <?php endif ?>
             <?php foreach($artigos as $artigo):?>
