@@ -251,7 +251,7 @@
 								}?>	
 						</section>	
 								<div class="elementoComent">	
-									<h5><a href="<?php echo site_url('professores/professor_perfil')?>?codProfessor=<?php echo $comentario->codProfessor?>"  style="color: #28a745;"><?php echo $comentario->nomeProfessor;?></a></h5>
+									<h5><a href="<?php echo site_url('professores/professor_perfil')?>?codProfessor=<?php echo $comentario->codProfessor?>" style="color: #28a745; float: left; margin-right:1%;"><?php echo $comentario->nomeProfessor;?></a></h5>
 									<?php
 										$dataComentario = explode(" ", $comentario->dataComentario);
 										$dataComentario = explode("-", $dataComentario[0]);
