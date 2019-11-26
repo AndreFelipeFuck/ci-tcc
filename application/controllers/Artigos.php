@@ -13,17 +13,6 @@ class Artigos extends CI_Controller
         // $this->load->library('pagination');
 	}
 
-	public function index()
-    {
-    	// $professor = $this->session->userdata("professores");
-    	// $aluno = $this->session->userdata("alunos");
-     //    if (empty($professor) and empty($aluno)) {
-     //        redirect("home/login_home");
-     //    }
-
-        
-    }
-
     public function artigos_listar(){
     	$this->load->library('pagination');
     	$config = array(
@@ -64,7 +53,6 @@ class Artigos extends CI_Controller
 		}
 		///
 
-		
 		$this->pagination->initialize($config);
 		$data['pagination'] = $this->pagination->create_links();
 
@@ -438,11 +426,6 @@ class Artigos extends CI_Controller
 			// SE O USUARIO QUISER TROCAR A FOTO DO ARTIGO
 		}elseif(!empty($imgArtigo['name'])){
 			//EXCLUIR FOTO ANTIGA DE PERFIL
-        			$artigo = $this->artigos_model->get_img($this->input->post('codArtigo'));
-					$img = $artigo->imgArtigo;	
-					$caminho = "upload/artigos/$img";
-					//echo json_encode(array("status" => TRUE));
-					unlink($caminho);
 			///
 			if ($pdfArtigo['name'] != null) {
 
@@ -466,6 +449,12 @@ class Artigos extends CI_Controller
 
 	                    	if ($this->upload->do_upload('imgArtigo')){
 
+			        			$artigo = $this->artigos_model->get_img($this->input->post('codArtigo'));
+								$img = $artigo->imgArtigo;	
+								$caminho = "upload/artigos/$img";
+								//echo json_encode(array("status" => TRUE));
+								unlink($caminho);
+								
 								$artigo = $this->artigos_model->get_pdf($this->input->post('codArtigo'));
 								$pdf = $artigo->uploadArtigo;	
 								$caminho = "upload/pdf/$pdf";
@@ -508,6 +497,7 @@ class Artigos extends CI_Controller
 		            'max_size' => '3000');
 		            $this->load->library('upload');
 		            $this->upload->initialize($config);
+
 	            if ($this->upload->do_upload('imgArtigo')){
 		            $data = array(
 						'titulo' => $this->input->post('titulo'),
@@ -520,7 +510,9 @@ class Artigos extends CI_Controller
 
 					redirect ("artigos/artigo_page/$url");
 	            }else{
-	            	echo $this->upload->display_errors();	
+	            	$upload_erro = $this->upload->display_errors();
+			        $this->session->set_flashdata('upload_erro', "$upload_erro");
+					redirect("artigos/artigo_editar/$url");
 	            }
 	        }
 		}

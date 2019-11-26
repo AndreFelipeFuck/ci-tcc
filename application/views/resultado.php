@@ -27,8 +27,10 @@
 	        <?php if (empty($listagem)):?>
 	        	 <article class="vidCont">
 				 <section id="BlockNoResult">
-                        <div><figure class="img-responsive"><img src="<?php echo base_url("assets/bootstrap/img/semResultado.png")?>" class="img-fluid" alt="smaple image"></figure></div>
-                        <div><h5>Não há nenhum artigo sobre <?php echo $_GET['busca']?>...</h5></div>
+                        <div class="img-responsive">
+                          <img src="<?php echo base_url("assets/bootstrap/img/semResultado.png")?>" class="img-fluid" alt="smaple image">
+                          <h5>Nenhum resultado relacionado a sua pesquisa.</h5>
+                        </div>
                     </section>
 	        	 </article>
 	        <?php endif ?>

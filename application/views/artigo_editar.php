@@ -50,6 +50,11 @@
 								<div class="form-group">
 									<label for="exampleFormControlFile1">Selecione outra imagem:</label>
 						    	<input type="file" name="imgArtigo" class="form-control-file" id="exampleFormControlFile1">
+						    	<?php 
+	                            	if($this->session->flashdata('upload_erro')){
+	                                	?><small style="color:#dc3545"><?php echo $_SESSION['upload_erro'];?></small><?php
+	                            	}
+                         		?>
 								<br>
 									<a class="btn" id="perigo" onclick="delete_img(<?php echo $perfil->codArtigo;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir imagem do artigo</a>
 								</div>
@@ -65,7 +70,7 @@
 						      $('#summernote').summernote({
 						        placeholder: 'Digite seu texto aqui..',
 						        tabsize: 2,
-						        height: 100
+						        height: 500
 						      });
 						    </script>
 						 </div>
@@ -188,6 +193,12 @@
 								<div class="form-group">
 									<label for="exampleFormControlFile1">Selecione outra imagem:</label>
 						    	<input type="file" name="imgArtigo" class="form-control-file" id="exampleFormControlFile1">
+						    	<?php 
+	                            	if($this->session->flashdata('upload_erro')){
+	                                	?><small style="color:#dc3545"><?php echo $_SESSION['upload_erro'];?></small><?php
+	                            	}
+                         		?>
+
 								<br>
 									<a class="btn" id="perigo" onclick="delete_img(<?php echo $perfil->codArtigo;?>)"><i class="glyphicon glyphicon-remove"></i>Excluir imagem do artigo</a>
 								</div>
@@ -203,7 +214,7 @@
 						      $('#summernote').summernote({
 						        placeholder: 'Digite seu texto aqui..',
 						        tabsize: 2,
-						        height: 100
+						        height: 500
 						      });
 						    </script>
 						 </div>
@@ -217,6 +228,11 @@
 					          	<div class="form-group">
 									<label for="exampleFormControlFile1">Escolha uma imagem:</label>
 						    		<input type="file" name="imgArtigo" class="form-control-file" id="exampleFormControlFile1">
+						    		<?php 
+	                            	if($this->session->flashdata('upload_erro')){
+	                                	?><small style="color:#dc3545"><?php echo $_SESSION['upload_erro'];?></small><?php
+	                            	}
+                         		?>
 								</div>
 						<?php endif ?>
 
