@@ -36,9 +36,13 @@
 					 </div>
 					  <div class="form-group">
 					    <label for="exampleFormControlInput1">Faça um pequeno resumo do que voce escreveu:</label>
-					    <textarea name="resumo" placeholder="Teoria evolucionista fundamentada nas ideias do naturalista inglês Charles Robert Darwin 1809-1882" maxlength="380" id="ta-resumo" required> 
-					    	<?php if($this->session->flashdata('resumo')){ echo $_SESSION['resumo'];}?>
-					    </textarea>
+					    <?php
+					    	if($this->session->flashdata('resumo')){?>
+					    		 <textarea name="resumo" placeholder="Teoria evolucionista fundamentada nas ideias do naturalista inglês Charles Robert Darwin 1809-1882" maxlength="380" id="ta-resumo" required><?php echo $_SESSION['resumo'];?></textarea>
+					    		<?php
+					    	}else{?>
+					    		 <textarea name="resumo" placeholder="Teoria evolucionista fundamentada nas ideias do naturalista inglês Charles Robert Darwin 1809-1882" maxlength="380" id="ta-resumo" required></textarea>
+					   <?php }?>
 					 </div>
 					 <div>
 					 	<div class="form-group">

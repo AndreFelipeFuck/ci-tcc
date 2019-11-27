@@ -218,7 +218,7 @@
 											</div>	
 
 											<div  class="conteudo escondido" id="<?php echo"alterar".$comentario->codComentario?>">	
-													<form id ="editar" action="<?php echo site_url('comentarios/comentario_update')?>">	
+													<form id ="editar" method="post" action="<?php echo site_url('comentarios/comentario_update')?>">	
 														<input type="hidden" value="<?php echo $comentario->codComentario ?>" name="codComentario"/>	
 														<div class="elementoComent">	
 															<div>	
@@ -291,7 +291,7 @@
 													</script>
 											</div>	
 											<div  class="conteudo escondido" id="<?php echo "alterar".$comentario->codComentario?>">	
-													<form action="<?php echo site_url('comentarios/comentario_update')?>" id ="editar">	
+													<form  id ="editar" method="post" action="<?php echo site_url('comentarios/comentario_update')?>">	
 														<input type="hidden" value="<?php echo $comentario->codComentario ?>" name="codComentario"/>	
 														<div class="elementoComent">	
 															<div>	
@@ -351,7 +351,7 @@
 		}	
  		  function comentario_update(){	
 		    $.ajax({	
-			    url : "<?php echo site_url('comentarios/comentario_update')?>/",	
+			    url : "<?php echo site_url('comentarios/comentario_update')?>",	
 			    type: "POST",	
 			    data: $('#editar').serialize(),	
 			    dataType: "JSON",	
