@@ -638,10 +638,12 @@ textarea {
 	margin: 1%;
 	float: left;
 	width: 50%;
-	height: 51.5%;
- 	padding-top: 6%;
- 	padding-left: 4%;
+	text-align: center;
+ 	margin-top: 14%;
+ 	padding-top: 1%;
+ 	padding-left: 6.5%;
  	color: white;
+ 	background-color: rgba(0, 0, 0, 0.25);
 }
 
 .logTex h1{
@@ -668,7 +670,7 @@ textarea {
 
 .logFun{
 	width: 100%;
-	background-color: #17a2b8;
+	background-image: url('/ci_tcc/assets/bootstrap/img/loginBackg.png');
 }
 
 .conteinerConf{
