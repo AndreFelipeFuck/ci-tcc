@@ -100,6 +100,13 @@
    
 ?>
 <div class="espaco2"></div>
+	<div style="width: 80%; background-color:#fff; margin: 0 auto;" id="sombra">
+		<div style="padding-right: 20%; padding-left: 20%; padding-top: 1%; padding-bottom: 1%; display: inline-block;">
+			<img src="<?php echo base_url("assets/bootstrap/img/apresent.png")?>" style="width: 30%; height: 28%; float: left; ">
+			<h5 style="padding-left: 35%; padding-top: 8%; ">O Atom é um sistema de publicação de artigos,que tem como objetivo faciltar sua aprendizagem! <b>Junte-se e venha aprender com a gente!</b></h5>
+		</div>
+	</div>
+<div class="espaco2"></div>
     <div class="conteinerArtView" id="sombra">     
       <section class="conteiner0">
             <h1 style="font-size: 35px; border-bottom: solid 2px #17a2b8; margin-bottom: 2%; padding-bottom: 1%;">Artigos Recentes</h1>

@@ -17,7 +17,7 @@
 					<br><br>
 					<div class="espaco2"></div>
 					<div id="licenca">
-						<p class="h6">Atom® 2019 | versão 0.2.5 | © André F., Camile P. e Giovani M. </p>
+						<p class="h6">Atom® 2019 | Instituto Federal Catarinense - Campus Araquari | © André F., Camile P. e Giovani M. </p>
 					</div>
 				</div>	
 			</section>

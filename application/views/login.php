@@ -5,7 +5,7 @@
     <title>Atom | Login</title>
     </header>
     <div class="espaco2"></div>
-        <section class="logFun">
+        <section class="logFun" id="sombra">
             <div class="ConteinerLogin"> 
                 <section class="logTex">
                     <div>
