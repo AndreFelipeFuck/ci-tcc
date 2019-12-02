@@ -63,7 +63,7 @@
 			     	<div id="custom-search-input">
              
 				     		<div class="input-group autocomplete">
-				     			<input class="form-control mr-sm-2 ui-widget" type="text" name = "busca" placeholder="Pequise aqui..." aria-label="Search" id="termo">
+				     			<input class="form-control mr-sm-2 ui-widget" type="text" name = "busca" placeholder="Pequise aqui..." aria-label="Search" id="termo" required>
 				     		</div>
           
 				    </div>

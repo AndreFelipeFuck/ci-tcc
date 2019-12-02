@@ -671,6 +671,7 @@ textarea {
 .logFun{
 	width: 100%;
 	background-image: url('/ci_tcc/assets/bootstrap/img/loginBackg.png');
+
 }
 
 .conteinerConf{
@@ -747,7 +748,7 @@ textarea {
 .fotoPerfil img{
 	background-color: #BCBBBB;
  	width: 100%;
- 	height: 30%;
+ 	height: 100%;
 
 
 }
